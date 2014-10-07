@@ -420,6 +420,31 @@ namespace Dreamonesys.CallCenter.Main
             return CellValue;
         }
 
+        /// <summary>
+        /// 수업교사 반 목록을 삭제한다.
+        /// </summary>
+        /// <history>
+        /// 박석제, 2014-10-07, 생성
+        /// </history>
+        private void DeleteClassEmployee()
+        {
+            SqlCommand sqlCommand = null;
+            SqlResult sqlResult = new SqlResult();
+            
+            this.Cursor = Cursors.WaitCursor;
+
+            
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+        }
+
         #endregion Method
 
         #region Event
