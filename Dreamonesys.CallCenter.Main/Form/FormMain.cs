@@ -419,18 +419,15 @@ namespace Dreamonesys.CallCenter.Main
                     {
                         pSqlCommand.CommandText += @"
                          AND B.school_cd = '" + schoolCDPoint + "' ";
-                    }
-                    if (!string.IsNullOrEmpty(dataGridViewCampusPoint.CurrentCell.RowIndex.ToString()))
-                    {
-                        pSqlCommand.CommandText += @"
-                         AND D.cpno = '" + GetCellValue(dataGridViewCampusPoint, dataGridViewCampusPoint.CurrentCell.RowIndex, "cpno") + @"' ";
-                    }
+                    }                    
                     
                     if (!string.IsNullOrEmpty(textBoxStudentNMPoint.Text))
                     {
                         pSqlCommand.CommandText += @"
                         AND C.usernm like '%" + textBoxStudentNMPoint.Text + "%' ";
                     }
+
+
                     pSqlCommand.CommandText += @"                        
                         ORDER BY D.cpnm, B.clnm, C.usernm ";
                     textBoxStudentNMPoint.Text = "";
