@@ -50,8 +50,6 @@ namespace Dreamonesys.CallCenter.Main
 
         #endregion Constructor
 
-
-
         #region Method
 
         /// <summary>
@@ -601,7 +599,7 @@ namespace Dreamonesys.CallCenter.Main
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <history>
-        /// 박석제, 2014-09-24, 생성
+        /// 박석제, 2014-09-24, 생성하였음.
         /// </history>
         private void dataGridViewCampusPoint_Click(object sender, EventArgs e)
         {
