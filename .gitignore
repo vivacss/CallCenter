@@ -181,3 +181,5 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+Dreamonesys.CallCenter.Main/Class/AppMain.cs
+Dreamonesys.CallCenter.Main/Class/Common.cs

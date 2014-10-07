@@ -50,8 +50,6 @@ namespace Dreamonesys.CallCenter.Main
 
         #endregion Constructor
 
-
-
         #region Method
 
         /// <summary>
@@ -358,9 +356,36 @@ namespace Dreamonesys.CallCenter.Main
                            ON A.cpno = D.cpno
                         WHERE B.clno = " + GetCellValue(dataGridViewClassPoint, dataGridViewClassPoint.CurrentCell.RowIndex, "clno") + @"
                           AND A.auth_cd = 'S'
-                          AND (A.end_date = '' OR A.end_date IS NULL OR A.end_date >= CONVERT(VARCHAR(8), GETDATE(), 112) )
-                        ORDER BY C.usernm
-                    ";
+                          AND (A.end_date = '' OR A.end_date IS NULL OR A.end_date >= CONVERT(VARCHAR(8), GETDATE(), 112) ) ";
+                     if (!string.IsNullOrEmpty(businessCDPoint))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND D.business_cd = '" + businessCDPoint + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(cpnoPoint))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND A.cpno = '" + cpnoPoint + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(schoolCDPoint))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND B.school_cd = '" + schoolCDPoint + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(dataGridViewCampusPoint.CurrentCell.RowIndex.ToString()))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND D.cpno = '" + GetCellValue(dataGridViewCampusPoint, dataGridViewCampusPoint.CurrentCell.RowIndex, "cpno") + @" ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxStudentNMPoint.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                        AND C.usernm like '%" + textBoxStudentNMPoint.Text + "%' ";
+                    }
+                    pSqlCommand.CommandText += @"                        
+                        ORDER BY D.cpnm, B.clnm, C.usernm ";
+                    textBoxStudentNMPoint.Text = "";
+                    
                     break;
                 default:
                     break;
@@ -601,7 +626,7 @@ namespace Dreamonesys.CallCenter.Main
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <history>
-        /// 박석제, 2014-09-24, 생성
+        /// 박석제, 2014-09-24, 생성하였음.
         /// </history>
         private void dataGridViewCampusPoint_Click(object sender, EventArgs e)
         {
