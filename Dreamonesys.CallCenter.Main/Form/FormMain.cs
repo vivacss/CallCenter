@@ -114,6 +114,10 @@ namespace Dreamonesys.CallCenter.Main
                     break;
                 case "dataGridViewClassPoint":
                     dataGridViewStudentPoint.Rows.Clear();
+                    dataGridViewStudentPointSave.Rows.Clear();
+                    break;
+                case "dataGridViewStudentPoint":                    
+                    dataGridViewStudentPointSave.Rows.Clear();
                     break;
 
                 default:
@@ -387,6 +391,8 @@ namespace Dreamonesys.CallCenter.Main
                             , B.clnm
 	                        , C.usernm
                             , C.point
+                            , (SELECT SUM(point) FROM tls_point_user WHERE userid = C.userid
+							                      AND pcode <> 23  ) AS ALL_POINT
                             , A.cpno                            
                             , A.userid
 	                     FROM tls_class_user AS A 
@@ -428,6 +434,8 @@ namespace Dreamonesys.CallCenter.Main
                             , B.clnm
 	                        , C.usernm
                             , C.point
+                            , (SELECT SUM(point) FROM tls_point_user WHERE userid = C.userid
+							                      AND pcode <> 23  ) AS ALL_POINT
                             , A.cpno                            
                             , A.userid
 	                     FROM tls_class_user AS A 
