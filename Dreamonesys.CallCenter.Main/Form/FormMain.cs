@@ -149,14 +149,11 @@ namespace Dreamonesys.CallCenter.Main
                         {
                             if (pDataGridView.Columns[colCount].DataPropertyName != "check_yn")
                             {
-<<<<<<< HEAD
                                 pDataGridView[colCount, pDataGridView.Rows.Count - 1].Value =
                                     //dataGridViewCampus.Rows[dataGridViewCampus.Rows.Count - 1].Cells[colCount].Value = 
                                     row[pDataGridView.Columns[colCount].DataPropertyName].ToString();                                
-=======
                                 pDataGridView[colCount, pDataGridView.Rows.Count - 1].Value =                           
                                     row[pDataGridView.Columns[colCount].DataPropertyName].ToString();
->>>>>>> 4c66a0663abe7e5e74c29b836cf748d314394321
                             }
                         }
 
@@ -789,7 +786,6 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
-<<<<<<< HEAD
         private void textBoxStudentNMPoint_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -798,37 +794,6 @@ namespace Dreamonesys.CallCenter.Main
                 SelectDataGridView(dataGridViewStudentPoint, "select_student_point_all");
             }
         }
-
-        
-
-        
-
-        
-
-        
-
-        
-       
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> 4c66a0663abe7e5e74c29b836cf748d314394321
 
         #endregion Event
 
