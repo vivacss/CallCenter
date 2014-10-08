@@ -46,6 +46,8 @@ namespace Dreamonesys.CallCenter.Main
             _common._appMain = _appMain;
             // 프로그램 정보에서 메인 폼을 참조할 수 있도록 함
             _appMain.MainForm = this;
+            // 프로그램명 설정
+            _appMain.ProgramName = "유투엠 콜센터 1.0";
         }
 
         #endregion Constructor
@@ -85,6 +87,7 @@ namespace Dreamonesys.CallCenter.Main
         /// </summary>
         /// <history>
         /// 박석제, 2014-09-24, 생성
+        /// 박석제, 2014-10-08, 조회시 check_yn 컬럼 출력 예외 추가
         /// </history>
         private void SelectDataGridView(DataGridView pDataGridView, string pQueryKind)
         {
@@ -149,6 +152,8 @@ namespace Dreamonesys.CallCenter.Main
                                 pDataGridView[colCount, pDataGridView.Rows.Count - 1].Value =
                                     //dataGridViewCampus.Rows[dataGridViewCampus.Rows.Count - 1].Cells[colCount].Value = 
                                     row[pDataGridView.Columns[colCount].DataPropertyName].ToString();                                
+                                pDataGridView[colCount, pDataGridView.Rows.Count - 1].Value =                           
+                                    row[pDataGridView.Columns[colCount].DataPropertyName].ToString();
                             }
                         }
 
@@ -458,7 +463,10 @@ namespace Dreamonesys.CallCenter.Main
             {
                 if (item.DataPropertyName.ToLower() == pDataPropertyName)
                 {
-                    CellValue = pDataGridView[item.Index, pRowIndex].Value.ToString();
+                    if (pDataGridView[item.Index, pRowIndex].Value != null)
+                    {
+                        CellValue = pDataGridView[item.Index, pRowIndex].Value.ToString();  
+                    }
                     break;
                 }
             }
@@ -474,20 +482,61 @@ namespace Dreamonesys.CallCenter.Main
         /// </history>
         private void DeleteClassEmployee()
         {
-            SqlCommand sqlCommand = null;
+            Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
+            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 삭제하시겠습니까?");
+            if (result == DialogResult.No)
+            {
+                return;
+            } 
+
+            SqlCommand sqlCommand = new SqlCommand();
             SqlResult sqlResult = new SqlResult();
             
             this.Cursor = Cursors.WaitCursor;
-
             
             try
             {
+                // 컬럼 루프
+                for (int rowCount = 0; rowCount <= dataGridViewClassEmployee.Rows.Count - 1; rowCount++)
+                {
+                    if (GetCellValue(dataGridViewClassEmployee, rowCount, "check_yn") == "1")
+                    {
+                        isFound = true;
+                        sqlCommand.CommandText += @"DELETE temp_copy_t WHERE num = " + (rowCount + 1).ToString() + @";";
+                        Console.WriteLine(sqlCommand.CommandText);
+                    }
+                }
+                                
+                if (isFound == true)
+                {
+                    // 처리할 자료가 있을 경우 쿼리실행
+                    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
 
+                    if (sqlResult.Success == true)
+                    {                        
+                        // 작업 성공시
+                        if (sqlResult.AffectedRecords > 0)
+                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 삭제하였습니다." + Environment.NewLine +
+                                string.Format("(삭제된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));                            
+                        else
+                            this._common.MessageBox(MessageBoxIcon.Information, "삭제된 자료가 없습니다.");                        
+                    }
+                    else
+                        // 작업 실패시
+                        MessageBox.Show(sqlResult.ErrorMsg);
+                }
+                else
+                    // 처리할 자료가 없을 경우
+                    this._common.MessageBox(MessageBoxIcon.Information, "저장할 자료가 없습니다.");
             }
             catch (Exception ex)
             {
-                
-                throw;
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCommand.Dispose();
+                this.Cursor = Cursors.Default;
             }
         }
 
@@ -589,10 +638,21 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
+        /// <summary>
+        /// 반에 배정된 학생을 조회한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <history>
+        /// 박석제, 2014-10-08, check_yn 컬럼 클릭시 조회안되도록 수정
+        /// </history>
         private void dataGridViewClassEmployee_Click(object sender, EventArgs e)
         {
             //반 학생 목록을 조회한다.
-            SelectDataGridView(dataGridViewClassStudent, "select_class_student");
+            if (dataGridViewClassEmployee.Columns[dataGridViewClassEmployee.CurrentCell.ColumnIndex].DataPropertyName != "check_yn")
+            {
+                SelectDataGridView(dataGridViewClassStudent, "select_class_student");
+            }            
         }       
 
         private void toolStripButtonSelect_Student_Click(object sender, EventArgs e)
@@ -602,14 +662,25 @@ namespace Dreamonesys.CallCenter.Main
             frm2.Show();
         }
 
+        /// <summary>
+        /// 반에 배정된 차시를 조회한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <history>
+        /// 박석제, 2014-10-08, check_yn 컬럼 클릭시 조회안되도록 수정
+        /// </history>
         private void dataGridViewClassEmployee_DoubleClick(object sender, EventArgs e)
         {
             //반 차시 조회 폼 이동
-            FormClassSchedule frmSchedule1 = new FormClassSchedule();
-            frmSchedule1.ClassEmployeeCPNO = GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "cpno");
-            frmSchedule1.ClassEmployeeCLNO = GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "clno");
+            if (dataGridViewClassEmployee.Columns[dataGridViewClassEmployee.CurrentCell.ColumnIndex].DataPropertyName != "check_yn")
+            {
+                FormClassSchedule frmSchedule1 = new FormClassSchedule();
+                frmSchedule1.ClassEmployeeCPNO = GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "cpno");
+                frmSchedule1.ClassEmployeeCLNO = GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "clno");
 
-            frmSchedule1.Show();            
+                frmSchedule1.Show();            
+            }            
         }
 
         private void dataGridViewClassStudent_DoubleClick(object sender, EventArgs e)
@@ -639,11 +710,6 @@ namespace Dreamonesys.CallCenter.Main
 
             frmSchedule2.Show();
         }
-
-        #endregion Event
-
-        //콩알조회 탭
-
 
         /// <summary>
         /// 캠퍼스 구분(포인트) 콤보박스 선택 변경시 발생하는 이벤트
@@ -726,36 +792,12 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
-        
+        #endregion Event
 
-        
-
-        
-
-        
-
-        
-       
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DeleteClassEmployee();
+        }
 
     }
 }
