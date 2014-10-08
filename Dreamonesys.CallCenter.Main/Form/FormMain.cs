@@ -333,14 +333,44 @@ namespace Dreamonesys.CallCenter.Main
                 case "select_class_point":
                     //콩알관리 탭 반 콩알 목록 조회
                     pSqlCommand.CommandText = @"
-                       SELECT clnm
-                            , mpoint AS POINT
-                            , school_cd
-                            , clno
-	                     FROM tls_class
-                        WHERE cpno = " + GetCellValue(dataGridViewCampusPoint, dataGridViewCampusPoint.CurrentCell.RowIndex, "cpno") + @"
-                          AND use_yn = 'Y'
-                          AND (edate = '' or edate = '' or edate >= CONVERT(VARCHAR(8), GETDATE(), 112)) ";                    
+                       SELECT A.clnm
+                            , A.point
+                            , A.mpoint
+                            , (SELECT COUNT(userid)FROM tls_class_user WHERE clno = A.clno AND cpno = A.cpno AND auth_cd = 'S'
+                                  AND (end_date = '' OR end_date IS NULL OR CONVERT(CHAR,GETDATE(),112) BETWEEN start_date AND end_date)) AS CL_USER
+                            , A.school_cd
+                            , A.clno
+	                     FROM tls_class AS A
+                        WHERE A.cpno = " + GetCellValue(dataGridViewCampusPoint, dataGridViewCampusPoint.CurrentCell.RowIndex, "cpno") + @"
+                          AND A.use_yn = 'Y'
+                          AND (A.edate = '' or A.edate = '' or A.edate >= CONVERT(VARCHAR(8), GETDATE(), 112)) ";                    
+                    if (!string.IsNullOrEmpty(schoolCDPoint))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND school_cd = '" + schoolCDPoint + "' ";
+                    }                    
+                    pSqlCommand.CommandText += @"
+                       ORDER BY clnm desc ";
+                    break;
+
+                case "select_new_class_point":
+                    //콩알관리 탭 신규반 콩알 목록 조회
+                    pSqlCommand.CommandText = @"
+                       SELECT A.clnm
+                            , A.point
+                            , A.mpoint
+                            , (SELECT COUNT(userid)FROM tls_class_user WHERE clno = A.clno AND cpno = A.cpno AND auth_cd = 'S'
+                                  AND (end_date = '' OR end_date IS NULL OR CONVERT(CHAR,GETDATE(),112) BETWEEN start_date AND end_date)) AS CL_USER
+                            , A.school_cd
+                            , A.clno
+	                     FROM tls_class AS A
+                        WHERE A.cpno = " + GetCellValue(dataGridViewCampusPoint, dataGridViewCampusPoint.CurrentCell.RowIndex, "cpno") + @"
+                          AND A.use_yn = 'Y'
+                          AND (A.edate = '' or A.edate = '' or A.edate >= CONVERT(VARCHAR(8), GETDATE(), 112))
+                          AND point = 0
+                          AND mpoint = 0 
+                          AND (SELECT COUNT(userid)FROM tls_class_user WHERE clno = A.clno AND cpno = A.cpno AND auth_cd = 'S'
+                                  AND (end_date = '' OR end_date IS NULL OR CONVERT(CHAR,GETDATE(),112) BETWEEN start_date AND end_date)) > 0 ";                    
                     if (!string.IsNullOrEmpty(schoolCDPoint))
                     {
                         pSqlCommand.CommandText += @"
@@ -437,6 +467,22 @@ namespace Dreamonesys.CallCenter.Main
                         ORDER BY D.cpnm, B.clnm, C.usernm ";
                     textBoxStudentNMPoint.Text = "";
 
+                    break;
+                case "select_student_point_save":
+                    //학생 콩알 내역 목록 조회
+                    pSqlCommand.CommandText = @"
+                       		SELECT B.name			 
+			                     , A.userid
+			                     , A.clno
+			                     , A.point
+			                     , (SELECT usernm FROM tls_member WHERE userid = A.rid) AS RID
+			                     , A.rdatetime
+			                     , A.cpno
+	                          FROM tls_point_user AS A
+                         LEFT JOIN tls_point_code AS B
+	     	                    ON A.pcode = B.PCODE
+		                     WHERE A.userid = '" + GetCellValue(dataGridViewStudentPoint, dataGridViewStudentPoint.CurrentCell.RowIndex, "userid") + @"'
+	                         ORDER BY A.rdatetime DESC ";
                     break;
                 default:
                     break;
@@ -774,6 +820,14 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
+        private void buttonNewClass_Click(object sender, EventArgs e)
+        {
+            //신규 반 조회
+            if (dataGridViewCampusPoint.Rows.Count > 0 && dataGridViewCampusPoint.CurrentCell != null)
+            {
+                SelectDataGridView(dataGridViewClassPoint, "select_new_class_point");
+            }
+        }
         private void dataGridViewClassPoint_Click(object sender, EventArgs e)
         {
             //학생 콩알정보 조회
@@ -790,14 +844,28 @@ namespace Dreamonesys.CallCenter.Main
                 //학생콩알정보 조회
                 SelectDataGridView(dataGridViewStudentPoint, "select_student_point_all");
             }
+        }        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //반 로우 삭제
+            DeleteClassEmployee();
+        }
+
+        private void dataGridViewStudentPoint_Click(object sender, EventArgs e)
+        {
+            //학생 콩알 내역 조회
+            if (dataGridViewStudentPoint.Rows.Count > 0 && dataGridViewStudentPoint.CurrentCell != null)
+            {
+                SelectDataGridView(dataGridViewStudentPointSave, "select_student_point_save");
+            }
         }
 
         #endregion Event
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DeleteClassEmployee();
-        }
+        
+
+        
 
     }
 }
