@@ -283,7 +283,9 @@ namespace Dreamonesys.CallCenter.Main
                     pSqlCommand.CommandText = @"
                        SELECT A.userid
 	                        , C.usernm
-                            , A.cpno                            
+                            , A.cpno  
+                            , C.login_id
+                            , C.login_pwd                          
 	                     FROM tls_class_user AS A 
                     LEFT JOIN tls_class AS B 
                            ON A.clno = B.clno
@@ -800,6 +802,35 @@ namespace Dreamonesys.CallCenter.Main
         private void button1_Click(object sender, EventArgs e)
         {
             DeleteClassEmployee();
+        }
+
+        /// <summary>
+        /// 웹페이지에 로그인 한다.
+        /// </summary>
+        /// <param name="pDataGridView">그리드</param>
+        /// <param name="pDomainType">도메인 종류(study : 학습, mypage : 마이페이지)</param>
+        private void RunLoginIn(DataGridView pDataGridView, string pDomainType)
+        {
+            if (pDataGridView.CurrentCell != null)
+            {
+                string loginId = _common.GetCellValue(pDataGridView, pDataGridView.CurrentCell.RowIndex, "login_id");
+                string loginPwd = _common.GetCellValue(pDataGridView, pDataGridView.CurrentCell.RowIndex, "login_pwd");
+
+                if (loginId != "" && loginPwd != "")
+                {
+                    _common.RunLogin(pDomainType, loginId, loginPwd);    
+                }
+            }
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            RunLoginIn(dataGridViewClassStudent, "study");
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            RunLoginIn(dataGridViewClassStudent, "mypage");
         }
 
     }
