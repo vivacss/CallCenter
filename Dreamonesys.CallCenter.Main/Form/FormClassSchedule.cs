@@ -375,11 +375,17 @@ namespace Dreamonesys.CallCenter.Main
         {
             SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
         }
+        
 
 
         #endregion Method
 
         
+
+
+
+
+
 
 
 

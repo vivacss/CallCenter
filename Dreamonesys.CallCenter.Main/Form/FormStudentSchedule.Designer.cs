@@ -94,9 +94,9 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentSchedule)).BeginInit();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentStudy)).BeginInit();
             this.SuspendLayout();
             // 
@@ -229,6 +229,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dataGridViewStudentStudy);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 25);
             this.groupBox1.Name = "groupBox1";
@@ -350,7 +351,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridViewStudentStudy);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -398,13 +398,13 @@
             this.Column39,
             this.Column40,
             this.Column41});
-            this.dataGridViewStudentStudy.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridViewStudentStudy.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewStudentStudy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewStudentStudy.Location = new System.Drawing.Point(3, 17);
             this.dataGridViewStudentStudy.Name = "dataGridViewStudentStudy";
             this.dataGridViewStudentStudy.RowTemplate.Height = 23;
             this.dataGridViewStudentStudy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStudentStudy.Size = new System.Drawing.Size(1299, 164);
-            this.dataGridViewStudentStudy.TabIndex = 1;
+            this.dataGridViewStudentStudy.Size = new System.Drawing.Size(1293, 164);
+            this.dataGridViewStudentStudy.TabIndex = 2;
             // 
             // Column1
             // 
@@ -646,9 +646,9 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentSchedule)).EndInit();
-            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentStudy)).EndInit();
             this.ResumeLayout(false);
 

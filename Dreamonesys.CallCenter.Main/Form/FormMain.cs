@@ -841,8 +841,8 @@ namespace Dreamonesys.CallCenter.Main
                 FormClassSchedule frmSchedule1 = new FormClassSchedule();
                 frmSchedule1.ClassEmployeeCPNO = GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "cpno");
                 frmSchedule1.ClassEmployeeCLNO = GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "clno");
-                                
-                frmSchedule1.Show();            
+                
+                frmSchedule1.Show();   
                                
             }            
         }

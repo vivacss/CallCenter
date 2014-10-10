@@ -89,9 +89,9 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassSchedule)).BeginInit();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassStudy)).BeginInit();
             this.SuspendLayout();
             // 
@@ -198,6 +198,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dataGridViewClassStudy);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 25);
             this.groupBox1.Name = "groupBox1";
@@ -327,7 +328,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridViewClassStudy);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -371,13 +371,14 @@
             this.Column26,
             this.Column37,
             this.Column38});
-            this.dataGridViewClassStudy.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridViewClassStudy.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewClassStudy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewClassStudy.Location = new System.Drawing.Point(3, 17);
             this.dataGridViewClassStudy.Name = "dataGridViewClassStudy";
             this.dataGridViewClassStudy.RowTemplate.Height = 23;
             this.dataGridViewClassStudy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewClassStudy.Size = new System.Drawing.Size(1320, 161);
-            this.dataGridViewClassStudy.TabIndex = 1;
+            this.dataGridViewClassStudy.Size = new System.Drawing.Size(1314, 161);
+            this.dataGridViewClassStudy.TabIndex = 2;
+            this.dataGridViewClassStudy.Click += new System.EventHandler(this.dataGridViewClassStudy_Click);
             // 
             // Column1
             // 
@@ -590,9 +591,9 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassSchedule)).EndInit();
-            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassStudy)).EndInit();
             this.ResumeLayout(false);
 
