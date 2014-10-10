@@ -38,6 +38,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClassStudy = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateTimePickerClassStudy = new System.Windows.Forms.DateTimePicker();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewClassSchedule = new System.Windows.Forms.DataGridView();
+            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.dataGridViewClassStudy = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,32 +83,16 @@
             this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTimePickerClassStudy = new System.Windows.Forms.DateTimePicker();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewClassSchedule = new System.Windows.Forms.DataGridView();
-            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPageClassSchedule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassStudy)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassSchedule)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassStudy)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -198,7 +198,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridViewClassStudy);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 25);
             this.groupBox1.Name = "groupBox1";
@@ -206,6 +205,136 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "과정1";
+            // 
+            // dateTimePickerClassStudy
+            // 
+            this.dateTimePickerClassStudy.CustomFormat = "";
+            this.dateTimePickerClassStudy.Location = new System.Drawing.Point(503, 2);
+            this.dateTimePickerClassStudy.Name = "dateTimePickerClassStudy";
+            this.dateTimePickerClassStudy.Size = new System.Drawing.Size(200, 21);
+            this.dateTimePickerClassStudy.TabIndex = 1;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1320, 25);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dataGridViewClassSchedule);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1320, 570);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "반 차시 리스트";
+            // 
+            // dataGridViewClassSchedule
+            // 
+            this.dataGridViewClassSchedule.AllowUserToAddRows = false;
+            this.dataGridViewClassSchedule.AllowUserToDeleteRows = false;
+            this.dataGridViewClassSchedule.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridViewClassSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewClassSchedule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column27,
+            this.Column28,
+            this.Column29,
+            this.Column30,
+            this.Column31,
+            this.Column32,
+            this.Column33,
+            this.Column34,
+            this.Column35,
+            this.Column36});
+            this.dataGridViewClassSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewClassSchedule.Location = new System.Drawing.Point(3, 17);
+            this.dataGridViewClassSchedule.Name = "dataGridViewClassSchedule";
+            this.dataGridViewClassSchedule.RowTemplate.Height = 23;
+            this.dataGridViewClassSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewClassSchedule.Size = new System.Drawing.Size(1314, 550);
+            this.dataGridViewClassSchedule.TabIndex = 0;
+            // 
+            // Column27
+            // 
+            this.Column27.DataPropertyName = "CDATE";
+            this.Column27.HeaderText = "수업일";
+            this.Column27.Name = "Column27";
+            this.Column27.Width = 80;
+            // 
+            // Column28
+            // 
+            this.Column28.DataPropertyName = "CWEEK_CD";
+            this.Column28.HeaderText = "요일";
+            this.Column28.Name = "Column28";
+            this.Column28.Width = 60;
+            // 
+            // Column29
+            // 
+            this.Column29.DataPropertyName = "TIME_CNT";
+            this.Column29.HeaderText = "차시";
+            this.Column29.Name = "Column29";
+            this.Column29.Width = 90;
+            // 
+            // Column30
+            // 
+            this.Column30.DataPropertyName = "BKNM";
+            this.Column30.HeaderText = "교재명";
+            this.Column30.Name = "Column30";
+            this.Column30.Width = 150;
+            // 
+            // Column31
+            // 
+            this.Column31.DataPropertyName = "CLASSA";
+            this.Column31.HeaderText = "단원";
+            this.Column31.Name = "Column31";
+            this.Column31.Width = 180;
+            // 
+            // Column32
+            // 
+            this.Column32.DataPropertyName = "VIEW_UNNM";
+            this.Column32.HeaderText = "교재구성명";
+            this.Column32.Name = "Column32";
+            this.Column32.Width = 120;
+            // 
+            // Column33
+            // 
+            this.Column33.DataPropertyName = "DFNM";
+            this.Column33.HeaderText = "레벨구성명";
+            this.Column33.Name = "Column33";
+            this.Column33.Width = 120;
+            // 
+            // Column34
+            // 
+            this.Column34.DataPropertyName = "ROOM_CODE";
+            this.Column34.HeaderText = "용도";
+            this.Column34.Name = "Column34";
+            // 
+            // Column35
+            // 
+            this.Column35.DataPropertyName = "STUDY_TYPE_1";
+            this.Column35.HeaderText = "과정1학습";
+            this.Column35.Name = "Column35";
+            // 
+            // Column36
+            // 
+            this.Column36.DataPropertyName = "STUDY_TYPE_2";
+            this.Column36.HeaderText = "과정2학습";
+            this.Column36.Name = "Column36";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dataGridViewClassStudy);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1326, 786);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // dataGridViewClassStudy
             // 
@@ -242,14 +371,13 @@
             this.Column26,
             this.Column37,
             this.Column38});
-            this.dataGridViewClassStudy.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewClassStudy.Location = new System.Drawing.Point(3, 17);
+            this.dataGridViewClassStudy.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridViewClassStudy.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewClassStudy.Name = "dataGridViewClassStudy";
             this.dataGridViewClassStudy.RowTemplate.Height = 23;
             this.dataGridViewClassStudy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewClassStudy.Size = new System.Drawing.Size(1314, 161);
-            this.dataGridViewClassStudy.TabIndex = 0;
-            this.dataGridViewClassStudy.Click += new System.EventHandler(this.dataGridViewClassStudy_Click);
+            this.dataGridViewClassStudy.Size = new System.Drawing.Size(1320, 161);
+            this.dataGridViewClassStudy.TabIndex = 1;
             // 
             // Column1
             // 
@@ -445,135 +573,6 @@
             this.Column38.HeaderText = "CLNO";
             this.Column38.Name = "Column38";
             // 
-            // dateTimePickerClassStudy
-            // 
-            this.dateTimePickerClassStudy.CustomFormat = "";
-            this.dateTimePickerClassStudy.Location = new System.Drawing.Point(503, 2);
-            this.dateTimePickerClassStudy.Name = "dateTimePickerClassStudy";
-            this.dateTimePickerClassStudy.Size = new System.Drawing.Size(200, 21);
-            this.dateTimePickerClassStudy.TabIndex = 1;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1320, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dataGridViewClassSchedule);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1320, 570);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "반 차시 리스트";
-            // 
-            // dataGridViewClassSchedule
-            // 
-            this.dataGridViewClassSchedule.AllowUserToAddRows = false;
-            this.dataGridViewClassSchedule.AllowUserToDeleteRows = false;
-            this.dataGridViewClassSchedule.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridViewClassSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewClassSchedule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column27,
-            this.Column28,
-            this.Column29,
-            this.Column30,
-            this.Column31,
-            this.Column32,
-            this.Column33,
-            this.Column34,
-            this.Column35,
-            this.Column36});
-            this.dataGridViewClassSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewClassSchedule.Location = new System.Drawing.Point(3, 17);
-            this.dataGridViewClassSchedule.Name = "dataGridViewClassSchedule";
-            this.dataGridViewClassSchedule.RowTemplate.Height = 23;
-            this.dataGridViewClassSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewClassSchedule.Size = new System.Drawing.Size(1314, 550);
-            this.dataGridViewClassSchedule.TabIndex = 0;
-            // 
-            // Column27
-            // 
-            this.Column27.DataPropertyName = "CDATE";
-            this.Column27.HeaderText = "수업일";
-            this.Column27.Name = "Column27";
-            this.Column27.Width = 80;
-            // 
-            // Column28
-            // 
-            this.Column28.DataPropertyName = "CWEEK_CD";
-            this.Column28.HeaderText = "요일";
-            this.Column28.Name = "Column28";
-            this.Column28.Width = 60;
-            // 
-            // Column29
-            // 
-            this.Column29.DataPropertyName = "TIME_CNT";
-            this.Column29.HeaderText = "차시";
-            this.Column29.Name = "Column29";
-            this.Column29.Width = 90;
-            // 
-            // Column30
-            // 
-            this.Column30.DataPropertyName = "BKNM";
-            this.Column30.HeaderText = "교재명";
-            this.Column30.Name = "Column30";
-            this.Column30.Width = 150;
-            // 
-            // Column31
-            // 
-            this.Column31.DataPropertyName = "CLASSA";
-            this.Column31.HeaderText = "단원";
-            this.Column31.Name = "Column31";
-            this.Column31.Width = 180;
-            // 
-            // Column32
-            // 
-            this.Column32.DataPropertyName = "VIEW_UNNM";
-            this.Column32.HeaderText = "교재구성명";
-            this.Column32.Name = "Column32";
-            this.Column32.Width = 120;
-            // 
-            // Column33
-            // 
-            this.Column33.DataPropertyName = "DFNM";
-            this.Column33.HeaderText = "레벨구성명";
-            this.Column33.Name = "Column33";
-            this.Column33.Width = 120;
-            // 
-            // Column34
-            // 
-            this.Column34.DataPropertyName = "ROOM_CODE";
-            this.Column34.HeaderText = "용도";
-            this.Column34.Name = "Column34";
-            // 
-            // Column35
-            // 
-            this.Column35.DataPropertyName = "STUDY_TYPE_1";
-            this.Column35.HeaderText = "과정1학습";
-            this.Column35.Name = "Column35";
-            // 
-            // Column36
-            // 
-            this.Column36.DataPropertyName = "STUDY_TYPE_2";
-            this.Column36.HeaderText = "과정2학습";
-            this.Column36.Name = "Column36";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1285, 657);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // FormClassSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -591,10 +590,10 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassStudy)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassSchedule)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassStudy)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -606,7 +605,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button buttonClassStudy;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridViewClassStudy;
         private System.Windows.Forms.DateTimePicker dateTimePickerClassStudy;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -628,6 +626,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column34;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column35;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column36;
+        private System.Windows.Forms.DataGridView dataGridViewClassStudy;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column25;

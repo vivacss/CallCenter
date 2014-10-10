@@ -41,6 +41,7 @@ namespace Dreamonesys.CallCenter.Main
             get { return sClassEmployeeCLNO; }
             set { sClassEmployeeCLNO = value; }
         }
+
         #endregion
 
         public FormClassSchedule()

@@ -247,18 +247,39 @@ namespace Dreamonesys.CallCenter.Main
                            ON A.userid = B.userid
                         WHERE B.cpno = " + GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpno") + @"
                           AND A.auth_cd <> 'S'
-                          AND (UE.retire_date = '' OR UE.retire_date IS NULL) ";
+                          AND (UE.retire_date = '' OR UE.retire_date IS NULL)                   
+                        ORDER BY A.use_yn desc, A.tutor_yn desc, auth_cd, A.usernm
+                    ";                    
+                    break;
+
+                case "select_employee_all":
+                    // 특정 직원 목록 조회
+                    pSqlCommand.CommandText = @"
+                       SELECT A.member_id
+                            , A.usernm
+                            , A.login_id
+                            , A.login_pwd
+                            , B.sdate AS enter_date
+                            , B.edate AS retire_date
+                            , A.use_yn
+                            , A.tutor_yn
+                            , (SELECT name from tls_web_code WHERE cdmain = 'auth' and cdsub = A.auth_cd) AS AUTH_CD
+                            , A.userid
+                         FROM tls_member AS A                    
+                    LEFT JOIN tls_cam_member as B
+                           ON A.userid = B.userid
+                        WHERE A.auth_cd <> 'S'
+                          AND (B.edate = '' OR B.edate IS NULL) ";
                     if (!string.IsNullOrEmpty(textBoxUserNm.Text))
                     {
                         pSqlCommand.CommandText += @"
                          AND A.usernm LIKE '%" + textBoxUserNm.Text + "%' ";
                     }
                     pSqlCommand.CommandText += @"
-                        ORDER BY A.use_yn desc, A.tutor_yn desc, auth_cd, A.usernm
+                        ORDER BY B.cpno, A.use_yn DESC, A.tutor_yn DESC, A.usernm
                     ";
                     textBoxUserNm.Text = "";
                     break;
-
                 case "select_class_employee":
                     // 수업교사 반 목록 조회
                     pSqlCommand.CommandText = @"
@@ -492,6 +513,94 @@ namespace Dreamonesys.CallCenter.Main
 		                     WHERE A.userid = '" + GetCellValue(dataGridViewStudentPoint, dataGridViewStudentPoint.CurrentCell.RowIndex, "userid") + @"'
 	                         ORDER BY A.rdatetime DESC ";
                     break;
+                case "select_point_manager":
+                    //콩알 관리자 조회
+                    pSqlCommand.CommandText = @"
+                       		 SELECT REPLACE(B.cpnm, '캠퍼스', '') AS CPNM
+			                      , C.usernm
+                                  , A.point
+			                      , A.mpoint
+			                      , A.userid
+			                      , A.cpno
+			                      , A.auth_cd			                      
+                                  , A.use_yn
+			                      , (SELECT usernm FROM tls_member WHERE userid = A.rid) AS RID
+			                   FROM tls_point_manager AS A
+	                      LEFT JOIN tls_campus AS B
+		                         ON A.cpno = B.cpno 
+	                      LEFT JOIN tls_member AS C
+			                     ON A.userid = C.userid
+                                ORDER BY A.point DESC ";
+                    break;
+
+                case "insert_point_manager":
+                    //콩알 관리자 등록
+                    pSqlCommand.CommandText = @"
+                       		 INSERT INTO TLS_POINT_MANAGER
+                                       ( USERID
+                                       , CPNO
+                                       , AUTH_CD
+                                       , POINT
+                                       , MPOINT
+                                       , USE_YN
+                                       , RID
+                                       , RDATETIME
+                                       , UID
+                                       , UDATETIME)
+                                 VALUES
+                                       (";
+                                        if (!string.IsNullOrEmpty(textBoxPointManagerUserid.Text))
+                                        {
+                                           pSqlCommand.CommandText += @"
+                                            " + textBoxPointManagerUserid.Text + " ";
+                                        }
+                                       pSqlCommand.CommandText += @"
+                                       ,";
+                                       if (!string.IsNullOrEmpty(textBoxPointManagerCpno.Text))
+                                       {
+                                          pSqlCommand.CommandText += @"
+                                            " + textBoxPointManagerCpno.Text + " ";
+                                       }
+                                       pSqlCommand.CommandText += @"
+                                       ,'D'
+                                       , 1000
+                                       , 1000
+                                       ,'Y'
+                                       ,1
+                                       ,getdate()
+                                       ,1
+                                       ,getdate())                     
+                   
+                       		 SELECT REPLACE(B.cpnm, '캠퍼스', '') AS CPNM
+			                      , C.usernm
+                                  , A.point
+			                      , A.mpoint
+			                      , A.userid
+			                      , A.cpno
+			                      , A.auth_cd			                      
+                                  , A.use_yn
+			                      , (SELECT usernm FROM tls_member WHERE userid = A.rid) AS RID
+			                   FROM tls_point_manager AS A
+	                      LEFT JOIN tls_campus AS B
+		                         ON A.cpno = B.cpno 
+	                      LEFT JOIN tls_member AS C
+			                     ON A.userid = C.userid ";
+                          if (!string.IsNullOrEmpty(textBoxPointManagerCpno.Text))
+                          {
+                             pSqlCommand.CommandText += @"
+                              WHERE A.cpno = " + textBoxPointManagerCpno.Text + " ";
+                          }                                                                
+                          if (!string.IsNullOrEmpty(textBoxPointManagerUserid.Text))
+                          {
+                             pSqlCommand.CommandText += @"
+                               AND A.userid = " + textBoxPointManagerUserid.Text + " ";
+                          }
+                          pSqlCommand.CommandText += @"                             
+                             ORDER BY A.udatetime DESC ";
+                          textBoxPointManagerCpno.Text = "";
+                          textBoxPointManagerUserid.Text = "";
+                    break;
+
                 default:
                     break;
             }
@@ -688,7 +797,7 @@ namespace Dreamonesys.CallCenter.Main
             if (e.KeyCode == Keys.Enter)
             {
                 //직원을 검색한다.                
-                SelectDataGridView(dataGridViewEmployee, "select_employee");
+                SelectDataGridView(dataGridViewEmployee, "select_employee_all");
             }
         }
 
@@ -732,8 +841,9 @@ namespace Dreamonesys.CallCenter.Main
                 FormClassSchedule frmSchedule1 = new FormClassSchedule();
                 frmSchedule1.ClassEmployeeCPNO = GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "cpno");
                 frmSchedule1.ClassEmployeeCLNO = GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "clno");
-
+                                
                 frmSchedule1.Show();            
+                               
             }            
         }
 
@@ -828,7 +938,7 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
-        private void buttonNewClass_Click(object sender, EventArgs e)
+        private void buttonSelectNewClass_Click(object sender, EventArgs e)
         {
             //신규 반 조회
             if (dataGridViewCampusPoint.Rows.Count > 0 && dataGridViewCampusPoint.CurrentCell != null)
@@ -836,6 +946,7 @@ namespace Dreamonesys.CallCenter.Main
                 SelectDataGridView(dataGridViewClassPoint, "select_new_class_point");
             }
         }
+
         private void dataGridViewClassPoint_Click(object sender, EventArgs e)
         {
             //학생 콩알정보 조회
@@ -869,7 +980,25 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
+        private void buttonSelectPointManager_Click(object sender, EventArgs e)
+        {
+            //콩알 관리자 조회
+            SelectDataGridView(dataGridViewPointManager, "select_point_manager");
+        }
+
+        private void buttonInsertPointManager_Click(object sender, EventArgs e)
+        {
+            //콩알 관리자 등록
+
+            SelectDataGridView(dataGridViewPointManager, "insert_point_manager");
+        }
         #endregion Event
+
+        
+
+        
+
+        
 
         
 
