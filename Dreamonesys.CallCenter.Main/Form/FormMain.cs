@@ -240,6 +240,7 @@ namespace Dreamonesys.CallCenter.Main
                             , A.tutor_yn
                             , (SELECT name from tls_web_code WHERE cdmain = 'auth' and cdsub = A.auth_cd) AS AUTH_CD
                             , A.userid
+                            , B.cpno
                          FROM tls_member AS A
                     LEFT JOIN " + GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "db_link") + @".DBO.V_u2m_employee AS UE
                            ON A.member_id = UE.emp_id
@@ -265,6 +266,7 @@ namespace Dreamonesys.CallCenter.Main
                             , A.tutor_yn
                             , (SELECT name from tls_web_code WHERE cdmain = 'auth' and cdsub = A.auth_cd) AS AUTH_CD
                             , A.userid
+                            , B.cpno
                          FROM tls_member AS A                    
                     LEFT JOIN tls_cam_member as B
                            ON A.userid = B.userid
@@ -300,6 +302,33 @@ namespace Dreamonesys.CallCenter.Main
                          AND (B.edate = '' OR B.edate IS NULL OR B.edate >= CONVERT(VARCHAR(8), GETDATE(), 112))
                          AND B.use_yn = 'Y'
 	                   ORDER BY B.school_cd, B.clnm
+                    ";
+                    break;
+
+                case "select_class_employee_all":
+                    //특정 반 목록 조회
+                    pSqlCommand.CommandText = @"
+                       SELECT A.class_id
+	                        , A.clno
+	                        , A.clnm
+	                        , A.point
+	                        , A.mpoint
+	  		                , A.school_cd
+	                        , B.usernm
+                            , A.cpno
+	                     FROM tls_class AS A
+					LEFT JOIN tls_member AS B
+					       ON A.CLASS_TID = B.userid
+						WHERE A.cpno = " + GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "cpno") + @"
+						  AND (A.edate = '' OR A.edate IS NULL OR A.edate >= CONVERT(VARCHAR(8), GETDATE(), 112))
+                          AND B.use_yn = 'Y' ";
+                    if (!string.IsNullOrEmpty(textBoxClassNM.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND A.clnm LIKE '%" + textBoxClassNM.Text + "%' ";
+                    }
+                    pSqlCommand.CommandText += @"						 
+	                    ORDER BY A.school_cd, A.clnm
                     ";
                     break;
 
@@ -784,6 +813,15 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
+        private void textBoxClassNM_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //특정 반 목록 조회
+                SelectDataGridView(dataGridViewClassEmployee, "select_class_employee_all");
+            }
+            
+        }
         /// <summary>
         /// 직원명 검색 TextBox 에 Enter 키 입력시 발생하는 이벤트
         /// </summary>
@@ -993,6 +1031,8 @@ namespace Dreamonesys.CallCenter.Main
             SelectDataGridView(dataGridViewPointManager, "insert_point_manager");
         }
         #endregion Event
+
+        
 
         
 
