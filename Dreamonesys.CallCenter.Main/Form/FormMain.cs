@@ -76,7 +76,14 @@ namespace Dreamonesys.CallCenter.Main
                 //콩알관리 콤보박스
                 new Common.ComboBoxList(comboBoxCampusTypePoint, "캠퍼스구분", true),
                 new Common.ComboBoxList(comboBoxCampusPoint, "캠퍼스", true) ,  
-                new Common.ComboBoxList(comboBoxSchoolCDPoint, "학교급", true)   
+                new Common.ComboBoxList(comboBoxSchoolCDPoint, "학교급", true),   
+                //차시관리 콤보박스
+                new Common.ComboBoxList(comboBoxCampusTypeStudy, "캠퍼스구분", true),
+                new Common.ComboBoxList(comboBoxCampusStudy, "캠퍼스", true) ,  
+                new Common.ComboBoxList(comboBoxYyyyStudy, "년도", true) , 
+                new Common.ComboBoxList(comboBoxSchoolCDStudy, "학교급", true),
+                new Common.ComboBoxList(comboBoxTermCDStudy, "학기", true),
+                new Common.ComboBoxList(comboBoxUseYNStudy, "사용", true)
                 
             };
             this._common.GetComboList(comboBoxList);
