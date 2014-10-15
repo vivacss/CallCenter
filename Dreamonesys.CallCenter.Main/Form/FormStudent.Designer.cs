@@ -281,6 +281,7 @@
             this.dataGridViewStudent.Size = new System.Drawing.Size(1174, 298);
             this.dataGridViewStudent.TabIndex = 0;
             this.dataGridViewStudent.Click += new System.EventHandler(this.dataGridViewStudent_Click);
+            this.dataGridViewStudent.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewStudent_MouseClick);
             // 
             // cpnm
             // 
@@ -415,7 +416,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(90, 29);
+            this.toolStripButton1.Size = new System.Drawing.Size(87, 29);
             this.toolStripButton1.Text = "U2M 학생";
             // 
             // toolStripButton2
@@ -423,7 +424,7 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(96, 29);
+            this.toolStripButton2.Size = new System.Drawing.Size(94, 29);
             this.toolStripButton2.Text = "마이페이지";
             // 
             // splitContainer2
