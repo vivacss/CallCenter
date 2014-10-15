@@ -804,34 +804,19 @@ namespace Dreamonesys.CallCenter.Main
             DeleteClassEmployee();
         }
 
-        /// <summary>
-        /// 웹페이지에 로그인 한다.
-        /// </summary>
-        /// <param name="pDataGridView">그리드</param>
-        /// <param name="pDomainType">도메인 종류(study : 학습, mypage : 마이페이지)</param>
-        private void RunLoginIn(DataGridView pDataGridView, string pDomainType)
+        private void dataGridViewClassStudent_MouseClick(object sender, MouseEventArgs e)
         {
-            if (pDataGridView.CurrentCell != null)
+            if (e.Button == MouseButtons.Right)
             {
-                string loginId = _common.GetCellValue(pDataGridView, pDataGridView.CurrentCell.RowIndex, "login_id");
-                string loginPwd = _common.GetCellValue(pDataGridView, pDataGridView.CurrentCell.RowIndex, "login_pwd");
-
-                if (loginId != "" && loginPwd != "")
+                int currentMouseOverRow = ((DataGridView)sender).HitTest(e.X, e.Y).RowIndex;
+                if (currentMouseOverRow >= 0)
                 {
-                    _common.RunLogin(pDomainType, loginId, loginPwd);    
+                    ((DataGridView)sender).CurrentCell = ((DataGridView)sender)[0, currentMouseOverRow];
+                    this._common.RunLogin(((DataGridView)sender), new Point(e.X, e.Y));
                 }
             }
         }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            RunLoginIn(dataGridViewClassStudent, "study");
-        }
-
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            RunLoginIn(dataGridViewClassStudent, "mypage");
-        }
+     
 
     }
 }
