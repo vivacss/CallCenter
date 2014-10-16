@@ -661,13 +661,13 @@ namespace Dreamonesys.CallCenter.Main
 								WHERE cpno = A.cpno AND clno = a.clno AND auth_cd = 's'
 								  AND (end_date = '' OR end_date IS NULL OR CONVERT(CHAR,GETDATE(),112) BETWEEN start_date AND end_date)) AS USER_CNT
                             , A.cpno  
-							, A.clno 							
+							, A.clno                           						
                          FROM tls_class AS A                                                                    
 				    LEFT JOIN tls_term AS B
 					       ON A.cpno = B.cpno
                     LEFT JOIN tls_campus AS C
                            ON A.cpno = C.cpno
-						   WHERE A.use_yn = 'Y'						  
+						  -- WHERE A.use_yn = 'Y'						  
                     ";						   
                     if (!string.IsNullOrEmpty(businessCDStudy))
                     {
@@ -677,7 +677,7 @@ namespace Dreamonesys.CallCenter.Main
                     if (!string.IsNullOrEmpty(cpnoStudy))
                     {
                         pSqlCommand.CommandText += @"
-                         AND A.cpno = '" + cpnoStudy + "' ";
+                         AND C.cpno = '" + cpnoStudy + "' ";
                     }
                     if (!string.IsNullOrEmpty(yyyyStudy))
                     {
@@ -688,7 +688,7 @@ namespace Dreamonesys.CallCenter.Main
                     {
                         pSqlCommand.CommandText += @"
                          AND A.school_cd = '" + schoolCDStudy + "' ";
-                    }
+                    }                    
                     if (!string.IsNullOrEmpty(termCDStudy))
                     {
                         pSqlCommand.CommandText += @"
@@ -706,6 +706,7 @@ namespace Dreamonesys.CallCenter.Main
                        SELECT A.userid
 	                        , C.usernm
                             , A.cpno  
+                            , A.clno
                             , C.login_id
                             , C.login_pwd                          
 	                     FROM tls_class_user AS A 
@@ -718,6 +719,62 @@ namespace Dreamonesys.CallCenter.Main
                           AND (A.end_date = '' OR A.end_date IS NULL OR A.end_date >= CONVERT(VARCHAR(8), GETDATE(), 112) )
                         ORDER BY C.usernm
                     ";
+                    break;
+                case "select_class_study":
+                    //반 차시 정보 조회(과정1) 
+                    pSqlCommand.CommandText = @"                       
+		                SELECT (SELECT usernm FROM tls_member WHERE userid = CS.tid) AS TID
+		                     , (SELECT cpnm FROM tls_campus WHERE cpno = CS.cpno) AS CPNM
+                             , CS.term_cd
+			                 , TC.clnm
+                             , CASE TS.course_cd WHEN 'C01' THEN '과정1'
+								     		     WHEN 'C02' THEN '과정2'
+                                                 ELSE ''
+							   END course_cd
+			                 , STUFF(STUFF(CS.sdate, 5, 0, '-'), 8, 0, '-') AS SDATE
+			                 , STUFF(STUFF(CS.edate, 5, 0, '-'), 8, 0, '-') AS EDATE
+			                 , DBO.F_U_WEEK_HAN(CS.week_day) AS WEEK_DAY
+			                 , (TS.sdnm + view_sdnm) AS SDNM
+                             , CS.yyyy
+		                  FROM tls_class_study AS CS
+                     LEFT JOIN tls_class AS TC
+	                        ON CS.cpno = TC.cpno and CS.clno = TC.clno
+	                 LEFT JOIN tls_study AS TS
+	                        ON CS.sdno = TS.sdno
+		                 WHERE CS.cpno = " + GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "cpno") + @"
+                           AND CS.clno = " + GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "clno") + @"
+                           AND CONVERT(CHAR,GETDATE(), 112) BETWEEN CS.sdate AND CS.edate		            
+                        ORDER BY TC.clnm, CS.sdate
+                    ";
+                    break;
+                case "select_student_study":
+
+                    //학생 차시 정보 조회(과정2)
+                    pSqlCommand.CommandText = @"                       
+		                SELECT (SELECT usernm FROM tls_member WHERE userid = MS.tid) AS TID
+	    	                 , (SELECT cpnm FROM tls_campus WHERE cpno = MS.cpno) AS CPNM
+                             , MS.term_cd
+		                     , TC.clnm
+                             , CASE TS.course_cd WHEN 'C01' THEN '과정1'
+								     		     WHEN 'C02' THEN '과정2'
+                                                 ELSE ''
+							   END course_cd
+                             , (SELECT usernm FROM tls_member where userid = ms.userid) AS USERNM
+			                 , STUFF(STUFF(MS.sdate, 5, 0, '-'), 8, 0, '-') AS SDATE 
+	                         , STUFF(STUFF(MS.edate, 5, 0, '-'), 8, 0, '-') AS EDATE
+	 		                 , DBO.F_U_WEEK_HAN(MS.week_day) AS WEEK_DAY
+			                 , (TS.sdnm + view_sdnm) AS SDNM
+                             , MS.yyyy
+	                     FROM tls_member_study AS MS
+                    LEFT JOIN tls_class AS TC
+	                       ON MS.cpno = TC.cpno and MS.clno = TC.clno
+	                LEFT JOIN tls_study AS TS
+	                       ON MS.sdno = TS.sdno
+		                WHERE MS.cpno = " + GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cpno") + @"
+                          AND MS.userid = " + GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "userid") + @"
+		                  AND CONVERT(CHAR, GETDATE(), 112) BETWEEN MS.sdate AND MS.edate
+                        ORDER BY MS.sdate
+		            ";
                     break;
                 default:
                     break;
@@ -1126,7 +1183,7 @@ namespace Dreamonesys.CallCenter.Main
         private void buttonSelectStudy_Click(object sender, EventArgs e)
         {
             //차시관리 반 목록 조회            
-                SelectDataGridView(dataGridViewClass, "select_class");            
+            SelectDataGridView(dataGridViewClass, "select_class");            
         }
 
         private void dataGridViewClass_Click(object sender, EventArgs e)
@@ -1136,6 +1193,19 @@ namespace Dreamonesys.CallCenter.Main
             {
                 SelectDataGridView(dataGridViewStudent, "select_student");
             }
+        }
+
+        private void dataGridViewClass_DoubleClick(object sender, EventArgs e)
+        {
+            //차시관리 반 차시 조회
+            if (dataGridViewClass.Rows.Count > 0 && dataGridViewClass.CurrentCell != null)
+            {
+                SelectDataGridView(dataGridViewClassStudentStudy, "select_class_study");
+                textBoxCourse.Text = GetCellValue(dataGridViewClassStudentStudy, dataGridViewClassStudentStudy.CurrentCell.RowIndex, "course_cd");
+                textBoxYyyy.Text = GetCellValue(dataGridViewClassStudentStudy, dataGridViewClassStudentStudy.CurrentCell.RowIndex, "yyyy");
+                textBoxTerm.Text = GetCellValue(dataGridViewClassStudentStudy, dataGridViewClassStudentStudy.CurrentCell.RowIndex, "term_cd");
+            }
+
         }
 
         #endregion Event
@@ -1153,6 +1223,23 @@ namespace Dreamonesys.CallCenter.Main
                 }
             }
         }
+
+        private void dataGridViewStudent_DoubleClick(object sender, EventArgs e)
+        {
+            //차시관리 학생 차시 조회
+            if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
+            {
+                SelectDataGridView(dataGridViewClassStudentStudy, "select_student_study");
+                if (dataGridViewClassStudentStudy.Rows.Count > 0 && dataGridViewClassStudentStudy.CurrentCell != null)
+                {
+                    textBoxCourse.Text = GetCellValue(dataGridViewClassStudentStudy, dataGridViewClassStudentStudy.CurrentCell.RowIndex, "course_cd");
+                    textBoxYyyy.Text = GetCellValue(dataGridViewClassStudentStudy, dataGridViewClassStudentStudy.CurrentCell.RowIndex, "yyyy");
+                    textBoxTerm.Text = GetCellValue(dataGridViewClassStudentStudy, dataGridViewClassStudentStudy.CurrentCell.RowIndex, "term_cd");
+                }
+            }
+        }
+
+        
 
         
 
