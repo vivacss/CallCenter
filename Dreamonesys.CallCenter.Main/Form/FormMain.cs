@@ -126,11 +126,22 @@ namespace Dreamonesys.CallCenter.Main
                 case "dataGridViewStudentPoint":                    
                     dataGridViewStudentPointSave.Rows.Clear();
                     break;
-
+                case "dataGridViewClass":
+                    dataGridViewStudent.Rows.Clear();
+                    dataGridViewClassStudy.Rows.Clear();                                  
+                    break;
+                case "dataGridViewStudent":                                        
+                    dataGridViewStudentStudy.Rows.Clear();                    
+                    break;
+                case "dataGridViewClassStudy":
+                    dataGridViewClassStudentSchedule.Rows.Clear();                    
+                    break;
+                case "dataGridViewStudentStudy":
+                    dataGridViewClassStudentSchedule.Rows.Clear();   
+                    break;                
                 default:
                     break;
             }
-
 
             this.Cursor = Cursors.WaitCursor;
 
@@ -667,7 +678,7 @@ namespace Dreamonesys.CallCenter.Main
 					       ON A.cpno = B.cpno
                     LEFT JOIN tls_campus AS C
                            ON A.cpno = C.cpno
-						  -- WHERE A.use_yn = 'Y'						  
+						   WHERE A.use_yn = 'Y'						  
                     ";						   
                     if (!string.IsNullOrEmpty(businessCDStudy))
                     {
@@ -736,6 +747,9 @@ namespace Dreamonesys.CallCenter.Main
 			                 , DBO.F_U_WEEK_HAN(CS.week_day) AS WEEK_DAY
 			                 , (TS.sdnm + view_sdnm) AS SDNM
                              , CS.yyyy
+                             , CS.cpno
+                             , CS.clno
+                             , CS.sdno
 		                  FROM tls_class_study AS CS
                      LEFT JOIN tls_class AS TC
 	                        ON CS.cpno = TC.cpno and CS.clno = TC.clno
@@ -765,6 +779,10 @@ namespace Dreamonesys.CallCenter.Main
 	 		                 , DBO.F_U_WEEK_HAN(MS.week_day) AS WEEK_DAY
 			                 , (TS.sdnm + view_sdnm) AS SDNM
                              , MS.yyyy
+                             , MS.cpno
+                             , MS.clno
+                             , MS.sdno
+                             , MS.userid
 	                     FROM tls_member_study AS MS
                     LEFT JOIN tls_class AS TC
 	                       ON MS.cpno = TC.cpno and MS.clno = TC.clno
@@ -775,6 +793,114 @@ namespace Dreamonesys.CallCenter.Main
 		                  AND CONVERT(CHAR, GETDATE(), 112) BETWEEN MS.sdate AND MS.edate
                         ORDER BY MS.sdate
 		            ";
+                    break;
+                case "select_class_schedule":
+
+                    //차시관리 반 차시 리스트  (과정1)
+                    pSqlCommand.CommandText += @"
+                        SELECT STUFF(STUFF(A.cdate, 5, 0, '-'), 8, 0, '-') AS CDATE
+			                 , DBO.F_U_WEEK_HAN(A.cweek_cd) AS CWEEK_CD
+			                 , CONVERT(VARCHAR(2), F.sort) + '단원' + ' ' +  CONVERT(VARCHAR(2), E.time_cnt) + '차시' AS TIME_CNT
+			                 , B.bknm
+			                 , D.sdnm + '-' + D.view_sdnm AS SDNM
+			                 , (SELECT name1 FROM tbl_quiz_class WHERE classa = F.classa) AS CLASSA
+			                 , G.view_unnm
+			                 , H.view_dfnm AS DFNM
+			                 , CASE G.room_code WHEN 'P' THEN 'SMART Room'
+					 	                        WHEN 'I' THEN 'LESSON Room'
+						                        WHEN 'S' THEN 'SDL Room'
+			                   END AS ROOM_CODE
+			                 , CASE G.study_type_1 WHEN 'PC' THEN 'PC-(동+문)'
+						                           WHEN 'PM' THEN 'PM-(동+문)'
+						                           WHEN 'PQ' THEN 'PQ-(동+문)'
+						                           WHEN 'E' THEN '채점'
+							                       WHEN 'R' THEN '단말기'
+							                       WHEN 'Q' THEN '문제풀이'
+							                       WHEN 'M' THEN '동영상'
+			                   END AS study_type_1
+			                 , CASE G.study_type_2 WHEN 'PC' THEN 'PC-(동+문)'
+							                       WHEN 'PM' THEN 'PM-(동+문)'
+							                       WHEN 'PQ' THEN 'PQ-(동+문)'
+							                       WHEN 'E' THEN '채점'
+							                       WHEN 'R' THEN '단말기'
+							                       WHEN 'Q' THEN '문제풀이'
+							                       WHEN 'M' THEN '동영상'
+			                   END AS study_type_2			                         		
+		                  FROM tls_class_schedule AS A
+                    INNER JOIN tls_book AS B 
+	                        ON B.bkno = A.bkno
+                    INNER JOIN tls_study AS D 
+                            ON D.sdno = A.sdno
+                    INNER JOIN tls_schedule AS E 
+		                    ON E.sdno = A.sdno AND E.scno = A.scno
+                    INNER JOIN TLS_CHAPTER AS F 
+		                    ON F.bkno = B.bkno AND F.chno = E.chno
+                    INNER JOIN tls_unit AS G 
+		                    ON G.bkno = B.bkno AND G.chno = F.chno AND G.unno = E.unno
+                    INNER JOIN tls_lvl_def AS H 
+		                    ON H.lvno = G.lvno AND H.dfno = G.dfno
+	                     WHERE A.yyyy = '" + GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "yyyy") + @"'
+	                       AND A.term_cd = '" + GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "term_cd") + @"'
+		                   AND A.cpno = '" + GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "cpno") + @"'
+		                   AND A.clno = '" + GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "clno") + @"'
+		                   AND A.sdno = '" + GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "sdno") + @"'
+	                     ORDER BY cdate, G.sort
+
+                            ";
+                    break;
+                case "select_student_schedule":
+
+                    //차시관리 학생 차시 리스트  (과정2)
+                    pSqlCommand.CommandText += @"
+                        SELECT STUFF(STUFF(A.cdate, 5, 0, '-'), 8, 0, '-') AS CDATE
+			                 , DBO.F_U_WEEK_HAN(A.cweek_cd) AS CWEEK_CD
+			                 , CONVERT(VARCHAR(2), F.sort) + '단원' + ' ' +  CONVERT(VARCHAR(2), E.time_cnt) + '차시' AS TIME_CNT
+			                 , B.bknm
+			                 , D.sdnm + '-' + D.view_sdnm AS SDNM
+			                 , (SELECT name1 FROM tbl_quiz_class WHERE classa = F.classa) AS CLASSA
+			                 , G.view_unnm
+			                 , H.view_dfnm AS DFNM
+			                 , CASE G.room_code WHEN 'P' THEN 'SMART Room'
+					 	                        WHEN 'I' THEN 'LESSON Room'
+						                        WHEN 'S' THEN 'SDL Room'
+			                   END AS ROOM_CODE
+			                 , CASE G.study_type_1 WHEN 'PC' THEN 'PC-(동+문)'
+						                           WHEN 'PM' THEN 'PM-(동+문)'
+						                           WHEN 'PQ' THEN 'PQ-(동+문)'
+						                           WHEN 'E' THEN '채점'
+							                       WHEN 'R' THEN '단말기'
+							                       WHEN 'Q' THEN '문제풀이'
+							                       WHEN 'M' THEN '동영상'
+			                   END AS study_type_1
+			                 , CASE G.study_type_2 WHEN 'PC' THEN 'PC-(동+문)'
+							                       WHEN 'PM' THEN 'PM-(동+문)'
+							                       WHEN 'PQ' THEN 'PQ-(동+문)'
+							                       WHEN 'E' THEN '채점'
+							                       WHEN 'R' THEN '단말기'
+							                       WHEN 'Q' THEN '문제풀이'
+							                       WHEN 'M' THEN '동영상'
+			                   END AS study_type_2			                         		
+		                  FROM tls_member_schedule AS A
+                    INNER JOIN tls_book AS B 
+	                        ON B.bkno = A.bkno
+                    INNER JOIN tls_study AS D 
+                            ON D.sdno = A.sdno
+                    INNER JOIN tls_schedule AS E 
+		                    ON E.sdno = A.sdno AND E.scno = A.scno
+                    INNER JOIN TLS_CHAPTER AS F 
+		                    ON F.bkno = B.bkno AND F.chno = E.chno
+                    INNER JOIN tls_unit AS G 
+		                    ON G.bkno = B.bkno AND G.chno = F.chno AND G.unno = E.unno
+                    INNER JOIN tls_lvl_def AS H 
+		                    ON H.lvno = G.lvno AND H.dfno = G.dfno
+	                     WHERE A.yyyy = '" + GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "yyyy") + @"'
+	                       AND A.term_cd = '" + GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "term_cd") + @"'
+		                   AND A.cpno = '" + GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "cpno") + @"'
+		                   AND A.userid = '" + GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "userid") + @"'
+		                   AND A.sdno = '" + GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "sdno") + @"'
+	                     ORDER BY cdate, G.sort
+
+                            ";
                     break;
                 default:
                     break;
@@ -1188,25 +1314,50 @@ namespace Dreamonesys.CallCenter.Main
 
         private void dataGridViewClass_Click(object sender, EventArgs e)
         {
-            //차시관리 반 학생 조회
+            //차시관리 반 학생 조회, 반 차시 조회
             if (dataGridViewClass.Rows.Count > 0 && dataGridViewClass.CurrentCell != null)
             {
                 SelectDataGridView(dataGridViewStudent, "select_student");
+                SelectDataGridView(dataGridViewClassStudy, "select_class_study");
+                if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
+                {
+                    textBoxCourse.Text = GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "course_cd");
+                    textBoxYyyy.Text = GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "yyyy");
+                    textBoxTerm.Text = GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "term_cd");
+                }
             }
         }
-
-        private void dataGridViewClass_DoubleClick(object sender, EventArgs e)
+        private void dataGridViewStudent_Click(object sender, EventArgs e)
         {
-            //차시관리 반 차시 조회
-            if (dataGridViewClass.Rows.Count > 0 && dataGridViewClass.CurrentCell != null)
+            //차시관리 학생 차시 조회
+            if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
             {
-                SelectDataGridView(dataGridViewClassStudentStudy, "select_class_study");
-                textBoxCourse.Text = GetCellValue(dataGridViewClassStudentStudy, dataGridViewClassStudentStudy.CurrentCell.RowIndex, "course_cd");
-                textBoxYyyy.Text = GetCellValue(dataGridViewClassStudentStudy, dataGridViewClassStudentStudy.CurrentCell.RowIndex, "yyyy");
-                textBoxTerm.Text = GetCellValue(dataGridViewClassStudentStudy, dataGridViewClassStudentStudy.CurrentCell.RowIndex, "term_cd");
+                SelectDataGridView(dataGridViewStudentStudy, "select_student_study");
+                if (dataGridViewStudentStudy.Rows.Count > 0 && dataGridViewStudentStudy.CurrentCell != null)
+                {
+                    textBoxCourse.Text = GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "course_cd");
+                    textBoxYyyy.Text = GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "yyyy");
+                    textBoxTerm.Text = GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "term_cd");
+                }
             }
-
         }
+        private void dataGridViewClassStudy_Click(object sender, EventArgs e)
+        {
+            //차시관리 반 차시 리스트 조회
+            if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
+            {
+                SelectDataGridView(dataGridViewClassStudentSchedule, "select_class_schedule");
+            }
+        }
+        private void dataGridViewStudentStudy_Click(object sender, EventArgs e)
+        {
+            //차시관리 학생 차시 리스트 조회
+            if (dataGridViewStudentStudy.Rows.Count > 0 && dataGridViewStudentStudy.CurrentCell != null)
+            {
+                SelectDataGridView(dataGridViewClassStudentSchedule, "select_student_schedule");
+            }
+        }
+        
 
         #endregion Event
 
@@ -1224,21 +1375,30 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
-        private void dataGridViewStudent_DoubleClick(object sender, EventArgs e)
+        private void comboBoxCampusTypeStudy_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            //차시관리 학생 차시 조회
-            if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
-            {
-                SelectDataGridView(dataGridViewClassStudentStudy, "select_student_study");
-                if (dataGridViewClassStudentStudy.Rows.Count > 0 && dataGridViewClassStudentStudy.CurrentCell != null)
-                {
-                    textBoxCourse.Text = GetCellValue(dataGridViewClassStudentStudy, dataGridViewClassStudentStudy.CurrentCell.RowIndex, "course_cd");
-                    textBoxYyyy.Text = GetCellValue(dataGridViewClassStudentStudy, dataGridViewClassStudentStudy.CurrentCell.RowIndex, "yyyy");
-                    textBoxTerm.Text = GetCellValue(dataGridViewClassStudentStudy, dataGridViewClassStudentStudy.CurrentCell.RowIndex, "term_cd");
-                }
-            }
+            // 캠퍼스 콤보박스 데이터 생성
+            string campusTypeStudy = comboBoxCampusTypeStudy.SelectedValue.ToString();
+            string campusStudy = comboBoxCampusStudy.SelectedValue.ToString();
+            string yyyyStudy = comboBoxYyyyStudy.SelectedValue.ToString();
+            string schoolCDStudy = comboBoxSchoolCDStudy.SelectedValue.ToString();
+            //string termCDStudy = comboBoxTermCDStudy.SelectedValue.ToString();
+
+            _common.GetComboList(comboBoxCampusStudy, "캠퍼스", true, new string[] { campusTypeStudy });
+            _common.GetComboList(comboBoxYyyyStudy, "년도", true, new string[] { campusStudy });
+            _common.GetComboList(comboBoxSchoolCDStudy, "학교급", true, new string[] { yyyyStudy });
+            _common.GetComboList(comboBoxTermCDStudy, "분기", true, new string[] { campusStudy });
+
+            //SelectDataGridView(dataGridViewClass, "select_class");
         }
 
+        
+
+        
+
+        
+
+       
         
 
         

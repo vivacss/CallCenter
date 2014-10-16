@@ -266,7 +266,7 @@ namespace Dreamonesys.CallCenter.Main
 
                 case "select_student_schedule":
 
-                    //반 차시 리스트 
+                    //학생 차시 리스트 
                     pSqlCommand.CommandText += @"
                         SELECT STUFF(STUFF(A.cdate, 5, 0, '-'), 8, 0, '-') AS CDATE
 			                 , DBO.F_U_WEEK_HAN(A.cweek_cd) AS CWEEK_CD
