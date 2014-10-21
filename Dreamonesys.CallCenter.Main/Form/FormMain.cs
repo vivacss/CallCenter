@@ -1085,7 +1085,13 @@ namespace Dreamonesys.CallCenter.Main
         private void FormMain_Load(object sender, EventArgs e)
         {
             InitCombo();
-            SelectDataGridView(dataGridViewCampus, "select_campus");          
+            SelectDataGridView(dataGridViewCampus, "select_campus");
+
+            UserControlStudy tmp1 = new UserControlStudy();
+            //패널 사용자 컨트롤
+            //splitContainer1.Panel1.Controls.Add(tmp1);
+            //탭페이지 사용자 컨트롤
+            //tabPage1.Controls.Add(tmp1);
                     
         }
 
@@ -1506,6 +1512,11 @@ namespace Dreamonesys.CallCenter.Main
             {
                 SelectDataGridView(dataGridViewStudent, "select_student_all");                
             }
+        }
+
+        private void splitContainer9_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
         }
 
         
