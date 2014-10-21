@@ -1091,7 +1091,7 @@ namespace Dreamonesys.CallCenter.Main
             //패널 사용자 컨트롤
             //splitContainer1.Panel1.Controls.Add(tmp1);
             //탭페이지 사용자 컨트롤
-            //tabPage1.Controls.Add(tmp1);
+            tabPage1.Controls.Add(tmp1);
                     
         }
 

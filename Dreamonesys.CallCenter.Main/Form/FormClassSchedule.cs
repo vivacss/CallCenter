@@ -58,7 +58,7 @@ namespace Dreamonesys.CallCenter.Main
         }
 
         #endregion
-
+       
         public FormClassSchedule()
         {
             InitializeComponent();
@@ -70,7 +70,7 @@ namespace Dreamonesys.CallCenter.Main
             // 공용 모듈에서 프로그램 정보를 참조할 수 있도록 함
             _common._appMain = _appMain;
             // 프로그램 정보에서 메인 폼을 참조할 수 있도록 함
-            _appMain.MainForm = this;
+            //_appMain.MainForm = this;
         }
 
 
@@ -563,9 +563,7 @@ namespace Dreamonesys.CallCenter.Main
         /// </history>
         private void FormClassSchedule_Load(object sender, EventArgs e)
         {
-            InitCombo();
-            //반 차시 조회
-            //반 차시 조회
+            InitCombo();                  
             switch (StudyType)
             {
                 case "C": //반 차시 조회
@@ -581,6 +579,14 @@ namespace Dreamonesys.CallCenter.Main
             }
           
         }
+
+        private void comboBoxCampusType_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //컴퍼스 타입 콤보박스
+            string campusType = comboBoxCampusType.SelectedValue.ToString();
+
+            _common.GetComboList(comboBoxCampus, "캠퍼스", true, new string[] { campusType });
+        }
         private void textBoxClassNM_KeyDown(object sender, KeyEventArgs e)
         {
             //반별 차시 조회
@@ -589,6 +595,7 @@ namespace Dreamonesys.CallCenter.Main
                 SelectDataGridView(dataGridViewClassStudy, "select_class_study_all");
             }
         }
+
         private void textBoxStudyNM_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -610,13 +617,10 @@ namespace Dreamonesys.CallCenter.Main
                 SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
             }
         }
-        
 
 
+        //학생 차시 목록
 
-        //학생 차시 목록        
-
-       
 
         private void textBoxStudentNM_KeyDown(object sender, KeyEventArgs e)
         {
@@ -636,15 +640,12 @@ namespace Dreamonesys.CallCenter.Main
                 SelectDataGridView(dataGridViewStudentStudy, "select_student_study_all");
             }
         }
-        
+
         private void buttonStudentStudy_Click(object sender, EventArgs e)
-        {   //날짜별 차시 조회
+        {
+            //날짜별 차시 조회
             SelectDataGridView(dataGridViewStudentStudy, "select_student_study_all");
         }
-
-
-
-        #endregion Method
 
         private void dataGridViewStudentStudy_Click(object sender, EventArgs e)
         {
@@ -655,21 +656,9 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
-       
-
         
 
-       
-
-
-
-
-
-
-
-
-
-
+        #endregion Method
 
 
 
