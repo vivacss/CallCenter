@@ -46,6 +46,12 @@
   <ItemGroup>
     <Compile Include="Class\AppMain.cs" />
     <Compile Include="Class\Common.cs" />
+    <Compile Include="Form\FormClassStudentSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormClassStudentSchedule.Designer.cs">
+      <DependentUpon>FormClassStudentSchedule.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\FormClassSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     </Compile>
     <EmbeddedResource Include="Form\FormClassSchedule.resx">
       <DependentUpon>FormClassSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormClassStudentSchedule.resx">
+      <DependentUpon>FormClassStudentSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

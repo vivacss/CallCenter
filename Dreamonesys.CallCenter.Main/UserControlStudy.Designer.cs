@@ -188,8 +188,8 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1333, 786);
-            this.tabControl1.TabIndex = 1;
+            this.tabControl1.Size = new System.Drawing.Size(1334, 812);
+            this.tabControl1.TabIndex = 3;
             // 
             // tabPageClassSchedule
             // 
@@ -197,7 +197,7 @@
             this.tabPageClassSchedule.Location = new System.Drawing.Point(4, 22);
             this.tabPageClassSchedule.Name = "tabPageClassSchedule";
             this.tabPageClassSchedule.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageClassSchedule.Size = new System.Drawing.Size(1325, 760);
+            this.tabPageClassSchedule.Size = new System.Drawing.Size(1326, 786);
             this.tabPageClassSchedule.TabIndex = 0;
             this.tabPageClassSchedule.Text = "반 차시 목록";
             this.tabPageClassSchedule.UseVisualStyleBackColor = true;
@@ -230,8 +230,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(1319, 754);
-            this.splitContainer1.SplitterDistance = 209;
+            this.splitContainer1.Size = new System.Drawing.Size(1320, 780);
+            this.splitContainer1.SplitterDistance = 216;
             this.splitContainer1.TabIndex = 0;
             // 
             // textBox6
@@ -274,6 +274,7 @@
             this.comboBoxCampusType.Name = "comboBoxCampusType";
             this.comboBoxCampusType.Size = new System.Drawing.Size(54, 20);
             this.comboBoxCampusType.TabIndex = 10;
+            this.comboBoxCampusType.SelectionChangeCommitted += new System.EventHandler(this.comboBoxCampusType_SelectionChangeCommitted);
             // 
             // label4
             // 
@@ -306,6 +307,7 @@
             this.textBoxClassNM.Name = "textBoxClassNM";
             this.textBoxClassNM.Size = new System.Drawing.Size(99, 21);
             this.textBoxClassNM.TabIndex = 6;
+            this.textBoxClassNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxClassNM_KeyDown);
             // 
             // label2
             // 
@@ -340,7 +342,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 25);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1319, 184);
+            this.groupBox1.Size = new System.Drawing.Size(1320, 191);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "과정1";
@@ -380,11 +382,12 @@
             this.Column26,
             this.Column37,
             this.Column38});
+            this.dataGridViewClassStudy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewClassStudy.Location = new System.Drawing.Point(3, 17);
             this.dataGridViewClassStudy.Name = "dataGridViewClassStudy";
             this.dataGridViewClassStudy.RowTemplate.Height = 23;
             this.dataGridViewClassStudy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewClassStudy.Size = new System.Drawing.Size(1314, 172);
+            this.dataGridViewClassStudy.Size = new System.Drawing.Size(1314, 171);
             this.dataGridViewClassStudy.TabIndex = 2;
             // 
             // Column1
@@ -593,7 +596,7 @@
             // 
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1319, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1320, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -610,7 +613,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1319, 541);
+            this.groupBox2.Size = new System.Drawing.Size(1320, 560);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "반 차시 리스트";
@@ -696,7 +699,7 @@
             this.dataGridViewClassSchedule.Name = "dataGridViewClassSchedule";
             this.dataGridViewClassSchedule.RowTemplate.Height = 23;
             this.dataGridViewClassSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewClassSchedule.Size = new System.Drawing.Size(1313, 491);
+            this.dataGridViewClassSchedule.Size = new System.Drawing.Size(1314, 510);
             this.dataGridViewClassSchedule.TabIndex = 0;
             // 
             // Column27
@@ -772,7 +775,7 @@
             this.tabPageStudentSchedule.Location = new System.Drawing.Point(4, 22);
             this.tabPageStudentSchedule.Name = "tabPageStudentSchedule";
             this.tabPageStudentSchedule.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageStudentSchedule.Size = new System.Drawing.Size(1325, 760);
+            this.tabPageStudentSchedule.Size = new System.Drawing.Size(1326, 786);
             this.tabPageStudentSchedule.TabIndex = 1;
             this.tabPageStudentSchedule.Text = "학생 차시 목록";
             this.tabPageStudentSchedule.UseVisualStyleBackColor = true;
@@ -801,8 +804,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox4);
-            this.splitContainer2.Size = new System.Drawing.Size(1319, 754);
-            this.splitContainer2.SplitterDistance = 210;
+            this.splitContainer2.Size = new System.Drawing.Size(1320, 780);
+            this.splitContainer2.SplitterDistance = 217;
             this.splitContainer2.TabIndex = 0;
             // 
             // groupBox3
@@ -811,7 +814,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(0, 25);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1319, 185);
+            this.groupBox3.Size = new System.Drawing.Size(1320, 192);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "과정2";
@@ -860,7 +863,7 @@
             this.dataGridViewStudentStudy.Name = "dataGridViewStudentStudy";
             this.dataGridViewStudentStudy.RowTemplate.Height = 23;
             this.dataGridViewStudentStudy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStudentStudy.Size = new System.Drawing.Size(1313, 165);
+            this.dataGridViewStudentStudy.Size = new System.Drawing.Size(1314, 172);
             this.dataGridViewStudentStudy.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn1
@@ -1163,7 +1166,7 @@
             // 
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1319, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(1320, 25);
             this.toolStrip2.TabIndex = 19;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -1180,7 +1183,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(0, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1319, 540);
+            this.groupBox4.Size = new System.Drawing.Size(1320, 559);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "학생 차시 리스트";
@@ -1266,7 +1269,7 @@
             this.dataGridViewStudentSchedule.Name = "dataGridViewStudentSchedule";
             this.dataGridViewStudentSchedule.RowTemplate.Height = 23;
             this.dataGridViewStudentSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStudentSchedule.Size = new System.Drawing.Size(1313, 492);
+            this.dataGridViewStudentSchedule.Size = new System.Drawing.Size(1314, 511);
             this.dataGridViewStudentSchedule.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn29
@@ -1342,7 +1345,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl1);
             this.Name = "UserControlStudy";
-            this.Size = new System.Drawing.Size(1333, 786);
+            this.Size = new System.Drawing.Size(1334, 812);
+            this.Load += new System.EventHandler(this.UserControlStudy_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPageClassSchedule.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -1503,6 +1507,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
+
 
     }
 }

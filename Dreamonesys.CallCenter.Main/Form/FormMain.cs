@@ -22,10 +22,14 @@ namespace Dreamonesys.CallCenter.Main
 
         private Common _common;
         private AppMain _appMain;
+        private UserControlStudy _userControlStudy;
 
         #endregion Field
 
         #region Property
+        
+        //차시관리 과정2 탭으로 이동 조회
+        public string StudyType { get; set; }        
 
         #endregion Property
 
@@ -466,8 +470,8 @@ namespace Dreamonesys.CallCenter.Main
                         WHERE A.cpno = " + GetCellValue(dataGridViewCampusPoint, dataGridViewCampusPoint.CurrentCell.RowIndex, "cpno") + @"
                           AND A.use_yn = 'Y'
                           AND (A.edate = '' or A.edate = '' or A.edate >= CONVERT(VARCHAR(8), GETDATE(), 112))
-                          AND point = 0
-                          AND mpoint = 0 
+                          AND (point = 0 or point is null)
+                          AND (mpoint = 0 or mpoint is null)
                           AND (SELECT COUNT(userid)FROM tls_class_user WHERE clno = A.clno AND cpno = A.cpno AND auth_cd = 'S'
                                   AND (end_date = '' OR end_date IS NULL OR CONVERT(CHAR,GETDATE(),112) BETWEEN start_date AND end_date)) > 0 ";                    
                     if (!string.IsNullOrEmpty(schoolCDPoint))
@@ -1071,9 +1075,6 @@ namespace Dreamonesys.CallCenter.Main
 
         #region Event
 
-        //차시관리 과정2 탭으로 이동 조회
-        public string StudyType { get; set; }
-
         /// <summary>
         /// 폼 로드
         /// </summary>
@@ -1087,12 +1088,12 @@ namespace Dreamonesys.CallCenter.Main
             InitCombo();
             SelectDataGridView(dataGridViewCampus, "select_campus");
 
-            UserControlStudy tmp1 = new UserControlStudy();
-            //패널 사용자 컨트롤
-            //splitContainer1.Panel1.Controls.Add(tmp1);
-            //탭페이지 사용자 컨트롤
-            tabPage1.Controls.Add(tmp1);
-                    
+            _userControlStudy = new UserControlStudy();
+
+            tabPage1.Controls.Add(_userControlStudy);
+            _userControlStudy.Visible = true;
+
+            _userControlStudy.Select();
         }
 
         /// <summary>
@@ -1233,11 +1234,18 @@ namespace Dreamonesys.CallCenter.Main
             //반 차시 조회 폼 이동
             if (dataGridViewClassEmployee.Columns[dataGridViewClassEmployee.CurrentCell.ColumnIndex].DataPropertyName != "check_yn")
             {
-                FormClassSchedule frmSchedule1 = new FormClassSchedule();
-                frmSchedule1.ClassEmployeeCPNO = GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "cpno");
-                frmSchedule1.ClassEmployeeCLNO = GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "clno");
-                frmSchedule1.StudyType = "C";
-                frmSchedule1.Show();   
+                //FormClassSchedule frmSchedule1 = new FormClassSchedule();
+                //frmSchedule1.ClassEmployeeCPNO = GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "cpno");
+                //frmSchedule1.ClassEmployeeCLNO = GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "clno");
+                //frmSchedule1.StudyType = "C";
+                //frmSchedule1.Show();   
+                
+                FormClassStudentSchedule frmSchedule2 = new FormClassStudentSchedule();
+                //frmSchedule2.StudyType = "C";
+                //frmSchedule2.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "cpno");
+                //frmSchedule2.ClassEmployeeCLNO = this._common.GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "clno");
+                frmSchedule2.Show();
+
                                
             }            
         }
@@ -1246,7 +1254,7 @@ namespace Dreamonesys.CallCenter.Main
         {
             //학생 차시 조회 폼 이동
             FormClassSchedule frmSchedule1 = new FormClassSchedule();
-            frmSchedule1.ClassStudentCPNO = GetCellValue(dataGridViewClassStudent, dataGridViewClassStudent.CurrentCell.RowIndex, "cpno");            
+            frmSchedule1.ClassStudentCPNO = GetCellValue(dataGridViewClassStudent, dataGridViewClassStudent.CurrentCell.RowIndex, "cpno");
             frmSchedule1.ClassStudentUID = GetCellValue(dataGridViewClassStudent, dataGridViewClassStudent.CurrentCell.RowIndex, "userid");
             frmSchedule1.StudyType = "S";
             frmSchedule1.Show();
@@ -1268,10 +1276,14 @@ namespace Dreamonesys.CallCenter.Main
         private void toolStripButtonStudentStudy_Click(object sender, EventArgs e)
         {
             //학생 차시 조회 폼 이동
-            FormClassSchedule frmSchedule1 = new FormClassSchedule();
-            frmSchedule1.ClassEmployeeCPNO = GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpno");
-            frmSchedule1.StudyType = "S";
-            frmSchedule1.Show();
+            UserControlStudy tmp1 = new UserControlStudy();
+            tmp1.ClassEmployeeCPNO = GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpno");
+            tmp1.StudyType = "S";
+            FormClassStudentSchedule frmSchedule2 = new FormClassStudentSchedule();
+            //frmSchedule2.ClassEmployeeCPNO = GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpno");
+            //frmSchedule2.StudyType = "S";
+            frmSchedule2.Show();
+            
         }
 
         /// <summary>
