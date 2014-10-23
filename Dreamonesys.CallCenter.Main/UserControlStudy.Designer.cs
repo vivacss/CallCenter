@@ -257,6 +257,7 @@
             this.comboBoxCampus.Name = "comboBoxCampus";
             this.comboBoxCampus.Size = new System.Drawing.Size(126, 20);
             this.comboBoxCampus.TabIndex = 12;
+            this.comboBoxCampus.SelectionChangeCommitted += new System.EventHandler(this.comboBoxCampus_SelectionChangeCommitted);
             // 
             // label5
             // 
@@ -300,6 +301,7 @@
             this.textBoxStudyNM.Name = "textBoxStudyNM";
             this.textBoxStudyNM.Size = new System.Drawing.Size(100, 21);
             this.textBoxStudyNM.TabIndex = 7;
+            this.textBoxStudyNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStudyNM_KeyDown);
             // 
             // textBoxClassNM
             // 
@@ -335,6 +337,7 @@
             this.buttonClassStudy.TabIndex = 3;
             this.buttonClassStudy.Text = "조회";
             this.buttonClassStudy.UseVisualStyleBackColor = true;
+            this.buttonClassStudy.Click += new System.EventHandler(this.buttonClassStudy_Click);
             // 
             // groupBox1
             // 
@@ -389,6 +392,7 @@
             this.dataGridViewClassStudy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewClassStudy.Size = new System.Drawing.Size(1314, 171);
             this.dataGridViewClassStudy.TabIndex = 2;
+            this.dataGridViewClassStudy.Click += new System.EventHandler(this.dataGridViewClassStudy_Click);
             // 
             // Column1
             // 
@@ -865,6 +869,7 @@
             this.dataGridViewStudentStudy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewStudentStudy.Size = new System.Drawing.Size(1314, 172);
             this.dataGridViewStudentStudy.TabIndex = 3;
+            this.dataGridViewStudentStudy.Click += new System.EventHandler(this.dataGridViewStudentStudy_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1106,6 +1111,7 @@
             this.buttonStudentStudy.TabIndex = 16;
             this.buttonStudentStudy.Text = "조회";
             this.buttonStudentStudy.UseVisualStyleBackColor = true;
+            this.buttonStudentStudy.Click += new System.EventHandler(this.buttonStudentStudy_Click);
             // 
             // dateTimePickerStudentStudy
             // 
@@ -1120,6 +1126,7 @@
             this.textBoxStudyNM2.Name = "textBoxStudyNM2";
             this.textBoxStudyNM2.Size = new System.Drawing.Size(100, 21);
             this.textBoxStudyNM2.TabIndex = 14;
+            this.textBoxStudyNM2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStudyNM2_KeyDown);
             // 
             // textBoxStudentNM
             // 
@@ -1127,6 +1134,7 @@
             this.textBoxStudentNM.Name = "textBoxStudentNM";
             this.textBoxStudentNM.Size = new System.Drawing.Size(100, 21);
             this.textBoxStudentNM.TabIndex = 13;
+            this.textBoxStudentNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStudentNM_KeyDown);
             // 
             // textBox2
             // 

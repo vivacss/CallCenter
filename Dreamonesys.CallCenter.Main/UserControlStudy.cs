@@ -522,10 +522,10 @@ namespace Dreamonesys.CallCenter.Main
         {
             InitCombo();
 
-            //if (StudyType != null)
-            //{
-            //    Select();
-            //}
+            if (StudyType != null)
+            {
+                Select();
+            }
         }
 
         public void Select(string param1 = "", string param2 = "", string param3 = "", string param4 = "", string param5 = "")
@@ -554,39 +554,9 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
-        private void textBoxStudyNM_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void buttonClassStudy_Click(object sender, EventArgs e)
-        {
-            SelectDataGridView(dataGridViewClassStudy, "select_class_study_all");
-        }
-
-        private void dataGridViewClassStudy_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxStudentNM_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void textBoxStudyNM2_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void buttonStudentStudy_Click(object sender, EventArgs e)
-        {   //날짜별 차시 조회
-            SelectDataGridView(dataGridViewStudentStudy, "select_student_study_all");
-        }
-
         private void comboBoxCampusType_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            //컴퍼스 타입 콤보박스
+            //과정1 컴퍼스 타입 콤보박스
             string campusType = comboBoxCampusType.SelectedValue.ToString();
 
             _common.GetComboList(comboBoxCampus, "캠퍼스", true, new string[] { campusType });
@@ -594,12 +564,83 @@ namespace Dreamonesys.CallCenter.Main
 
         private void textBoxClassNM_KeyDown(object sender, KeyEventArgs e)
         {
+            //과정1 반별 차시 조회
             if (e.KeyCode == Keys.Enter)
             {
                 SelectDataGridView(dataGridViewClassStudy, "select_class_study_all");
             }
         }
 
+        private void textBoxStudyNM_KeyDown(object sender, KeyEventArgs e)
+        {
+            //과정1 학습명별 차시 조회
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectDataGridView(dataGridViewClassStudy, "select_class_study_all");
+            }
+        }
+        private void buttonClassStudy_Click(object sender, EventArgs e)
+        {
+            //과정1 수업일 기준 차시 조회
+            SelectDataGridView(dataGridViewClassStudy, "select_class_study_all");
+        }
+        private void dataGridViewClassStudy_Click(object sender, EventArgs e)
+        {
+            //과정1 차시 리스트 조회
+            if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
+            {
+                SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
+            }
+        }
+
+        private void textBoxStudentNM_KeyDown(object sender, KeyEventArgs e)
+        {
+            //과정2 학생별 차시 조회
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectDataGridView(dataGridViewStudentStudy, "select_student_study_all");
+            }
+        }
+
+        private void textBoxStudyNM2_KeyDown(object sender, KeyEventArgs e)
+        {
+            //과정2 학습명별 차시 조회
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                SelectDataGridView(dataGridViewStudentStudy, "select_student_study_all");
+            }
+        }
+        private void buttonStudentStudy_Click(object sender, EventArgs e)
+        {
+            //과정2 수업일 기준 차시 조회
+            SelectDataGridView(dataGridViewStudentStudy, "select_student_study_all");
+        }
+
+        private void dataGridViewStudentStudy_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewStudentStudy.Rows.Count > 0 && dataGridViewStudentStudy.CurrentCell != null)
+            {
+                //과정2 차시 리스트 조회
+                SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
+            }
+        }
+
         #endregion Event        
+
+        private void comboBoxCampus_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        
+
+        
+        
+        
+        
+
     }
 }
