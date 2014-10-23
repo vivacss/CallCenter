@@ -22,6 +22,8 @@ namespace Dreamonesys.CallCenter.Main
 
         #endregion Property
 
+        #region Constructor
+
         public FormClassStudentSchedule()
         {
             InitializeComponent();
@@ -29,21 +31,26 @@ namespace Dreamonesys.CallCenter.Main
 
         public UserControlStudy UserControl { get; set; }
 
+        #endregion Constructor
+
+        #region Event
+
         private void FormClassStudentSchedule_Load(object sender, EventArgs e)
         {
-            UserControlStudy userControl = new UserControlStudy();
 
+            UserControlStudy userControl = new UserControlStudy();
             //패널 사용자 컨트롤
+            //this.Controls.Add(userControl);            
             //userControl.StudyType = this.StudyType;
             //userControl.ClassEmployeeCPNO = this.ClassEmployeeCPNO;
             //userControl.ClassEmployeeCLNO = this.ClassEmployeeCLNO;
+            this.Controls.Add(userControl);         
+            userControl.Visible = true;
+            userControl.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID);
 
-            
-            userControl.Select(StudyType = "C", this.ClassEmployeeCPNO, this.ClassEmployeeCLNO);
-
-            this.Controls.Add(userControl);
-            userControl.Visible = true;    
         }
+
+        #endregion Event
 
     }
 }

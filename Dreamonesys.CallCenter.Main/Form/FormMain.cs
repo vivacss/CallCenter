@@ -1240,11 +1240,11 @@ namespace Dreamonesys.CallCenter.Main
                 //frmSchedule1.StudyType = "C";
                 //frmSchedule1.Show();   
                 
-                FormClassStudentSchedule frmSchedule2 = new FormClassStudentSchedule();
-                //frmSchedule2.StudyType = "C";
-                //frmSchedule2.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "cpno");
-                //frmSchedule2.ClassEmployeeCLNO = this._common.GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "clno");
-                frmSchedule2.Show();
+                FormClassStudentSchedule classStudentSchedule = new FormClassStudentSchedule();
+                classStudentSchedule.StudyType = "C";
+                classStudentSchedule.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "cpno");
+                classStudentSchedule.ClassEmployeeCLNO = this._common.GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "clno");
+                classStudentSchedule.Show();
 
                                
             }            

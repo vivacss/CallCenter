@@ -257,7 +257,6 @@
             this.comboBoxCampus.Name = "comboBoxCampus";
             this.comboBoxCampus.Size = new System.Drawing.Size(126, 20);
             this.comboBoxCampus.TabIndex = 12;
-            this.comboBoxCampus.SelectionChangeCommitted += new System.EventHandler(this.comboBoxCampus_SelectionChangeCommitted);
             // 
             // label5
             // 

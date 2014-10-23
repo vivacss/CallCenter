@@ -40,6 +40,7 @@ namespace Dreamonesys.CallCenter.Main
         public string ClassStudentCPNO { get; set; }
         public string ClassStudentUID { get; set; }
 
+
         #endregion
 
         #region Constructor
@@ -210,11 +211,32 @@ namespace Dreamonesys.CallCenter.Main
 	                        ON CS.cpno = TC.cpno and CS.clno = TC.clno
 	                 LEFT JOIN tls_study AS TS
 	                        ON CS.sdno = TS.sdno
-		                 WHERE CS.cpno = " + ClassEmployeeCPNO + @"                    
-                           AND CS.clno = " + ClassEmployeeCLNO + @"
-                           AND CONVERT(CHAR,GETDATE(), 112) BETWEEN CS.sdate AND CS.edate		            
-                        ORDER BY TC.clnm, CS.sdate
-                    ";
+                     LEFT JOIN tls_campus AS CA
+                            ON TC.cpno = CA.cpno
+		                 WHERE CONVERT(CHAR,GETDATE(), 112) BETWEEN CS.sdate AND CS.edate		            
+                                            ";
+                    if (!string.IsNullOrEmpty(ClassEmployeeCPNO))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND CS.cpno = '" + ClassEmployeeCPNO + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(ClassEmployeeCLNO))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND CS.clno = '" + ClassEmployeeCLNO + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(businessCD))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND CA.business_cd = '" + businessCD + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(cpno))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND CA.cpno = '" + cpno + "' ";
+                    }
+                        pSqlCommand.CommandText += @"
+                        ORDER BY TC.clnm, CS.sdate ";
                     break;
 
                 case "select_class_study_all":
@@ -254,8 +276,25 @@ namespace Dreamonesys.CallCenter.Main
 	                        ON CS.cpno = TC.cpno and CS.clno = TC.clno
 	                 LEFT JOIN tls_study AS TS
 	                        ON CS.sdno = TS.sdno
-		                 WHERE CS.cpno = " + ClassEmployeeCPNO + @"
+                     LEFT JOIN tls_campus AS CA
+                            ON TC.cpno = CA.cpno
+		                 WHERE 1=1
                     ";
+                    if (!string.IsNullOrEmpty(ClassEmployeeCPNO))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND CS.cpno = '" + ClassEmployeeCPNO + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(businessCD))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND CA.business_cd = '" + businessCD + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(cpno))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND CA.cpno = '" + cpno + "' ";
+                    }
                     if (!string.IsNullOrEmpty(textBoxClassNM.Text))
                     {
                         pSqlCommand.CommandText += @"
@@ -510,22 +549,16 @@ namespace Dreamonesys.CallCenter.Main
 
         #region Event
 
-        /// <summary>
-        /// 폼 로드
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <history>
-        /// 박석제, 2014-09-24, 생성
-        /// </history>
         private void UserControlStudy_Load(object sender, EventArgs e)
         {
             InitCombo();
 
             if (StudyType != null)
             {
-                Select();
+                Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO);
             }
+
+            
         }
 
         public void Select(string param1 = "", string param2 = "", string param3 = "", string param4 = "", string param5 = "")
@@ -542,8 +575,11 @@ namespace Dreamonesys.CallCenter.Main
             switch (StudyType)
             {
                 case "C": //반 차시 조회
-                    tabControl1.SelectedTab = tabPageClassSchedule;
-                    SelectDataGridView(dataGridViewClassStudy, "select_class_study");
+                    if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
+                    {
+                        tabControl1.SelectedTab = tabPageClassSchedule;
+                        SelectDataGridView(dataGridViewClassStudy, "select_class_study");
+                    }
                     break;
                 case "S": //학생 차시 조회
                     tabControl1.SelectedTab = tabPageStudentSchedule;
@@ -553,7 +589,6 @@ namespace Dreamonesys.CallCenter.Main
                     break;
             }
         }
-
         private void comboBoxCampusType_SelectionChangeCommitted(object sender, EventArgs e)
         {
             //과정1 컴퍼스 타입 콤보박스
@@ -628,10 +663,8 @@ namespace Dreamonesys.CallCenter.Main
 
         #endregion Event        
 
-        private void comboBoxCampus_SelectionChangeCommitted(object sender, EventArgs e)
-        {
+        
 
-        }
 
        
 
