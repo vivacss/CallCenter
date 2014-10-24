@@ -228,12 +228,12 @@ namespace Dreamonesys.CallCenter.Main
                     if (!string.IsNullOrEmpty(businessCD))
                     {
                         pSqlCommand.CommandText += @"
-                         AND CA.business_cd = '" + businessCD + "' ";
+                         AND CA.business_cd = '" + businessCD + "' ";                        
                     }
                     if (!string.IsNullOrEmpty(cpno))
                     {
                         pSqlCommand.CommandText += @"
-                         AND CA.cpno = '" + cpno + "' ";
+                         AND CA.cpno = '" + cpno + "' ";                        
                     }
                         pSqlCommand.CommandText += @"
                         ORDER BY TC.clnm, CS.sdate ";
@@ -555,10 +555,10 @@ namespace Dreamonesys.CallCenter.Main
 
             if (StudyType != null)
             {
-                Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO);
-            }
+                Select();
 
-            
+            }
+                
         }
 
         public void Select(string param1 = "", string param2 = "", string param3 = "", string param4 = "", string param5 = "")
@@ -575,11 +575,9 @@ namespace Dreamonesys.CallCenter.Main
             switch (StudyType)
             {
                 case "C": //반 차시 조회
-                    if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
-                    {
                         tabControl1.SelectedTab = tabPageClassSchedule;
                         SelectDataGridView(dataGridViewClassStudy, "select_class_study");
-                    }
+                    
                     break;
                 case "S": //학생 차시 조회
                     tabControl1.SelectedTab = tabPageStudentSchedule;
@@ -662,6 +660,7 @@ namespace Dreamonesys.CallCenter.Main
         }
 
         #endregion Event        
+
 
         
 

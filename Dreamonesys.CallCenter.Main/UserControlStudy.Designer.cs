@@ -31,6 +31,15 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageClassSchedule = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.comboBoxCampus = new System.Windows.Forms.ComboBox();
@@ -165,6 +174,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassStudy)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -182,9 +192,11 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPageClassSchedule);
             this.tabControl1.Controls.Add(this.tabPageStudentSchedule);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -211,6 +223,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
             this.splitContainer1.Panel1.Controls.Add(this.textBox6);
             this.splitContainer1.Panel1.Controls.Add(this.label14);
             this.splitContainer1.Panel1.Controls.Add(this.comboBoxCampus);
@@ -234,17 +247,107 @@
             this.splitContainer1.SplitterDistance = 216;
             this.splitContainer1.TabIndex = 0;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label27);
+            this.groupBox5.Controls.Add(this.label26);
+            this.groupBox5.Controls.Add(this.button11);
+            this.groupBox5.Controls.Add(this.button10);
+            this.groupBox5.Controls.Add(this.button9);
+            this.groupBox5.Controls.Add(this.button8);
+            this.groupBox5.Controls.Add(this.button7);
+            this.groupBox5.Controls.Add(this.button12);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(1054, 25);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(266, 191);
+            this.groupBox5.TabIndex = 15;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "적용 기능";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(30, 148);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(43, 12);
+            this.label27.TabIndex = 16;
+            this.label27.Text = "과정2 :";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(30, 121);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(43, 12);
+            this.label26.TabIndex = 15;
+            this.label26.Text = "과정1 :";
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(79, 143);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(141, 23);
+            this.button11.TabIndex = 14;
+            this.button11.Text = "차시 정보 수업일 수정";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(79, 116);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(141, 23);
+            this.button10.TabIndex = 13;
+            this.button10.Text = "차시 정보 수업일 수정";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(30, 83);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(95, 23);
+            this.button9.TabIndex = 12;
+            this.button9.Text = "차시 과정 수정";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(142, 54);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(95, 23);
+            this.button8.TabIndex = 11;
+            this.button8.Text = "차시 누락 등록";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(30, 54);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(95, 23);
+            this.button7.TabIndex = 10;
+            this.button7.Text = "학생 성적 삭제";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(30, 25);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.TabIndex = 9;
+            this.button12.Text = "전체조회";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(679, 1);
+            this.textBox6.Location = new System.Drawing.Point(569, 1);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 21);
+            this.textBox6.Size = new System.Drawing.Size(62, 21);
             this.textBox6.TabIndex = 14;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(623, 7);
+            this.label14.Location = new System.Drawing.Point(513, 7);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(49, 12);
             this.label14.TabIndex = 13;
@@ -255,7 +358,7 @@
             this.comboBoxCampus.FormattingEnabled = true;
             this.comboBoxCampus.Location = new System.Drawing.Point(175, 2);
             this.comboBoxCampus.Name = "comboBoxCampus";
-            this.comboBoxCampus.Size = new System.Drawing.Size(126, 20);
+            this.comboBoxCampus.Size = new System.Drawing.Size(76, 20);
             this.comboBoxCampus.TabIndex = 12;
             // 
             // label5
@@ -288,7 +391,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(835, 4);
+            this.label3.Location = new System.Drawing.Point(637, 6);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 12);
             this.label3.TabIndex = 8;
@@ -296,24 +399,24 @@
             // 
             // textBoxStudyNM
             // 
-            this.textBoxStudyNM.Location = new System.Drawing.Point(517, 1);
+            this.textBoxStudyNM.Location = new System.Drawing.Point(430, 2);
             this.textBoxStudyNM.Name = "textBoxStudyNM";
-            this.textBoxStudyNM.Size = new System.Drawing.Size(100, 21);
+            this.textBoxStudyNM.Size = new System.Drawing.Size(74, 21);
             this.textBoxStudyNM.TabIndex = 7;
             this.textBoxStudyNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStudyNM_KeyDown);
             // 
             // textBoxClassNM
             // 
-            this.textBoxClassNM.Location = new System.Drawing.Point(357, 1);
+            this.textBoxClassNM.Location = new System.Drawing.Point(302, 2);
             this.textBoxClassNM.Name = "textBoxClassNM";
-            this.textBoxClassNM.Size = new System.Drawing.Size(99, 21);
+            this.textBoxClassNM.Size = new System.Drawing.Size(67, 21);
             this.textBoxClassNM.TabIndex = 6;
             this.textBoxClassNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxClassNM_KeyDown);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(462, 5);
+            this.label2.Location = new System.Drawing.Point(375, 7);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 12);
             this.label2.TabIndex = 5;
@@ -322,7 +425,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(314, 4);
+            this.label1.Location = new System.Drawing.Point(259, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 12);
             this.label1.TabIndex = 4;
@@ -330,7 +433,7 @@
             // 
             // buttonClassStudy
             // 
-            this.buttonClassStudy.Location = new System.Drawing.Point(1096, 0);
+            this.buttonClassStudy.Location = new System.Drawing.Point(898, 2);
             this.buttonClassStudy.Name = "buttonClassStudy";
             this.buttonClassStudy.Size = new System.Drawing.Size(49, 23);
             this.buttonClassStudy.TabIndex = 3;
@@ -341,10 +444,10 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridViewClassStudy);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 25);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1320, 191);
+            this.groupBox1.Size = new System.Drawing.Size(1054, 191);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "과정1";
@@ -389,7 +492,7 @@
             this.dataGridViewClassStudy.Name = "dataGridViewClassStudy";
             this.dataGridViewClassStudy.RowTemplate.Height = 23;
             this.dataGridViewClassStudy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewClassStudy.Size = new System.Drawing.Size(1314, 171);
+            this.dataGridViewClassStudy.Size = new System.Drawing.Size(1048, 171);
             this.dataGridViewClassStudy.TabIndex = 2;
             this.dataGridViewClassStudy.Click += new System.EventHandler(this.dataGridViewClassStudy_Click);
             // 
@@ -590,7 +693,7 @@
             // dateTimePickerClassStudy
             // 
             this.dateTimePickerClassStudy.CustomFormat = "";
-            this.dateTimePickerClassStudy.Location = new System.Drawing.Point(890, 1);
+            this.dateTimePickerClassStudy.Location = new System.Drawing.Point(692, 3);
             this.dateTimePickerClassStudy.Name = "dateTimePickerClassStudy";
             this.dateTimePickerClassStudy.Size = new System.Drawing.Size(200, 21);
             this.dateTimePickerClassStudy.TabIndex = 1;
@@ -1361,6 +1464,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassStudy)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -1514,6 +1619,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button12;
 
 
     }
