@@ -123,7 +123,6 @@
             // 
             this.tabControl1.Controls.Add(this.tabPageSelect_Student);
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -172,7 +171,6 @@
             this.groupBox1.Controls.Add(this.textBoxUserNm);
             this.groupBox1.Controls.Add(this.comboBoxCampus);
             this.groupBox1.Controls.Add(this.dataGridViewStudent);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1180, 368);
@@ -448,7 +446,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.groupBox4);
             this.splitContainer2.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer2.Size = new System.Drawing.Size(1180, 326);
-            this.splitContainer2.SplitterDistance = 592;
+            this.splitContainer2.SplitterDistance = 651;
             this.splitContainer2.TabIndex = 0;
             // 
             // groupBox2
@@ -458,7 +456,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(592, 326);
+            this.groupBox2.Size = new System.Drawing.Size(651, 326);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "선택 학생 반 정보";
@@ -484,7 +482,7 @@
             this.dataGridViewU2mStudentClass.Name = "dataGridViewU2mStudentClass";
             this.dataGridViewU2mStudentClass.RowTemplate.Height = 23;
             this.dataGridViewU2mStudentClass.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewU2mStudentClass.Size = new System.Drawing.Size(586, 154);
+            this.dataGridViewU2mStudentClass.Size = new System.Drawing.Size(645, 154);
             this.dataGridViewU2mStudentClass.TabIndex = 1;
             // 
             // Column25
@@ -570,7 +568,7 @@
             this.dataGridViewEduStudentClass.Name = "dataGridViewEduStudentClass";
             this.dataGridViewEduStudentClass.RowTemplate.Height = 23;
             this.dataGridViewEduStudentClass.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewEduStudentClass.Size = new System.Drawing.Size(604, 154);
+            this.dataGridViewEduStudentClass.Size = new System.Drawing.Size(607, 154);
             this.dataGridViewEduStudentClass.TabIndex = 0;
             // 
             // Column16
@@ -641,7 +639,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(0, 135);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(584, 191);
+            this.groupBox4.Size = new System.Drawing.Size(525, 191);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -652,7 +650,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(584, 135);
+            this.groupBox3.Size = new System.Drawing.Size(525, 135);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "캠퍼스 멤버";
@@ -674,7 +672,7 @@
             this.dataGridViewCamMember.Location = new System.Drawing.Point(3, 17);
             this.dataGridViewCamMember.Name = "dataGridViewCamMember";
             this.dataGridViewCamMember.RowTemplate.Height = 23;
-            this.dataGridViewCamMember.Size = new System.Drawing.Size(578, 115);
+            this.dataGridViewCamMember.Size = new System.Drawing.Size(519, 115);
             this.dataGridViewCamMember.TabIndex = 0;
             // 
             // Column2

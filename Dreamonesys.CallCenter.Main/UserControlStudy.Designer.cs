@@ -192,9 +192,6 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPageClassSchedule);
             this.tabControl1.Controls.Add(this.tabPageStudentSchedule);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -708,6 +705,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.button1);
@@ -716,7 +716,6 @@
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.dataGridViewClassSchedule);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1320, 560);
@@ -800,7 +799,6 @@
             this.Column34,
             this.Column35,
             this.Column36});
-            this.dataGridViewClassSchedule.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridViewClassSchedule.Location = new System.Drawing.Point(3, 47);
             this.dataGridViewClassSchedule.Name = "dataGridViewClassSchedule";
             this.dataGridViewClassSchedule.RowTemplate.Height = 23;
