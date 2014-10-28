@@ -80,8 +80,8 @@ namespace Dreamonesys.CallCenter.Main
             Common.ComboBoxList[] comboBoxList = 
             {
                 //main tab 콤보박스
-                new Common.ComboBoxList(comboBoxCampusType, "캠퍼스구분", true),
-                new Common.ComboBoxList(comboBoxCampus, "캠퍼스", true),            
+                //new Common.ComboBoxList(comboBoxCampusType, "캠퍼스구분", true),
+                //new Common.ComboBoxList(comboBoxCampus, "캠퍼스", true),            
                                 
             };
             this._common.GetComboList(comboBoxList);
@@ -168,8 +168,8 @@ namespace Dreamonesys.CallCenter.Main
         private SqlCommand CreateSql(ref SqlCommand pSqlCommand, string pQueryKind, string[] pParameter = null)
         {
             pSqlCommand = new SqlCommand();
-            string businessCD = comboBoxCampusType.SelectedValue.ToString();
-            string cpno = comboBoxCampus.SelectedValue.ToString();
+            //string businessCD = comboBoxCampusType.SelectedValue.ToString();
+            //string cpno = comboBoxCampus.SelectedValue.ToString();
 
             switch (pQueryKind)
             {
@@ -225,17 +225,17 @@ namespace Dreamonesys.CallCenter.Main
                         pSqlCommand.CommandText += @"
                          AND CS.clno = '" + ClassEmployeeCLNO + "' ";
                     }
-                    if (!string.IsNullOrEmpty(businessCD))
-                    {
-                        pSqlCommand.CommandText += @"
-                         AND CA.business_cd = '" + businessCD + "' ";                        
-                    }
-                    if (!string.IsNullOrEmpty(cpno))
-                    {
-                        pSqlCommand.CommandText += @"
-                         AND CA.cpno = '" + cpno + "' ";                        
-                    }
-                        pSqlCommand.CommandText += @"
+                    //                    if (!string.IsNullOrEmpty(businessCD))
+                    //                    {
+                    //                        pSqlCommand.CommandText += @"
+                    //                         AND CA.business_cd = '" + businessCD + "' ";                        
+                    //                    }
+                    //                    if (!string.IsNullOrEmpty(cpno))
+                    //                    {
+                    //                        pSqlCommand.CommandText += @"
+                    //                         AND CA.cpno = '" + cpno + "' ";                        
+                    //                    }
+                    pSqlCommand.CommandText += @"
                         ORDER BY TC.clnm, CS.sdate ";
                     break;
 
@@ -285,32 +285,32 @@ namespace Dreamonesys.CallCenter.Main
                         pSqlCommand.CommandText += @"
                          AND CS.cpno = '" + ClassEmployeeCPNO + "' ";
                     }
-                    if (!string.IsNullOrEmpty(businessCD))
+//                    if (!string.IsNullOrEmpty(businessCD))
+//                    {
+//                        pSqlCommand.CommandText += @"
+//                            AND CA.business_cd = '" + businessCD + "' ";
+//                    }
+//                    if (!string.IsNullOrEmpty(cpno))
+//                    {
+//                        pSqlCommand.CommandText += @"
+//                            AND CA.cpno = '" + cpno + "' ";
+//                    }
+                    if (!string.IsNullOrEmpty(toolStripTextBoxClassNM.Text))
                     {
                         pSqlCommand.CommandText += @"
-                         AND CA.business_cd = '" + businessCD + "' ";
+                            AND TC.clnm LIKE '%" + toolStripTextBoxClassNM.Text + "%' ";
                     }
-                    if (!string.IsNullOrEmpty(cpno))
+                    if (!string.IsNullOrEmpty(toolStripTextBoxStudyNM.Text))
                     {
                         pSqlCommand.CommandText += @"
-                         AND CA.cpno = '" + cpno + "' ";
-                    }
-                    if (!string.IsNullOrEmpty(textBoxClassNM.Text))
-                    {
-                        pSqlCommand.CommandText += @"
-                         AND TC.clnm LIKE '%" + textBoxClassNM.Text + "%' ";
-                    }
-                    if (!string.IsNullOrEmpty(textBoxStudyNM.Text))
-                    {
-                        pSqlCommand.CommandText += @"
-                         AND sdnm LIKE '%" + textBoxStudyNM.Text + "%' ";
+                            AND sdnm LIKE '%" + toolStripTextBoxStudyNM.Text + "%' ";
                     }
                     pSqlCommand.CommandText += @"                      
-                           AND REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerClassStudy.Value + @"', 112), '-', '') BETWEEN CS.sdate AND CS.edate		            
+                            AND REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerClassStudy.Value + @"', 112), '-', '') BETWEEN CS.sdate AND CS.edate		            
                         ORDER BY TC.clnm, CS.sdate
                     ";
-                    textBoxClassNM.Text = "";
-                    textBoxStudyNM.Text = "";
+                    toolStripTextBoxClassNM.Text = "";
+                    toolStripTextBoxStudyNM.Text = "";
                     break;
 
                 case "select_class_schedule":
@@ -458,30 +458,35 @@ namespace Dreamonesys.CallCenter.Main
 	                       ON MS.cpno = TC.cpno and MS.clno = TC.clno
 	                LEFT JOIN tls_study AS TS
 	                       ON MS.sdno = TS.sdno
-		                WHERE MS.cpno = " + ClassStudentCPNO + @"
+		                WHERE 1=1
                     ";
-                    if (!string.IsNullOrEmpty(textBoxClassNM.Text))
+                    if (!string.IsNullOrEmpty(ClassStudentCPNO))
                     {
                         pSqlCommand.CommandText += @"
-                         AND TC.clnm LIKE '%" + textBoxClassNM.Text + "%' ";
+                         AND MS.cpno = '" + ClassStudentCPNO + "' ";
                     }
-                    if (!string.IsNullOrEmpty(textBoxStudentNM.Text))
+                    if (!string.IsNullOrEmpty(toolStripTextBoxClassNM2.Text))
                     {
                         pSqlCommand.CommandText += @"
-                         AND tm.usernm LIKE '%" + textBoxStudentNM.Text + "%' ";
+                            AND TC.clnm LIKE '%" + toolStripTextBoxClassNM2.Text + "%' ";
                     }
-                    if (!string.IsNullOrEmpty(textBoxStudyNM.Text))
+                    if (!string.IsNullOrEmpty(toolStripTextBoxStudentNM2.Text))
                     {
                         pSqlCommand.CommandText += @"
-                         AND sdnm LIKE '%" + textBoxStudyNM.Text + "%' ";
+                            AND TM.usernm LIKE '%" + toolStripTextBoxStudentNM2.Text + "%' ";
+                    }
+                    if (!string.IsNullOrEmpty(toolStripTextBoxStudyNM2.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                            AND sdnm LIKE '%" + toolStripTextBoxStudyNM2.Text + "%' ";
                     }
                     pSqlCommand.CommandText += @"                      
-                           AND REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerStudentStudy.Value + @"', 112), '-', '') BETWEEN MS.sdate AND MS.edate		            
+                            AND REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerStudentStudy.Value + @"', 112), '-', '') BETWEEN MS.sdate AND MS.edate		            
                         ORDER BY TC.clnm, usernm, MS.sdate
-		            ";
-                    textBoxClassNM.Text = "";
-                    textBoxStudentNM.Text = "";
-                    textBoxStudyNM.Text = "";
+                    ";
+                    toolStripTextBoxClassNM2.Text = "";
+                    toolStripTextBoxStudentNM2.Text = "";
+                    toolStripTextBoxStudyNM2.Text = "";
                     break;
 
                 case "select_student_schedule":
@@ -558,7 +563,7 @@ namespace Dreamonesys.CallCenter.Main
                 Select();
 
             }
-                
+
         }
 
         public void Select(string param1 = "", string param2 = "", string param3 = "", string param4 = "", string param5 = "")
@@ -575,9 +580,9 @@ namespace Dreamonesys.CallCenter.Main
             switch (StudyType)
             {
                 case "C": //반 차시 조회
-                        tabControl1.SelectedTab = tabPageClassSchedule;
-                        SelectDataGridView(dataGridViewClassStudy, "select_class_study");
-                    
+                    tabControl1.SelectedTab = tabPageClassSchedule;
+                    SelectDataGridView(dataGridViewClassStudy, "select_class_study");
+
                     break;
                 case "S": //학생 차시 조회
                     tabControl1.SelectedTab = tabPageStudentSchedule;
@@ -587,15 +592,7 @@ namespace Dreamonesys.CallCenter.Main
                     break;
             }
         }
-        private void comboBoxCampusType_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            //과정1 컴퍼스 타입 콤보박스
-            string campusType = comboBoxCampusType.SelectedValue.ToString();
-
-            _common.GetComboList(comboBoxCampus, "캠퍼스", true, new string[] { campusType });
-        }
-
-        private void textBoxClassNM_KeyDown(object sender, KeyEventArgs e)
+        private void toolStripTextBoxClassNM_KeyDown(object sender, KeyEventArgs e)
         {
             //과정1 반별 차시 조회
             if (e.KeyCode == Keys.Enter)
@@ -604,7 +601,7 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
-        private void textBoxStudyNM_KeyDown(object sender, KeyEventArgs e)
+        private void toolStripTextBoxStudyNM_KeyDown(object sender, KeyEventArgs e)
         {
             //과정1 학습명별 차시 조회
             if (e.KeyCode == Keys.Enter)
@@ -625,8 +622,7 @@ namespace Dreamonesys.CallCenter.Main
                 SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
             }
         }
-
-        private void textBoxStudentNM_KeyDown(object sender, KeyEventArgs e)
+        private void toolStripTextBoxStudentNM2_KeyDown(object sender, KeyEventArgs e)
         {
             //과정2 학생별 차시 조회
             if (e.KeyCode == Keys.Enter)
@@ -635,12 +631,11 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
-        private void textBoxStudyNM2_KeyDown(object sender, KeyEventArgs e)
+        private void toolStripTextBoxStudyNM2_KeyDown(object sender, KeyEventArgs e)
         {
             //과정2 학습명별 차시 조회
             if (e.KeyCode == Keys.Enter)
             {
-
                 SelectDataGridView(dataGridViewStudentStudy, "select_student_study_all");
             }
         }
@@ -659,19 +654,8 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
-        #endregion Event        
+        #endregion Event
 
-
-        
-
-
-       
-
-        
-
-        
-        
-        
         
 
     }

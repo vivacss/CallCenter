@@ -392,7 +392,8 @@ namespace Dreamonesys.CallCenter.Main
                             , A.cpno  
                             , C.login_id
                             , C.login_pwd
-                            , A.start_date                         
+                            , A.start_date
+                            , (SELECT cpnm from tls_campus WHERE cpno = A.cpno) AS CPNM                        
 	                     FROM tls_class_user AS A 
                     LEFT JOIN tls_class AS B 
                            ON A.clno = B.clno
@@ -403,6 +404,33 @@ namespace Dreamonesys.CallCenter.Main
                           AND (A.end_date = '' OR A.end_date IS NULL OR A.end_date >= CONVERT(VARCHAR(8), GETDATE(), 112) )
                         ORDER BY C.usernm
                     ";
+                    break;
+                case "select_class_student_all":
+                    //전체 학생 검색
+                    pSqlCommand.CommandText = @"
+                       SELECT A.userid
+	                        , C.usernm
+                            , A.cpno  
+                            , C.login_id
+                            , C.login_pwd
+                            , A.start_date
+                            , (SELECT cpnm from tls_campus WHERE cpno = A.cpno) AS CPNM                                                 
+	                     FROM tls_class_user AS A 
+                    LEFT JOIN tls_class AS B 
+                           ON A.clno = B.clno
+                    LEFT JOIN tls_member AS C
+                           ON A.userid = C.userid
+                        WHERE A.auth_cd = 'S'
+                          AND (A.end_date = '' OR A.end_date IS NULL OR A.end_date >= CONVERT(VARCHAR(8), GETDATE(), 112) ) ";                        
+                    if (!string.IsNullOrEmpty(textBoxStudentNM.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND C.usernm LIKE '%" + textBoxStudentNM.Text + "%' ";
+                    }
+                    pSqlCommand.CommandText += @"						 
+	                    ORDER BY b.cpno
+                    ";
+                    textBoxStudentNM.Text = "";
                     break;
 
                 case "select_campus_point":
@@ -1108,13 +1136,24 @@ namespace Dreamonesys.CallCenter.Main
         /// </history>
         private void dataGridViewClassEmployee_Click(object sender, EventArgs e)
         {
-            //반 학생 목록을 조회한다.
-            if (dataGridViewClassEmployee.Columns[dataGridViewClassEmployee.CurrentCell.ColumnIndex].DataPropertyName != "check_yn")
+            if (dataGridViewClassEmployee.Rows.Count > 0 && dataGridViewClassEmployee.CurrentCell != null)
             {
-                SelectDataGridView(dataGridViewClassStudent, "select_class_student");
-            }            
-        }       
+                //반 학생 목록을 조회한다.
+                if (dataGridViewClassEmployee.Columns[dataGridViewClassEmployee.CurrentCell.ColumnIndex].DataPropertyName != "check_yn")
+                {
+                    SelectDataGridView(dataGridViewClassStudent, "select_class_student");
+                }
+            }
+        }
 
+        private void textBoxStudentNM_KeyDown(object sender, KeyEventArgs e)
+        {            
+            if (e.KeyCode == Keys.Enter)
+            {
+                //메인 학생 검색
+                SelectDataGridView(dataGridViewClassStudent, "select_class_student_all");
+            }
+        }
         private void toolStripButtonSelect_Student_Click(object sender, EventArgs e)
         {
             //폼2 이동 (학생검색)
@@ -1412,6 +1451,8 @@ namespace Dreamonesys.CallCenter.Main
         
 
         #endregion Event
+
+       
 
         
 

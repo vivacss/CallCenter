@@ -31,18 +31,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageClassSchedule = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.comboBoxCampus = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxCampusType = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxStudyNM = new System.Windows.Forms.TextBox();
-            this.textBoxClassNM = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonClassStudy = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewClassStudy = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,10 +67,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.dataGridViewClassSchedule = new System.Windows.Forms.DataGridView();
             this.tabPageStudentSchedule = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -120,24 +104,12 @@
             this.Column39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label6 = new System.Windows.Forms.Label();
             this.buttonStudentStudy = new System.Windows.Forms.Button();
             this.dateTimePickerStudentStudy = new System.Windows.Forms.DateTimePicker();
-            this.textBoxStudyNM2 = new System.Windows.Forms.TextBox();
-            this.textBoxStudentNM = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.dataGridViewStudentSchedule = new System.Windows.Forms.DataGridView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -160,6 +132,46 @@
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxClassNM = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxStudyNM = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxStudentNM = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
+            this.buttonClassStudy = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel7 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxStudentNM2 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel8 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxStudyNM2 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel9 = new System.Windows.Forms.ToolStripLabel();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.toolStrip4 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel10 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBox5 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel11 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBox6 = new System.Windows.Forms.ToolStripTextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.toolStripLabel12 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxClassNM2 = new System.Windows.Forms.ToolStripTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPageClassSchedule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -168,6 +180,7 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassStudy)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassSchedule)).BeginInit();
             this.tabPageStudentSchedule.SuspendLayout();
@@ -177,9 +190,12 @@
             this.splitContainer2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentStudy)).BeginInit();
+            this.toolStrip2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentSchedule)).BeginInit();
             this.groupBox6.SuspendLayout();
+            this.toolStrip3.SuspendLayout();
+            this.toolStrip4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -213,21 +229,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.textBox6);
-            this.splitContainer1.Panel1.Controls.Add(this.label14);
-            this.splitContainer1.Panel1.Controls.Add(this.comboBoxCampus);
-            this.splitContainer1.Panel1.Controls.Add(this.label5);
-            this.splitContainer1.Panel1.Controls.Add(this.comboBoxCampusType);
-            this.splitContainer1.Panel1.Controls.Add(this.label4);
-            this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.textBoxStudyNM);
-            this.splitContainer1.Panel1.Controls.Add(this.textBoxClassNM);
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
-            this.splitContainer1.Panel1.Controls.Add(this.buttonClassStudy);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainer1.Panel1.Controls.Add(this.dateTimePickerClassStudy);
-            this.splitContainer1.Panel1.Controls.Add(this.toolStrip1);
             // 
             // splitContainer1.Panel2
             // 
@@ -236,117 +238,21 @@
             this.splitContainer1.SplitterDistance = 214;
             this.splitContainer1.TabIndex = 0;
             // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(569, 1);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(62, 21);
-            this.textBox6.TabIndex = 14;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(513, 7);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(49, 12);
-            this.label14.TabIndex = 13;
-            this.label14.Text = "학생명 :";
-            // 
-            // comboBoxCampus
-            // 
-            this.comboBoxCampus.FormattingEnabled = true;
-            this.comboBoxCampus.Location = new System.Drawing.Point(175, 2);
-            this.comboBoxCampus.Name = "comboBoxCampus";
-            this.comboBoxCampus.Size = new System.Drawing.Size(76, 20);
-            this.comboBoxCampus.TabIndex = 12;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(120, 7);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 12);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "캠퍼스 :";
-            // 
-            // comboBoxCampusType
-            // 
-            this.comboBoxCampusType.FormattingEnabled = true;
-            this.comboBoxCampusType.Location = new System.Drawing.Point(57, 2);
-            this.comboBoxCampusType.Name = "comboBoxCampusType";
-            this.comboBoxCampusType.Size = new System.Drawing.Size(54, 20);
-            this.comboBoxCampusType.TabIndex = 10;
-            this.comboBoxCampusType.SelectionChangeCommitted += new System.EventHandler(this.comboBoxCampusType_SelectionChangeCommitted);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 5);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 12);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "구분 :";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(637, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 12);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "수업일 :";
-            // 
-            // textBoxStudyNM
-            // 
-            this.textBoxStudyNM.Location = new System.Drawing.Point(430, 2);
-            this.textBoxStudyNM.Name = "textBoxStudyNM";
-            this.textBoxStudyNM.Size = new System.Drawing.Size(74, 21);
-            this.textBoxStudyNM.TabIndex = 7;
-            this.textBoxStudyNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStudyNM_KeyDown);
-            // 
-            // textBoxClassNM
-            // 
-            this.textBoxClassNM.Location = new System.Drawing.Point(302, 2);
-            this.textBoxClassNM.Name = "textBoxClassNM";
-            this.textBoxClassNM.Size = new System.Drawing.Size(67, 21);
-            this.textBoxClassNM.TabIndex = 6;
-            this.textBoxClassNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxClassNM_KeyDown);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(375, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 12);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "학습명 :";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(259, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 12);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "반명 :";
-            // 
-            // buttonClassStudy
-            // 
-            this.buttonClassStudy.Location = new System.Drawing.Point(898, 2);
-            this.buttonClassStudy.Name = "buttonClassStudy";
-            this.buttonClassStudy.Size = new System.Drawing.Size(49, 23);
-            this.buttonClassStudy.TabIndex = 3;
-            this.buttonClassStudy.Text = "조회";
-            this.buttonClassStudy.UseVisualStyleBackColor = true;
-            this.buttonClassStudy.Click += new System.EventHandler(this.buttonClassStudy_Click);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridViewClassStudy);
+            this.groupBox1.Controls.Add(this.button11);
+            this.groupBox1.Controls.Add(this.button10);
+            this.groupBox1.Controls.Add(this.buttonClassStudy);
+            this.groupBox1.Controls.Add(this.button9);
+            this.groupBox1.Controls.Add(this.dateTimePickerClassStudy);
+            this.groupBox1.Controls.Add(this.button8);
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.toolStrip1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 25);
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1155, 189);
+            this.groupBox1.Size = new System.Drawing.Size(1155, 214);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "과정1";
@@ -387,7 +293,7 @@
             this.Column37,
             this.Column38});
             this.dataGridViewClassStudy.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewClassStudy.Location = new System.Drawing.Point(3, 17);
+            this.dataGridViewClassStudy.Location = new System.Drawing.Point(3, 42);
             this.dataGridViewClassStudy.Name = "dataGridViewClassStudy";
             this.dataGridViewClassStudy.RowTemplate.Height = 23;
             this.dataGridViewClassStudy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -592,29 +498,35 @@
             // dateTimePickerClassStudy
             // 
             this.dateTimePickerClassStudy.CustomFormat = "";
-            this.dateTimePickerClassStudy.Location = new System.Drawing.Point(692, 3);
+            this.dateTimePickerClassStudy.Location = new System.Drawing.Point(398, 18);
             this.dateTimePickerClassStudy.Name = "dateTimePickerClassStudy";
-            this.dateTimePickerClassStudy.Size = new System.Drawing.Size(200, 21);
+            this.dateTimePickerClassStudy.Size = new System.Drawing.Size(173, 21);
             this.dateTimePickerClassStudy.TabIndex = 1;
             // 
             // toolStrip1
             // 
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1,
+            this.toolStripTextBoxClassNM,
+            this.toolStripLabel2,
+            this.toolStripTextBoxStudyNM,
+            this.toolStripLabel3,
+            this.toolStripTextBoxStudentNM,
+            this.toolStripLabel4});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 17);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1155, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1149, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button12);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.dataGridViewClassSchedule);
+            this.groupBox2.Controls.Add(this.toolStrip3);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
@@ -625,62 +537,30 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(933, 18);
+            this.button3.Location = new System.Drawing.Point(943, 17);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(92, 23);
+            this.button3.Size = new System.Drawing.Size(73, 23);
             this.button3.TabIndex = 7;
             this.button3.Text = "엑셀출력";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(824, 18);
+            this.button2.Location = new System.Drawing.Point(780, 17);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 23);
+            this.button2.Size = new System.Drawing.Size(84, 23);
             this.button2.TabIndex = 6;
             this.button2.Text = "수업일 수정";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(730, 18);
+            this.button1.Location = new System.Drawing.Point(707, 17);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(67, 23);
             this.button1.TabIndex = 5;
-            this.button1.Text = "삭제";
+            this.button1.Text = "차시삭제";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(596, 18);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 21);
-            this.textBox3.TabIndex = 4;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(425, 18);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 3;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(541, 21);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(49, 12);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "수업일 :";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(342, 21);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(77, 12);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "교재 구성명 :";
             // 
             // dataGridViewClassSchedule
             // 
@@ -699,12 +579,12 @@
             this.Column34,
             this.Column35,
             this.Column36});
-            this.dataGridViewClassSchedule.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridViewClassSchedule.Location = new System.Drawing.Point(3, 45);
+            this.dataGridViewClassSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewClassSchedule.Location = new System.Drawing.Point(3, 42);
             this.dataGridViewClassSchedule.Name = "dataGridViewClassSchedule";
             this.dataGridViewClassSchedule.RowTemplate.Height = 23;
             this.dataGridViewClassSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewClassSchedule.Size = new System.Drawing.Size(1149, 457);
+            this.dataGridViewClassSchedule.Size = new System.Drawing.Size(1149, 460);
             this.dataGridViewClassSchedule.TabIndex = 0;
             // 
             // tabPageStudentSchedule
@@ -728,16 +608,8 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.groupBox3);
-            this.splitContainer2.Panel1.Controls.Add(this.label6);
-            this.splitContainer2.Panel1.Controls.Add(this.buttonStudentStudy);
-            this.splitContainer2.Panel1.Controls.Add(this.dateTimePickerStudentStudy);
-            this.splitContainer2.Panel1.Controls.Add(this.textBoxStudyNM2);
-            this.splitContainer2.Panel1.Controls.Add(this.textBoxStudentNM);
             this.splitContainer2.Panel1.Controls.Add(this.textBox2);
-            this.splitContainer2.Panel1.Controls.Add(this.label7);
-            this.splitContainer2.Panel1.Controls.Add(this.label8);
             this.splitContainer2.Panel1.Controls.Add(this.label9);
-            this.splitContainer2.Panel1.Controls.Add(this.toolStrip2);
             // 
             // splitContainer2.Panel2
             // 
@@ -749,10 +621,18 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dataGridViewStudentStudy);
+            this.groupBox3.Controls.Add(this.button13);
+            this.groupBox3.Controls.Add(this.button14);
+            this.groupBox3.Controls.Add(this.button15);
+            this.groupBox3.Controls.Add(this.button16);
+            this.groupBox3.Controls.Add(this.button17);
+            this.groupBox3.Controls.Add(this.buttonStudentStudy);
+            this.groupBox3.Controls.Add(this.dateTimePickerStudentStudy);
+            this.groupBox3.Controls.Add(this.toolStrip2);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(0, 25);
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1155, 190);
+            this.groupBox3.Size = new System.Drawing.Size(1155, 215);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "과정2";
@@ -797,7 +677,7 @@
             this.Column40,
             this.Column41});
             this.dataGridViewStudentStudy.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewStudentStudy.Location = new System.Drawing.Point(3, 17);
+            this.dataGridViewStudentStudy.Location = new System.Drawing.Point(3, 42);
             this.dataGridViewStudentStudy.Name = "dataGridViewStudentStudy";
             this.dataGridViewStudentStudy.RowTemplate.Height = 23;
             this.dataGridViewStudentStudy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1028,20 +908,11 @@
             this.Column41.Name = "Column41";
             this.Column41.Width = 60;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(595, 6);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 12);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "수업일 :";
-            // 
             // buttonStudentStudy
             // 
-            this.buttonStudentStudy.Location = new System.Drawing.Point(856, -1);
+            this.buttonStudentStudy.Location = new System.Drawing.Point(577, 17);
             this.buttonStudentStudy.Name = "buttonStudentStudy";
-            this.buttonStudentStudy.Size = new System.Drawing.Size(53, 23);
+            this.buttonStudentStudy.Size = new System.Drawing.Size(50, 23);
             this.buttonStudentStudy.TabIndex = 16;
             this.buttonStudentStudy.Text = "조회";
             this.buttonStudentStudy.UseVisualStyleBackColor = true;
@@ -1049,26 +920,10 @@
             // 
             // dateTimePickerStudentStudy
             // 
-            this.dateTimePickerStudentStudy.Location = new System.Drawing.Point(650, 0);
+            this.dateTimePickerStudentStudy.Location = new System.Drawing.Point(398, 18);
             this.dateTimePickerStudentStudy.Name = "dateTimePickerStudentStudy";
-            this.dateTimePickerStudentStudy.Size = new System.Drawing.Size(200, 21);
+            this.dateTimePickerStudentStudy.Size = new System.Drawing.Size(173, 21);
             this.dateTimePickerStudentStudy.TabIndex = 15;
-            // 
-            // textBoxStudyNM2
-            // 
-            this.textBoxStudyNM2.Location = new System.Drawing.Point(227, 0);
-            this.textBoxStudyNM2.Name = "textBoxStudyNM2";
-            this.textBoxStudyNM2.Size = new System.Drawing.Size(100, 21);
-            this.textBoxStudyNM2.TabIndex = 14;
-            this.textBoxStudyNM2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStudyNM2_KeyDown);
-            // 
-            // textBoxStudentNM
-            // 
-            this.textBoxStudentNM.Location = new System.Drawing.Point(66, 0);
-            this.textBoxStudentNM.Name = "textBoxStudentNM";
-            this.textBoxStudentNM.Size = new System.Drawing.Size(100, 21);
-            this.textBoxStudentNM.TabIndex = 13;
-            this.textBoxStudentNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStudentNM_KeyDown);
             // 
             // textBox2
             // 
@@ -1076,24 +931,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 21);
             this.textBox2.TabIndex = 9;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(172, 4);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 12);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "학습명 :";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 4);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(49, 12);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "학생명 :";
             // 
             // label9
             // 
@@ -1106,22 +943,28 @@
             // 
             // toolStrip2
             // 
-            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel12,
+            this.toolStripTextBoxClassNM2,
+            this.toolStripLabel8,
+            this.toolStripTextBoxStudyNM2,
+            this.toolStripLabel7,
+            this.toolStripTextBoxStudentNM2,
+            this.toolStripLabel9});
+            this.toolStrip2.Location = new System.Drawing.Point(3, 17);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1155, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(1149, 25);
             this.toolStrip2.TabIndex = 19;
             this.toolStrip2.Text = "toolStrip2";
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button6);
-            this.groupBox4.Controls.Add(this.button5);
             this.groupBox4.Controls.Add(this.button4);
-            this.groupBox4.Controls.Add(this.textBox5);
-            this.groupBox4.Controls.Add(this.textBox4);
-            this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.button5);
             this.groupBox4.Controls.Add(this.dataGridViewStudentSchedule);
+            this.groupBox4.Controls.Add(this.button6);
+            this.groupBox4.Controls.Add(this.button18);
+            this.groupBox4.Controls.Add(this.toolStrip4);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(0, 0);
             this.groupBox4.Name = "groupBox4";
@@ -1129,65 +972,6 @@
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "학생 차시 리스트";
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(949, 16);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "엑셀출력";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(838, 16);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(85, 23);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "수업일 수정";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(739, 16);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "삭제";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(599, 18);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 21);
-            this.textBox5.TabIndex = 5;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(428, 18);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 21);
-            this.textBox4.TabIndex = 4;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(672, 21);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(49, 12);
-            this.label13.TabIndex = 3;
-            this.label13.Text = "수업일 :";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(348, 21);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(77, 12);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "교재 구성명 :";
             // 
             // dataGridViewStudentSchedule
             // 
@@ -1206,12 +990,12 @@
             this.dataGridViewTextBoxColumn36,
             this.dataGridViewTextBoxColumn37,
             this.dataGridViewTextBoxColumn38});
-            this.dataGridViewStudentSchedule.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridViewStudentSchedule.Location = new System.Drawing.Point(3, 45);
+            this.dataGridViewStudentSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewStudentSchedule.Location = new System.Drawing.Point(3, 42);
             this.dataGridViewStudentSchedule.Name = "dataGridViewStudentSchedule";
             this.dataGridViewStudentSchedule.RowTemplate.Height = 23;
             this.dataGridViewStudentSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStudentSchedule.Size = new System.Drawing.Size(1149, 456);
+            this.dataGridViewStudentSchedule.Size = new System.Drawing.Size(1149, 459);
             this.dataGridViewStudentSchedule.TabIndex = 1;
             // 
             // groupBox6
@@ -1359,6 +1143,315 @@
             this.dataGridViewTextBoxColumn38.HeaderText = "과정2학습";
             this.dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
             // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(38, 22);
+            this.toolStripLabel1.Text = "반명 :";
+            // 
+            // toolStripTextBoxClassNM
+            // 
+            this.toolStripTextBoxClassNM.BackColor = System.Drawing.SystemColors.Window;
+            this.toolStripTextBoxClassNM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxClassNM.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.toolStripTextBoxClassNM.Name = "toolStripTextBoxClassNM";
+            this.toolStripTextBoxClassNM.Size = new System.Drawing.Size(60, 25);
+            this.toolStripTextBoxClassNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxClassNM_KeyDown);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(50, 22);
+            this.toolStripLabel2.Text = "학습명 :";
+            // 
+            // toolStripTextBoxStudyNM
+            // 
+            this.toolStripTextBoxStudyNM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxStudyNM.Name = "toolStripTextBoxStudyNM";
+            this.toolStripTextBoxStudyNM.Size = new System.Drawing.Size(70, 25);
+            this.toolStripTextBoxStudyNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxStudyNM_KeyDown);
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(50, 22);
+            this.toolStripLabel3.Text = "학생명 :";
+            // 
+            // toolStripTextBoxStudentNM
+            // 
+            this.toolStripTextBoxStudentNM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxStudentNM.Name = "toolStripTextBoxStudentNM";
+            this.toolStripTextBoxStudentNM.Size = new System.Drawing.Size(60, 25);
+            // 
+            // toolStripLabel4
+            // 
+            this.toolStripLabel4.Name = "toolStripLabel4";
+            this.toolStripLabel4.Size = new System.Drawing.Size(50, 22);
+            this.toolStripLabel4.Text = "수업일 :";
+            // 
+            // buttonClassStudy
+            // 
+            this.buttonClassStudy.Location = new System.Drawing.Point(577, 17);
+            this.buttonClassStudy.Name = "buttonClassStudy";
+            this.buttonClassStudy.Size = new System.Drawing.Size(50, 23);
+            this.buttonClassStudy.TabIndex = 8;
+            this.buttonClassStudy.Text = "조회";
+            this.buttonClassStudy.UseVisualStyleBackColor = true;
+            this.buttonClassStudy.Click += new System.EventHandler(this.buttonClassStudy_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(707, 17);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(67, 23);
+            this.button7.TabIndex = 8;
+            this.button7.Text = "차시삭제";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(780, 17);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(84, 23);
+            this.button8.TabIndex = 8;
+            this.button8.Text = "수업일 수정";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(870, 17);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(67, 23);
+            this.button9.TabIndex = 9;
+            this.button9.Text = "성적삭제";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(634, 17);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(67, 23);
+            this.button10.TabIndex = 10;
+            this.button10.Text = "전체조회";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(943, 17);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(73, 23);
+            this.button11.TabIndex = 8;
+            this.button11.Text = "엑셀출력";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(870, 17);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(67, 23);
+            this.button12.TabIndex = 11;
+            this.button12.Text = "성적삭제";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // toolStrip3
+            // 
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel5,
+            this.toolStripTextBox1,
+            this.toolStripLabel6,
+            this.toolStripTextBox2});
+            this.toolStrip3.Location = new System.Drawing.Point(3, 17);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.Size = new System.Drawing.Size(1149, 25);
+            this.toolStrip3.TabIndex = 12;
+            this.toolStrip3.Text = "toolStrip3";
+            // 
+            // toolStripLabel5
+            // 
+            this.toolStripLabel5.Name = "toolStripLabel5";
+            this.toolStripLabel5.Size = new System.Drawing.Size(74, 22);
+            this.toolStripLabel5.Text = "교재구성명 :";
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(80, 25);
+            // 
+            // toolStripLabel6
+            // 
+            this.toolStripLabel6.Name = "toolStripLabel6";
+            this.toolStripLabel6.Size = new System.Drawing.Size(50, 22);
+            this.toolStripLabel6.Text = "수업일 :";
+            // 
+            // toolStripTextBox2
+            // 
+            this.toolStripTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBox2.Name = "toolStripTextBox2";
+            this.toolStripTextBox2.Size = new System.Drawing.Size(60, 25);
+            // 
+            // toolStripLabel7
+            // 
+            this.toolStripLabel7.Name = "toolStripLabel7";
+            this.toolStripLabel7.Size = new System.Drawing.Size(50, 22);
+            this.toolStripLabel7.Text = "학생명 :";
+            // 
+            // toolStripTextBoxStudentNM2
+            // 
+            this.toolStripTextBoxStudentNM2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxStudentNM2.Name = "toolStripTextBoxStudentNM2";
+            this.toolStripTextBoxStudentNM2.Size = new System.Drawing.Size(60, 25);
+            this.toolStripTextBoxStudentNM2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxStudentNM2_KeyDown);
+            // 
+            // toolStripLabel8
+            // 
+            this.toolStripLabel8.Name = "toolStripLabel8";
+            this.toolStripLabel8.Size = new System.Drawing.Size(50, 22);
+            this.toolStripLabel8.Text = "학습명 :";
+            // 
+            // toolStripTextBoxStudyNM2
+            // 
+            this.toolStripTextBoxStudyNM2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxStudyNM2.Name = "toolStripTextBoxStudyNM2";
+            this.toolStripTextBoxStudyNM2.Size = new System.Drawing.Size(70, 25);
+            this.toolStripTextBoxStudyNM2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxStudyNM2_KeyDown);
+            // 
+            // toolStripLabel9
+            // 
+            this.toolStripLabel9.Name = "toolStripLabel9";
+            this.toolStripLabel9.Size = new System.Drawing.Size(50, 22);
+            this.toolStripLabel9.Text = "수업일 :";
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(943, 17);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(73, 23);
+            this.button13.TabIndex = 20;
+            this.button13.Text = "엑셀출력";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(634, 17);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(67, 23);
+            this.button14.TabIndex = 24;
+            this.button14.Text = "전체조회";
+            this.button14.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(870, 17);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(67, 23);
+            this.button15.TabIndex = 23;
+            this.button15.Text = "성적삭제";
+            this.button15.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(780, 17);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(84, 23);
+            this.button16.TabIndex = 21;
+            this.button16.Text = "수업일 수정";
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(707, 17);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(67, 23);
+            this.button17.TabIndex = 22;
+            this.button17.Text = "차시삭제";
+            this.button17.UseVisualStyleBackColor = true;
+            // 
+            // toolStrip4
+            // 
+            this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel10,
+            this.toolStripTextBox5,
+            this.toolStripLabel11,
+            this.toolStripTextBox6});
+            this.toolStrip4.Location = new System.Drawing.Point(3, 17);
+            this.toolStrip4.Name = "toolStrip4";
+            this.toolStrip4.Size = new System.Drawing.Size(1149, 25);
+            this.toolStrip4.TabIndex = 2;
+            this.toolStrip4.Text = "toolStrip4";
+            // 
+            // toolStripLabel10
+            // 
+            this.toolStripLabel10.Name = "toolStripLabel10";
+            this.toolStripLabel10.Size = new System.Drawing.Size(74, 22);
+            this.toolStripLabel10.Text = "교재구성명 :";
+            // 
+            // toolStripTextBox5
+            // 
+            this.toolStripTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBox5.Name = "toolStripTextBox5";
+            this.toolStripTextBox5.Size = new System.Drawing.Size(80, 25);
+            // 
+            // toolStripLabel11
+            // 
+            this.toolStripLabel11.Name = "toolStripLabel11";
+            this.toolStripLabel11.Size = new System.Drawing.Size(50, 22);
+            this.toolStripLabel11.Text = "수업일 :";
+            // 
+            // toolStripTextBox6
+            // 
+            this.toolStripTextBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBox6.Name = "toolStripTextBox6";
+            this.toolStripTextBox6.Size = new System.Drawing.Size(60, 25);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(943, 16);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(73, 23);
+            this.button4.TabIndex = 25;
+            this.button4.Text = "엑셀출력";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(870, 16);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(67, 23);
+            this.button5.TabIndex = 28;
+            this.button5.Text = "성적삭제";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(780, 16);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(84, 23);
+            this.button6.TabIndex = 26;
+            this.button6.Text = "수업일 수정";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(707, 16);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(67, 23);
+            this.button18.TabIndex = 27;
+            this.button18.Text = "차시삭제";
+            this.button18.UseVisualStyleBackColor = true;
+            // 
+            // toolStripLabel12
+            // 
+            this.toolStripLabel12.Name = "toolStripLabel12";
+            this.toolStripLabel12.Size = new System.Drawing.Size(38, 22);
+            this.toolStripLabel12.Text = "반명 :";
+            // 
+            // toolStripTextBoxClassNM2
+            // 
+            this.toolStripTextBoxClassNM2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxClassNM2.Name = "toolStripTextBoxClassNM2";
+            this.toolStripTextBoxClassNM2.Size = new System.Drawing.Size(60, 25);
+            // 
             // UserControlStudy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1370,12 +1463,14 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPageClassSchedule.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassStudy)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassSchedule)).EndInit();
@@ -1386,11 +1481,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentStudy)).EndInit();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentSchedule)).EndInit();
             this.groupBox6.ResumeLayout(false);
+            this.toolStrip3.ResumeLayout(false);
+            this.toolStrip3.PerformLayout();
+            this.toolStrip4.ResumeLayout(false);
+            this.toolStrip4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1400,18 +1502,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageClassSchedule;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBoxCampus;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBoxCampusType;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxStudyNM;
-        private System.Windows.Forms.TextBox textBoxClassNM;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonClassStudy;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridViewClassStudy;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
@@ -1448,10 +1538,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dataGridViewClassSchedule;
         private System.Windows.Forms.TabPage tabPageStudentSchedule;
         private System.Windows.Forms.SplitContainer splitContainer2;
@@ -1489,24 +1575,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column39;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column40;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column41;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button buttonStudentStudy;
         private System.Windows.Forms.DateTimePicker dateTimePickerStudentStudy;
-        private System.Windows.Forms.TextBox textBoxStudyNM2;
-        private System.Windows.Forms.TextBox textBoxStudentNM;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridView dataGridViewStudentSchedule;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column27;
@@ -1529,6 +1603,46 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxClassNM;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxStudyNM;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxStudentNM;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel4;
+        private System.Windows.Forms.Button buttonClassStudy;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.ToolStrip toolStrip3;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel5;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel6;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel7;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxStudentNM2;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel8;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxStudyNM2;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel9;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.ToolStrip toolStrip4;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel10;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox5;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel11;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox6;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel12;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxClassNM2;
 
 
     }
