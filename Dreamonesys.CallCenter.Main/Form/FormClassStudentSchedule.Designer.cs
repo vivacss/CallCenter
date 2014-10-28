@@ -34,7 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1334, 812);
+            this.ClientSize = new System.Drawing.Size(1179, 767);
             this.Name = "FormClassStudentSchedule";
             this.Text = "차시 관리";
             this.Load += new System.EventHandler(this.FormClassStudentSchedule_Load);
