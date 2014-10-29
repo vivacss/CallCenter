@@ -39,6 +39,7 @@ namespace Dreamonesys.CallCenter.Main
         public string ClassEmployeeCLNO { get; set; }
         public string ClassStudentCPNO { get; set; }
         public string ClassStudentUID { get; set; }
+        public string ClassEmployeeUID { get; set; }
 
 
         #endregion
@@ -226,6 +227,12 @@ namespace Dreamonesys.CallCenter.Main
                         pSqlCommand.CommandText += @"
                          AND CS.clno = '" + ClassEmployeeCLNO + "' ";
                     }
+                    if (!string.IsNullOrEmpty(ClassEmployeeUID))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND CS.tid = '" + ClassEmployeeUID + "' ";
+                    }
+                    
                     //                    if (!string.IsNullOrEmpty(businessCD))
                     //                    {
                     //                        pSqlCommand.CommandText += @"
@@ -274,6 +281,8 @@ namespace Dreamonesys.CallCenter.Main
                              , CS.cpno
                              , CS.clno
 		                  FROM tls_class_study AS CS
+                     LEFT JOIN tls_member AS TM
+							ON CS.tid = TM.userid
                      LEFT JOIN tls_class AS TC
 	                        ON CS.cpno = TC.cpno and CS.clno = TC.clno
 	                 LEFT JOIN tls_study AS TS
@@ -305,7 +314,12 @@ namespace Dreamonesys.CallCenter.Main
                     if (!string.IsNullOrEmpty(toolStripTextBoxStudyNM.Text))
                     {
                         pSqlCommand.CommandText += @"
-                            AND sdnm LIKE '%" + toolStripTextBoxStudyNM.Text + "%' ";
+                            AND TS.sdnm LIKE '%" + toolStripTextBoxStudyNM.Text + "%' ";
+                    }
+                    if (!string.IsNullOrEmpty(toolStripTextBoxClassTID.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                            AND TM.usernm LIKE '%" + toolStripTextBoxClassTID.Text + "%' ";
                     }
                     pSqlCommand.CommandText += @"                      
                             AND REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerClassStudy.Value + @"', 112), '-', '') BETWEEN CS.sdate AND CS.edate		            
@@ -313,6 +327,73 @@ namespace Dreamonesys.CallCenter.Main
                     ";
                     toolStripTextBoxClassNM.Text = "";
                     toolStripTextBoxStudyNM.Text = "";
+                    toolStripTextBoxClassTID.Text = "";
+                    break;
+                case "select_class_study_datatime_all":
+
+                    //반별, 학습별 차시 정보 조회(과정1) - 수업일 전체조회
+                    pSqlCommand.CommandText = @"                       
+		                SELECT (SELECT usernm FROM tls_member WHERE userid = CS.tid) AS TID
+		                     , (SELECT cpnm FROM tls_campus WHERE cpno = CS.cpno) AS CPNM
+                             , CS.term_cd
+			                 , TC.clnm
+			                 , STUFF(STUFF(CS.sdate, 5, 0, '-'), 8, 0, '-') AS SDATE
+			                 , STUFF(STUFF(CS.edate, 5, 0, '-'), 8, 0, '-') AS EDATE
+			                 , DBO.F_U_WEEK_HAN(CS.week_day) AS WEEK_DAY
+			                 , (TS.sdnm + '-' + view_sdnm) AS SDNM
+                             , CS.sdno
+                             , TS.bkno
+			                 , CS.j_use_yn
+			                 , CS.j_count
+			                 , CS.j_hitpoint
+			                 , CS.j_quiz_cnt
+			                 , CS.correct_yn
+			                 , CS.c_use_yn
+			                 , CS.c_common_cnt
+			                 , CS.c_each_cnt
+			                 , CS.l_quiz_cnt
+			                 , CS.concept_yn
+			                 , CS.quiz_yn
+			                 , CS.menu_yn
+			                 , (SELECT usernm FROM tls_member WHERE userid = CS.rid) AS rid
+			                 , CS.RDATETIME
+			                 , (SELECT usernm FROM tls_member WHERE userid = CS.uid) AS uid
+			                 , CS.UDATETIME
+                             , CS.yyyy
+                             , CS.cpno
+                             , CS.clno
+		                  FROM tls_class_study AS CS
+                     LEFT JOIN tls_member AS TM
+							ON CS.tid = TM.userid
+                     LEFT JOIN tls_class AS TC
+	                        ON CS.cpno = TC.cpno and CS.clno = TC.clno
+	                 LEFT JOIN tls_study AS TS
+	                        ON CS.sdno = TS.sdno
+                     LEFT JOIN tls_campus AS CA
+                            ON TC.cpno = CA.cpno
+		                 WHERE 1=1
+                    ";     
+                     if (!string.IsNullOrEmpty(toolStripTextBoxClassNM.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                            AND TC.clnm LIKE '%" + toolStripTextBoxClassNM.Text + "%' ";
+                    }
+                    if (!string.IsNullOrEmpty(toolStripTextBoxStudyNM.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                            AND TS.sdnm LIKE '%" + toolStripTextBoxStudyNM.Text + "%' ";
+                    }
+                    if (!string.IsNullOrEmpty(toolStripTextBoxClassTID.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                            AND TM.usernm LIKE '%" + toolStripTextBoxClassTID.Text + "%' ";
+                    }                    
+                    pSqlCommand.CommandText += @"                                                 		            
+                        ORDER BY TC.clnm, CS.sdate DESC
+                    ";
+                    toolStripTextBoxClassNM.Text = "";
+                    toolStripTextBoxStudyNM.Text = "";
+                    toolStripTextBoxClassTID.Text = "";
                     break;
 
                 case "select_class_schedule":
@@ -365,9 +446,22 @@ namespace Dreamonesys.CallCenter.Main
 		                   AND A.cpno = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "cpno") + @"'
 		                   AND A.clno = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "clno") + @"'
 		                   AND A.sdno = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "sdno") + @"'
-	                     ORDER BY cdate, G.sort
-
-                            ";
+                    ";
+                    if (!string.IsNullOrEmpty(toolStripTextBoxClassBookNM.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                            AND G.view_unnm LIKE '%" + toolStripTextBoxClassBookNM.Text + "%' ";
+                    }
+                    if (!string.IsNullOrEmpty(toolStripTextBoxClassDataTime.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                            AND A.cdate LIKE '" + toolStripTextBoxClassDataTime.Text + "%' ";
+                    }
+                    pSqlCommand.CommandText += @"
+	                     ORDER BY A.cdate, G.sort
+                    ";
+                    toolStripTextBoxClassBookNM.Text = "";
+                    toolStripTextBoxClassDataTime.Text = "";
                     break;
                 case "select_student_study":
 
@@ -486,11 +580,87 @@ namespace Dreamonesys.CallCenter.Main
                     if (!string.IsNullOrEmpty(toolStripTextBoxStudyNM2.Text))
                     {
                         pSqlCommand.CommandText += @"
-                            AND sdnm LIKE '%" + toolStripTextBoxStudyNM2.Text + "%' ";
-                    }
+                            AND TS.sdnm LIKE '%" + toolStripTextBoxStudyNM2.Text + "%' ";
+                    }                    
                     pSqlCommand.CommandText += @"                      
                             AND REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerStudentStudy.Value + @"', 112), '-', '') BETWEEN MS.sdate AND MS.edate		            
                         ORDER BY TC.clnm, usernm, MS.sdate
+                    ";
+                    toolStripTextBoxClassNM2.Text = "";
+                    toolStripTextBoxStudentNM2.Text = "";
+                    toolStripTextBoxStudyNM2.Text = "";
+                    break;
+
+                case "select_student_study_datatime_all":
+
+                    //반별 학생, 학습명 차시 정보 조회(과정2) - 수업일 전체 조회
+                    pSqlCommand.CommandText = @"                       
+		                SELECT (SELECT usernm FROM tls_member WHERE userid = MS.tid) AS TID
+	    	                 , (SELECT cpnm FROM tls_campus WHERE cpno = MS.cpno) AS CPNM
+                             , MS.term_cd
+		                     , TC.clnm
+                             , TM.usernm
+			                 , STUFF(STUFF(MS.sdate, 5, 0, '-'), 8, 0, '-') AS SDATE 
+	                         , STUFF(STUFF(MS.edate, 5, 0, '-'), 8, 0, '-') AS EDATE
+	 		                 , DBO.F_U_WEEK_HAN(MS.week_day) AS WEEK_DAY
+			                 , (TS.sdnm + '-' + view_sdnm) AS SDNM
+                             , MS.sdno
+                             , TS.bkno
+			                 , MS.use_yn
+			                 , MS.j_use_yn
+			                 , MS.j_count
+			                 , MS.j_hitpoint
+			                 , MS.j_quiz_cnt
+			                 , MS.correct_yn
+			                 , MS.m_use_yn
+			                 , MS.m_count			 
+			                 , MS.m_hitpoint
+			                 , MS.m_quiz_cnt
+			                 , MS.m_quiz_type
+			                 , MS.l_quiz_cnt
+			                 , MS.concept_yn
+			                 , MS.quiz_yn
+			                 , MS.menu_yn
+			                 , (SELECT usernm FROM tls_member WHERE userid = MS.rid) AS RID
+			                 , MS.RDATETIME
+			                 , (SELECT usernm FROM tls_member WHERE userid = MS.uid) AS UID
+			                 , MS.UDATETIME
+                             , MS.yyyy
+                             , MS.cpno
+                             , MS.userid
+                             , TM.login_id
+                             , TM.login_pwd
+	                     FROM tls_member_study AS MS
+                    LEFT JOIN tls_member AS TM
+                           ON MS.userid = TM.userid
+                    LEFT JOIN tls_class AS TC
+	                       ON MS.cpno = TC.cpno and MS.clno = TC.clno
+	                LEFT JOIN tls_study AS TS
+	                       ON MS.sdno = TS.sdno
+		                WHERE 1=1
+                    ";       
+                    if (!string.IsNullOrEmpty(ClassStudentCPNO))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND MS.cpno = '" + ClassStudentCPNO + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(toolStripTextBoxClassNM2.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                            AND TC.clnm LIKE '%" + toolStripTextBoxClassNM2.Text + "%' ";
+                    }
+                    if (!string.IsNullOrEmpty(toolStripTextBoxStudentNM2.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                            AND TM.usernm LIKE '%" + toolStripTextBoxStudentNM2.Text + "%' ";
+                    }
+                    if (!string.IsNullOrEmpty(toolStripTextBoxStudyNM2.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                            AND TS.sdnm LIKE '%" + toolStripTextBoxStudyNM2.Text + "%' ";
+                    }      
+                    pSqlCommand.CommandText += @"                                                 
+                        ORDER BY TC.clnm, usernm, MS.sdate DESC
                     ";
                     toolStripTextBoxClassNM2.Text = "";
                     toolStripTextBoxStudentNM2.Text = "";
@@ -547,9 +717,22 @@ namespace Dreamonesys.CallCenter.Main
 		                   AND A.cpno = '" + this._common.GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "cpno") + @"'
 		                   AND A.userid = '" + this._common.GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "userid") + @"'
 		                   AND A.sdno = '" + this._common.GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "sdno") + @"'
+                    ";
+                    if (!string.IsNullOrEmpty(toolStripTextBoxStudentBookNM.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                            AND G.view_unnm LIKE '%" + toolStripTextBoxStudentBookNM.Text + "%' ";
+                    }
+                    if (!string.IsNullOrEmpty(toolStripTextBoxStudentDataTime.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                            AND A.cdate LIKE '" + toolStripTextBoxStudentDataTime.Text + "%' ";
+                    }
+                    pSqlCommand.CommandText += @"
 	                     ORDER BY cdate, G.sort
-
-                            ";
+                    ";
+                    toolStripTextBoxStudentBookNM.Text = "";
+                    toolStripTextBoxStudentDataTime.Text = "";
                     break;
                 default:
                     break;
@@ -574,7 +757,7 @@ namespace Dreamonesys.CallCenter.Main
 
         }
 
-        public void Select(string param1 = "", string param2 = "", string param3 = "", string param4 = "", string param5 = "")
+        public void Select(string param1 = "", string param2 = "", string param3 = "", string param4 = "", string param5 = "", string param6 = "")
         {
             if (param1 != null)
             {
@@ -583,6 +766,7 @@ namespace Dreamonesys.CallCenter.Main
                 ClassEmployeeCLNO = param3;
                 ClassStudentCPNO = param4;
                 ClassStudentUID = param5;
+                ClassEmployeeUID = param6;
             }
 
             switch (StudyType)
@@ -630,10 +814,24 @@ namespace Dreamonesys.CallCenter.Main
                 SelectDataGridView(dataGridViewClassStudy, "select_class_study_all");
             }
         }
+        private void toolStripTextBoxClassTID_KeyDown(object sender, KeyEventArgs e)
+        {
+            //과정1 수업교사 차시 조회
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectDataGridView(dataGridViewClassStudy, "select_class_study_all");
+            }
+        }
         private void buttonClassStudy_Click(object sender, EventArgs e)
         {
             //과정1 수업일 기준 차시 조회
             SelectDataGridView(dataGridViewClassStudy, "select_class_study_all");
+        }
+
+        private void buttonClassStudyAll_Click(object sender, EventArgs e)
+        {
+            //과정1 수업일 전체 차시 조회
+            SelectDataGridView(dataGridViewClassStudy, "select_class_study_datatime_all");
         }
         private void dataGridViewClassStudy_DoubleClick(object sender, EventArgs e)
         {
@@ -641,6 +839,32 @@ namespace Dreamonesys.CallCenter.Main
             if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
             {
                 SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
+            }
+        }
+        private void toolStripTextBoxClassBookNM_KeyDown(object sender, KeyEventArgs e)
+        {
+            //과정1 교재구성명별 차시 리스트 조회
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
+            }
+
+        }
+
+        private void toolStripTextBoxClassDataTime_KeyDown(object sender, KeyEventArgs e)
+        {
+            //과정1 수업일 기준 차시 리스트 조회
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
+            }
+        }
+        private void toolStripTextBoxClassNM2_KeyDown(object sender, KeyEventArgs e)
+        {
+            //과정2 해당반 모든학생 차시 조회
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectDataGridView(dataGridViewStudentStudy, "select_student_study_all");
             }
         }
         private void toolStripTextBoxStudentNM2_KeyDown(object sender, KeyEventArgs e)
@@ -665,6 +889,11 @@ namespace Dreamonesys.CallCenter.Main
             //과정2 수업일 기준 차시 조회
             SelectDataGridView(dataGridViewStudentStudy, "select_student_study_all");
         }
+        private void buttonStudentStudyAll_Click(object sender, EventArgs e)
+        {
+            ////과정2 수업일 전체 차시 조회
+            SelectDataGridView(dataGridViewStudentStudy, "select_student_study_datatime_all");
+        }
         private void dataGridViewStudentStudy_DoubleClick(object sender, EventArgs e)
         {
             if (dataGridViewStudentStudy.Rows.Count > 0 && dataGridViewStudentStudy.CurrentCell != null)
@@ -673,15 +902,45 @@ namespace Dreamonesys.CallCenter.Main
                 SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
             }
         }
+        private void toolStripTextBoxStudentBookNM_KeyDown(object sender, KeyEventArgs e)
+        {
+            //과정2 교재구성명별 차시 리스트 조회
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
+            }
+        }
+
+        private void toolStripTextBoxStudentDataTime_KeyDown(object sender, KeyEventArgs e)
+        {
+            //과정2 수업일 기준 차시 리스트 조회
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
+            }
+        }
         #endregion Event
 
-        
+       
 
         
 
         
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }

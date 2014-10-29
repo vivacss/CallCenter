@@ -76,71 +76,40 @@
             this.toolStripTextBoxClassNM = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTextBoxStudyNM = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBoxStudentNM = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.buttonClassStudy = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.buttonClassStudyAll = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBoxClassBookNM = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBoxClassDataTime = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel7 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTextBoxStudentNM2 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel8 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTextBoxStudyNM2 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel9 = new System.Windows.Forms.ToolStripLabel();
             this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.buttonStudentStudyAll = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel10 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox5 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBoxStudentBookNM = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel11 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox6 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBoxStudentDataTime = new System.Windows.Forms.ToolStripTextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.toolStripLabel12 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTextBoxClassNM2 = new System.Windows.Forms.ToolStripTextBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -176,6 +145,37 @@
             this.Column41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column45 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column46 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStripTextBoxClassTID = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.tabControl1.SuspendLayout();
             this.tabPageClassSchedule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -246,7 +246,7 @@
             // 
             this.groupBox1.Controls.Add(this.dataGridViewClassStudy);
             this.groupBox1.Controls.Add(this.button11);
-            this.groupBox1.Controls.Add(this.button10);
+            this.groupBox1.Controls.Add(this.buttonClassStudyAll);
             this.groupBox1.Controls.Add(this.buttonClassStudy);
             this.groupBox1.Controls.Add(this.button9);
             this.groupBox1.Controls.Add(this.dateTimePickerClassStudy);
@@ -321,9 +321,9 @@
             this.toolStripTextBoxClassNM,
             this.toolStripLabel2,
             this.toolStripTextBoxStudyNM,
-            this.toolStripLabel3,
-            this.toolStripTextBoxStudentNM,
-            this.toolStripLabel4});
+            this.toolStripLabel4,
+            this.toolStripTextBoxClassTID,
+            this.toolStripLabel3});
             this.toolStrip1.Location = new System.Drawing.Point(3, 17);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1149, 25);
@@ -433,7 +433,7 @@
             // 
             this.groupBox3.Controls.Add(this.dataGridViewStudentStudy);
             this.groupBox3.Controls.Add(this.button13);
-            this.groupBox3.Controls.Add(this.button14);
+            this.groupBox3.Controls.Add(this.buttonStudentStudyAll);
             this.groupBox3.Controls.Add(this.button15);
             this.groupBox3.Controls.Add(this.button16);
             this.groupBox3.Controls.Add(this.button17);
@@ -763,23 +763,11 @@
             this.toolStripTextBoxStudyNM.Size = new System.Drawing.Size(70, 25);
             this.toolStripTextBoxStudyNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxStudyNM_KeyDown);
             // 
-            // toolStripLabel3
-            // 
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(50, 22);
-            this.toolStripLabel3.Text = "학생명 :";
-            // 
-            // toolStripTextBoxStudentNM
-            // 
-            this.toolStripTextBoxStudentNM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBoxStudentNM.Name = "toolStripTextBoxStudentNM";
-            this.toolStripTextBoxStudentNM.Size = new System.Drawing.Size(60, 25);
-            // 
             // toolStripLabel4
             // 
             this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(50, 22);
-            this.toolStripLabel4.Text = "수업일 :";
+            this.toolStripLabel4.Size = new System.Drawing.Size(62, 22);
+            this.toolStripLabel4.Text = "수업교사 :";
             // 
             // buttonClassStudy
             // 
@@ -818,14 +806,15 @@
             this.button9.Text = "성적삭제";
             this.button9.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // buttonClassStudyAll
             // 
-            this.button10.Location = new System.Drawing.Point(634, 17);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(67, 23);
-            this.button10.TabIndex = 10;
-            this.button10.Text = "전체조회";
-            this.button10.UseVisualStyleBackColor = true;
+            this.buttonClassStudyAll.Location = new System.Drawing.Point(634, 17);
+            this.buttonClassStudyAll.Name = "buttonClassStudyAll";
+            this.buttonClassStudyAll.Size = new System.Drawing.Size(67, 23);
+            this.buttonClassStudyAll.TabIndex = 10;
+            this.buttonClassStudyAll.Text = "전체조회";
+            this.buttonClassStudyAll.UseVisualStyleBackColor = true;
+            this.buttonClassStudyAll.Click += new System.EventHandler(this.buttonClassStudyAll_Click);
             // 
             // button11
             // 
@@ -849,9 +838,9 @@
             // 
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel5,
-            this.toolStripTextBox1,
+            this.toolStripTextBoxClassBookNM,
             this.toolStripLabel6,
-            this.toolStripTextBox2});
+            this.toolStripTextBoxClassDataTime});
             this.toolStrip3.Location = new System.Drawing.Point(3, 17);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.Size = new System.Drawing.Size(1149, 25);
@@ -864,11 +853,12 @@
             this.toolStripLabel5.Size = new System.Drawing.Size(74, 22);
             this.toolStripLabel5.Text = "교재구성명 :";
             // 
-            // toolStripTextBox1
+            // toolStripTextBoxClassBookNM
             // 
-            this.toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(80, 25);
+            this.toolStripTextBoxClassBookNM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxClassBookNM.Name = "toolStripTextBoxClassBookNM";
+            this.toolStripTextBoxClassBookNM.Size = new System.Drawing.Size(80, 25);
+            this.toolStripTextBoxClassBookNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxClassBookNM_KeyDown);
             // 
             // toolStripLabel6
             // 
@@ -876,11 +866,12 @@
             this.toolStripLabel6.Size = new System.Drawing.Size(50, 22);
             this.toolStripLabel6.Text = "수업일 :";
             // 
-            // toolStripTextBox2
+            // toolStripTextBoxClassDataTime
             // 
-            this.toolStripTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBox2.Name = "toolStripTextBox2";
-            this.toolStripTextBox2.Size = new System.Drawing.Size(60, 25);
+            this.toolStripTextBoxClassDataTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxClassDataTime.Name = "toolStripTextBoxClassDataTime";
+            this.toolStripTextBoxClassDataTime.Size = new System.Drawing.Size(60, 25);
+            this.toolStripTextBoxClassDataTime.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxClassDataTime_KeyDown);
             // 
             // toolStripLabel7
             // 
@@ -923,14 +914,15 @@
             this.button13.Text = "엑셀출력";
             this.button13.UseVisualStyleBackColor = true;
             // 
-            // button14
+            // buttonStudentStudyAll
             // 
-            this.button14.Location = new System.Drawing.Point(634, 17);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(67, 23);
-            this.button14.TabIndex = 24;
-            this.button14.Text = "전체조회";
-            this.button14.UseVisualStyleBackColor = true;
+            this.buttonStudentStudyAll.Location = new System.Drawing.Point(634, 17);
+            this.buttonStudentStudyAll.Name = "buttonStudentStudyAll";
+            this.buttonStudentStudyAll.Size = new System.Drawing.Size(67, 23);
+            this.buttonStudentStudyAll.TabIndex = 24;
+            this.buttonStudentStudyAll.Text = "전체조회";
+            this.buttonStudentStudyAll.UseVisualStyleBackColor = true;
+            this.buttonStudentStudyAll.Click += new System.EventHandler(this.buttonStudentStudyAll_Click);
             // 
             // button15
             // 
@@ -963,9 +955,9 @@
             // 
             this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel10,
-            this.toolStripTextBox5,
+            this.toolStripTextBoxStudentBookNM,
             this.toolStripLabel11,
-            this.toolStripTextBox6});
+            this.toolStripTextBoxStudentDataTime});
             this.toolStrip4.Location = new System.Drawing.Point(3, 17);
             this.toolStrip4.Name = "toolStrip4";
             this.toolStrip4.Size = new System.Drawing.Size(1149, 25);
@@ -978,11 +970,12 @@
             this.toolStripLabel10.Size = new System.Drawing.Size(74, 22);
             this.toolStripLabel10.Text = "교재구성명 :";
             // 
-            // toolStripTextBox5
+            // toolStripTextBoxStudentBookNM
             // 
-            this.toolStripTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBox5.Name = "toolStripTextBox5";
-            this.toolStripTextBox5.Size = new System.Drawing.Size(80, 25);
+            this.toolStripTextBoxStudentBookNM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxStudentBookNM.Name = "toolStripTextBoxStudentBookNM";
+            this.toolStripTextBoxStudentBookNM.Size = new System.Drawing.Size(80, 25);
+            this.toolStripTextBoxStudentBookNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxStudentBookNM_KeyDown);
             // 
             // toolStripLabel11
             // 
@@ -990,11 +983,12 @@
             this.toolStripLabel11.Size = new System.Drawing.Size(50, 22);
             this.toolStripLabel11.Text = "수업일 :";
             // 
-            // toolStripTextBox6
+            // toolStripTextBoxStudentDataTime
             // 
-            this.toolStripTextBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBox6.Name = "toolStripTextBox6";
-            this.toolStripTextBox6.Size = new System.Drawing.Size(60, 25);
+            this.toolStripTextBoxStudentDataTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxStudentDataTime.Name = "toolStripTextBoxStudentDataTime";
+            this.toolStripTextBoxStudentDataTime.Size = new System.Drawing.Size(60, 25);
+            this.toolStripTextBoxStudentDataTime.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxStudentDataTime_KeyDown);
             // 
             // button4
             // 
@@ -1043,207 +1037,7 @@
             this.toolStripTextBoxClassNM2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.toolStripTextBoxClassNM2.Name = "toolStripTextBoxClassNM2";
             this.toolStripTextBoxClassNM2.Size = new System.Drawing.Size(60, 25);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "tid";
-            this.Column1.HeaderText = "수업교사";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            this.Column1.Width = 80;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "cpnm";
-            this.Column2.HeaderText = "캠퍼스";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 90;
-            // 
-            // Column25
-            // 
-            this.Column25.DataPropertyName = "term_cd";
-            this.Column25.HeaderText = "분기";
-            this.Column25.Name = "Column25";
-            this.Column25.Width = 40;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "clnm";
-            this.Column3.HeaderText = "반명";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 60;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "sdate";
-            this.Column4.HeaderText = "시작일";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 70;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "edate";
-            this.Column5.HeaderText = "종료일";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 70;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "week_day";
-            this.Column6.HeaderText = "수업요일";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 80;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "sdnm";
-            this.Column7.HeaderText = "학습명";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 150;
-            // 
-            // Column24
-            // 
-            this.Column24.DataPropertyName = "sdno";
-            this.Column24.HeaderText = "SDNO";
-            this.Column24.Name = "Column24";
-            this.Column24.Width = 60;
-            // 
-            // Column43
-            // 
-            this.Column43.DataPropertyName = "bkno";
-            this.Column43.HeaderText = "BKNO";
-            this.Column43.Name = "Column43";
-            this.Column43.Width = 60;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "j_use_yn";
-            this.Column8.HeaderText = "맞춤적용";
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 80;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "j_count";
-            this.Column9.HeaderText = "맞춤회차";
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 80;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "j_hitpoint";
-            this.Column10.HeaderText = "맞춤점수";
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 80;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "j_quiz_cnt";
-            this.Column11.HeaderText = "맞춤문항수";
-            this.Column11.Name = "Column11";
-            this.Column11.Width = 90;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "correct_yn";
-            this.Column12.HeaderText = "답지노출";
-            this.Column12.Name = "Column12";
-            this.Column12.Width = 80;
-            // 
-            // Column13
-            // 
-            this.Column13.DataPropertyName = "c_use_yn";
-            this.Column13.HeaderText = "만점적용";
-            this.Column13.Name = "Column13";
-            this.Column13.Width = 80;
-            // 
-            // Column14
-            // 
-            this.Column14.DataPropertyName = "c_common_cnt";
-            this.Column14.HeaderText = "만점공통";
-            this.Column14.Name = "Column14";
-            this.Column14.Width = 80;
-            // 
-            // Column15
-            // 
-            this.Column15.DataPropertyName = "c_each_cnt";
-            this.Column15.HeaderText = "만점개별";
-            this.Column15.Name = "Column15";
-            this.Column15.Width = 80;
-            // 
-            // Column16
-            // 
-            this.Column16.DataPropertyName = "l_quiz_cnt";
-            this.Column16.HeaderText = "클리닉문항수";
-            this.Column16.Name = "Column16";
-            // 
-            // Column17
-            // 
-            this.Column17.DataPropertyName = "concept_yn";
-            this.Column17.HeaderText = "개념보기";
-            this.Column17.Name = "Column17";
-            this.Column17.Width = 80;
-            // 
-            // Column18
-            // 
-            this.Column18.DataPropertyName = "quiz_yn";
-            this.Column18.HeaderText = "문제보기";
-            this.Column18.Name = "Column18";
-            this.Column18.Width = 80;
-            // 
-            // Column19
-            // 
-            this.Column19.DataPropertyName = "menu_yn";
-            this.Column19.HeaderText = "메뉴선택";
-            this.Column19.Name = "Column19";
-            this.Column19.Width = 80;
-            // 
-            // Column20
-            // 
-            this.Column20.DataPropertyName = "rid";
-            this.Column20.HeaderText = "등록자";
-            this.Column20.Name = "Column20";
-            this.Column20.Width = 70;
-            // 
-            // Column21
-            // 
-            this.Column21.DataPropertyName = "rdatetime";
-            this.Column21.HeaderText = "등록일자";
-            this.Column21.Name = "Column21";
-            this.Column21.Width = 120;
-            // 
-            // Column22
-            // 
-            this.Column22.DataPropertyName = "uid";
-            this.Column22.HeaderText = "수정자";
-            this.Column22.Name = "Column22";
-            this.Column22.Width = 70;
-            // 
-            // Column23
-            // 
-            this.Column23.DataPropertyName = "udatetime";
-            this.Column23.HeaderText = "수정일자";
-            this.Column23.Name = "Column23";
-            this.Column23.Width = 120;
-            // 
-            // Column26
-            // 
-            this.Column26.DataPropertyName = "yyyy";
-            this.Column26.HeaderText = "년도";
-            this.Column26.Name = "Column26";
-            this.Column26.Width = 60;
-            // 
-            // Column37
-            // 
-            this.Column37.DataPropertyName = "cpno";
-            this.Column37.HeaderText = "CPNO";
-            this.Column37.Name = "Column37";
-            // 
-            // Column38
-            // 
-            this.Column38.DataPropertyName = "clno";
-            this.Column38.HeaderText = "CLNO";
-            this.Column38.Name = "Column38";
+            this.toolStripTextBoxClassNM2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxClassNM2_KeyDown);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1489,6 +1283,222 @@
             this.Column46.Name = "Column46";
             this.Column46.Visible = false;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "tid";
+            this.Column1.HeaderText = "수업교사";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 80;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "cpnm";
+            this.Column2.HeaderText = "캠퍼스";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 90;
+            // 
+            // Column25
+            // 
+            this.Column25.DataPropertyName = "term_cd";
+            this.Column25.HeaderText = "분기";
+            this.Column25.Name = "Column25";
+            this.Column25.Width = 40;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "clnm";
+            this.Column3.HeaderText = "반명";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 60;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "sdate";
+            this.Column4.HeaderText = "시작일";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 70;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "edate";
+            this.Column5.HeaderText = "종료일";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 70;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "week_day";
+            this.Column6.HeaderText = "수업요일";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 80;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "sdnm";
+            this.Column7.HeaderText = "학습명";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 150;
+            // 
+            // Column24
+            // 
+            this.Column24.DataPropertyName = "sdno";
+            this.Column24.HeaderText = "SDNO";
+            this.Column24.Name = "Column24";
+            this.Column24.Width = 60;
+            // 
+            // Column43
+            // 
+            this.Column43.DataPropertyName = "bkno";
+            this.Column43.HeaderText = "BKNO";
+            this.Column43.Name = "Column43";
+            this.Column43.Width = 60;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "j_use_yn";
+            this.Column8.HeaderText = "맞춤적용";
+            this.Column8.Name = "Column8";
+            this.Column8.Width = 80;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "j_count";
+            this.Column9.HeaderText = "맞춤회차";
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 80;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "j_hitpoint";
+            this.Column10.HeaderText = "맞춤점수";
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 80;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "j_quiz_cnt";
+            this.Column11.HeaderText = "맞춤문항수";
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 90;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "correct_yn";
+            this.Column12.HeaderText = "답지노출";
+            this.Column12.Name = "Column12";
+            this.Column12.Width = 80;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "c_use_yn";
+            this.Column13.HeaderText = "만점적용";
+            this.Column13.Name = "Column13";
+            this.Column13.Width = 80;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "c_common_cnt";
+            this.Column14.HeaderText = "만점공통";
+            this.Column14.Name = "Column14";
+            this.Column14.Width = 80;
+            // 
+            // Column15
+            // 
+            this.Column15.DataPropertyName = "c_each_cnt";
+            this.Column15.HeaderText = "만점개별";
+            this.Column15.Name = "Column15";
+            this.Column15.Width = 80;
+            // 
+            // Column16
+            // 
+            this.Column16.DataPropertyName = "l_quiz_cnt";
+            this.Column16.HeaderText = "클리닉문항수";
+            this.Column16.Name = "Column16";
+            this.Column16.Width = 110;
+            // 
+            // Column17
+            // 
+            this.Column17.DataPropertyName = "concept_yn";
+            this.Column17.HeaderText = "개념보기";
+            this.Column17.Name = "Column17";
+            this.Column17.Width = 80;
+            // 
+            // Column18
+            // 
+            this.Column18.DataPropertyName = "quiz_yn";
+            this.Column18.HeaderText = "문제보기";
+            this.Column18.Name = "Column18";
+            this.Column18.Width = 80;
+            // 
+            // Column19
+            // 
+            this.Column19.DataPropertyName = "menu_yn";
+            this.Column19.HeaderText = "메뉴선택";
+            this.Column19.Name = "Column19";
+            this.Column19.Width = 80;
+            // 
+            // Column20
+            // 
+            this.Column20.DataPropertyName = "rid";
+            this.Column20.HeaderText = "등록자";
+            this.Column20.Name = "Column20";
+            this.Column20.Width = 70;
+            // 
+            // Column21
+            // 
+            this.Column21.DataPropertyName = "rdatetime";
+            this.Column21.HeaderText = "등록일자";
+            this.Column21.Name = "Column21";
+            this.Column21.Width = 120;
+            // 
+            // Column22
+            // 
+            this.Column22.DataPropertyName = "uid";
+            this.Column22.HeaderText = "수정자";
+            this.Column22.Name = "Column22";
+            this.Column22.Width = 70;
+            // 
+            // Column23
+            // 
+            this.Column23.DataPropertyName = "udatetime";
+            this.Column23.HeaderText = "수정일자";
+            this.Column23.Name = "Column23";
+            this.Column23.Width = 120;
+            // 
+            // Column26
+            // 
+            this.Column26.DataPropertyName = "yyyy";
+            this.Column26.HeaderText = "년도";
+            this.Column26.Name = "Column26";
+            this.Column26.Width = 60;
+            // 
+            // Column37
+            // 
+            this.Column37.DataPropertyName = "cpno";
+            this.Column37.HeaderText = "CPNO";
+            this.Column37.Name = "Column37";
+            this.Column37.Width = 60;
+            // 
+            // Column38
+            // 
+            this.Column38.DataPropertyName = "clno";
+            this.Column38.HeaderText = "CLNO";
+            this.Column38.Name = "Column38";
+            this.Column38.Width = 60;
+            // 
+            // toolStripTextBoxClassTID
+            // 
+            this.toolStripTextBoxClassTID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxClassTID.Name = "toolStripTextBoxClassTID";
+            this.toolStripTextBoxClassTID.Size = new System.Drawing.Size(50, 25);
+            this.toolStripTextBoxClassTID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxClassTID_KeyDown);
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(50, 22);
+            this.toolStripLabel3.Text = "수업일 :";
+            // 
             // UserControlStudy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1584,23 +1594,21 @@
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxClassNM;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxStudyNM;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxStudentNM;
         private System.Windows.Forms.ToolStripLabel toolStripLabel4;
         private System.Windows.Forms.Button buttonClassStudy;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button buttonClassStudyAll;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.ToolStrip toolStrip3;
         private System.Windows.Forms.ToolStripLabel toolStripLabel5;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxClassBookNM;
         private System.Windows.Forms.ToolStripLabel toolStripLabel6;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxClassDataTime;
         private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button buttonStudentStudyAll;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button17;
@@ -1615,40 +1623,11 @@
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.ToolStrip toolStrip4;
         private System.Windows.Forms.ToolStripLabel toolStripLabel10;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox5;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxStudentBookNM;
         private System.Windows.Forms.ToolStripLabel toolStripLabel11;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox6;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxStudentDataTime;
         private System.Windows.Forms.ToolStripLabel toolStripLabel12;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxClassNM2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column43;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column37;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column38;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -1684,6 +1663,37 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column41;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column45;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column46;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column43;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column37;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column38;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxClassTID;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
 
 
     }
