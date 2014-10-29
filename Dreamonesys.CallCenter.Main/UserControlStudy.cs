@@ -187,6 +187,7 @@ namespace Dreamonesys.CallCenter.Main
 			                 , DBO.F_U_WEEK_HAN(CS.week_day) AS WEEK_DAY
 			                 , (TS.sdnm + view_sdnm) AS SDNM
                              , CS.sdno
+                             , TS.bkno
 			                 , CS.j_use_yn
 			                 , CS.j_count
 			                 , CS.j_hitpoint
@@ -252,6 +253,7 @@ namespace Dreamonesys.CallCenter.Main
 			                 , DBO.F_U_WEEK_HAN(CS.week_day) AS WEEK_DAY
 			                 , (TS.sdnm + '-' + view_sdnm) AS SDNM
                              , CS.sdno
+                             , TS.bkno
 			                 , CS.j_use_yn
 			                 , CS.j_count
 			                 , CS.j_hitpoint
@@ -381,6 +383,7 @@ namespace Dreamonesys.CallCenter.Main
 	 		                 , DBO.F_U_WEEK_HAN(MS.week_day) AS WEEK_DAY
 			                 , (TS.sdnm + view_sdnm) AS SDNM
                              , MS.sdno
+                             , TS.bkno
 			                 , MS.use_yn
 			                 , MS.j_use_yn
 			                 , MS.j_count
@@ -403,6 +406,8 @@ namespace Dreamonesys.CallCenter.Main
                              , MS.yyyy
                              , MS.cpno
                              , MS.userid
+                             , (SELECT login_id FROM tls_member where userid = ms.userid) AS LOGIN_ID
+                             , (SELECT login_pwd FROM tls_member where userid = ms.userid) AS LOGIN_PWD
 	                     FROM tls_member_study AS MS
                     LEFT JOIN tls_class AS TC
 	                       ON MS.cpno = TC.cpno and MS.clno = TC.clno
@@ -429,6 +434,7 @@ namespace Dreamonesys.CallCenter.Main
 	 		                 , DBO.F_U_WEEK_HAN(MS.week_day) AS WEEK_DAY
 			                 , (TS.sdnm + '-' + view_sdnm) AS SDNM
                              , MS.sdno
+                             , TS.bkno
 			                 , MS.use_yn
 			                 , MS.j_use_yn
 			                 , MS.j_count
@@ -451,6 +457,8 @@ namespace Dreamonesys.CallCenter.Main
                              , MS.yyyy
                              , MS.cpno
                              , MS.userid
+                             , TM.login_id
+                             , TM.login_pwd
 	                     FROM tls_member_study AS MS
                     LEFT JOIN tls_member AS TM
                            ON MS.userid = TM.userid
@@ -592,6 +600,19 @@ namespace Dreamonesys.CallCenter.Main
                     break;
             }
         }
+        private void dataGridViewStudentStudy_MouseClick(object sender, MouseEventArgs e)
+        {
+            //과정2 학생 u2m학습창 및 마이페이지 로그인
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentMouseOverRow = ((DataGridView)sender).HitTest(e.X, e.Y).RowIndex;
+                if (currentMouseOverRow >= 0)
+                {
+                    ((DataGridView)sender).CurrentCell = ((DataGridView)sender)[0, currentMouseOverRow];
+                    this._common.RunLogin(((DataGridView)sender), new Point(e.X, e.Y));
+                }
+            }
+        }
         private void toolStripTextBoxClassNM_KeyDown(object sender, KeyEventArgs e)
         {
             //과정1 반별 차시 조회
@@ -614,7 +635,7 @@ namespace Dreamonesys.CallCenter.Main
             //과정1 수업일 기준 차시 조회
             SelectDataGridView(dataGridViewClassStudy, "select_class_study_all");
         }
-        private void dataGridViewClassStudy_Click(object sender, EventArgs e)
+        private void dataGridViewClassStudy_DoubleClick(object sender, EventArgs e)
         {
             //과정1 차시 리스트 조회
             if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
@@ -644,8 +665,7 @@ namespace Dreamonesys.CallCenter.Main
             //과정2 수업일 기준 차시 조회
             SelectDataGridView(dataGridViewStudentStudy, "select_student_study_all");
         }
-
-        private void dataGridViewStudentStudy_Click(object sender, EventArgs e)
+        private void dataGridViewStudentStudy_DoubleClick(object sender, EventArgs e)
         {
             if (dataGridViewStudentStudy.Rows.Count > 0 && dataGridViewStudentStudy.CurrentCell != null)
             {
@@ -653,8 +673,13 @@ namespace Dreamonesys.CallCenter.Main
                 SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
             }
         }
-
         #endregion Event
+
+        
+
+        
+
+        
 
         
 

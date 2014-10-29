@@ -773,6 +773,9 @@ namespace Dreamonesys.CallCenter.Main
                     pSqlCommand.CommandText = @"
                        SELECT A.userid
 	                        , C.usernm
+                            , (SELECT COUNT(userid) FROM tls_member_study 
+                                WHERE cpno = A.cpno AND userid = A.userid
+                                  AND (CONVERT(CHAR,GETDATE(),112) BETWEEN sdate AND edate)) AS STUDY							
                             , A.cpno  
                             , A.clno
                             , C.login_id
@@ -796,6 +799,9 @@ namespace Dreamonesys.CallCenter.Main
                     pSqlCommand.CommandText = @"
                        SELECT A.userid
 	                        , C.usernm
+                            , (SELECT COUNT(userid) FROM tls_member_study 
+                                WHERE cpno = A.cpno AND userid = A.userid
+                                  AND (CONVERT(CHAR,GETDATE(),112) BETWEEN sdate AND edate)) AS STUDY
                             , A.cpno  
                             , A.clno
                             , C.login_id
@@ -1024,6 +1030,35 @@ namespace Dreamonesys.CallCenter.Main
             //userControlStudy.Select(this.StudyType);
             _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID);
         }
+
+        private void dataGridViewClassStudent_MouseClick(object sender, MouseEventArgs e)
+        {
+            //메인화면 학생 u2m학습창 및 마이페이지 로그인
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentMouseOverRow = ((DataGridView)sender).HitTest(e.X, e.Y).RowIndex;
+                if (currentMouseOverRow >= 0)
+                {
+                    ((DataGridView)sender).CurrentCell = ((DataGridView)sender)[0, currentMouseOverRow];
+                    this._common.RunLogin(((DataGridView)sender), new Point(e.X, e.Y));
+                }
+            }
+        }
+
+        private void dataGridViewStudent_MouseClick(object sender, MouseEventArgs e)
+        {
+            //차시관리 학생 u2m학습창 및 마이페이지 로그인
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentMouseOverRow = ((DataGridView)sender).HitTest(e.X, e.Y).RowIndex;
+                if (currentMouseOverRow >= 0)
+                {
+                    ((DataGridView)sender).CurrentCell = ((DataGridView)sender)[0, currentMouseOverRow];
+                    this._common.RunLogin(((DataGridView)sender), new Point(e.X, e.Y));
+                }
+            }
+        }
+
 
         /// <summary>
         /// 캠퍼스 구분 콤보박스 선택 변경시 발생하는 이벤트
@@ -1345,61 +1380,44 @@ namespace Dreamonesys.CallCenter.Main
         private void dataGridViewClass_Click(object sender, EventArgs e)
         {
             
-            //차시관리 반 학생 조회, 반 차시 조회
+            //차시관리 반 학생 조회
             if (dataGridViewClass.Rows.Count > 0 && dataGridViewClass.CurrentCell != null)
             {
-                SelectDataGridView(dataGridViewStudent, "select_student");
-                //차시관리 반, 학생 차시 조회 탭으로 이동               
-                //tabControl4.SelectedTab = tabPageClassStudy;
-                //SelectDataGridView(dataGridViewClassStudy, "select_class_study");
-                //if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
-                //{
-                //    textBoxCourse.Text = GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "course_cd");
-                //    textBoxYyyy.Text = GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "yyyy");
-                //    textBoxTerm.Text = GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "term_cd");
-                //}
+                SelectDataGridView(dataGridViewStudent, "select_student");                
             }
+            
+        }
+        private void dataGridViewClass_DoubleClick(object sender, EventArgs e)
+        {
+            //차시관리 반 학생 조회, 반 차시 조회
+            
+            //차시관리 반, 학생 차시 조회 탭으로 이동               
+            //tabControl4.SelectedTab = tabPageClassStudy;
+            //SelectDataGridView(dataGridViewClassStudy, "select_class_study");
+            //if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
+            //{
+
+            //}
             this.StudyType = "C";
             this.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "cpno");
             this.ClassEmployeeCLNO = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "clno");
             _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID);
+            
         }
-        private void dataGridViewStudent_Click(object sender, EventArgs e)
+        private void dataGridViewStudent_DoubleClick(object sender, EventArgs e)
         {
             //차시관리 학생 차시 조회
-            //if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
-            //{
-            //    //차시관리 반, 학생 차시 조회 탭으로 이동
-            //    tabControl4.SelectedTab = tabPageStudentStudy;
-            //    SelectDataGridView(dataGridViewStudentStudy, "select_student_study");
-            //    if (dataGridViewStudentStudy.Rows.Count > 0 && dataGridViewStudentStudy.CurrentCell != null)
-            //    {
-            //        textBoxCourse.Text = GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "course_cd");
-            //        textBoxYyyy.Text = GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "yyyy");
-            //        textBoxTerm.Text = GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "term_cd");
-                    
-            //    }
-            //    if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
-            //    {
-            //        textBoxCampusStudy.Text = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cpnm");
-            //    }
-            //}
-        }
-
-        private void dataGridViewClassStudent_MouseClick(object sender, MouseEventArgs e)
-        {
-            //학생 u2m학습창 및 마이페이지 로그인
-            if (e.Button == MouseButtons.Right)
+            if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
             {
-                int currentMouseOverRow = ((DataGridView)sender).HitTest(e.X, e.Y).RowIndex;
-                if (currentMouseOverRow >= 0)
-                {
-                    ((DataGridView)sender).CurrentCell = ((DataGridView)sender)[0, currentMouseOverRow];
-                    this._common.RunLogin(((DataGridView)sender), new Point(e.X, e.Y));
-                }
+                this.StudyType = "S";
+                this.ClassStudentCPNO = this._common.GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cpno");
+                //this.ClassEmployeeCLNO = this._common.GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "clno");
+                this.ClassStudentUID = this._common.GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "userid");
+                _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID);
             }
         }
-
+        
+                
         private void comboBoxCampusTypeStudy_SelectionChangeCommitted(object sender, EventArgs e)
         {
             //차시관리 캠퍼스 콤보박스 데이터 생성
@@ -1451,6 +1469,14 @@ namespace Dreamonesys.CallCenter.Main
         
 
         #endregion Event
+
+        
+
+       
+
+        
+
+        
 
        
 

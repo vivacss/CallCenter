@@ -36,6 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1179, 767);
             this.Name = "FormClassStudentSchedule";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "차시 관리";
             this.Load += new System.EventHandler(this.FormClassStudentSchedule_Load);
             this.ResumeLayout(false);
