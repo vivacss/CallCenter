@@ -20,6 +20,7 @@ namespace Dreamonesys.CallCenter.Main
         public string ClassStudentCPNO { get; set; }
         public string ClassStudentUID { get; set; }
         public string ClassEmployeeUID { get; set; }
+        public string ClassSchoolCDStudy { get; set; }
 
         #endregion Property
 
@@ -47,7 +48,7 @@ namespace Dreamonesys.CallCenter.Main
             //userControl.ClassEmployeeCLNO = this.ClassEmployeeCLNO;
             this.Controls.Add(userControl);         
             userControl.Visible = true;
-            userControl.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID);
+            userControl.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID, this.ClassSchoolCDStudy);
 
         }
 

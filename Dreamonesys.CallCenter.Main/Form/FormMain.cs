@@ -35,6 +35,7 @@ namespace Dreamonesys.CallCenter.Main
         public string ClassStudentCPNO { get; set; }
         public string ClassStudentUID { get; set; }
         public string ClassEmployeeUID { get; set; }
+        public string ClassSchoolCDStudy { get; set; }
   
         #endregion Property
 
@@ -724,7 +725,8 @@ namespace Dreamonesys.CallCenter.Main
 								WHERE cpno = A.cpno AND clno = a.clno AND auth_cd = 's'
 								  AND (end_date = '' OR end_date IS NULL OR CONVERT(CHAR,GETDATE(),112) BETWEEN start_date AND end_date)) AS USER_CNT
                             , A.cpno  
-							, A.clno                           						
+							, A.clno
+                            , A.school_cd                           						
                          FROM tls_class AS A                                                                    
 				    LEFT JOIN tls_term AS B
 					       ON A.cpno = B.cpno
@@ -1029,7 +1031,7 @@ namespace Dreamonesys.CallCenter.Main
             //tabPage2.Controls.Add(userControlStudy);
             _userControlStudy.Visible = true;
             //userControlStudy.Select(this.StudyType);
-            _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID);
+            _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID, this.ClassSchoolCDStudy);
         }
 
         private void dataGridViewClassStudent_MouseClick(object sender, MouseEventArgs e)
@@ -1205,29 +1207,63 @@ namespace Dreamonesys.CallCenter.Main
         /// <history>
         /// 박석제, 2014-10-08, check_yn 컬럼 클릭시 조회안되도록 수정
         /// </history>
+        private void dataGridViewCampus_DoubleClick(object sender, EventArgs e)
+        {
+            //캠퍼스 더블클릭 시 반(과정1) 차시폼 조회 이동            
+            if (dataGridViewCampus.CurrentCell != null)
+            {
+                FormClassStudentSchedule classStudentSchedule = new FormClassStudentSchedule();
+                classStudentSchedule.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpno");
+                //classStudentSchedule.ClassStudentCPNO = this._common.GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpno");
+                //classStudentSchedule.StudyType = "S";
+                classStudentSchedule.StudyType = "C";
+                classStudentSchedule.Show();
+            }
+        }
+
+        private void dataGridViewEmployee_DoubleClick(object sender, EventArgs e)
+        {
+            //수업교사 더블클릭 시 반(과정1) 차시폼 조회 이동
+            if (dataGridViewEmployee.CurrentCell != null)
+            {
+                FormClassStudentSchedule classStudentSchedule = new FormClassStudentSchedule();
+                classStudentSchedule.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "cpno");
+                //classStudentSchedule.ClassStudentCPNO = this._common.GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "cpno");
+                classStudentSchedule.ClassEmployeeUID = this._common.GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "userid");
+                //classStudentSchedule.StudyType = "S";
+                classStudentSchedule.StudyType = "C";
+                classStudentSchedule.Show();
+            }
+        }
+
         private void dataGridViewClassEmployee_DoubleClick(object sender, EventArgs e)
         {
             //반 차시 조회 폼 이동
-            if (dataGridViewClassEmployee.Columns[dataGridViewClassEmployee.CurrentCell.ColumnIndex].DataPropertyName != "check_yn")
+            if (dataGridViewClassEmployee.Rows.Count > 0 && dataGridViewClassEmployee.CurrentCell != null)
             {
-                FormClassStudentSchedule classStudentSchedule = new FormClassStudentSchedule();
-                classStudentSchedule.StudyType = "C";
-                classStudentSchedule.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "cpno");
-                classStudentSchedule.ClassEmployeeCLNO = this._common.GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "clno");
-                classStudentSchedule.Show();
-
-                               
-            }            
+                if (dataGridViewClassEmployee.Columns[dataGridViewClassEmployee.CurrentCell.ColumnIndex].DataPropertyName != "check_yn")
+                {
+                    FormClassStudentSchedule classStudentSchedule = new FormClassStudentSchedule();
+                    classStudentSchedule.StudyType = "C";
+                    classStudentSchedule.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "cpno");
+                    classStudentSchedule.ClassEmployeeCLNO = this._common.GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "clno");
+                    classStudentSchedule.Show();
+                }
+            }                        
         }
 
         private void dataGridViewClassStudent_DoubleClick(object sender, EventArgs e)
         {
             //학생 차시 조회 폼 이동
-            FormClassStudentSchedule classStudentSchedule = new FormClassStudentSchedule();
-            classStudentSchedule.ClassStudentCPNO = this._common.GetCellValue(dataGridViewClassStudent, dataGridViewClassStudent.CurrentCell.RowIndex, "cpno");
-            classStudentSchedule.ClassStudentUID = this._common.GetCellValue(dataGridViewClassStudent, dataGridViewClassStudent.CurrentCell.RowIndex, "userid");
-            classStudentSchedule.StudyType = "S";
-            classStudentSchedule.Show();
+            if (dataGridViewClassEmployee.Rows.Count > 0 && dataGridViewClassEmployee.CurrentCell != null)
+            {
+                FormClassStudentSchedule classStudentSchedule = new FormClassStudentSchedule();
+                classStudentSchedule.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClassStudent, dataGridViewClassStudent.CurrentCell.RowIndex, "cpno");
+                classStudentSchedule.ClassStudentUID = this._common.GetCellValue(dataGridViewClassStudent, dataGridViewClassStudent.CurrentCell.RowIndex, "userid");
+                classStudentSchedule.StudyType = "S";
+                classStudentSchedule.Show();
+            }
+            
         }
 
         private void toolStripButtonClassStudy_Click(object sender, EventArgs e)
@@ -1371,7 +1407,61 @@ namespace Dreamonesys.CallCenter.Main
 
             SelectDataGridView(dataGridViewPointManager, "insert_point_manager");
         }
+        private void comboBoxCampusTypeStudy_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //차시관리 캠퍼스 콤보박스 데이터 생성
+            string campusTypeStudy = comboBoxCampusTypeStudy.SelectedValue.ToString();
 
+            _common.GetComboList(comboBoxCampusStudy, "캠퍼스", true, new string[] { campusTypeStudy });
+        }
+
+        private void comboBoxCampusStudy_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //차시관리 캠퍼스 콤보박스 데이터 조회
+            SelectDataGridView(dataGridViewClass, "select_class");            
+            this.StudyType = "N";
+            this.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "cpno");
+            _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID, this.ClassSchoolCDStudy);
+        }
+
+        private void comboBoxYyyyStudy_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //차시관리 분기 콤보박스 데이터 생성 (차시관리 년도)
+            string campusStudy = comboBoxCampusStudy.SelectedValue.ToString();
+            string yyyyStudy = comboBoxYyyyStudy.SelectedValue.ToString();
+            _common.GetComboList(comboBoxTermCDStudy, "분기", true, new string[] { campusStudy, yyyyStudy });
+        }
+
+        private void comboBoxSchoolCDStudy_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //차시관리 분기 콤보박스 데이터 생성 (차시관리 학교급)
+            string campusStudy = comboBoxCampusStudy.SelectedValue.ToString();
+            string yyyyStudy = comboBoxYyyyStudy.SelectedValue.ToString();
+            string schoolCDStudy = comboBoxSchoolCDStudy.SelectedValue.ToString();
+            _common.GetComboList(comboBoxTermCDStudy, "분기", true, new string[] { campusStudy, yyyyStudy, schoolCDStudy });
+            SelectDataGridView(dataGridViewClass, "select_class");
+            this.StudyType = "N"; 
+            this.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "cpno");
+            this.ClassSchoolCDStudy = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "school_cd");
+            _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID, this.ClassSchoolCDStudy);
+        }
+
+        private void textBoxClassStudy_KeyDown(object sender, KeyEventArgs e)
+        {
+            //차시관리 특정 캠퍼스 조회
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectDataGridView(dataGridViewClass, "select_class");
+            }
+        }
+        private void textBoxStudentStudy_KeyDown(object sender, KeyEventArgs e)
+        {
+            //차시관리 특정 학생 조회
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectDataGridView(dataGridViewStudent, "select_student_all");
+            }
+        }
         private void buttonSelectStudy_Click(object sender, EventArgs e)
         {
             //차시관리 반 목록 조회            
@@ -1390,19 +1480,14 @@ namespace Dreamonesys.CallCenter.Main
         }
         private void dataGridViewClass_DoubleClick(object sender, EventArgs e)
         {
-            //차시관리 반 차시 조회            
-            
-            //tabControl4.SelectedTab = tabPageClassStudy;
-            //SelectDataGridView(dataGridViewClassStudy, "select_class_study");
-            //if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
-            //{
-
-            //}
-            this.StudyType = "C";
-            this.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "cpno");
-            this.ClassEmployeeCLNO = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "clno");
-            _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID);
-            
+            //차시관리 반 차시 조회
+            if (dataGridViewClass.Rows.Count > 0 && dataGridViewClass.CurrentCell != null)
+            {
+                this.StudyType = "C";
+                this.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "cpno");
+                this.ClassEmployeeCLNO = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "clno");
+                _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID, this.ClassSchoolCDStudy);
+            }            
         }
         private void dataGridViewStudent_DoubleClick(object sender, EventArgs e)
         {
@@ -1413,89 +1498,17 @@ namespace Dreamonesys.CallCenter.Main
                 this.ClassStudentCPNO = this._common.GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cpno");
                 //this.ClassEmployeeCLNO = this._common.GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "clno");
                 this.ClassStudentUID = this._common.GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "userid");
-                _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID);
+                _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID, this.ClassSchoolCDStudy);
             }
         }
         
                 
-        private void comboBoxCampusTypeStudy_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            //차시관리 캠퍼스 콤보박스 데이터 생성
-            string campusTypeStudy = comboBoxCampusTypeStudy.SelectedValue.ToString();
-
-            _common.GetComboList(comboBoxCampusStudy, "캠퍼스", true, new string[] { campusTypeStudy });            
-        }
-
-        private void comboBoxCampusStudy_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            //차시관리 캠퍼스 콤보박스 데이터 데이터 조회
-            SelectDataGridView(dataGridViewClass, "select_class");
-        }
-
-        private void comboBoxYyyyStudy_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            //차시관리 분기 콤보박스 데이터 생성
-            string campusStudy = comboBoxCampusStudy.SelectedValue.ToString();
-            string yyyyStudy = comboBoxYyyyStudy.SelectedValue.ToString();
-            _common.GetComboList(comboBoxTermCDStudy, "분기", true, new string[] { campusStudy, yyyyStudy });
-        }
-
-        private void comboBoxSchoolCDStudy_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            //차시관리 분기 콤보박스 데이터 생성
-            string campusStudy = comboBoxCampusStudy.SelectedValue.ToString();
-            string yyyyStudy = comboBoxYyyyStudy.SelectedValue.ToString();
-            string schoolCDStudy = comboBoxSchoolCDStudy.SelectedValue.ToString();
-            _common.GetComboList(comboBoxTermCDStudy, "분기", true, new string[] { campusStudy, yyyyStudy, schoolCDStudy });
-            SelectDataGridView(dataGridViewClass, "select_class");
-        }
-               
-        private void textBoxClassStudy_KeyDown(object sender, KeyEventArgs e)
-        {
-            //차시관리 특정 캠퍼스 조회
-            if (e.KeyCode == Keys.Enter)
-            {
-                SelectDataGridView(dataGridViewClass, "select_class");
-            }
-        }
-        private void textBoxStudentStudy_KeyDown(object sender, KeyEventArgs e)
-        {
-            //차시관리 특정 학생 조회
-            if (e.KeyCode == Keys.Enter)
-            {
-                SelectDataGridView(dataGridViewStudent, "select_student_all");
-            }
-        }
+       
         
 
         #endregion Event
 
-        private void dataGridViewCampus_DoubleClick(object sender, EventArgs e)
-        {
-            //캠퍼스 더블클릭 시 반(과정1) 차시폼 조회 이동            
-            if (dataGridViewCampus.CurrentCell != null)
-            {
-                FormClassStudentSchedule classStudentSchedule = new FormClassStudentSchedule();
-                classStudentSchedule.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpno");
-                classStudentSchedule.ClassStudentCPNO = this._common.GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpno");                
-                //classStudentSchedule.StudyType = "S";
-                classStudentSchedule.StudyType = "C";
-                classStudentSchedule.Show();
-            }
-        }
-
-        private void dataGridViewEmployee_DoubleClick(object sender, EventArgs e)
-        {
-            //수업교사 더블클릭 시 반(과정1) 차시폼 조회 이동
-                FormClassStudentSchedule classStudentSchedule = new FormClassStudentSchedule();
-                classStudentSchedule.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "cpno");
-                classStudentSchedule.ClassStudentCPNO = this._common.GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "cpno");
-                classStudentSchedule.ClassEmployeeUID = this._common.GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "userid");            
-                //classStudentSchedule.StudyType = "S";
-                classStudentSchedule.StudyType = "C";
-                classStudentSchedule.Show();
-
-        }
+       
 
         
 
