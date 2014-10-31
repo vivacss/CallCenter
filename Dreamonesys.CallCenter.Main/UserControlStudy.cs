@@ -301,7 +301,7 @@ namespace Dreamonesys.CallCenter.Main
                     if (!string.IsNullOrEmpty(ClassSchoolCDStudy))
                     {
                         pSqlCommand.CommandText += @"
-                         AND  = TC.school_cd '" + ClassSchoolCDStudy + "' ";
+                         AND TC.school_cd = '" + ClassSchoolCDStudy + "' ";
                     }
 
 //                    if (!string.IsNullOrEmpty(businessCD))
@@ -338,6 +338,7 @@ namespace Dreamonesys.CallCenter.Main
                     toolStripTextBoxClassTID.Text = "";
                     toolStripTextBoxClassBookNM.Text = "";
                     toolStripTextBoxClassDataTime.Text = "";
+                    
                     break;
                 case "select_class_study_datatime_all":
 
@@ -372,6 +373,7 @@ namespace Dreamonesys.CallCenter.Main
                              , CS.yyyy
                              , CS.cpno
                              , CS.clno
+                             , TC.school_cd
 		                  FROM tls_class_study AS CS
                      LEFT JOIN tls_member AS TM
 							ON CS.tid = TM.userid
@@ -387,6 +389,11 @@ namespace Dreamonesys.CallCenter.Main
                     {
                         pSqlCommand.CommandText += @"
                          AND CS.cpno = '" + ClassEmployeeCPNO + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(ClassSchoolCDStudy))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND TC.school_cd = '" + ClassSchoolCDStudy + "' ";
                     }
                      if (!string.IsNullOrEmpty(toolStripTextBoxClassNM.Text))
                     {
