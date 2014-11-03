@@ -732,8 +732,8 @@ namespace Dreamonesys.CallCenter.Main
 					       ON A.cpno = B.cpno
                     LEFT JOIN tls_campus AS C
                            ON A.cpno = C.cpno
-						   WHERE A.use_yn = 'Y'						  
-                    ";						   
+						   WHERE A.use_yn = 'Y'
+                    ";
                     if (!string.IsNullOrEmpty(businessCDStudy))
                     {
                         pSqlCommand.CommandText += @"
@@ -1412,16 +1412,16 @@ namespace Dreamonesys.CallCenter.Main
             //차시관리 캠퍼스 콤보박스 데이터 생성
             string campusTypeStudy = comboBoxCampusTypeStudy.SelectedValue.ToString();
 
-            _common.GetComboList(comboBoxCampusStudy, "캠퍼스", true, new string[] { campusTypeStudy });
+            _common.GetComboList(comboBoxCampusStudy, "캠퍼스", true, new string[] { campusTypeStudy });            
         }
 
         private void comboBoxCampusStudy_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            //차시관리 캠퍼스 콤보박스 데이터 조회
+            //차시관리 캠퍼스 콤보박스 데이터 조회            
             SelectDataGridView(dataGridViewClass, "select_class");            
-            this.StudyType = "N";
-            this.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "cpno");
-            _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID, this.ClassSchoolCDStudy);
+            this.StudyType = "N";            
+            this.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "cpno");            
+            _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID, this.ClassSchoolCDStudy);                        
         }
 
         private void comboBoxYyyyStudy_SelectionChangeCommitted(object sender, EventArgs e)
@@ -1440,10 +1440,10 @@ namespace Dreamonesys.CallCenter.Main
             string schoolCDStudy = comboBoxSchoolCDStudy.SelectedValue.ToString();
             _common.GetComboList(comboBoxTermCDStudy, "분기", true, new string[] { campusStudy, yyyyStudy, schoolCDStudy });
             SelectDataGridView(dataGridViewClass, "select_class");
-            this.StudyType = "N"; 
-            this.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "cpno");
-            this.ClassSchoolCDStudy = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "school_cd");
-            _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID, this.ClassSchoolCDStudy);
+            //this.StudyType = "N";            
+            //this.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "cpno");
+            //this.ClassSchoolCDStudy = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "school_cd");
+            //_userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID, this.ClassSchoolCDStudy);
         }
 
         private void textBoxClassStudy_KeyDown(object sender, KeyEventArgs e)
