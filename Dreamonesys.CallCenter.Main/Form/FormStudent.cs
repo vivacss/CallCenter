@@ -36,6 +36,14 @@ namespace Dreamonesys.CallCenter.Main
 
         #region Property
 
+        public string StudyType { get; set; }
+        public string ClassEmployeeCPNO { get; set; }
+        public string ClassEmployeeCLNO { get; set; }
+        public string ClassStudentCPNO { get; set; }
+        public string ClassStudentUID { get; set; }
+        public string ClassEmployeeUID { get; set; }
+        public string ClassSchoolCDStudy { get; set; }
+
         #endregion Property
 
         #region Constructor
@@ -258,6 +266,7 @@ namespace Dreamonesys.CallCenter.Main
                             , TCU.end_date
                             , TC.wk_day
                             , TM.usernm
+                            , TC.cpno
                             , (SELECT name FROM tls_web_code WHERE cdmain = 'grade' AND cdsub = TC.grade_cd) AS GRADE_NM
                	            , (SELECT COUNT(userid) 
                                  FROM tls_class_user 
@@ -418,6 +427,35 @@ namespace Dreamonesys.CallCenter.Main
 
 
 
+        }
+
+        private void dataGridViewStudent_DoubleClick(object sender, EventArgs e)
+        {
+            //더블클릭 과정2 학생 차시 조회 폼 이동
+            if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
+            {
+                FormClassStudentSchedule classStudentSchedule = new FormClassStudentSchedule();
+                classStudentSchedule.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cpno");
+                classStudentSchedule.ClassStudentUID = this._common.GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "userid");
+                classStudentSchedule.StudyType = "S";
+                classStudentSchedule.Show();
+            }
+        }
+
+        private void dataGridViewU2mStudentClass_DoubleClick(object sender, EventArgs e)
+        {
+            //더블클릭 과정1 반 차시 조회 폼 이동
+            if (dataGridViewU2mStudentClass.Rows.Count > 0 && dataGridViewU2mStudentClass.CurrentCell != null)
+            {
+                if (dataGridViewU2mStudentClass.Columns[dataGridViewU2mStudentClass.CurrentCell.ColumnIndex].DataPropertyName != "check_yn")
+                {
+                    FormClassStudentSchedule classStudentSchedule = new FormClassStudentSchedule();
+                    classStudentSchedule.StudyType = "C";
+                    classStudentSchedule.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewU2mStudentClass, dataGridViewU2mStudentClass.CurrentCell.RowIndex, "cpno");
+                    classStudentSchedule.ClassEmployeeCLNO = this._common.GetCellValue(dataGridViewU2mStudentClass, dataGridViewU2mStudentClass.CurrentCell.RowIndex, "clno");
+                    classStudentSchedule.Show();
+                }
+            }
         }
 
        

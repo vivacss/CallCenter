@@ -904,8 +904,16 @@ namespace Dreamonesys.CallCenter.Main
                         ORDER BY MS.sdate
 		            ";
                     break;
-                
-               
+
+                case "select_test":
+
+                    //삭제 테스트
+                    pSqlCommand.CommandText = @"                       
+		                SELECT num
+	                     FROM temp_copy_t
+		            ";
+                    break;
+
                 default:
                     break;
             }
@@ -943,12 +951,12 @@ namespace Dreamonesys.CallCenter.Main
         }
 
         /// <summary>
-        /// 수업교사 반 목록을 삭제한다.
+        /// TEST 넘버를 삭제한다.
         /// </summary>
         /// <history>
         /// 박석제, 2014-10-07, 생성
         /// </history>
-        private void DeleteClassEmployee()
+        private void DeleteTest()
         {
             Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
             DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 삭제하시겠습니까?");
@@ -965,12 +973,14 @@ namespace Dreamonesys.CallCenter.Main
             try
             {
                 // 컬럼 루프
-                for (int rowCount = 0; rowCount <= dataGridViewClassEmployee.Rows.Count - 1; rowCount++)
+                for (int rowCount = 0; rowCount <= dataGridViewTest.Rows.Count - 1; rowCount++)
                 {
-                    if (GetCellValue(dataGridViewClassEmployee, rowCount, "check_yn") == "1")
+                    if (GetCellValue(dataGridViewTest, rowCount, "check_yn") == "1")
                     {
                         isFound = true;
-                        sqlCommand.CommandText += @"DELETE temp_copy_t WHERE num = " + (rowCount + 1).ToString() + @";";
+                        sqlCommand.CommandText += @"
+                            DELETE temp_copy_t 
+                             WHERE num = '" + this._common.GetCellValue(dataGridViewTest, dataGridViewTest.CurrentCell.RowIndex, "num") + @"' " + (rowCount + 1).ToString() + @";";
                         Console.WriteLine(sqlCommand.CommandText);
                     }
                 }
@@ -1379,13 +1389,7 @@ namespace Dreamonesys.CallCenter.Main
                 SelectDataGridView(dataGridViewStudentPoint, "select_student_point_all");
             }
         }        
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //반 로우 삭제
-            DeleteClassEmployee();
-        }
-
+        
         private void dataGridViewStudentPoint_Click(object sender, EventArgs e)
         {
             //학생 콩알 내역 조회
@@ -1508,43 +1512,55 @@ namespace Dreamonesys.CallCenter.Main
 
         #endregion Event
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //반 로우 삭제
+            DeleteTest();
+        }
 
-        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //삭제 테스트
+            SelectDataGridView(dataGridViewTest, "select_test");
+        }
 
-       
 
-        
 
-        
 
-       
 
-        
 
-        
 
-       
 
-        
-                
 
-        
 
-        
 
-        
 
-        
 
-       
-        
 
-        
 
-        
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
