@@ -226,7 +226,17 @@ namespace Dreamonesys.CallCenter.Main
                     if (!string.IsNullOrEmpty(textBoxUserNm.Text))
                     {
                         pSqlCommand.CommandText += @"
-                         AND A.usernm LIKE '%" + textBoxUserNm.Text + "%' ";
+                         AND (A.usernm LIKE '%" + textBoxUserNm.Text + "%' ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxUserNm.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         OR A.login_id = '" + textBoxUserNm.Text + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxUserNm.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         OR A.userid LIKE '" + textBoxUserNm.Text + "') ";
                     }                   
 
                     pSqlCommand.CommandText += @"
@@ -388,6 +398,9 @@ namespace Dreamonesys.CallCenter.Main
             {
                 //학생을 검색한다.                
                 SelectDataGridView(dataGridViewStudent, "select_Student");
+                textBoxUserid.Text = "";
+                textBoxLoginID.Text = "";
+                textBoxLoginPW.Text = "";   
             }
         }
 

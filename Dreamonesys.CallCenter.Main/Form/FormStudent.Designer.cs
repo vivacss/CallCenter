@@ -66,6 +66,16 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewU2mStudentClass = new System.Windows.Forms.DataGridView();
+            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewEduStudentClass = new System.Windows.Forms.DataGridView();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,16 +97,6 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPageSelect_Student.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -240,7 +240,7 @@
             // 
             this.textBoxUserNm.Location = new System.Drawing.Point(249, 40);
             this.textBoxUserNm.Name = "textBoxUserNm";
-            this.textBoxUserNm.Size = new System.Drawing.Size(80, 21);
+            this.textBoxUserNm.Size = new System.Drawing.Size(91, 21);
             this.textBoxUserNm.TabIndex = 2;
             this.textBoxUserNm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxUserNm_KeyDown);
             // 
@@ -489,6 +489,76 @@
             this.dataGridViewU2mStudentClass.TabIndex = 1;
             this.dataGridViewU2mStudentClass.DoubleClick += new System.EventHandler(this.dataGridViewU2mStudentClass_DoubleClick);
             // 
+            // Column25
+            // 
+            this.Column25.DataPropertyName = "class_id";
+            this.Column25.HeaderText = "Class_ID";
+            this.Column25.Name = "Column25";
+            this.Column25.Width = 60;
+            // 
+            // Column26
+            // 
+            this.Column26.DataPropertyName = "clno";
+            this.Column26.HeaderText = "CLNO";
+            this.Column26.Name = "Column26";
+            this.Column26.Width = 50;
+            // 
+            // Column27
+            // 
+            this.Column27.DataPropertyName = "clnm";
+            this.Column27.HeaderText = "CLNM";
+            this.Column27.Name = "Column27";
+            this.Column27.Width = 80;
+            // 
+            // Column28
+            // 
+            this.Column28.DataPropertyName = "start_date";
+            this.Column28.HeaderText = "S_Ddate";
+            this.Column28.Name = "Column28";
+            this.Column28.Width = 60;
+            // 
+            // Column29
+            // 
+            this.Column29.DataPropertyName = "end_date";
+            this.Column29.HeaderText = "E_date";
+            this.Column29.Name = "Column29";
+            this.Column29.Width = 60;
+            // 
+            // Column30
+            // 
+            this.Column30.DataPropertyName = "wk_day";
+            this.Column30.HeaderText = "Wk_Day";
+            this.Column30.Name = "Column30";
+            this.Column30.Width = 60;
+            // 
+            // Column31
+            // 
+            this.Column31.DataPropertyName = "usernm";
+            this.Column31.HeaderText = "반담임";
+            this.Column31.Name = "Column31";
+            this.Column31.Width = 70;
+            // 
+            // Column32
+            // 
+            this.Column32.DataPropertyName = "grade_nm";
+            this.Column32.HeaderText = "학년";
+            this.Column32.Name = "Column32";
+            this.Column32.Width = 40;
+            // 
+            // Column33
+            // 
+            this.Column33.DataPropertyName = "user_cnt";
+            this.Column33.HeaderText = "배정인원";
+            this.Column33.Name = "Column33";
+            this.Column33.Width = 80;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "cpno";
+            this.Column8.HeaderText = "CPNO";
+            this.Column8.Name = "Column8";
+            this.Column8.Visible = false;
+            // 
             // dataGridViewEduStudentClass
             // 
             this.dataGridViewEduStudentClass.AllowUserToAddRows = false;
@@ -677,76 +747,6 @@
             this.splitContainer3.Size = new System.Drawing.Size(1180, 730);
             this.splitContainer3.SplitterDistance = 239;
             this.splitContainer3.TabIndex = 0;
-            // 
-            // Column25
-            // 
-            this.Column25.DataPropertyName = "class_id";
-            this.Column25.HeaderText = "Class_ID";
-            this.Column25.Name = "Column25";
-            this.Column25.Width = 60;
-            // 
-            // Column26
-            // 
-            this.Column26.DataPropertyName = "clno";
-            this.Column26.HeaderText = "CLNO";
-            this.Column26.Name = "Column26";
-            this.Column26.Width = 50;
-            // 
-            // Column27
-            // 
-            this.Column27.DataPropertyName = "clnm";
-            this.Column27.HeaderText = "CLNM";
-            this.Column27.Name = "Column27";
-            this.Column27.Width = 80;
-            // 
-            // Column28
-            // 
-            this.Column28.DataPropertyName = "start_date";
-            this.Column28.HeaderText = "S_Ddate";
-            this.Column28.Name = "Column28";
-            this.Column28.Width = 60;
-            // 
-            // Column29
-            // 
-            this.Column29.DataPropertyName = "end_date";
-            this.Column29.HeaderText = "E_date";
-            this.Column29.Name = "Column29";
-            this.Column29.Width = 60;
-            // 
-            // Column30
-            // 
-            this.Column30.DataPropertyName = "wk_day";
-            this.Column30.HeaderText = "Wk_Day";
-            this.Column30.Name = "Column30";
-            this.Column30.Width = 60;
-            // 
-            // Column31
-            // 
-            this.Column31.DataPropertyName = "usernm";
-            this.Column31.HeaderText = "반담임";
-            this.Column31.Name = "Column31";
-            this.Column31.Width = 70;
-            // 
-            // Column32
-            // 
-            this.Column32.DataPropertyName = "grade_nm";
-            this.Column32.HeaderText = "학년";
-            this.Column32.Name = "Column32";
-            this.Column32.Width = 40;
-            // 
-            // Column33
-            // 
-            this.Column33.DataPropertyName = "user_cnt";
-            this.Column33.HeaderText = "배정인원";
-            this.Column33.Name = "Column33";
-            this.Column33.Width = 80;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "cpno";
-            this.Column8.HeaderText = "CPNO";
-            this.Column8.Name = "Column8";
-            this.Column8.Visible = false;
             // 
             // FormStudent
             // 

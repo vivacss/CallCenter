@@ -321,7 +321,7 @@ namespace Dreamonesys.CallCenter.Main
                             , (SELECT name from tls_web_code WHERE cdmain = 'auth' and cdsub = A.auth_cd) AS AUTH_CD
                             , A.userid
                             , B.cpno
-                         FROM tls_member AS A                    
+                         FROM tls_member AS A                   
                     LEFT JOIN tls_cam_member as B
                            ON A.userid = B.userid
                         WHERE A.auth_cd <> 'S'
@@ -329,7 +329,17 @@ namespace Dreamonesys.CallCenter.Main
                     if (!string.IsNullOrEmpty(textBoxUserNm.Text))
                     {
                         pSqlCommand.CommandText += @"
-                         AND A.usernm LIKE '%" + textBoxUserNm.Text + "%' ";
+                         AND (A.usernm LIKE '%" + textBoxUserNm.Text + "%' ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxUserNm.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         OR A.login_id = '" + textBoxUserNm.Text + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxUserNm.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         OR A.userid LIKE '" + textBoxUserNm.Text + "') ";
                     }
                     pSqlCommand.CommandText += @"
                         ORDER BY B.cpno, A.use_yn DESC, A.tutor_yn DESC, A.usernm
@@ -1171,6 +1181,9 @@ namespace Dreamonesys.CallCenter.Main
             {
                 //직원을 검색한다.                
                 SelectDataGridView(dataGridViewEmployee, "select_employee_all");
+                textBoxUserID.Text = "";
+                textBoxMemberID.Text = "";
+                textBoxLoginPW.Text = "";
             }
         }
 
