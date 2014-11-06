@@ -197,7 +197,9 @@ namespace Dreamonesys.CallCenter.Main
 					         , E.pcell
 					         , A.use_yn
 					         , A.point
-                             , F.db_link
+                             , D.db_link
+                             , D.cp_group_id
+                             , A.member_id
                 	    FROM tls_member AS A
                    LEFT JOIN tls_cam_member AS B
                 	      ON A.userid = B.userid
@@ -206,9 +208,7 @@ namespace Dreamonesys.CallCenter.Main
                   INNER JOIN tls_campus_group AS D
                 	      ON C.cp_group_id = D.cp_group_id
 				   LEFT JOIN tls_family AS E
-					      ON A.userid = E.userid
-                   LEFT JOIN tls_campus_group AS F
-                          ON C.cp_group_id = F.cp_group_id
+					      ON A.userid = E.userid                   
                 	   WHERE A.auth_cd = 's' 
                          AND (B.edate = '' OR B.edate IS NULL OR B.sdate <= B.edate)
                           ";

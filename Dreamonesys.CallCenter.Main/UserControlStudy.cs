@@ -839,13 +839,13 @@ namespace Dreamonesys.CallCenter.Main
                         isFound = true;                        
                         sqlCommand.CommandText += @"
                             DELETE tls_class_study 
-                             WHERE yyyy = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "yyyy") + @"'
-	                           AND term_cd = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "term_cd") + @"'
-		                       AND cpno = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "cpno") + @"'
-		                       AND clno = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "clno") + @"'
-		                       AND sdno = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "sdno") + @"'
-						       AND  STUFF(STUFF(sdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "sdate") + @"'
-						       AND  STUFF(STUFF(edate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "edate") + @"'
+                             WHERE yyyy = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "yyyy") + @"'
+	                           AND term_cd = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "term_cd") + @"'
+		                       AND cpno = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "cpno") + @"'
+		                       AND clno = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "clno") + @"'
+		                       AND sdno = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "sdno") + @"'
+						       AND  STUFF(STUFF(sdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "sdate") + @"'
+						       AND  STUFF(STUFF(edate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "edate") + @"'
                         ";
 
                         Console.WriteLine(sqlCommand.CommandText);
@@ -917,13 +917,13 @@ namespace Dreamonesys.CallCenter.Main
                         //sqlCommand.CommandText += @"DELETE temp_copy_t WHERE num = " + (rowCount + 1).ToString() + @";";
                         sqlCommand.CommandText += @"
                             DELETE tls_class_schedule 
-                             WHERE yyyy = '" + this._common.GetCellValue(dataGridViewClassSchedule, dataGridViewClassSchedule.CurrentCell.RowIndex, "yyyy") + @"'
-	                           AND term_cd = '" + this._common.GetCellValue(dataGridViewClassSchedule, dataGridViewClassSchedule.CurrentCell.RowIndex, "term_cd") + @"'
-		                       AND cpno = '" + this._common.GetCellValue(dataGridViewClassSchedule, dataGridViewClassSchedule.CurrentCell.RowIndex, "cpno") + @"'
-		                       AND clno = '" + this._common.GetCellValue(dataGridViewClassSchedule, dataGridViewClassSchedule.CurrentCell.RowIndex, "clno") + @"'
-		                       AND sdno = '" + this._common.GetCellValue(dataGridViewClassSchedule, dataGridViewClassSchedule.CurrentCell.RowIndex, "sdno") + @"'
-						       AND  STUFF(STUFF(cdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassSchedule, dataGridViewClassSchedule.CurrentCell.RowIndex, "cdate") + @"'
-						       AND CSNO = '" + this._common.GetCellValue(dataGridViewClassSchedule, dataGridViewClassSchedule.CurrentCell.RowIndex, "csno") + @"'
+                             WHERE yyyy = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "yyyy") + @"'
+	                           AND term_cd = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "term_cd") + @"'
+		                       AND cpno = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "cpno") + @"'
+		                       AND clno = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "clno") + @"'
+		                       AND sdno = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "sdno") + @"'
+						       AND  STUFF(STUFF(cdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "cdate") + @"'
+						       AND CSNO = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "csno") + @"'
                         ";
                         
                         Console.WriteLine(sqlCommand.CommandText);
@@ -962,6 +962,85 @@ namespace Dreamonesys.CallCenter.Main
                 this.Cursor = Cursors.Default;
             }
         }
+
+        /// <summary>
+        /// 과정1 차시 리스트(ClassSchedule) 수업일을 수정한다. 
+        /// </summary>
+        /// <history>
+        /// 박석제, 2014-10-07, 생성
+        /// </history>
+//        private void UpdateClassSchedule()
+//        {
+//            Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
+//            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 수정하시겠습니까?");
+//            if (result == DialogResult.No)
+//            {
+//                return;
+//            }
+
+//            SqlCommand sqlCommand = new SqlCommand();
+//            SqlResult sqlResult = new SqlResult();
+
+//            this.Cursor = Cursors.WaitCursor;
+
+//            try
+//            {
+//                // 컬럼 루프
+//                for (int rowCount = 0; rowCount <= dataGridViewClassSchedule.Rows.Count - 1; rowCount++)
+//                {
+//                    if (GetCellValue(dataGridViewClassSchedule, rowCount, "check_yn") == "1")
+//                    {
+//                        isFound = true;
+//                        //sqlCommand.CommandText += @"DELETE temp_copy_t WHERE num = " + (rowCount + 1).ToString() + @";";
+//                        sqlCommand.CommandText += @"
+//                            UPDATE tls_class_schedule SET cdate = '" + toolStripTextBoxClassDataTimeUpdate.Text + "' ";
+//                        sqlCommand.CommandText += @"
+//                             FROM tls_class_schedule
+//                             WHERE yyyy = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "yyyy") + @"'
+//	                           AND term_cd = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "term_cd") + @"'
+//		                       AND cpno = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "cpno") + @"'
+//		                       AND clno = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "clno") + @"'
+//		                       AND sdno = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "sdno") + @"'
+//						       AND  STUFF(STUFF(cdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "cdate") + @"'
+//						       AND CSNO = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "csno") + @"'
+//                        ";
+                            
+//                        Console.WriteLine(sqlCommand.CommandText);
+//                    }
+//                }
+
+//                if (isFound == true)
+//                {
+//                    // 처리할 자료가 있을 경우 쿼리실행
+//                    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+//                    if (sqlResult.Success == true)
+//                    {
+//                        // 작업 성공시
+//                        if (sqlResult.AffectedRecords > 0)
+//                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 수정하였습니다." + Environment.NewLine +
+//                                string.Format("(수정된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));
+//                        else
+//                            this._common.MessageBox(MessageBoxIcon.Information, "수정된 자료가 없습니다.");
+//                    }
+//                    else
+//                        // 작업 실패시
+//                        MessageBox.Show(sqlResult.ErrorMsg);
+//                }
+//                else
+//                    // 처리할 자료가 없을 경우
+//                    this._common.MessageBox(MessageBoxIcon.Information, "수정할 자료가 없습니다.");
+//            }
+//            catch (Exception ex)
+//            {
+//                MessageBox.Show(ex.Message);
+//            }
+//            finally
+//            {
+//                sqlCommand.Dispose();
+//                this.Cursor = Cursors.Default;
+//            }
+//        }
         #endregion Method
 
         #region Event
@@ -1104,6 +1183,7 @@ namespace Dreamonesys.CallCenter.Main
             //과정1 차시 리스트 조회
             if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
             {
+                toolStripTextBoxClassBookNM.Text = "";
                 SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
             }
         }
@@ -1112,10 +1192,7 @@ namespace Dreamonesys.CallCenter.Main
             //과정1 교재구성명별 차시 리스트 조회
             if (e.KeyCode == Keys.Enter)
             {
-                if (dataGridViewClassSchedule.Rows.Count > 0 && dataGridViewClassSchedule.CurrentCell != null)
-                {
-                    SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
-                }                
+                SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");                
             }
         }
         private void dataGridViewClassSchedule_Click(object sender, EventArgs e)
@@ -1131,10 +1208,7 @@ namespace Dreamonesys.CallCenter.Main
             //과정1 수업일 기준 차시 리스트 조회
             if (e.KeyCode == Keys.Enter)
             {
-                if (dataGridViewClassSchedule.Rows.Count > 0 && dataGridViewClassSchedule.CurrentCell != null)
-                {
-                    SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
-                }                
+                SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");               
             }
         }
         private void buttonClassStudyDelete_Click(object sender, EventArgs e)
@@ -1145,7 +1219,7 @@ namespace Dreamonesys.CallCenter.Main
         private void buttonClassScheduleDelete_Click(object sender, EventArgs e)
         {
             //과정1 차시 리스트 삭제
-            //DeleteClassSchedule();
+            DeleteClassSchedule();
         }        
         private void toolStripTextBoxClassNM2_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1229,7 +1303,13 @@ namespace Dreamonesys.CallCenter.Main
             //더블 클릭 시 과정1 차시리스트 교재구성명 조회
             toolStripTextBoxStudentBookNM.Text = this._common.GetCellValue(dataGridViewStudentSchedule, dataGridViewStudentSchedule.CurrentCell.RowIndex, "view_unnm");
             SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
-            
+
+        }
+
+        private void buttontoolStripTextBoxClassDataTimeUpdate_Click(object sender, EventArgs e)
+        {
+            //과정1 차시리스트 수업일정 수정
+            //UpdateClassSchedule();            
         }
 
 

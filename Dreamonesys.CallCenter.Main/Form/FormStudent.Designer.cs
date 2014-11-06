@@ -43,23 +43,6 @@
             this.textBoxUserNm = new System.Windows.Forms.TextBox();
             this.comboBoxCampus = new System.Windows.Forms.ComboBox();
             this.dataGridViewStudent = new System.Windows.Forms.DataGridView();
-            this.cpnm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.business_cd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cpno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cpid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.login_char = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usernm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.member_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.login_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.login_pwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grade_cd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cell = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pcell = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.use_yn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.point = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -97,6 +80,25 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.cpnm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.business_cd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cpno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cpid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.login_char = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usernm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.member_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.login_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.login_pwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grade_cd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pcell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.use_yn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.point = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPageSelect_Student.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -276,7 +278,9 @@
             this.pcell,
             this.use_yn,
             this.point,
-            this.Column1});
+            this.Column1,
+            this.Column9,
+            this.Column11});
             this.dataGridViewStudent.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridViewStudent.GridColor = System.Drawing.Color.Wheat;
             this.dataGridViewStudent.Location = new System.Drawing.Point(3, 67);
@@ -288,121 +292,6 @@
             this.dataGridViewStudent.Click += new System.EventHandler(this.dataGridViewStudent_Click);
             this.dataGridViewStudent.DoubleClick += new System.EventHandler(this.dataGridViewStudent_DoubleClick);
             this.dataGridViewStudent.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewStudent_MouseClick);
-            // 
-            // cpnm
-            // 
-            this.cpnm.DataPropertyName = "cpnm";
-            this.cpnm.HeaderText = "캠퍼스";
-            this.cpnm.Name = "cpnm";
-            // 
-            // business_cd
-            // 
-            this.business_cd.DataPropertyName = "business_cd";
-            this.business_cd.HeaderText = "구분";
-            this.business_cd.Name = "business_cd";
-            this.business_cd.Width = 40;
-            // 
-            // cpno
-            // 
-            this.cpno.DataPropertyName = "cpno";
-            this.cpno.HeaderText = "CPNO";
-            this.cpno.Name = "cpno";
-            this.cpno.Width = 50;
-            // 
-            // cpid
-            // 
-            this.cpid.DataPropertyName = "cpid";
-            this.cpid.HeaderText = "CPID";
-            this.cpid.Name = "cpid";
-            this.cpid.Width = 50;
-            // 
-            // login_char
-            // 
-            this.login_char.DataPropertyName = "login_char";
-            this.login_char.HeaderText = "ID구분";
-            this.login_char.Name = "login_char";
-            this.login_char.Width = 70;
-            // 
-            // userid
-            // 
-            this.userid.DataPropertyName = "userid";
-            this.userid.HeaderText = "UserID";
-            this.userid.Name = "userid";
-            this.userid.Width = 60;
-            // 
-            // usernm
-            // 
-            this.usernm.DataPropertyName = "usernm";
-            this.usernm.HeaderText = "학생명";
-            this.usernm.Name = "usernm";
-            this.usernm.Width = 70;
-            // 
-            // member_id
-            // 
-            this.member_id.DataPropertyName = "member_id";
-            this.member_id.HeaderText = "Student_ID";
-            this.member_id.Name = "member_id";
-            this.member_id.Width = 80;
-            // 
-            // login_id
-            // 
-            this.login_id.DataPropertyName = "login_id";
-            this.login_id.HeaderText = "Login_ID";
-            this.login_id.Name = "login_id";
-            this.login_id.Width = 80;
-            // 
-            // login_pwd
-            // 
-            this.login_pwd.DataPropertyName = "login_pwd";
-            this.login_pwd.HeaderText = "Login_PW";
-            this.login_pwd.Name = "login_pwd";
-            this.login_pwd.Width = 80;
-            // 
-            // grade_cd
-            // 
-            this.grade_cd.DataPropertyName = "grade_cd";
-            this.grade_cd.HeaderText = "학년";
-            this.grade_cd.Name = "grade_cd";
-            this.grade_cd.Width = 40;
-            // 
-            // phone
-            // 
-            this.phone.DataPropertyName = "phone";
-            this.phone.HeaderText = "전화번호";
-            this.phone.Name = "phone";
-            // 
-            // cell
-            // 
-            this.cell.DataPropertyName = "cell";
-            this.cell.HeaderText = "학생번호";
-            this.cell.Name = "cell";
-            // 
-            // pcell
-            // 
-            this.pcell.DataPropertyName = "pcell";
-            this.pcell.HeaderText = "보호자";
-            this.pcell.Name = "pcell";
-            // 
-            // use_yn
-            // 
-            this.use_yn.DataPropertyName = "use_yn";
-            this.use_yn.HeaderText = "Use_YN";
-            this.use_yn.Name = "use_yn";
-            this.use_yn.Width = 60;
-            // 
-            // point
-            // 
-            this.point.DataPropertyName = "point";
-            this.point.HeaderText = "Point";
-            this.point.Name = "point";
-            this.point.Width = 50;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "db_link";
-            this.Column1.HeaderText = "DB_Link";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
             // 
             // toolStrip1
             // 
@@ -748,6 +637,133 @@
             this.splitContainer3.SplitterDistance = 239;
             this.splitContainer3.TabIndex = 0;
             // 
+            // cpnm
+            // 
+            this.cpnm.DataPropertyName = "cpnm";
+            this.cpnm.HeaderText = "캠퍼스";
+            this.cpnm.Name = "cpnm";
+            // 
+            // business_cd
+            // 
+            this.business_cd.DataPropertyName = "business_cd";
+            this.business_cd.HeaderText = "구분";
+            this.business_cd.Name = "business_cd";
+            this.business_cd.Width = 40;
+            // 
+            // cpno
+            // 
+            this.cpno.DataPropertyName = "cpno";
+            this.cpno.HeaderText = "CPNO";
+            this.cpno.Name = "cpno";
+            this.cpno.Width = 50;
+            // 
+            // cpid
+            // 
+            this.cpid.DataPropertyName = "cpid";
+            this.cpid.HeaderText = "CPID";
+            this.cpid.Name = "cpid";
+            this.cpid.Width = 50;
+            // 
+            // login_char
+            // 
+            this.login_char.DataPropertyName = "login_char";
+            this.login_char.HeaderText = "ID구분";
+            this.login_char.Name = "login_char";
+            this.login_char.Width = 70;
+            // 
+            // userid
+            // 
+            this.userid.DataPropertyName = "userid";
+            this.userid.HeaderText = "UserID";
+            this.userid.Name = "userid";
+            this.userid.Width = 60;
+            // 
+            // usernm
+            // 
+            this.usernm.DataPropertyName = "usernm";
+            this.usernm.HeaderText = "학생명";
+            this.usernm.Name = "usernm";
+            this.usernm.Width = 70;
+            // 
+            // member_id
+            // 
+            this.member_id.DataPropertyName = "member_id";
+            this.member_id.HeaderText = "Student_ID";
+            this.member_id.Name = "member_id";
+            this.member_id.Width = 80;
+            // 
+            // login_id
+            // 
+            this.login_id.DataPropertyName = "login_id";
+            this.login_id.HeaderText = "Login_ID";
+            this.login_id.Name = "login_id";
+            this.login_id.Width = 80;
+            // 
+            // login_pwd
+            // 
+            this.login_pwd.DataPropertyName = "login_pwd";
+            this.login_pwd.HeaderText = "Login_PW";
+            this.login_pwd.Name = "login_pwd";
+            this.login_pwd.Width = 80;
+            // 
+            // grade_cd
+            // 
+            this.grade_cd.DataPropertyName = "grade_cd";
+            this.grade_cd.HeaderText = "학년";
+            this.grade_cd.Name = "grade_cd";
+            this.grade_cd.Width = 40;
+            // 
+            // phone
+            // 
+            this.phone.DataPropertyName = "phone";
+            this.phone.HeaderText = "전화번호";
+            this.phone.Name = "phone";
+            // 
+            // cell
+            // 
+            this.cell.DataPropertyName = "cell";
+            this.cell.HeaderText = "학생번호";
+            this.cell.Name = "cell";
+            // 
+            // pcell
+            // 
+            this.pcell.DataPropertyName = "pcell";
+            this.pcell.HeaderText = "보호자";
+            this.pcell.Name = "pcell";
+            // 
+            // use_yn
+            // 
+            this.use_yn.DataPropertyName = "use_yn";
+            this.use_yn.HeaderText = "Use_YN";
+            this.use_yn.Name = "use_yn";
+            this.use_yn.Width = 60;
+            // 
+            // point
+            // 
+            this.point.DataPropertyName = "point";
+            this.point.HeaderText = "Point";
+            this.point.Name = "point";
+            this.point.Width = 50;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "db_link";
+            this.Column1.HeaderText = "DB_Link";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "cp_group_id";
+            this.Column9.HeaderText = "CP_GROUP_ID";
+            this.Column9.Name = "Column9";
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "member_id";
+            this.Column11.HeaderText = "MEMBER_ID";
+            this.Column11.Name = "Column11";
+            // 
             // FormStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -818,23 +834,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cpnm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn business_cd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cpno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cpid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn login_char;
-        private System.Windows.Forms.DataGridViewTextBoxColumn userid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usernm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn member_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn login_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn login_pwd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn grade_cd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cell;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pcell;
-        private System.Windows.Forms.DataGridViewTextBoxColumn use_yn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn point;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridViewCamMember;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -856,5 +855,24 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column32;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column33;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cpnm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn business_cd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cpno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cpid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn login_char;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usernm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn member_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn login_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn login_pwd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn grade_cd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pcell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn use_yn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn point;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
     }
 }

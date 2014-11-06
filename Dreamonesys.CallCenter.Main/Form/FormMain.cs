@@ -990,7 +990,7 @@ namespace Dreamonesys.CallCenter.Main
                         isFound = true;
                         sqlCommand.CommandText += @"
                             DELETE temp_copy_t 
-                             WHERE num = '" + this._common.GetCellValue(dataGridViewTest, dataGridViewTest.CurrentCell.RowIndex, "num") + @"' " + (rowCount + 1).ToString() + @";";
+                             WHERE num = '" + this._common.GetCellValue(dataGridViewTest, rowCount, "num") + @"' ";
                         Console.WriteLine(sqlCommand.CommandText);
                     }
                 }
