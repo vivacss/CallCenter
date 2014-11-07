@@ -343,6 +343,8 @@ namespace Dreamonesys.CallCenter.Main
                     toolStripTextBoxClassTID.Text = "";
                     toolStripTextBoxClassBookNM.Text = "";
                     toolStripTextBoxClassDataTime.Text = "";
+                    this.dateTimePickerClassStudy.Value = DateTime.Now;
+                    this.dateTimePickerClassStudy2.Value = DateTime.Now;
                     
                     break;
                 case "select_class_study_datatime_all":
@@ -492,11 +494,17 @@ namespace Dreamonesys.CallCenter.Main
                         pSqlCommand.CommandText += @"
                             AND A.cdate LIKE '" + toolStripTextBoxClassDataTime.Text + "%' ";
                     }
+                    if (!string.IsNullOrEmpty(toolStripTextBoxClassDataTimeUpdate.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                            AND A.cdate = '" + toolStripTextBoxClassDataTimeUpdate.Text + "' ";
+                    }
                     pSqlCommand.CommandText += @"
 	                     ORDER BY A.cdate, G.sort
                     ";
                     toolStripTextBoxClassBookNM.Text = "";
                     toolStripTextBoxClassDataTime.Text = "";
+                    toolStripTextBoxClassDataTimeUpdate.Text = "";
                     break;
                 case "select_student_study":
 
@@ -626,6 +634,8 @@ namespace Dreamonesys.CallCenter.Main
                     toolStripTextBoxStudyNM2.Text = "";
                     toolStripTextBoxStudentBookNM.Text = "";
                     toolStripTextBoxStudentDataTime.Text = "";
+                    this.dateTimePickerStudentStudy.Value = DateTime.Now;
+                    this.dateTimePickerStudentStudy2.Value = DateTime.Now;
                     break;
 
                 case "select_student_study_datatime_all":
@@ -737,7 +747,13 @@ namespace Dreamonesys.CallCenter.Main
 							                       WHEN 'R' THEN '단말기'
 							                       WHEN 'Q' THEN '문제풀이'
 							                       WHEN 'M' THEN '동영상'
-			                   END AS study_type_2                               		                         		
+			                   END AS study_type_2
+                             , A.yyyy
+                             , A.term_cd
+                             , A.cpno
+                             , A.userid
+                             , A.sdno
+                             , A.csno                          		                         		
 		                  FROM tls_member_schedule AS A
                     INNER JOIN tls_book AS B 
 	                        ON B.bkno = A.bkno
@@ -767,11 +783,17 @@ namespace Dreamonesys.CallCenter.Main
                         pSqlCommand.CommandText += @"
                             AND A.cdate LIKE '" + toolStripTextBoxStudentDataTime.Text + "%' ";
                     }
+                    if (!string.IsNullOrEmpty(toolStripTextBoxStudentDataTimeUpdate.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                            AND A.cdate = '" + toolStripTextBoxStudentDataTimeUpdate.Text + "' ";
+                    }
                     pSqlCommand.CommandText += @"
 	                     ORDER BY cdate, G.sort
                     ";
                     toolStripTextBoxStudentBookNM.Text = "";
                     toolStripTextBoxStudentDataTime.Text = "";
+                    toolStripTextBoxStudentDataTimeUpdate.Text = "";
                     break;
                 default:
                     break;
@@ -962,85 +984,469 @@ namespace Dreamonesys.CallCenter.Main
                 this.Cursor = Cursors.Default;
             }
         }
+        /// <summary>
+        /// 과정1 차시 (ClassStudy) 수업일을 수정한다. 
+        /// </summary>
+        /// <history>
+        /// 박석제, 2014-10-07, 생성
+        /// </history>
+        private void UpdateClassStudy()
+        {
+            Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
+            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 수정하시겠습니까?");
+            if (result == DialogResult.No)
+            {
+                return;
+            }
 
+            SqlCommand sqlCommand = new SqlCommand();
+            SqlResult sqlResult = new SqlResult();
+
+            this.Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                // 컬럼 루프
+                for (int rowCount = 0; rowCount <= dataGridViewClassStudy.Rows.Count - 1; rowCount++)
+                {
+                    if (GetCellValue(dataGridViewClassStudy, rowCount, "check_yn") == "1")
+                    {
+                        isFound = true;
+                        //sqlCommand.CommandText += @"DELETE temp_copy_t WHERE num = " + (rowCount + 1).ToString() + @";";
+                        sqlCommand.CommandText += @"
+                            UPDATE tls_class_study SET sdate = REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerClassStudy.Value + @"', 112), '-', '')
+                                                     , edate = REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerClassStudy2.Value + @"', 112), '-', '')
+                             WHERE yyyy = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "yyyy") + @"'
+	                           AND term_cd = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "term_cd") + @"'
+		                       AND cpno = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "cpno") + @"'
+		                       AND clno = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "clno") + @"'
+		                       AND sdno = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "sdno") + @"'
+						       AND STUFF(STUFF(sdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "sdate") + @"'
+						       AND STUFF(STUFF(edate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "edate") + @"'
+                        ";
+
+                        Console.WriteLine(sqlCommand.CommandText);
+                    }
+                }
+
+                if (isFound == true)
+                {
+                    // 처리할 자료가 있을 경우 쿼리실행
+                    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                    if (sqlResult.Success == true)
+                    {
+                        // 작업 성공시
+                        if (sqlResult.AffectedRecords > 0)
+                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 수정하였습니다." + Environment.NewLine +
+                                string.Format("(수정된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));
+                        else
+                            this._common.MessageBox(MessageBoxIcon.Information, "수정된 자료가 없습니다.");
+                    }
+                    else
+                        // 작업 실패시
+                        MessageBox.Show(sqlResult.ErrorMsg);
+                }
+                else
+                    // 처리할 자료가 없을 경우
+                    this._common.MessageBox(MessageBoxIcon.Information, "수정할 자료가 없습니다.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCommand.Dispose();
+                this.Cursor = Cursors.Default;
+            }
+        }
         /// <summary>
         /// 과정1 차시 리스트(ClassSchedule) 수업일을 수정한다. 
         /// </summary>
         /// <history>
         /// 박석제, 2014-10-07, 생성
         /// </history>
-//        private void UpdateClassSchedule()
-//        {
-//            Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
-//            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 수정하시겠습니까?");
-//            if (result == DialogResult.No)
-//            {
-//                return;
-//            }
+        private void UpdateClassSchedule()
+        {
+            Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
+            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 수정하시겠습니까?");
+            if (result == DialogResult.No)
+            {
+                return;
+            }
 
-//            SqlCommand sqlCommand = new SqlCommand();
-//            SqlResult sqlResult = new SqlResult();
+            SqlCommand sqlCommand = new SqlCommand();
+            SqlResult sqlResult = new SqlResult();
 
-//            this.Cursor = Cursors.WaitCursor;
+            this.Cursor = Cursors.WaitCursor;
 
-//            try
-//            {
-//                // 컬럼 루프
-//                for (int rowCount = 0; rowCount <= dataGridViewClassSchedule.Rows.Count - 1; rowCount++)
-//                {
-//                    if (GetCellValue(dataGridViewClassSchedule, rowCount, "check_yn") == "1")
-//                    {
-//                        isFound = true;
-//                        //sqlCommand.CommandText += @"DELETE temp_copy_t WHERE num = " + (rowCount + 1).ToString() + @";";
-//                        sqlCommand.CommandText += @"
-//                            UPDATE tls_class_schedule SET cdate = '" + toolStripTextBoxClassDataTimeUpdate.Text + "' ";
-//                        sqlCommand.CommandText += @"
-//                             FROM tls_class_schedule
-//                             WHERE yyyy = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "yyyy") + @"'
-//	                           AND term_cd = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "term_cd") + @"'
-//		                       AND cpno = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "cpno") + @"'
-//		                       AND clno = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "clno") + @"'
-//		                       AND sdno = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "sdno") + @"'
-//						       AND  STUFF(STUFF(cdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "cdate") + @"'
-//						       AND CSNO = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "csno") + @"'
-//                        ";
-                            
-//                        Console.WriteLine(sqlCommand.CommandText);
-//                    }
-//                }
+            try
+            {
+                // 컬럼 루프
+                for (int rowCount = 0; rowCount <= dataGridViewClassSchedule.Rows.Count - 1; rowCount++)
+                {
+                    if (GetCellValue(dataGridViewClassSchedule, rowCount, "check_yn") == "1")
+                    {
+                        isFound = true;
+                        //sqlCommand.CommandText += @"DELETE temp_copy_t WHERE num = " + (rowCount + 1).ToString() + @";";
+                        sqlCommand.CommandText += @"
+                            UPDATE tls_class_schedule SET cdate = '" + toolStripTextBoxClassDataTimeUpdate.Text + @"'                                                     
+                             WHERE yyyy = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "yyyy") + @"'
+	                           AND term_cd = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "term_cd") + @"'
+		                       AND cpno = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "cpno") + @"'
+		                       AND clno = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "clno") + @"'
+		                       AND sdno = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "sdno") + @"'
+						       AND STUFF(STUFF(cdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "cdate") + @"'
+						       AND CSNO = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "csno") + @"'
+                        ";
 
-//                if (isFound == true)
-//                {
-//                    // 처리할 자료가 있을 경우 쿼리실행
-//                    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+                        Console.WriteLine(sqlCommand.CommandText);
+                    }
+                }
 
-//                    if (sqlResult.Success == true)
-//                    {
-//                        // 작업 성공시
-//                        if (sqlResult.AffectedRecords > 0)
-//                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 수정하였습니다." + Environment.NewLine +
-//                                string.Format("(수정된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));
-//                        else
-//                            this._common.MessageBox(MessageBoxIcon.Information, "수정된 자료가 없습니다.");
-//                    }
-//                    else
-//                        // 작업 실패시
-//                        MessageBox.Show(sqlResult.ErrorMsg);
-//                }
-//                else
-//                    // 처리할 자료가 없을 경우
-//                    this._common.MessageBox(MessageBoxIcon.Information, "수정할 자료가 없습니다.");
-//            }
-//            catch (Exception ex)
-//            {
-//                MessageBox.Show(ex.Message);
-//            }
-//            finally
-//            {
-//                sqlCommand.Dispose();
-//                this.Cursor = Cursors.Default;
-//            }
-//        }
+                if (isFound == true)
+                {
+                    // 처리할 자료가 있을 경우 쿼리실행
+                    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                    if (sqlResult.Success == true)
+                    {
+                        // 작업 성공시
+                        if (sqlResult.AffectedRecords > 0)
+                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 수정하였습니다." + Environment.NewLine +
+                                string.Format("(수정된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));
+                        else
+                            this._common.MessageBox(MessageBoxIcon.Information, "수정된 자료가 없습니다.");
+                    }
+                    else
+                        // 작업 실패시
+                        MessageBox.Show(sqlResult.ErrorMsg);
+                }
+                else
+                    // 처리할 자료가 없을 경우
+                    this._common.MessageBox(MessageBoxIcon.Information, "수정할 자료가 없습니다.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCommand.Dispose();
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        //////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// 과정2 차시 (StudentStudy)를 삭제한다. 
+        /// </summary>
+        /// <history>
+        /// 박석제, 2014-10-07, 생성
+        /// </history>
+        private void DeleteStudentStudy()
+        {
+            Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
+            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 삭제하시겠습니까?");
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            SqlCommand sqlCommand = new SqlCommand();
+            SqlResult sqlResult = new SqlResult();
+
+            this.Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                // 컬럼 루프
+                for (int rowCount = 0; rowCount <= dataGridViewStudentStudy.Rows.Count - 1; rowCount++)
+                {
+                    if (GetCellValue(dataGridViewStudentStudy, rowCount, "check_yn") == "1")
+                    {
+                        isFound = true;
+                        sqlCommand.CommandText += @"
+                            DELETE tls_member_study 
+                             WHERE yyyy = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "yyyy") + @"'
+	                           AND term_cd = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "term_cd") + @"'
+		                       AND cpno = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "cpno") + @"'
+		                       AND userid = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "userid") + @"'
+		                       AND sdno = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "sdno") + @"'
+						       AND STUFF(STUFF(sdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "sdate") + @"'
+						       AND STUFF(STUFF(edate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "edate") + @"'
+                        ";
+
+                        Console.WriteLine(sqlCommand.CommandText);
+                    }
+                }
+
+                if (isFound == true)
+                {
+                    // 처리할 자료가 있을 경우 쿼리실행
+                    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                    if (sqlResult.Success == true)
+                    {
+                        // 작업 성공시
+                        if (sqlResult.AffectedRecords > 0)
+                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 삭제하였습니다." + Environment.NewLine +
+                                string.Format("(삭제된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));
+                        else
+                            this._common.MessageBox(MessageBoxIcon.Information, "삭제된 자료가 없습니다.");
+                    }
+                    else
+                        // 작업 실패시
+                        MessageBox.Show(sqlResult.ErrorMsg);
+                }
+                else
+                    // 처리할 자료가 없을 경우
+                    this._common.MessageBox(MessageBoxIcon.Information, "저장할 자료가 없습니다.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCommand.Dispose();
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+
+        /// <summary>
+        /// 과정2 차시 리스트(StudentSchedule)를 삭제한다. 
+        /// </summary>
+        /// <history>
+        /// 박석제, 2014-10-07, 생성
+        /// </history>
+        private void DeleteStudentSchedule()
+        {
+            Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
+            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 삭제하시겠습니까?");
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            SqlCommand sqlCommand = new SqlCommand();
+            SqlResult sqlResult = new SqlResult();
+
+            this.Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                // 컬럼 루프
+                for (int rowCount = 0; rowCount <= dataGridViewStudentSchedule.Rows.Count - 1; rowCount++)
+                {
+                    if (GetCellValue(dataGridViewStudentSchedule, rowCount, "check_yn") == "1")
+                    {
+                        isFound = true;
+                        //sqlCommand.CommandText += @"DELETE temp_copy_t WHERE num = " + (rowCount + 1).ToString() + @";";
+                        sqlCommand.CommandText += @"
+                            DELETE tls_member_schedule 
+                             WHERE yyyy = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "yyyy") + @"'
+	                           AND term_cd = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "term_cd") + @"'
+		                       AND cpno = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "cpno") + @"'
+		                       AND userid = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "userid") + @"'
+		                       AND sdno = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "sdno") + @"'
+						       AND STUFF(STUFF(cdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "cdate") + @"'
+						       AND csno = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "csno") + @"'
+                        ";
+
+                        Console.WriteLine(sqlCommand.CommandText);
+                    }
+                }
+
+                if (isFound == true)
+                {
+                    // 처리할 자료가 있을 경우 쿼리실행
+                    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                    if (sqlResult.Success == true)
+                    {
+                        // 작업 성공시
+                        if (sqlResult.AffectedRecords > 0)
+                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 삭제하였습니다." + Environment.NewLine +
+                                string.Format("(삭제된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));
+                        else
+                            this._common.MessageBox(MessageBoxIcon.Information, "삭제된 자료가 없습니다.");
+                    }
+                    else
+                        // 작업 실패시
+                        MessageBox.Show(sqlResult.ErrorMsg);
+                }
+                else
+                    // 처리할 자료가 없을 경우
+                    this._common.MessageBox(MessageBoxIcon.Information, "저장할 자료가 없습니다.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCommand.Dispose();
+                this.Cursor = Cursors.Default;
+            }
+        }
+        /// <summary>
+        /// 과정2 차시 (StudentStudy) 수업일을 수정한다. 
+        /// </summary>
+        /// <history>
+        /// 박석제, 2014-10-07, 생성
+        /// </history>
+        private void UpdateStudentStudy()
+        {
+            Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
+            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 수정하시겠습니까?");
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            SqlCommand sqlCommand = new SqlCommand();
+            SqlResult sqlResult = new SqlResult();
+
+            this.Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                // 컬럼 루프
+                for (int rowCount = 0; rowCount <= dataGridViewStudentStudy.Rows.Count - 1; rowCount++)
+                {
+                    if (GetCellValue(dataGridViewStudentStudy, rowCount, "check_yn") == "1")
+                    {
+                        isFound = true;
+                        //sqlCommand.CommandText += @"DELETE temp_copy_t WHERE num = " + (rowCount + 1).ToString() + @";";
+                        sqlCommand.CommandText += @"
+                            UPDATE tls_member_study SET sdate = REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerStudentStudy.Value + @"', 112), '-', '')
+                                                      , edate = REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerStudentStudy2.Value + @"', 112), '-', '')
+                             WHERE yyyy = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "yyyy") + @"'
+	                           AND term_cd = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "term_cd") + @"'
+		                       AND cpno = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "cpno") + @"'
+		                       AND userid = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "userid") + @"'
+		                       AND sdno = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "sdno") + @"'
+						       AND STUFF(STUFF(sdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "sdate") + @"'
+						       AND STUFF(STUFF(edate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "edate") + @"'
+                        ";
+
+                        Console.WriteLine(sqlCommand.CommandText);
+                    }
+                }
+
+                if (isFound == true)
+                {
+                    // 처리할 자료가 있을 경우 쿼리실행
+                    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                    if (sqlResult.Success == true)
+                    {
+                        // 작업 성공시
+                        if (sqlResult.AffectedRecords > 0)
+                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 수정하였습니다." + Environment.NewLine +
+                                string.Format("(수정된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));
+                        else
+                            this._common.MessageBox(MessageBoxIcon.Information, "수정된 자료가 없습니다.");
+                    }
+                    else
+                        // 작업 실패시
+                        MessageBox.Show(sqlResult.ErrorMsg);
+                }
+                else
+                    // 처리할 자료가 없을 경우
+                    this._common.MessageBox(MessageBoxIcon.Information, "수정할 자료가 없습니다.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCommand.Dispose();
+                this.Cursor = Cursors.Default;
+            }
+        }
+        /// <summary>
+        /// 과정2 차시 리스트(StudentSchedule) 수업일을 수정한다. 
+        /// </summary>
+        /// <history>
+        /// 박석제, 2014-10-07, 생성
+        /// </history>
+        private void UpdateStudentSchedule()
+        {
+            Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
+            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 수정하시겠습니까?");
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            SqlCommand sqlCommand = new SqlCommand();
+            SqlResult sqlResult = new SqlResult();
+
+            this.Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                // 컬럼 루프
+                for (int rowCount = 0; rowCount <= dataGridViewStudentSchedule.Rows.Count - 1; rowCount++)
+                {
+                    if (GetCellValue(dataGridViewStudentSchedule, rowCount, "check_yn") == "1")
+                    {
+                        isFound = true;
+                        //sqlCommand.CommandText += @"DELETE temp_copy_t WHERE num = " + (rowCount + 1).ToString() + @";";
+                        sqlCommand.CommandText += @"
+                            UPDATE tls_member_schedule SET cdate = '" + toolStripTextBoxStudentDataTimeUpdate.Text + @"'                                                     
+                             WHERE yyyy = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "yyyy") + @"'
+	                           AND term_cd = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "term_cd") + @"'
+		                       AND cpno = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "cpno") + @"'
+		                       AND userid = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "userid") + @"'
+		                       AND sdno = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "sdno") + @"'
+						       AND STUFF(STUFF(cdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "cdate") + @"'
+						       AND CSNO = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "csno") + @"'
+                        ";
+
+                        Console.WriteLine(sqlCommand.CommandText);
+                    }
+                }
+
+                if (isFound == true)
+                {
+                    // 처리할 자료가 있을 경우 쿼리실행
+                    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                    if (sqlResult.Success == true)
+                    {
+                        // 작업 성공시
+                        if (sqlResult.AffectedRecords > 0)
+                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 수정하였습니다." + Environment.NewLine +
+                                string.Format("(수정된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));
+                        else
+                            this._common.MessageBox(MessageBoxIcon.Information, "수정된 자료가 없습니다.");
+                    }
+                    else
+                        // 작업 실패시
+                        MessageBox.Show(sqlResult.ErrorMsg);
+                }
+                else
+                    // 처리할 자료가 없을 경우
+                    this._common.MessageBox(MessageBoxIcon.Information, "수정할 자료가 없습니다.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCommand.Dispose();
+                this.Cursor = Cursors.Default;
+            }
+        }
+
         #endregion Method
 
         #region Event
@@ -1142,6 +1548,32 @@ namespace Dreamonesys.CallCenter.Main
                     }
                 }
         }
+        private void dataGridViewClassSchedule_KeyDown(object sender, KeyEventArgs e)
+        {
+            //과정1 차시 리스트 Ctrl + 1, 2, 3 체크박스 선택
+            if (e.Control && (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3))
+                _common.GridCheck((DataGridView)sender, e);
+        }
+        private void dataGridViewClassStudy_KeyDown(object sender, KeyEventArgs e)
+        {
+            //과정1 차시 Ctrl + 1, 2, 3 체크박스 선택
+            if (e.Control && (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3))
+                _common.GridCheck((DataGridView)sender, e);
+        }
+
+        private void dataGridViewStudentStudy_KeyDown(object sender, KeyEventArgs e)
+        {
+            //과정2 차시 Ctrl + 1, 2, 3 체크박스 선택
+            if (e.Control && (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3))
+                _common.GridCheck((DataGridView)sender, e);
+        }
+
+        private void dataGridViewStudentSchedule_KeyDown(object sender, KeyEventArgs e)
+        {
+            //과정2 차시 리스트 Ctrl + 1, 2, 3 체크박스 선택
+            if (e.Control && (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3))
+                _common.GridCheck((DataGridView)sender, e);
+        }
         private void toolStripTextBoxClassNM_KeyDown(object sender, KeyEventArgs e)
         {
             //과정1 반별 차시 조회
@@ -1211,16 +1643,7 @@ namespace Dreamonesys.CallCenter.Main
                 SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");               
             }
         }
-        private void buttonClassStudyDelete_Click(object sender, EventArgs e)
-        {
-            //과정1 차시 삭제
-            //DeleteClassStudy();
-        }
-        private void buttonClassScheduleDelete_Click(object sender, EventArgs e)
-        {
-            //과정1 차시 리스트 삭제
-            DeleteClassSchedule();
-        }        
+                
         private void toolStripTextBoxClassNM2_KeyDown(object sender, KeyEventArgs e)
         {
             //과정2 해당반 모든학생 차시 조회
@@ -1296,8 +1719,6 @@ namespace Dreamonesys.CallCenter.Main
         }
         #endregion Event
 
-        
-        
         private void dataGridViewStudentSchedule_DoubleClick(object sender, EventArgs e)
         {
             //더블 클릭 시 과정1 차시리스트 교재구성명 조회
@@ -1306,13 +1727,67 @@ namespace Dreamonesys.CallCenter.Main
 
         }
 
-        private void buttontoolStripTextBoxClassDataTimeUpdate_Click(object sender, EventArgs e)
+        private void buttonClassStudyDelete_Click(object sender, EventArgs e)
+        {
+            //과정1 차시 삭제
+            DeleteClassStudy();
+        }
+        private void buttonClassStudyDateUpdate_Click(object sender, EventArgs e)
+        {
+            //과정1 차시 수업일정 수정
+            UpdateClassStudy();
+            SelectDataGridView(dataGridViewClassStudy, "select_class_study_all");
+            //toolStripTextBoxClassNM.Text = "";
+        }
+        private void buttonClassScheduleDelete_Click(object sender, EventArgs e)
+        {
+            //과정1 차시 리스트 삭제
+            DeleteClassSchedule();
+            toolStripTextBoxClassBookNM.Text = "";
+            SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
+        }    
+        private void buttonClassScheduleDateUpdate_Click(object sender, EventArgs e)
         {
             //과정1 차시리스트 수업일정 수정
-            //UpdateClassSchedule();            
+            UpdateClassSchedule();            
+            toolStripTextBoxClassBookNM.Text = "";
+            SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
+            //toolStripTextBoxClassDataTimeUpdate.Text = "";
+        }
+        private void buttonStudentStudyDelete_Click(object sender, EventArgs e)
+        {
+            //과정2 차시 삭제
+            DeleteStudentStudy();
         }
 
+        private void buttonStudentStudyDateUpdate_Click(object sender, EventArgs e)
+        {
+            //과정2 차시 수업일정 수정            
+            UpdateStudentStudy();
+            SelectDataGridView(dataGridViewStudentStudy, "select_student_study_all");
+        }
 
+        private void buttonStudentScheduleDelete_Click(object sender, EventArgs e)
+        {
+            //과정2 차시리스트 삭제
+            DeleteStudentSchedule();
+            toolStripTextBoxStudentBookNM.Text = "";
+            SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
+        }
+
+        private void buttonStudentScheduleDateUpdate_Click(object sender, EventArgs e)
+        {
+            //과정2 차시리스트 수업일정 수정
+            UpdateStudentSchedule();
+            toolStripTextBoxStudentBookNM.Text = "";
+            SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
+        }
+
+       
+
+
+
+        
         
 
 

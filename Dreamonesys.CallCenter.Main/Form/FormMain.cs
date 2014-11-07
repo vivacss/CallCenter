@@ -969,7 +969,7 @@ namespace Dreamonesys.CallCenter.Main
         private void DeleteTest()
         {
             Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
-            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 삭제하시겠습니까?");
+            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 수정하시겠습니까?");
             if (result == DialogResult.No)
             {
                 return;
@@ -989,8 +989,8 @@ namespace Dreamonesys.CallCenter.Main
                     {
                         isFound = true;
                         sqlCommand.CommandText += @"
-                            DELETE temp_copy_t 
-                             WHERE num = '" + this._common.GetCellValue(dataGridViewTest, rowCount, "num") + @"' ";
+                            UPDATE temp_copy_t SET num = '" + textBoxTest.Text + @"'
+                             WHERE num = '" + this._common.GetCellValue(dataGridViewTest, rowCount, "num") + "' ";
                         Console.WriteLine(sqlCommand.CommandText);
                     }
                 }
@@ -1004,10 +1004,10 @@ namespace Dreamonesys.CallCenter.Main
                     {                        
                         // 작업 성공시
                         if (sqlResult.AffectedRecords > 0)
-                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 삭제하였습니다." + Environment.NewLine +
-                                string.Format("(삭제된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));                            
+                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 수정하였습니다." + Environment.NewLine +
+                                string.Format("(수정된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));                            
                         else
-                            this._common.MessageBox(MessageBoxIcon.Information, "삭제된 자료가 없습니다.");                        
+                            this._common.MessageBox(MessageBoxIcon.Information, "수정된 자료가 없습니다.");                        
                     }
                     else
                         // 작업 실패시
@@ -1015,7 +1015,7 @@ namespace Dreamonesys.CallCenter.Main
                 }
                 else
                     // 처리할 자료가 없을 경우
-                    this._common.MessageBox(MessageBoxIcon.Information, "저장할 자료가 없습니다.");
+                    this._common.MessageBox(MessageBoxIcon.Information, "수정할 자료가 없습니다.");
             }
             catch (Exception ex)
             {
