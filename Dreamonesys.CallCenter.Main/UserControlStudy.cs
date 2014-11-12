@@ -1536,17 +1536,15 @@ namespace Dreamonesys.CallCenter.Main
         }
         private void dataGridViewClassStudy_MouseClick(object sender, MouseEventArgs e)
         {
-            
-            
-                if (e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
+            {
+                if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
                 {
-                    if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
-                    {
-                        //과정1 텍스트 박스 반명, 학생명 표시
-                        toolStripTextBoxClassNM.Text = this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "clnm");
-                        //toolStripTextBoxClassTID.Text = this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "tid");
-                    }
+                    //과정1 텍스트 박스 반명, 학생명 표시
+                    toolStripTextBoxClassNM.Text = this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "clnm");
+                    //toolStripTextBoxClassTID.Text = this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "tid");
                 }
+            }
         }
         private void dataGridViewClassSchedule_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1643,7 +1641,33 @@ namespace Dreamonesys.CallCenter.Main
                 SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");               
             }
         }
-                
+        private void buttonClassStudyDelete_Click(object sender, EventArgs e)
+        {
+            //과정1 차시 삭제
+            DeleteClassStudy();
+        }
+        private void buttonClassStudyDateUpdate_Click(object sender, EventArgs e)
+        {
+            //과정1 차시 수업일정 수정
+            UpdateClassStudy();
+            SelectDataGridView(dataGridViewClassStudy, "select_class_study_all");
+            //toolStripTextBoxClassNM.Text = "";
+        }
+        private void buttonClassScheduleDelete_Click(object sender, EventArgs e)
+        {
+            //과정1 차시 리스트 삭제
+            DeleteClassSchedule();
+            toolStripTextBoxClassBookNM.Text = "";
+            SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
+        }
+        private void buttonClassScheduleDateUpdate_Click(object sender, EventArgs e)
+        {
+            //과정1 차시리스트 수업일정 수정
+            UpdateClassSchedule();
+            toolStripTextBoxClassBookNM.Text = "";
+            SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
+            //toolStripTextBoxClassDataTimeUpdate.Text = "";
+        }  
         private void toolStripTextBoxClassNM2_KeyDown(object sender, KeyEventArgs e)
         {
             //과정2 해당반 모든학생 차시 조회
@@ -1684,6 +1708,7 @@ namespace Dreamonesys.CallCenter.Main
             if (dataGridViewStudentStudy.Rows.Count > 0 && dataGridViewStudentStudy.CurrentCell != null)
             {
                 //과정2 차시 리스트 조회
+                toolStripTextBoxStudentBookNM.Text = "";
                 SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
             }
         }
@@ -1717,43 +1742,6 @@ namespace Dreamonesys.CallCenter.Main
                 }                
             }
         }
-        #endregion Event
-
-        private void dataGridViewStudentSchedule_DoubleClick(object sender, EventArgs e)
-        {
-            //더블 클릭 시 과정1 차시리스트 교재구성명 조회
-            toolStripTextBoxStudentBookNM.Text = this._common.GetCellValue(dataGridViewStudentSchedule, dataGridViewStudentSchedule.CurrentCell.RowIndex, "view_unnm");
-            SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
-
-        }
-
-        private void buttonClassStudyDelete_Click(object sender, EventArgs e)
-        {
-            //과정1 차시 삭제
-            DeleteClassStudy();
-        }
-        private void buttonClassStudyDateUpdate_Click(object sender, EventArgs e)
-        {
-            //과정1 차시 수업일정 수정
-            UpdateClassStudy();
-            SelectDataGridView(dataGridViewClassStudy, "select_class_study_all");
-            //toolStripTextBoxClassNM.Text = "";
-        }
-        private void buttonClassScheduleDelete_Click(object sender, EventArgs e)
-        {
-            //과정1 차시 리스트 삭제
-            DeleteClassSchedule();
-            toolStripTextBoxClassBookNM.Text = "";
-            SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
-        }    
-        private void buttonClassScheduleDateUpdate_Click(object sender, EventArgs e)
-        {
-            //과정1 차시리스트 수업일정 수정
-            UpdateClassSchedule();            
-            toolStripTextBoxClassBookNM.Text = "";
-            SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
-            //toolStripTextBoxClassDataTimeUpdate.Text = "";
-        }
         private void buttonStudentStudyDelete_Click(object sender, EventArgs e)
         {
             //과정2 차시 삭제
@@ -1782,6 +1770,18 @@ namespace Dreamonesys.CallCenter.Main
             toolStripTextBoxStudentBookNM.Text = "";
             SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
         }
+        #endregion Event
+
+        private void dataGridViewStudentSchedule_DoubleClick(object sender, EventArgs e)
+        {
+            //더블 클릭 시 과정1 차시리스트 교재구성명 조회
+            toolStripTextBoxStudentBookNM.Text = this._common.GetCellValue(dataGridViewStudentSchedule, dataGridViewStudentSchedule.CurrentCell.RowIndex, "view_unnm");
+            SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
+
+        }
+
+        
+        
 
        
 

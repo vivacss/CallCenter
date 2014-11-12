@@ -88,7 +88,8 @@ namespace Dreamonesys.CallCenter.Main
                 //콩알관리 콤보박스
                 new Common.ComboBoxList(comboBoxCampusTypePoint, "캠퍼스구분", true),
                 new Common.ComboBoxList(comboBoxCampusPoint, "캠퍼스", true) ,  
-                new Common.ComboBoxList(comboBoxSchoolCDPoint, "학교급", true),   
+                new Common.ComboBoxList(comboBoxSchoolCDPoint, "학교급", true), 
+                new Common.ComboBoxList(comboBoxPointCode, "콩알코드", true), 
                 //차시관리 콤보박스
                 new Common.ComboBoxList(comboBoxCampusTypeStudy, "캠퍼스구분", true),
                 new Common.ComboBoxList(comboBoxCampusStudy, "캠퍼스", true) ,  
@@ -226,6 +227,7 @@ namespace Dreamonesys.CallCenter.Main
             string businessCDPoint = comboBoxCampusTypePoint.SelectedValue.ToString();
             string cpnoPoint = comboBoxCampusPoint.SelectedValue.ToString();
             string schoolCDPoint = comboBoxSchoolCDPoint.SelectedValue.ToString();
+            string pointCode = comboBoxPointCode.SelectedValue.ToString();
             //차시관리
             string businessCDStudy = comboBoxCampusTypeStudy.SelectedValue.ToString();
             string cpnoStudy = comboBoxCampusStudy.SelectedValue.ToString();
@@ -385,7 +387,7 @@ namespace Dreamonesys.CallCenter.Main
 					       ON A.CLASS_TID = B.userid
 						WHERE A.cpno = " + GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "cpno") + @"
 						  AND (A.edate = '' OR A.edate IS NULL OR A.edate >= CONVERT(VARCHAR(8), GETDATE(), 112))
-                          AND B.use_yn = 'Y' ";
+                    ";
                     if (!string.IsNullOrEmpty(textBoxClassNM.Text))
                     {
                         pSqlCommand.CommandText += @"
@@ -488,6 +490,7 @@ namespace Dreamonesys.CallCenter.Main
                             , (SELECT COUNT(userid)FROM tls_class_user WHERE clno = A.clno AND cpno = A.cpno AND auth_cd = 'S'
                                   AND (end_date = '' OR end_date IS NULL OR CONVERT(CHAR,GETDATE(),112) BETWEEN start_date AND end_date)) AS CL_USER
                             , A.school_cd
+                            , A.cpno
                             , A.clno
 	                     FROM tls_class AS A
                         WHERE A.cpno = " + GetCellValue(dataGridViewCampusPoint, dataGridViewCampusPoint.CurrentCell.RowIndex, "cpno") + @"
@@ -511,13 +514,14 @@ namespace Dreamonesys.CallCenter.Main
                             , (SELECT COUNT(userid)FROM tls_class_user WHERE clno = A.clno AND cpno = A.cpno AND auth_cd = 'S'
                                   AND (end_date = '' OR end_date IS NULL OR CONVERT(CHAR,GETDATE(),112) BETWEEN start_date AND end_date)) AS CL_USER
                             , A.school_cd
+                            , A.cpno
                             , A.clno
 	                     FROM tls_class AS A
                         WHERE A.cpno = " + GetCellValue(dataGridViewCampusPoint, dataGridViewCampusPoint.CurrentCell.RowIndex, "cpno") + @"
                           AND A.use_yn = 'Y'
                           AND (A.edate = '' or A.edate = '' or A.edate >= CONVERT(VARCHAR(8), GETDATE(), 112))
-                          AND (point = 0 or point is null)
-                          AND (mpoint = 0 or mpoint is null)
+                          AND (point = 0 OR point is null OR point = "" )
+                          AND (mpoint = 0 OR mpoint is null OR mpoint = "")
                           AND (SELECT COUNT(userid)FROM tls_class_user WHERE clno = A.clno AND cpno = A.cpno AND auth_cd = 'S'
                                   AND (end_date = '' OR end_date IS NULL OR CONVERT(CHAR,GETDATE(),112) BETWEEN start_date AND end_date)) > 0 ";                    
                     if (!string.IsNullOrEmpty(schoolCDPoint))
@@ -540,6 +544,8 @@ namespace Dreamonesys.CallCenter.Main
 							                      AND pcode <> 23  ) AS ALL_POINT
                             , A.cpno                            
                             , A.userid
+                            , C.login_id
+                            , C.login_pwd
 	                     FROM tls_class_user AS A 
                     LEFT JOIN tls_class AS B 
                            ON A.clno = B.clno
@@ -583,6 +589,8 @@ namespace Dreamonesys.CallCenter.Main
 							                      AND pcode <> 23  ) AS ALL_POINT
                             , A.cpno                            
                             , A.userid
+                            , C.login_id
+                            , C.login_pwd
 	                     FROM tls_class_user AS A 
                     LEFT JOIN tls_class AS B 
                            ON A.clno = B.clno
@@ -631,12 +639,51 @@ namespace Dreamonesys.CallCenter.Main
 			                     , (SELECT usernm FROM tls_member WHERE userid = A.rid) AS RID
 			                     , A.rdatetime
 			                     , A.cpno
+                                 , A.pcode
+                                 , A.pno
 	                          FROM tls_point_user AS A
                          LEFT JOIN tls_point_code AS B
 	     	                    ON A.pcode = B.PCODE
 		                     WHERE A.userid = '" + GetCellValue(dataGridViewStudentPoint, dataGridViewStudentPoint.CurrentCell.RowIndex, "userid") + @"'
 	                         ORDER BY A.rdatetime DESC ";
+
+                    textBoxStudentPoint.Text = "";
                     break;
+
+                case "insert_student_point":
+                    //학생 콩알 내역 적립
+                    pSqlCommand.CommandText = @"
+                       		 INSERT INTO TLS_POINT_USER
+                                       ( USERID
+                                       , PCODE                                
+                                       , POINT           
+                                       , DEL_YN
+                                       , RID
+                                       , RDATETIME)
+                                 VALUES (";
+                                        if (dataGridViewStudentPoint.Rows.Count > 0 && dataGridViewStudentPoint.CurrentCell != null)
+                                        {
+                                            pSqlCommand.CommandText += @"
+                                            '" + GetCellValue(dataGridViewStudentPoint, dataGridViewStudentPoint.CurrentCell.RowIndex, "userid") + "' ";
+                                        }
+                                        if (!string.IsNullOrEmpty(pointCode))
+                                        {
+                                            pSqlCommand.CommandText += @"
+                                               , " + pointCode + " ";
+                                        }
+                                        pSqlCommand.CommandText += @" ";
+                                        if (!string.IsNullOrEmpty(textBoxStudentPoint.Text))
+                                        {
+                                            pSqlCommand.CommandText += @"
+                                               , CONVERT(INT, " + textBoxStudentPoint.Text + ") ";
+                                        }
+                                        pSqlCommand.CommandText += @"
+                                       ,'N'
+                                       , 1                                                           
+                                       ,getdate()) ";
+                                        textBoxStudentPoint.Text = "";
+                    break;
+
                 case "select_point_manager":
                     //콩알 관리자 조회
                     pSqlCommand.CommandText = @"
@@ -969,7 +1016,7 @@ namespace Dreamonesys.CallCenter.Main
         private void DeleteTest()
         {
             Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
-            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 수정하시겠습니까?");
+            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 삭제하시겠습니까?");
             if (result == DialogResult.No)
             {
                 return;
@@ -1004,10 +1051,91 @@ namespace Dreamonesys.CallCenter.Main
                     {                        
                         // 작업 성공시
                         if (sqlResult.AffectedRecords > 0)
-                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 수정하였습니다." + Environment.NewLine +
-                                string.Format("(수정된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));                            
+                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 삭제하였습니다." + Environment.NewLine +
+                                string.Format("(삭제된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));                            
                         else
-                            this._common.MessageBox(MessageBoxIcon.Information, "수정된 자료가 없습니다.");                        
+                            this._common.MessageBox(MessageBoxIcon.Information, "삭제된 자료가 없습니다.");                        
+                    }
+                    else
+                        // 작업 실패시
+                        MessageBox.Show(sqlResult.ErrorMsg);
+                }
+                else
+                    // 처리할 자료가 없을 경우
+                    this._common.MessageBox(MessageBoxIcon.Information, "삭제할 자료가 없습니다.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCommand.Dispose();
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        /// <summary>
+        /// 반콩알을 적립한다
+        /// </summary>
+        /// <history>
+        /// 박석제, 2014-10-07, 생성
+        /// </history>
+        private void UpdateClassPoint()
+        {
+            Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
+            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 수정하시겠습니까?");
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            SqlCommand sqlCommand = new SqlCommand();
+            SqlResult sqlResult = new SqlResult();
+
+            this.Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                // 컬럼 루프
+                for (int rowCount = 0; rowCount <= dataGridViewClassPoint.Rows.Count - 1; rowCount++)
+                {
+                    if (GetCellValue(dataGridViewClassPoint, rowCount, "check_yn") == "1")
+                    {
+                        isFound = true;
+                        sqlCommand.CommandText += @"
+                            UPDATE B SET point = '" + textBoxPoint.Text + @"' * USER_CNT * 20
+                                       , mpoint = '" + textBoxPoint.Text + @"' * USER_CNT * 20
+                                       , UID = 1
+				                       , UDATETIME = GETDATE()
+		                      FROM (
+			                         SELECT cpno, clno, COUNT(clno) AS USER_CNT
+				                       FROM tls_class_user  
+			                          WHERE cpno = '" + this._common.GetCellValue(dataGridViewClassPoint, rowCount, "cpno") + @"'
+			                            AND clno = '" + this._common.GetCellValue(dataGridViewClassPoint, rowCount, "clno") + @"'
+				                        AND auth_cd = 'S' 
+				                        AND (end_date = '' OR end_date IS NULL OR CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN start_date AND end_date)
+			                          GROUP BY cpno, clno
+			                         ) AS A
+		                      LEFT JOIN tls_class AS B
+		                        ON A.cpno = B.cpno AND A.clno = B.clno ";
+                        Console.WriteLine(sqlCommand.CommandText);
+                    }
+                }
+
+                if (isFound == true)
+                {
+                    // 처리할 자료가 있을 경우 쿼리실행
+                    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                    if (sqlResult.Success == true)
+                    {
+                        // 작업 성공시
+                        if (sqlResult.AffectedRecords > 0)
+                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 수정하였습니다." + Environment.NewLine +
+                                string.Format("(수정된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));
+                        else
+                            this._common.MessageBox(MessageBoxIcon.Information, "수정된 자료가 없습니다.");
                     }
                     else
                         // 작업 실패시
@@ -1027,7 +1155,147 @@ namespace Dreamonesys.CallCenter.Main
                 this.Cursor = Cursors.Default;
             }
         }
+        
+        /// <summary>
+        /// 학생 콩알내역을 삭제한다.
+        /// </summary>
+        /// <history>
+        /// 박석제, 2014-10-07, 생성
+        /// </history>
+        private void DeleteStudentPoint()
+        {
+            Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
+            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 삭제하시겠습니까?");
+            if (result == DialogResult.No)
+            {
+                return;
+            }
 
+            SqlCommand sqlCommand = new SqlCommand();
+            SqlResult sqlResult = new SqlResult();
+
+            this.Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                // 컬럼 루프
+                for (int rowCount = 0; rowCount <= dataGridViewStudentPointSave.Rows.Count - 1; rowCount++)
+                {
+                    if (GetCellValue(dataGridViewStudentPointSave, rowCount, "check_yn") == "1")
+                    {
+                        isFound = true;
+                        sqlCommand.CommandText += @"
+                            DELETE
+                              FROM tls_point_user 
+                             WHERE userid = '" + this._common.GetCellValue(dataGridViewStudentPointSave, rowCount, "userid") + @"'
+                               AND pcode = '" + this._common.GetCellValue(dataGridViewStudentPointSave, rowCount, "pcode") + @"'
+                               AND pno = '" + this._common.GetCellValue(dataGridViewStudentPointSave, rowCount, "pno") + @"' ";                            
+                        Console.WriteLine(sqlCommand.CommandText);
+                    }
+                }
+
+                if (isFound == true)
+                {
+                    // 처리할 자료가 있을 경우 쿼리실행
+                    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                    if (sqlResult.Success == true)
+                    {
+                        // 작업 성공시
+                        if (sqlResult.AffectedRecords > 0)
+                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 삭제하였습니다." + Environment.NewLine +
+                                string.Format("(삭제된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));
+                        else
+                            this._common.MessageBox(MessageBoxIcon.Information, "삭제된 자료가 없습니다.");
+                    }
+                    else
+                        // 작업 실패시
+                        MessageBox.Show(sqlResult.ErrorMsg);
+                }
+                else
+                    // 처리할 자료가 없을 경우
+                    this._common.MessageBox(MessageBoxIcon.Information, "삭제할 자료가 없습니다.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCommand.Dispose();
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        /// <summary>
+        /// 캠퍼스 콩알관리자를 삭제한다.
+        /// </summary>
+        /// <history>
+        /// 박석제, 2014-10-07, 생성
+        /// </history>
+        private void DeletePointManager()
+        {
+            Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
+            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 삭제하시겠습니까?");
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            SqlCommand sqlCommand = new SqlCommand();
+            SqlResult sqlResult = new SqlResult();
+
+            this.Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                // 컬럼 루프
+                for (int rowCount = 0; rowCount <= dataGridViewPointManager.Rows.Count - 1; rowCount++)
+                {
+                    if (GetCellValue(dataGridViewPointManager, rowCount, "check_yn") == "1")
+                    {
+                        isFound = true;
+                        sqlCommand.CommandText += @"
+                            DELETE
+                              FROM tls_point_manager 
+                             WHERE cpno = '" + this._common.GetCellValue(dataGridViewPointManager, rowCount, "cpno") + @"'
+                               AND userid = '" + this._common.GetCellValue(dataGridViewPointManager, rowCount, "userid") + @"' ";                               
+                        Console.WriteLine(sqlCommand.CommandText);
+                    }
+                }
+
+                if (isFound == true)
+                {
+                    // 처리할 자료가 있을 경우 쿼리실행
+                    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                    if (sqlResult.Success == true)
+                    {
+                        // 작업 성공시
+                        if (sqlResult.AffectedRecords > 0)
+                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 삭제하였습니다." + Environment.NewLine +
+                                string.Format("(삭제 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));
+                        else
+                            this._common.MessageBox(MessageBoxIcon.Information, "삭제된 자료가 없습니다.");
+                    }
+                    else
+                        // 작업 실패시
+                        MessageBox.Show(sqlResult.ErrorMsg);
+                }
+                else
+                    // 처리할 자료가 없을 경우
+                    this._common.MessageBox(MessageBoxIcon.Information, "삭제할 자료가 없습니다.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCommand.Dispose();
+                this.Cursor = Cursors.Default;
+            }
+        }
         #endregion Method
 
         #region Event
@@ -1082,7 +1350,49 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
+        private void dataGridViewStudentPoint_MouseClick(object sender, MouseEventArgs e)
+        {
+            //콩알관리 학생 u2m학습창 및 마이페이지 로그인
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentMouseOverRow = ((DataGridView)sender).HitTest(e.X, e.Y).RowIndex;
+                if (currentMouseOverRow >= 0)
+                {
+                    ((DataGridView)sender).CurrentCell = ((DataGridView)sender)[0, currentMouseOverRow];
+                    this._common.RunLogin(((DataGridView)sender), new Point(e.X, e.Y));
+                }
+            }
+            if (e.Button == MouseButtons.Left)
+            {
+                if (dataGridViewStudentPoint.Rows.Count > 0 && dataGridViewStudentPoint.CurrentCell != null)
+                {
+                    //학생 콩알 내역 조회
+                    if (dataGridViewStudentPoint.Rows.Count > 0 && dataGridViewStudentPoint.CurrentCell != null)
+                    {
+                        SelectDataGridView(dataGridViewStudentPointSave, "select_student_point_save");                        
+                    }
+                }
+            }
+        }
 
+        private void dataGridViewClassPoint_KeyDown(object sender, KeyEventArgs e)
+        {
+            //콩알관리 반 선택 Ctrl + 1, 2, 3 체크박스 선택
+            if (e.Control && (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3))
+                _common.GridCheck((DataGridView)sender, e);
+        }
+        private void dataGridViewStudentPointSave_KeyDown(object sender, KeyEventArgs e)
+        {
+            //콩알관리 학생 콩알내역 선택 Ctrl + 1, 2, 3 체크박스 선택
+            if (e.Control && (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3))
+                _common.GridCheck((DataGridView)sender, e);
+        }
+        private void dataGridViewPointManager_KeyDown(object sender, KeyEventArgs e)
+        {
+            //콩알관리 캠퍼스 콩알관리자 선택 Ctrl + 1, 2, 3 체크박스 선택
+            if (e.Control && (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3))
+                _common.GridCheck((DataGridView)sender, e);
+        }
         /// <summary>
         /// 캠퍼스 구분 콤보박스 선택 변경시 발생하는 이벤트
         /// </summary>
@@ -1359,6 +1669,7 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
+
         /// <summary>
         /// 캠퍼스(포인트) 목록 클릭시 발생하는 이벤트
         /// </summary>
@@ -1385,6 +1696,17 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
+        private void buttonNewClassPoint_Click(object sender, EventArgs e)
+        {
+            //신규 반 콩알 적립 (적립일수 * 학생수 * 20)
+            UpdateClassPoint();
+            textBoxPoint.Text = "";
+            if (dataGridViewClassPoint.Rows.Count > 0 && dataGridViewClassPoint.CurrentCell != null)
+            {
+                SelectDataGridView(dataGridViewClassPoint, "select_class_point");
+            }
+        }
+
         private void dataGridViewClassPoint_Click(object sender, EventArgs e)
         {
             //학생 콩알정보 조회
@@ -1400,30 +1722,44 @@ namespace Dreamonesys.CallCenter.Main
             {
                 //학생콩알정보 조회
                 SelectDataGridView(dataGridViewStudentPoint, "select_student_point_all");
+                //dataGridViewCampusPoint.Rows.Clear();
+                //dataGridViewClassPoint.Rows.Clear();
             }
-        }        
-        
-        private void dataGridViewStudentPoint_Click(object sender, EventArgs e)
+        }
+
+        private void buttonInsertStudentPoint_Click(object sender, EventArgs e)
         {
-            //학생 콩알 내역 조회
-            if (dataGridViewStudentPoint.Rows.Count > 0 && dataGridViewStudentPoint.CurrentCell != null)
-            {
-                SelectDataGridView(dataGridViewStudentPointSave, "select_student_point_save");
-            }
+            //학생 콩알 적립
+            SelectDataGridView(dataGridViewStudentPointSave, "insert_student_point");
+            SelectDataGridView(dataGridViewStudentPointSave, "select_student_point_save");
+        }
+        private void buttonDeleteStudentPoint_Click(object sender, EventArgs e)
+        {
+            //학생 콩알 내역 삭제
+            DeleteStudentPoint();
+            SelectDataGridView(dataGridViewStudentPointSave, "select_student_point_save");
         }
 
         private void buttonSelectPointManager_Click(object sender, EventArgs e)
         {
-            //콩알 관리자 조회
+            //캠퍼스 콩알 관리자 조회
             SelectDataGridView(dataGridViewPointManager, "select_point_manager");
+            textBoxPointManagerCpno.Text = "CPNO";
+            textBoxPointManagerUserid.Text = "USERID";
         }
 
         private void buttonInsertPointManager_Click(object sender, EventArgs e)
         {
-            //콩알 관리자 등록
-
+            //캠퍼스 콩알 관리자 등록
             SelectDataGridView(dataGridViewPointManager, "insert_point_manager");
         }
+        private void buttonDeletePointManager_Click(object sender, EventArgs e)
+        {
+            //캠퍼스 콩알관리자 삭제
+            DeletePointManager();
+            SelectDataGridView(dataGridViewPointManager, "select_point_manager");
+        }
+
         private void comboBoxCampusTypeStudy_SelectionChangeCommitted(object sender, EventArgs e)
         {
             //차시관리 캠퍼스 콤보박스 데이터 생성
@@ -1536,6 +1872,24 @@ namespace Dreamonesys.CallCenter.Main
             //삭제 테스트
             SelectDataGridView(dataGridViewTest, "select_test");
         }
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
 
 
 
