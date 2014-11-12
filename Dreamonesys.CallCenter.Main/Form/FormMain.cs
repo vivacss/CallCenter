@@ -520,8 +520,8 @@ namespace Dreamonesys.CallCenter.Main
                         WHERE A.cpno = " + GetCellValue(dataGridViewCampusPoint, dataGridViewCampusPoint.CurrentCell.RowIndex, "cpno") + @"
                           AND A.use_yn = 'Y'
                           AND (A.edate = '' or A.edate = '' or A.edate >= CONVERT(VARCHAR(8), GETDATE(), 112))
-                          AND (point = 0 OR point is null OR point = "" )
-                          AND (mpoint = 0 OR mpoint is null OR mpoint = "")
+                          AND (point = 0 OR point is null OR point = '' )
+                          AND (mpoint = 0 OR mpoint is null OR mpoint = '')
                           AND (SELECT COUNT(userid)FROM tls_class_user WHERE clno = A.clno AND cpno = A.cpno AND auth_cd = 'S'
                                   AND (end_date = '' OR end_date IS NULL OR CONVERT(CHAR,GETDATE(),112) BETWEEN start_date AND end_date)) > 0 ";                    
                     if (!string.IsNullOrEmpty(schoolCDPoint))
@@ -734,8 +734,8 @@ namespace Dreamonesys.CallCenter.Main
                                        }
                                        pSqlCommand.CommandText += @"
                                        ,'D'
-                                       , 1000
-                                       , 1000
+                                       , 5000
+                                       , 5000
                                        ,'Y'
                                        ,1
                                        ,getdate()
