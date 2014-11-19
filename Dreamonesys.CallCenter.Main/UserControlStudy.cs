@@ -1530,6 +1530,8 @@ namespace Dreamonesys.CallCenter.Main
                 {
                     //과정2 텍스트 박스 반명, 학생명 표시
                     toolStripTextBoxClassNM2.Text = this._common.GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "clnm");
+                    this.dateTimePickerStudentStudy.Value = DateTime.Parse(this._common.GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "sdate"));
+                    this.dateTimePickerStudentStudy2.Value = DateTime.Parse(this._common.GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "edate"));
                     //toolStripTextBoxStudentNM2.Text = this._common.GetCellValue(dataGridViewStudentStudy, dataGridViewStudentStudy.CurrentCell.RowIndex, "usernm");                
                 }
             }
@@ -1540,8 +1542,10 @@ namespace Dreamonesys.CallCenter.Main
             {
                 if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
                 {
-                    //과정1 텍스트 박스 반명, 학생명 표시
+                    //과정1 텍스트 박스 반명, 수업교사 표시
                     toolStripTextBoxClassNM.Text = this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "clnm");
+                    this.dateTimePickerClassStudy.Value = DateTime.Parse(this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "sdate"));
+                    this.dateTimePickerClassStudy2.Value = DateTime.Parse(this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "edate"));
                     //toolStripTextBoxClassTID.Text = this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "tid");
                 }
             }
@@ -1627,11 +1631,17 @@ namespace Dreamonesys.CallCenter.Main
         }
         private void dataGridViewClassSchedule_Click(object sender, EventArgs e)
         {
-            //과정1 교재구성명 텍스트 박스 표시  
+            //과정1 차시리스트 교재구성명 텍스트 박스 표시  
             if (dataGridViewClassSchedule.Rows.Count > 0 && dataGridViewClassSchedule.CurrentCell != null)
             {
                 toolStripTextBoxClassBookNM.Text = this._common.GetCellValue(dataGridViewClassSchedule, dataGridViewClassSchedule.CurrentCell.RowIndex, "view_unnm");
             }
+        }
+        private void dataGridViewClassSchedule_DoubleClick(object sender, EventArgs e)
+        {
+            //더블 클릭 시 과정1 차시리스트 교재구성명 조회
+            //toolStripTextBoxClassBookNM.Text = this._common.GetCellValue(dataGridViewClassSchedule, dataGridViewClassSchedule.CurrentCell.RowIndex, "view_unnm");
+            SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
         }
         private void toolStripTextBoxClassDataTime_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1725,11 +1735,18 @@ namespace Dreamonesys.CallCenter.Main
         }
         private void dataGridViewStudentSchedule_Click(object sender, EventArgs e)
         {
-            //과정2 교재구성명 텍스트 박스 표시  
+            //과정2 차시리스트 교재구성명 텍스트 박스 표시  
             if (dataGridViewStudentSchedule.Rows.Count > 0 && dataGridViewStudentSchedule.CurrentCell != null)
             {
                 toolStripTextBoxStudentBookNM.Text = this._common.GetCellValue(dataGridViewStudentSchedule, dataGridViewStudentSchedule.CurrentCell.RowIndex, "view_unnm");
             }
+        }
+        private void dataGridViewStudentSchedule_DoubleClick(object sender, EventArgs e)
+        {
+            //더블 클릭 시 과정2 차시리스트 교재구성명 조회
+            //toolStripTextBoxStudentBookNM.Text = this._common.GetCellValue(dataGridViewStudentSchedule, dataGridViewStudentSchedule.CurrentCell.RowIndex, "view_unnm");
+            SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
+
         }
         private void toolStripTextBoxStudentDataTime_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1772,13 +1789,9 @@ namespace Dreamonesys.CallCenter.Main
         }
         #endregion Event
 
-        private void dataGridViewStudentSchedule_DoubleClick(object sender, EventArgs e)
-        {
-            //더블 클릭 시 과정1 차시리스트 교재구성명 조회
-            toolStripTextBoxStudentBookNM.Text = this._common.GetCellValue(dataGridViewStudentSchedule, dataGridViewStudentSchedule.CurrentCell.RowIndex, "view_unnm");
-            SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
+       
 
-        }
+        
 
         
         

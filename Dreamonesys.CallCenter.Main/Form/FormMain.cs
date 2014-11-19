@@ -489,6 +489,7 @@ namespace Dreamonesys.CallCenter.Main
                             , A.mpoint
                             , (SELECT COUNT(userid)FROM tls_class_user WHERE clno = A.clno AND cpno = A.cpno AND auth_cd = 'S'
                                   AND (end_date = '' OR end_date IS NULL OR CONVERT(CHAR,GETDATE(),112) BETWEEN start_date AND end_date)) AS CL_USER
+                            , A.udatetime
                             , A.school_cd
                             , A.cpno
                             , A.clno
@@ -513,6 +514,7 @@ namespace Dreamonesys.CallCenter.Main
                             , A.mpoint
                             , (SELECT COUNT(userid)FROM tls_class_user WHERE clno = A.clno AND cpno = A.cpno AND auth_cd = 'S'
                                   AND (end_date = '' OR end_date IS NULL OR CONVERT(CHAR,GETDATE(),112) BETWEEN start_date AND end_date)) AS CL_USER
+                            , A.udatetime
                             , A.school_cd
                             , A.cpno
                             , A.clno
