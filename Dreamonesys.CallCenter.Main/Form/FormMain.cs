@@ -89,7 +89,7 @@ namespace Dreamonesys.CallCenter.Main
                 new Common.ComboBoxList(comboBoxCampusTypePoint, "캠퍼스구분", true),
                 new Common.ComboBoxList(comboBoxCampusPoint, "캠퍼스", true) ,  
                 new Common.ComboBoxList(comboBoxSchoolCDPoint, "학교급", true), 
-                new Common.ComboBoxList(comboBoxPointCode, "콩알코드", true), 
+                new Common.ComboBoxList(comboBoxPointCode, "콩알코드", true),                 
                 //차시관리 콤보박스
                 new Common.ComboBoxList(comboBoxCampusTypeStudy, "캠퍼스구분", true),
                 new Common.ComboBoxList(comboBoxCampusStudy, "캠퍼스", true) ,  
@@ -356,17 +356,24 @@ namespace Dreamonesys.CallCenter.Main
 	                        , B.clnm
 	                        , B.point
 	                        , B.mpoint
-	  		                , B.school_cd
-	                        , C.usernm
-                            , A.cpno
+	  		                , D.name
+	                        , C.usernm                            							  
+                            , A.cpno							
+							, B.school_cd
+							, (SELECT COUNT(clno) FROM tls_class_study WHERE clno = B.clno
+							      AND CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN sdate AND edate) AS STUDY
+						    , (SELECT COUNT(clno) FROM tls_class_user WHERE clno = B.clno AND auth_cd = 'S'
+							      AND (end_date = '' OR end_date IS NULL OR CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN start_date AND end_date)) AS USER_CNT
 	                     FROM tls_class_user AS A 
                     LEFT JOIN tls_class AS B 
 	                       ON A.clno = B.clno
                     LEFT JOIN tls_member AS C
-	                       ON B.class_tid = C.userid
+	                       ON B.class_tid = C.userid				    
+					LEFT JOIN tls_web_code AS D
+					       ON B.grade_cd = D.cdsub
 	                    WHERE A.userid = " + GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "userid") + @"
                          AND (B.edate = '' OR B.edate IS NULL OR B.edate >= CONVERT(VARCHAR(8), GETDATE(), 112))
-                         AND B.use_yn = 'Y'
+                         AND B.use_yn = 'Y'											   
 	                   ORDER BY B.school_cd, B.clnm
                     ";
                     break;
@@ -379,12 +386,19 @@ namespace Dreamonesys.CallCenter.Main
 	                        , A.clnm
 	                        , A.point
 	                        , A.mpoint
+                            , C.name
 	  		                , A.school_cd
 	                        , B.usernm
                             , A.cpno
+                            , (SELECT COUNT(clno) FROM tls_class_study WHERE clno = A.clno
+							      AND CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN sdate AND edate) AS STUDY
+						    , (SELECT COUNT(clno) FROM tls_class_user WHERE clno = A.clno AND auth_cd = 'S'
+							      AND (end_date = '' OR end_date IS NULL OR CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN start_date AND end_date)) AS USER_CNT
 	                     FROM tls_class AS A
 					LEFT JOIN tls_member AS B
 					       ON A.CLASS_TID = B.userid
+                    LEFT JOIN tls_web_code AS C
+					       ON A.grade_cd = C.cdsub
 						WHERE A.cpno = " + GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "cpno") + @"
 						  AND (A.edate = '' OR A.edate IS NULL OR A.edate >= CONVERT(VARCHAR(8), GETDATE(), 112))
                     ";
@@ -415,7 +429,7 @@ namespace Dreamonesys.CallCenter.Main
                            ON A.userid = C.userid
                         WHERE B.clno = " + GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "clno") + @"
                           AND A.auth_cd = 'S'
-                          AND (A.end_date = '' OR A.end_date IS NULL OR A.end_date >= CONVERT(VARCHAR(8), GETDATE(), 112) )
+                          AND (A.end_date = '' OR A.end_date IS NULL OR CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN A.start_date and A.end_date)
                         ORDER BY C.usernm
                     ";
                     break;
@@ -435,6 +449,7 @@ namespace Dreamonesys.CallCenter.Main
                     LEFT JOIN tls_member AS C
                            ON A.userid = C.userid
                         WHERE A.auth_cd = 'S'
+                          AND A.cpno = " + GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpno") + @"
                           AND (A.end_date = '' OR A.end_date IS NULL OR A.end_date >= CONVERT(VARCHAR(8), GETDATE(), 112) ) ";                        
                     if (!string.IsNullOrEmpty(textBoxStudentNM.Text))
                     {
@@ -1474,6 +1489,7 @@ namespace Dreamonesys.CallCenter.Main
                 {
                     //특정 반 목록 조회
                     SelectDataGridView(dataGridViewClassEmployee, "select_class_employee_all");
+                    textBoxClassNM.Text = "";
                 }
                 
             }
@@ -1512,10 +1528,7 @@ namespace Dreamonesys.CallCenter.Main
             if (dataGridViewClassEmployee.Rows.Count > 0 && dataGridViewClassEmployee.CurrentCell != null)
             {
                 //반 학생 목록을 조회한다.
-                if (dataGridViewClassEmployee.Columns[dataGridViewClassEmployee.CurrentCell.ColumnIndex].DataPropertyName != "check_yn")
-                {
-                    SelectDataGridView(dataGridViewClassStudent, "select_class_student");
-                }
+                SelectDataGridView(dataGridViewClassStudent, "select_class_student");                
             }
         }
 
