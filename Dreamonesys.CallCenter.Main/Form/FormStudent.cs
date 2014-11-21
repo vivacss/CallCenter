@@ -222,7 +222,7 @@ namespace Dreamonesys.CallCenter.Main
                     {
                         pSqlCommand.CommandText += @"
                          AND C.cpno = '" + cpno + "' ";
-                    }
+                    }                    
                     if (!string.IsNullOrEmpty(textBoxUserNm.Text))
                     {
                         pSqlCommand.CommandText += @"
@@ -296,7 +296,7 @@ namespace Dreamonesys.CallCenter.Main
                 case "select_cam_member":
                     //캠퍼스 멤버 조회
                     pSqlCommand.CommandText = @"
-                      	select REPLACE(b.cpnm, '캠퍼스', '') AS CPNM
+                      	SELECT REPLACE(b.cpnm, '캠퍼스', '') AS CPNM
 			                 , B.cpno
 			                 , A.userid
 			                 , A.sdate
@@ -311,7 +311,71 @@ namespace Dreamonesys.CallCenter.Main
                     ";
                     break;
 
+                case "select_student_study_state":
+                    //학생 단말기 수업일별 학습정보를 조회한다.
+                    pSqlCommand.CommandText = @"                      	
+                        SELECT sddate
+                        , sdno
+                        , clnm
+                        , usernm
+                        , login_state
+                        , state
+                        , bkno
+                        , bknm
+                        , wk_sort
+                        , classa_nm
+                        , sdnm
+                        , chapter
+                        , quiz_count
+                        , quiz_type
+                        , input_data_1
+                        , input_data_2
+                        , answer
+                        , answer_tf_1
+                        , answer_tf_2
+                        , result_1
+                        , result_2
+                        FROM tls_student_study_state_temp 
+                        WHERE cpno = " + GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cpno") + @"
+                        AND sddate = REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerStudentStudyState.Value + @"', 112), '-', '.')	            
+                        AND clno = " + GetCellValue(dataGridViewU2mStudentClass, dataGridViewU2mStudentClass.CurrentCell.RowIndex, "clno") + @"
+                        AND userid = " + GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "userid") + @"  
+                    ";
+                    this.dateTimePickerStudentStudyState.Value = DateTime.Now;
 
+                    break;
+                case "select_student_study_state_all":
+                    //학생 단말기 전체 학습정보를 조회한다.
+                    pSqlCommand.CommandText = @"                      	
+                        SELECT sddate
+                        , sdno
+                        , clnm
+                        , usernm
+                        , login_state
+                        , state
+                        , bkno
+                        , bknm
+                        , wk_sort
+                        , classa_nm
+                        , sdnm
+                        , chapter
+                        , quiz_count
+                        , quiz_type
+                        , input_data_1
+                        , input_data_2
+                        , answer
+                        , answer_tf_1
+                        , answer_tf_2
+                        , result_1
+                        , result_2
+                        FROM tls_student_study_state_temp 
+                        WHERE cpno = " + GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cpno") + @"                        
+                        AND clno = " + GetCellValue(dataGridViewU2mStudentClass, dataGridViewU2mStudentClass.CurrentCell.RowIndex, "clno") + @"
+                        AND userid = " + GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "userid") + @"  
+                    ";
+                    this.dateTimePickerStudentStudyState.Value = DateTime.Now;
+
+                    break;
                 default:
                     break;
             }
@@ -347,6 +411,9 @@ namespace Dreamonesys.CallCenter.Main
 
         #endregion Method
 
+        #region Event
+
+
         /// <summary>
         /// 폼 로드
         /// </summary>
@@ -357,11 +424,22 @@ namespace Dreamonesys.CallCenter.Main
         /// </history>
         private void FormStudent_Load(object sender, EventArgs e)
         {
-            InitCombo();
-           
+            InitCombo();           
         }
 
-
+        private void dataGridViewStudent_MouseClick(object sender, MouseEventArgs e)
+        {
+            //학생 u2m학습창 및 마이페이지 로그인
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentMouseOverRow = ((DataGridView)sender).HitTest(e.X, e.Y).RowIndex;
+                if (currentMouseOverRow >= 0)
+                {
+                    ((DataGridView)sender).CurrentCell = ((DataGridView)sender)[0, currentMouseOverRow];
+                    this._common.RunLogin(((DataGridView)sender), new Point(e.X, e.Y));
+                }
+            }
+        }
         /// <summary>
         /// 캠퍼스 구분 콤보박스 선택 변경시 발생하는 이벤트
         /// </summary>
@@ -378,20 +456,6 @@ namespace Dreamonesys.CallCenter.Main
             _common.GetComboList(comboBoxCampus, "캠퍼스", true, new string[] { campusType });
             //SelectDataGridView(dataGridViewStudent, "select_Student");
         }
-
-        /// <summary>
-        /// 캠퍼스 콤보박스 선택 변경시 발생하는 이벤트
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <history>
-        /// 박석제, 2014-09-24, 생성
-        /// </history>
-        private void comboBoxCampus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //SelectDataGridView(dataGridViewStudent, "select_Student");
-        }
-
         private void textBoxUserNm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -403,8 +467,7 @@ namespace Dreamonesys.CallCenter.Main
                 textBoxLoginPW.Text = "";   
             }
         }
-
-        
+               
         private void dataGridViewStudent_Click(object sender, EventArgs e)
         {
             if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
@@ -422,26 +485,7 @@ namespace Dreamonesys.CallCenter.Main
             }
                         
         }
-
-        private void dataGridViewStudent_MouseClick(object sender, MouseEventArgs e)
-        {
-            //학생 u2m학습창 및 마이페이지 로그인
-            if (e.Button == MouseButtons.Right)
-            {
-                int currentMouseOverRow = ((DataGridView)sender).HitTest(e.X, e.Y).RowIndex;
-                if (currentMouseOverRow >= 0)
-                {
-                    ((DataGridView)sender).CurrentCell = ((DataGridView)sender)[0, currentMouseOverRow];
-                    this._common.RunLogin(((DataGridView)sender), new Point(e.X, e.Y));
-                }
-            }
-
-
-
-
-
-        }
-
+        
         private void dataGridViewStudent_DoubleClick(object sender, EventArgs e)
         {
             //더블클릭 과정2 학생 차시 조회 폼 이동
@@ -471,12 +515,36 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
-       
-        #region Event
+        private void buttonStudentStudyState_Click(object sender, EventArgs e)
+        {
+            //학생 단말기 수업일별 학습정보를 조회한다.
+            if (dataGridViewU2mStudentClass.Rows.Count > 0 && dataGridViewU2mStudentClass.CurrentCell != null)
+            {
+                SelectDataGridView(dataGridViewStudentStudyState, "select_student_study_state");
+            }
+        }
+        private void buttonStudentStudyStateAll_Click(object sender, EventArgs e)
+        {
+            //학생 단말기 전체 학습정보를 조회한다.
+            if (dataGridViewU2mStudentClass.Rows.Count > 0 && dataGridViewU2mStudentClass.CurrentCell != null)
+            {
+                SelectDataGridView(dataGridViewStudentStudyState, "select_student_study_state_all");
+            }
+        }
+        private void dataGridViewStudentStudyState_Click(object sender, EventArgs e)
+        {
+            //단말기 학습정보 클릭 시 dateTimePicker를 해당 날짜로 바꾼다.
+            this.dateTimePickerStudentStudyState.Value = DateTime.Parse(this._common.GetCellValue(dataGridViewStudentStudyState, dataGridViewStudentStudyState.CurrentCell.RowIndex, "sddate"));
+        }
+        #endregion Event
 
         
 
-        #endregion Event
+        
+
+        
+
+       
 
         
 

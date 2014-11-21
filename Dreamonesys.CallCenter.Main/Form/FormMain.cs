@@ -915,79 +915,7 @@ namespace Dreamonesys.CallCenter.Main
                     textBoxClassStudy.Text = "";
                     textBoxStudentStudy.Text = "";
                     break;
-                case "select_class_study":
-                    //반 차시 정보 조회(과정1) 
-                    pSqlCommand.CommandText = @"                       
-		                SELECT (SELECT usernm FROM tls_member WHERE userid = CS.tid) AS TID
-		                     , (SELECT cpnm FROM tls_campus WHERE cpno = CS.cpno) AS CPNM
-                             , CS.term_cd
-			                 , TC.clnm
-                             , CASE TS.course_cd WHEN 'C01' THEN '과정1'
-								     		     WHEN 'C02' THEN '과정2'
-                                                 ELSE ''
-							   END course_cd
-			                 , STUFF(STUFF(CS.sdate, 5, 0, '-'), 8, 0, '-') AS SDATE
-			                 , STUFF(STUFF(CS.edate, 5, 0, '-'), 8, 0, '-') AS EDATE
-			                 , DBO.F_U_WEEK_HAN(CS.week_day) AS WEEK_DAY
-			                 , (TS.sdnm + view_sdnm) AS SDNM
-                             , CS.yyyy
-                             , CS.cpno
-                             , CS.clno
-                             , CS.sdno
-		                  FROM tls_class_study AS CS
-                     LEFT JOIN tls_class AS TC
-	                        ON CS.cpno = TC.cpno and CS.clno = TC.clno
-	                 LEFT JOIN tls_study AS TS
-	                        ON CS.sdno = TS.sdno
-		                 WHERE CS.cpno = " + GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "cpno") + @"
-                           AND CS.clno = " + GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "clno") + @"
-                           AND CONVERT(CHAR,GETDATE(), 112) BETWEEN CS.sdate AND CS.edate		            
-                        ORDER BY TC.clnm, CS.sdate
-                    ";
-                    break;
-                case "select_student_study":
-
-                    //학생 차시 정보 조회(과정2)
-                    pSqlCommand.CommandText = @"                       
-		                SELECT (SELECT usernm FROM tls_member WHERE userid = MS.tid) AS TID
-	    	                 , (SELECT cpnm FROM tls_campus WHERE cpno = MS.cpno) AS CPNM
-                             , MS.term_cd
-		                     , TC.clnm
-                             , CASE TS.course_cd WHEN 'C01' THEN '과정1'
-								     		     WHEN 'C02' THEN '과정2'
-                                                 ELSE ''
-							   END course_cd
-                             , (SELECT usernm FROM tls_member where userid = ms.userid) AS USERNM
-			                 , STUFF(STUFF(MS.sdate, 5, 0, '-'), 8, 0, '-') AS SDATE 
-	                         , STUFF(STUFF(MS.edate, 5, 0, '-'), 8, 0, '-') AS EDATE
-	 		                 , DBO.F_U_WEEK_HAN(MS.week_day) AS WEEK_DAY
-			                 , (TS.sdnm + view_sdnm) AS SDNM
-                             , MS.yyyy
-                             , MS.cpno
-                             , MS.clno
-                             , MS.sdno
-                             , MS.userid
-	                     FROM tls_member_study AS MS
-                    LEFT JOIN tls_class AS TC
-	                       ON MS.cpno = TC.cpno and MS.clno = TC.clno
-	                LEFT JOIN tls_study AS TS
-	                       ON MS.sdno = TS.sdno
-		                WHERE MS.cpno = " + GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cpno") + @"
-                          AND MS.userid = " + GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "userid") + @"
-		                  AND CONVERT(CHAR, GETDATE(), 112) BETWEEN MS.sdate AND MS.edate
-                        ORDER BY MS.sdate
-		            ";
-                    break;
-
-                case "select_test":
-
-                    //삭제 테스트
-                    pSqlCommand.CommandText = @"                       
-		                SELECT num
-	                     FROM temp_copy_t
-		            ";
-                    break;
-
+                            
                 default:
                     break;
             }
@@ -1023,75 +951,7 @@ namespace Dreamonesys.CallCenter.Main
 
             return CellValue;
         }
-
-        /// <summary>
-        /// TEST 넘버를 삭제한다.
-        /// </summary>
-        /// <history>
-        /// 박석제, 2014-10-07, 생성
-        /// </history>
-        private void DeleteTest()
-        {
-            Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
-            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 삭제하시겠습니까?");
-            if (result == DialogResult.No)
-            {
-                return;
-            } 
-
-            SqlCommand sqlCommand = new SqlCommand();
-            SqlResult sqlResult = new SqlResult();
-            
-            this.Cursor = Cursors.WaitCursor;
-            
-            try
-            {
-                // 컬럼 루프
-                for (int rowCount = 0; rowCount <= dataGridViewTest.Rows.Count - 1; rowCount++)
-                {
-                    if (GetCellValue(dataGridViewTest, rowCount, "check_yn") == "1")
-                    {
-                        isFound = true;
-                        sqlCommand.CommandText += @"
-                            UPDATE temp_copy_t SET num = '" + textBoxTest.Text + @"'
-                             WHERE num = '" + this._common.GetCellValue(dataGridViewTest, rowCount, "num") + "' ";
-                        Console.WriteLine(sqlCommand.CommandText);
-                    }
-                }
-                                
-                if (isFound == true)
-                {
-                    // 처리할 자료가 있을 경우 쿼리실행
-                    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
-
-                    if (sqlResult.Success == true)
-                    {                        
-                        // 작업 성공시
-                        if (sqlResult.AffectedRecords > 0)
-                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 삭제하였습니다." + Environment.NewLine +
-                                string.Format("(삭제된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));                            
-                        else
-                            this._common.MessageBox(MessageBoxIcon.Information, "삭제된 자료가 없습니다.");                        
-                    }
-                    else
-                        // 작업 실패시
-                        MessageBox.Show(sqlResult.ErrorMsg);
-                }
-                else
-                    // 처리할 자료가 없을 경우
-                    this._common.MessageBox(MessageBoxIcon.Information, "삭제할 자료가 없습니다.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                sqlCommand.Dispose();
-                this.Cursor = Cursors.Default;
-            }
-        }
-
+                
         /// <summary>
         /// 반콩알을 적립한다
         /// </summary>
@@ -1633,7 +1493,7 @@ namespace Dreamonesys.CallCenter.Main
             //학생 차시 조회 폼 이동
             FormClassStudentSchedule classStudentSchedule = new FormClassStudentSchedule();
             classStudentSchedule.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpno");
-            //classStudentSchedule.StudyType = "S";
+            classStudentSchedule.StudyType = "S";
             classStudentSchedule.Show();
             
         }
@@ -1876,18 +1736,7 @@ namespace Dreamonesys.CallCenter.Main
 
         #endregion Event
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //반 로우 삭제
-            DeleteTest();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //삭제 테스트
-            SelectDataGridView(dataGridViewTest, "select_test");
-        }
-
+       
         
 
         
