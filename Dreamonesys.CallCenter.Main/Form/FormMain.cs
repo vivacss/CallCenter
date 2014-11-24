@@ -254,6 +254,7 @@ namespace Dreamonesys.CallCenter.Main
                 		  , A.cpid
                 		  , B.login_char
                 		  , B.db_link
+                          , B.cp_group_id
                 		FROM tls_campus AS A
                    LEFT JOIN tls_campus_group AS B
                 		  ON A.cp_group_id = B.cp_group_id
@@ -271,7 +272,12 @@ namespace Dreamonesys.CallCenter.Main
                     if (!string.IsNullOrEmpty(textBoxCampus.Text))
                     {
                         pSqlCommand.CommandText += @"
-                         AND A.cpnm LIKE '%" + textBoxCampus.Text + "%' ";
+                         AND (A.cpnm LIKE '%" + textBoxCampus.Text + "%' ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxCampus.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         OR B.cp_group_nm LIKE '%" + textBoxCampus.Text + "%') ";
                     }
                     pSqlCommand.CommandText += @"
                        ORDER BY (CASE BUSINESS_CD 
@@ -460,6 +466,45 @@ namespace Dreamonesys.CallCenter.Main
 	                    ORDER BY b.cpno
                     ";
                     textBoxStudentNM.Text = "";
+                    break;
+
+                case "select_class_edu_student_all":
+                    //드림+ 학생 검색
+                    pSqlCommand.CommandText = @"
+                       SELECT (SELECT cpnm FROM tls_campus WHERE cpno = " + GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpno") + @") AS CPNM                                                 
+                            , A.userid
+                            , US.name                              
+                            , USC.class_name
+                            , US.login_id
+                            , US.login_pwd 
+                            , US.grade_name                           
+                            , US.start_date
+                            , US.end_date
+                            , USC.start_date AS C_START_DATE
+                            , USC.end_date AS C_END_DATE
+                            , US.student_id
+                            , USC.class_id                            
+	                     FROM " + GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "db_link") + @".DBO.V_u2m_student AS US WITH(nolock)
+                    LEFT JOIN " + GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "db_link") + @".DBO.V_u2m_student_class AS USC WITH(nolock)
+                           ON US.acad_id = USC.acad_id AND US.student_id = USC.student_id AND US.login_id = USC.login_id
+                    LEFT JOIN tls_member AS A
+                           ON US.student_id = A.member_id AND US.login_id = A.login_id 
+                        WHERE US.acad_id = " + GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpid") + @"
+                    ";                        
+                    if (!string.IsNullOrEmpty(textBoxEduStudentNM.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND (US.name LIKE '%" + textBoxEduStudentNM.Text + "%' ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxEduStudentNM.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         OR US.LOGIN_ID = '" + textBoxEduStudentNM.Text + "') ";
+                    }
+                    pSqlCommand.CommandText += @"						 
+	                    ORDER BY A.userid, US.name, USC.start_date DESC
+                    ";
+                    textBoxEduStudentNM.Text = "";
                     break;
 
                 case "select_campus_point":
@@ -1212,7 +1257,19 @@ namespace Dreamonesys.CallCenter.Main
                 }
             }
         }
-
+        private void dataGridViewEduStudent_MouseClick(object sender, MouseEventArgs e)
+        {
+            //메인화면 드림+ 학생 u2m학습창 및 마이페이지 로그인
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentMouseOverRow = ((DataGridView)sender).HitTest(e.X, e.Y).RowIndex;
+                if (currentMouseOverRow >= 0)
+                {
+                    ((DataGridView)sender).CurrentCell = ((DataGridView)sender)[0, currentMouseOverRow];
+                    this._common.RunLogin(((DataGridView)sender), new Point(e.X, e.Y));
+                }
+            }
+        }
         private void dataGridViewStudent_MouseClick(object sender, MouseEventArgs e)
         {
             //차시관리 학생 u2m학습창 및 마이페이지 로그인
@@ -1396,8 +1453,16 @@ namespace Dreamonesys.CallCenter.Main
         {            
             if (e.KeyCode == Keys.Enter)
             {
-                //메인 학생 검색
+                //메인화면 캠퍼스별 학생을 검색한다.
                 SelectDataGridView(dataGridViewClassStudent, "select_class_student_all");
+            }
+        }
+        private void textBoxEduStudentNM_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //드림+ 학생을 조회한다
+                SelectDataGridView(dataGridViewEduStudent, "select_class_edu_student_all");
             }
         }
         private void toolStripButtonSelect_Student_Click(object sender, EventArgs e)
@@ -1735,6 +1800,10 @@ namespace Dreamonesys.CallCenter.Main
         
 
         #endregion Event
+
+        
+
+        
 
        
         

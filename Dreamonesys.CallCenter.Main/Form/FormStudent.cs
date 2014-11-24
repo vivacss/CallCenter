@@ -178,8 +178,8 @@ namespace Dreamonesys.CallCenter.Main
 
             switch (pQueryKind)
             {
-                case "select_Student":
-                    // 학생 목록 조회
+                case "select_u2m_student":
+                    // U2M 학생 조회
                     pSqlCommand.CommandText = @"
                        SELECT  C.cpnm
                              , C.business_cd
@@ -242,7 +242,7 @@ namespace Dreamonesys.CallCenter.Main
                     pSqlCommand.CommandText += @"
                       ORDER BY A.USE_YN DESC, C.CPNM, A.USERNM ";
                     break;
-
+                
                 case "select_edu_student_class":
                     //드림+ 학생 반 목록 조회
                     pSqlCommand.CommandText = @"
@@ -460,14 +460,13 @@ namespace Dreamonesys.CallCenter.Main
         {
             if (e.KeyCode == Keys.Enter)
             {
-                //학생을 검색한다.                
-                SelectDataGridView(dataGridViewStudent, "select_Student");
+                //U2M 학생을 검색한다.                
+                SelectDataGridView(dataGridViewStudent, "select_u2m_student");                
                 textBoxUserid.Text = "";
                 textBoxLoginID.Text = "";
                 textBoxLoginPW.Text = "";   
             }
-        }
-               
+        }      
         private void dataGridViewStudent_Click(object sender, EventArgs e)
         {
             if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
@@ -482,8 +481,7 @@ namespace Dreamonesys.CallCenter.Main
                 textBoxUserid.Text = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "userid");
                 textBoxLoginID.Text = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "login_id");
                 textBoxLoginPW.Text = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "login_pwd");                
-            }
-                        
+            }                        
         }
         
         private void dataGridViewStudent_DoubleClick(object sender, EventArgs e)
@@ -537,6 +535,8 @@ namespace Dreamonesys.CallCenter.Main
             this.dateTimePickerStudentStudyState.Value = DateTime.Parse(this._common.GetCellValue(dataGridViewStudentStudyState, dataGridViewStudentStudyState.CurrentCell.RowIndex, "sddate"));
         }
         #endregion Event
+
+       
 
         
 

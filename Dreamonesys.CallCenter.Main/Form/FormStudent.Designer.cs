@@ -62,10 +62,11 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dataGridViewU2mStudentClass = new System.Windows.Forms.DataGridView();
             this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,6 +78,7 @@
             this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewEduStudentClass = new System.Windows.Forms.DataGridView();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,21 +90,10 @@
             this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewCamMember = new System.Windows.Forms.DataGridView();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.dataGridViewStudentStudyState = new System.Windows.Forms.DataGridView();
-            this.buttonStudentStudyState = new System.Windows.Forms.Button();
-            this.dateTimePickerStudentStudyState = new System.Windows.Forms.DateTimePicker();
             this.buttonStudentStudyStateAll = new System.Windows.Forms.Button();
+            this.dateTimePickerStudentStudyState = new System.Windows.Forms.DateTimePicker();
+            this.buttonStudentStudyState = new System.Windows.Forms.Button();
+            this.dataGridViewStudentStudyState = new System.Windows.Forms.DataGridView();
             this.Column47 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,8 +116,17 @@
             this.Column45 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column46 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewCamMember = new System.Windows.Forms.DataGridView();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.tabControl1.SuspendLayout();
             this.tabPageSelect_Student.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -140,10 +140,12 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewU2mStudentClass)).BeginInit();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEduStudentClass)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentStudyState)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCamMember)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -152,8 +154,6 @@
             this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentStudyState)).BeginInit();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -277,7 +277,7 @@
             // 
             this.textBoxUserNm.Location = new System.Drawing.Point(348, 16);
             this.textBoxUserNm.Name = "textBoxUserNm";
-            this.textBoxUserNm.Size = new System.Drawing.Size(91, 21);
+            this.textBoxUserNm.Size = new System.Drawing.Size(60, 21);
             this.textBoxUserNm.TabIndex = 2;
             this.textBoxUserNm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxUserNm_KeyDown);
             // 
@@ -454,6 +454,14 @@
             this.Column11.HeaderText = "MEMBER_ID";
             this.Column11.Name = "Column11";
             // 
+            // toolStrip3
+            // 
+            this.toolStrip3.Location = new System.Drawing.Point(3, 17);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.Size = new System.Drawing.Size(1174, 25);
+            this.toolStrip3.TabIndex = 7;
+            this.toolStrip3.Text = "toolStrip3";
+            // 
             // toolStrip1
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.Moccasin;
@@ -493,16 +501,16 @@
             this.splitContainer2.SplitterDistance = 651;
             this.splitContainer2.TabIndex = 0;
             // 
-            // groupBox2
+            // groupBox5
             // 
-            this.groupBox2.Controls.Add(this.dataGridViewEduStudentClass);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(651, 166);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "드림+ 학생 반 정보";
+            this.groupBox5.Controls.Add(this.dataGridViewU2mStudentClass);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(0, 166);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(651, 160);
+            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "U2M 학생 반 정보";
             // 
             // dataGridViewU2mStudentClass
             // 
@@ -599,6 +607,17 @@
             this.Column8.HeaderText = "CPNO";
             this.Column8.Name = "Column8";
             this.Column8.Visible = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dataGridViewEduStudentClass);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(651, 166);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "드림+ 학생 반 정보";
             // 
             // dataGridViewEduStudentClass
             // 
@@ -702,111 +721,32 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "단말기 학습 진행 정보";
             // 
-            // groupBox3
+            // buttonStudentStudyStateAll
             // 
-            this.groupBox3.Controls.Add(this.dataGridViewCamMember);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(525, 135);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "캠퍼스 멤버";
+            this.buttonStudentStudyStateAll.Location = new System.Drawing.Point(443, 14);
+            this.buttonStudentStudyStateAll.Name = "buttonStudentStudyStateAll";
+            this.buttonStudentStudyStateAll.Size = new System.Drawing.Size(75, 23);
+            this.buttonStudentStudyStateAll.TabIndex = 3;
+            this.buttonStudentStudyStateAll.Text = "전체조회";
+            this.buttonStudentStudyStateAll.UseVisualStyleBackColor = true;
+            this.buttonStudentStudyStateAll.Click += new System.EventHandler(this.buttonStudentStudyStateAll_Click);
             // 
-            // dataGridViewCamMember
+            // dateTimePickerStudentStudyState
             // 
-            this.dataGridViewCamMember.AllowUserToAddRows = false;
-            this.dataGridViewCamMember.AllowUserToDeleteRows = false;
-            this.dataGridViewCamMember.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridViewCamMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCamMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7});
-            this.dataGridViewCamMember.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewCamMember.Location = new System.Drawing.Point(3, 17);
-            this.dataGridViewCamMember.Name = "dataGridViewCamMember";
-            this.dataGridViewCamMember.RowTemplate.Height = 23;
-            this.dataGridViewCamMember.Size = new System.Drawing.Size(519, 115);
-            this.dataGridViewCamMember.TabIndex = 0;
+            this.dateTimePickerStudentStudyState.Location = new System.Drawing.Point(238, 15);
+            this.dateTimePickerStudentStudyState.Name = "dateTimePickerStudentStudyState";
+            this.dateTimePickerStudentStudyState.Size = new System.Drawing.Size(153, 21);
+            this.dateTimePickerStudentStudyState.TabIndex = 2;
             // 
-            // Column2
+            // buttonStudentStudyState
             // 
-            this.Column2.DataPropertyName = "cpnm";
-            this.Column2.HeaderText = "캠퍼스";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 70;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "cpno";
-            this.Column3.HeaderText = "CPNO";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 60;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "userid";
-            this.Column4.HeaderText = "UserID";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 60;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "sdate";
-            this.Column5.HeaderText = "S_date";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 60;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "edate";
-            this.Column6.HeaderText = "E_date";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 60;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "udatetime";
-            this.Column7.HeaderText = "UDATETIME";
-            this.Column7.Name = "Column7";
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.splitContainer3);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1186, 736);
-            this.tabPage1.TabIndex = 1;
-            this.tabPage1.Text = "학습정보";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.splitContainer4);
-            this.splitContainer3.Size = new System.Drawing.Size(1180, 730);
-            this.splitContainer3.SplitterDistance = 239;
-            this.splitContainer3.TabIndex = 0;
-            // 
-            // splitContainer4
-            // 
-            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer4.Name = "splitContainer4";
-            this.splitContainer4.Size = new System.Drawing.Size(1180, 239);
-            this.splitContainer4.SplitterDistance = 733;
-            this.splitContainer4.TabIndex = 0;
+            this.buttonStudentStudyState.Location = new System.Drawing.Point(399, 14);
+            this.buttonStudentStudyState.Name = "buttonStudentStudyState";
+            this.buttonStudentStudyState.Size = new System.Drawing.Size(40, 23);
+            this.buttonStudentStudyState.TabIndex = 1;
+            this.buttonStudentStudyState.Text = "조회";
+            this.buttonStudentStudyState.UseVisualStyleBackColor = true;
+            this.buttonStudentStudyState.Click += new System.EventHandler(this.buttonStudentStudyState_Click);
             // 
             // dataGridViewStudentStudyState
             // 
@@ -843,33 +783,6 @@
             this.dataGridViewStudentStudyState.Size = new System.Drawing.Size(519, 146);
             this.dataGridViewStudentStudyState.TabIndex = 0;
             this.dataGridViewStudentStudyState.Click += new System.EventHandler(this.dataGridViewStudentStudyState_Click);
-            // 
-            // buttonStudentStudyState
-            // 
-            this.buttonStudentStudyState.Location = new System.Drawing.Point(399, 14);
-            this.buttonStudentStudyState.Name = "buttonStudentStudyState";
-            this.buttonStudentStudyState.Size = new System.Drawing.Size(40, 23);
-            this.buttonStudentStudyState.TabIndex = 1;
-            this.buttonStudentStudyState.Text = "조회";
-            this.buttonStudentStudyState.UseVisualStyleBackColor = true;
-            this.buttonStudentStudyState.Click += new System.EventHandler(this.buttonStudentStudyState_Click);
-            // 
-            // dateTimePickerStudentStudyState
-            // 
-            this.dateTimePickerStudentStudyState.Location = new System.Drawing.Point(238, 15);
-            this.dateTimePickerStudentStudyState.Name = "dateTimePickerStudentStudyState";
-            this.dateTimePickerStudentStudyState.Size = new System.Drawing.Size(153, 21);
-            this.dateTimePickerStudentStudyState.TabIndex = 2;
-            // 
-            // buttonStudentStudyStateAll
-            // 
-            this.buttonStudentStudyStateAll.Location = new System.Drawing.Point(443, 14);
-            this.buttonStudentStudyStateAll.Name = "buttonStudentStudyStateAll";
-            this.buttonStudentStudyStateAll.Size = new System.Drawing.Size(75, 23);
-            this.buttonStudentStudyStateAll.TabIndex = 3;
-            this.buttonStudentStudyStateAll.Text = "전체조회";
-            this.buttonStudentStudyStateAll.UseVisualStyleBackColor = true;
-            this.buttonStudentStudyStateAll.Click += new System.EventHandler(this.buttonStudentStudyStateAll_Click);
             // 
             // Column47
             // 
@@ -1023,24 +936,111 @@
             this.toolStrip2.TabIndex = 4;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // groupBox5
+            // groupBox3
             // 
-            this.groupBox5.Controls.Add(this.dataGridViewU2mStudentClass);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(0, 166);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(651, 160);
-            this.groupBox5.TabIndex = 1;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "U2M 학생 반 정보";
+            this.groupBox3.Controls.Add(this.dataGridViewCamMember);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(525, 135);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "캠퍼스 멤버";
             // 
-            // toolStrip3
+            // dataGridViewCamMember
             // 
-            this.toolStrip3.Location = new System.Drawing.Point(3, 17);
-            this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(1174, 25);
-            this.toolStrip3.TabIndex = 7;
-            this.toolStrip3.Text = "toolStrip3";
+            this.dataGridViewCamMember.AllowUserToAddRows = false;
+            this.dataGridViewCamMember.AllowUserToDeleteRows = false;
+            this.dataGridViewCamMember.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridViewCamMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCamMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7});
+            this.dataGridViewCamMember.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewCamMember.Location = new System.Drawing.Point(3, 17);
+            this.dataGridViewCamMember.Name = "dataGridViewCamMember";
+            this.dataGridViewCamMember.RowTemplate.Height = 23;
+            this.dataGridViewCamMember.Size = new System.Drawing.Size(519, 115);
+            this.dataGridViewCamMember.TabIndex = 0;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "cpnm";
+            this.Column2.HeaderText = "캠퍼스";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 70;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "cpno";
+            this.Column3.HeaderText = "CPNO";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 60;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "userid";
+            this.Column4.HeaderText = "UserID";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 60;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "sdate";
+            this.Column5.HeaderText = "S_date";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 60;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "edate";
+            this.Column6.HeaderText = "E_date";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 60;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "udatetime";
+            this.Column7.HeaderText = "UDATETIME";
+            this.Column7.Name = "Column7";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.splitContainer3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1186, 736);
+            this.tabPage1.TabIndex = 1;
+            this.tabPage1.Text = "학습정보";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.splitContainer4);
+            this.splitContainer3.Size = new System.Drawing.Size(1180, 730);
+            this.splitContainer3.SplitterDistance = 239;
+            this.splitContainer3.TabIndex = 0;
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            this.splitContainer4.Size = new System.Drawing.Size(1180, 239);
+            this.splitContainer4.SplitterDistance = 733;
+            this.splitContainer4.TabIndex = 0;
             // 
             // FormStudent
             // 
@@ -1068,11 +1068,13 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewU2mStudentClass)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEduStudentClass)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentStudyState)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCamMember)).EndInit();
             this.tabPage1.ResumeLayout(false);
@@ -1081,8 +1083,6 @@
             this.splitContainer3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentStudyState)).EndInit();
-            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
