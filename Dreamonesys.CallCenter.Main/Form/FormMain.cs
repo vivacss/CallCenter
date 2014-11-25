@@ -483,7 +483,8 @@ namespace Dreamonesys.CallCenter.Main
                             , USC.start_date AS C_START_DATE
                             , USC.end_date AS C_END_DATE
                             , US.student_id
-                            , USC.class_id                            
+                            , USC.class_id
+                            , US.std_modify_date                            
 	                     FROM " + GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "db_link") + @".DBO.V_u2m_student AS US WITH(nolock)
                     LEFT JOIN " + GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "db_link") + @".DBO.V_u2m_student_class AS USC WITH(nolock)
                            ON US.acad_id = USC.acad_id AND US.student_id = USC.student_id AND US.login_id = USC.login_id

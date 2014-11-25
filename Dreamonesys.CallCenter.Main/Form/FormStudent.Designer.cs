@@ -294,7 +294,6 @@
             this.dataGridViewStudent.AllowUserToAddRows = false;
             this.dataGridViewStudent.AllowUserToDeleteRows = false;
             this.dataGridViewStudent.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridViewStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewStudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cpnm,
             this.business_cd,
@@ -517,7 +516,6 @@
             this.dataGridViewU2mStudentClass.AllowUserToAddRows = false;
             this.dataGridViewU2mStudentClass.AllowUserToDeleteRows = false;
             this.dataGridViewU2mStudentClass.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridViewU2mStudentClass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewU2mStudentClass.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column25,
             this.Column26,
@@ -624,7 +622,6 @@
             this.dataGridViewEduStudentClass.AllowUserToAddRows = false;
             this.dataGridViewEduStudentClass.AllowUserToDeleteRows = false;
             this.dataGridViewEduStudentClass.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridViewEduStudentClass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEduStudentClass.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column16,
             this.Column17,
@@ -753,7 +750,6 @@
             this.dataGridViewStudentStudyState.AllowUserToAddRows = false;
             this.dataGridViewStudentStudyState.AllowUserToDeleteRows = false;
             this.dataGridViewStudentStudyState.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridViewStudentStudyState.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewStudentStudyState.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column47,
             this.Column48,
@@ -952,7 +948,6 @@
             this.dataGridViewCamMember.AllowUserToAddRows = false;
             this.dataGridViewCamMember.AllowUserToDeleteRows = false;
             this.dataGridViewCamMember.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridViewCamMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCamMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column2,
             this.Column3,

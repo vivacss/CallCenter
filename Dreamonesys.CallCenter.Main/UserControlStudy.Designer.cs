@@ -326,7 +326,6 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewClassStudy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewClassStudy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClassStudy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column47,
             this.Column1,
@@ -789,7 +788,6 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewClassSchedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewClassSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClassSchedule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column48,
             this.Column27,
@@ -1078,7 +1076,6 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewStudentStudy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewStudentStudy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewStudentStudy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column61,
             this.dataGridViewTextBoxColumn1,
@@ -1582,7 +1579,6 @@
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewStudentSchedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewStudentSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewStudentSchedule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column62,
             this.dataGridViewTextBoxColumn29,
