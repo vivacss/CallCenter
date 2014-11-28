@@ -96,7 +96,10 @@ namespace Dreamonesys.CallCenter.Main
                 new Common.ComboBoxList(comboBoxYyyyStudy, "년도", true) , 
                 new Common.ComboBoxList(comboBoxSchoolCDStudy, "학교급", true),
                 new Common.ComboBoxList(comboBoxTermCDStudy, "분기", true),
-                new Common.ComboBoxList(comboBoxUseYNStudy, "사용", true)
+                new Common.ComboBoxList(comboBoxUseYNStudy, "사용", true),
+                //미결사용자 등록 콤보박스
+                new Common.ComboBoxList(comboBoxCampusTypeByPass, "캠퍼스구분", true),
+                new Common.ComboBoxList(comboBoxCampusByPass, "캠퍼스", true)
                 
             };
             this._common.GetComboList(comboBoxList);
@@ -236,6 +239,9 @@ namespace Dreamonesys.CallCenter.Main
             string termCDStudy = this._common.IsNull(comboBoxTermCDStudy.SelectedValue);
             //string termCDStudy = comboBoxTermCDStudy.SelectedValue.ToString();
             string useYNStudy = this._common.IsNull(comboBoxUseYNStudy.SelectedValue);
+            //미결사용자 등록
+            string businessCDByPass = comboBoxCampusTypeByPass.SelectedValue.ToString();
+            string cpnoByPass = comboBoxCampusByPass.SelectedValue.ToString();
             
                 
 
@@ -377,7 +383,8 @@ namespace Dreamonesys.CallCenter.Main
 	                       ON B.class_tid = C.userid				    
 					LEFT JOIN tls_web_code AS D
 					       ON B.grade_cd = D.cdsub
-	                    WHERE A.userid = " + GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "userid") + @"
+	                    WHERE A.cpno = " + GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpno") + @" 
+                         AND A.userid = " + GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "userid") + @"
                          AND (B.edate = '' OR B.edate IS NULL OR B.edate >= CONVERT(VARCHAR(8), GETDATE(), 112))
                          AND B.use_yn = 'Y'											   
 	                   ORDER BY B.school_cd, B.clnm
@@ -424,6 +431,7 @@ namespace Dreamonesys.CallCenter.Main
                        SELECT A.userid
 	                        , C.usernm
                             , A.cpno  
+                            , B.clnm
                             , C.login_id
                             , C.login_pwd
                             , A.start_date
@@ -445,6 +453,7 @@ namespace Dreamonesys.CallCenter.Main
                        SELECT A.userid
 	                        , C.usernm
                             , A.cpno  
+                            , B.clnm
                             , C.login_id
                             , C.login_pwd
                             , A.start_date
@@ -619,7 +628,7 @@ namespace Dreamonesys.CallCenter.Main
                         WHERE A.cpno = '" + GetCellValue(dataGridViewCampusPoint, dataGridViewCampusPoint.CurrentCell.RowIndex, "cpno") + @"'
                           AND A.clno = '" + GetCellValue(dataGridViewClassPoint, dataGridViewClassPoint.CurrentCell.RowIndex, "clno") + @"'
                           AND A.auth_cd = 'S'
-                          AND (A.end_date = '' OR A.end_date IS NULL OR A.end_date >= CONVERT(VARCHAR(8), GETDATE(), 112) ) ";
+                          AND (A.end_date = '' OR A.end_date IS NULL OR CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN A.start_date AND A.end_date ) ";
 
                      if (!string.IsNullOrEmpty(businessCDPoint))
                     {
@@ -961,9 +970,59 @@ namespace Dreamonesys.CallCenter.Main
                     textBoxClassStudy.Text = "";
                     textBoxStudentStudy.Text = "";
                     break;
+
+                 case "select_bypass":
+                    //차시관리 반 학생 조회
+                    pSqlCommand.CommandText = @"   
+                        SELECT A.request_seq	
+	                         , A.cpno
+	                         , A.cpid
+	                         , A.cpnm
+  	                         , A.empno
+	                         , A.empnm
+	                         , A.userid
+	                         , A.usernm
+	                         , A.use_from
+	                         , A.use_to
+	                         , A.counsel_date
+	                         , A.counsel_nm
+	                         , A.reason
+                             , CASE B.business_cd WHEN 'DD' THEN '직영'
+                                                  WHEN 'FA' THEN 'FC'
+                                                  ELSE 'CP'
+                                END business_cd
+                          FROM tls_bypass AS A
+                     LEFT JOIN tls_campus AS B
+                            ON A.cpno = B.cpno
+                         WHERE 1=1 ";
+                    if (!string.IsNullOrEmpty(businessCDByPass))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND B.business_cd = '" + businessCDByPass + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(cpnoByPass))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND A.cpno = '" + cpnoByPass + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxStudentNmByPass.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND A.usernm LIKE '%" + textBoxStudentNmByPass.Text + "%' ";
+                    }                   
+                    pSqlCommand.CommandText += @"
+                       ORDER BY (CASE B.BUSINESS_CD 
+					                  WHEN 'DD' THEN 1
+					                  WHEN 'FA' THEN 2
+					                  WHEN 'CP' THEN 3
+				                 END) 
+                               , A.cpnm, A.usernm "; 
+                    break;
                             
                 default:
                     break;
+
+              
             }
 
             return pSqlCommand;
@@ -1344,7 +1403,7 @@ namespace Dreamonesys.CallCenter.Main
             _common.GetComboList(comboBoxCampus, "캠퍼스", true, new string[] { campusType });
             SelectDataGridView(dataGridViewCampus, "select_campus");
         }
-
+        
         /// <summary>
         /// 캠퍼스 콤보박스 선택 변경시 발생하는 이벤트
         /// </summary>
@@ -1454,8 +1513,12 @@ namespace Dreamonesys.CallCenter.Main
         {            
             if (e.KeyCode == Keys.Enter)
             {
-                //메인화면 캠퍼스별 학생을 검색한다.
-                SelectDataGridView(dataGridViewClassStudent, "select_class_student_all");
+                if (dataGridViewCampus.Rows.Count > 0 && dataGridViewCampus.CurrentCell != null)
+                {
+                    //메인화면 캠퍼스별 학생을 검색한다.
+                    SelectDataGridView(dataGridViewClassStudent, "select_class_student_all");
+                }
+                
             }
         }
         private void textBoxEduStudentNM_KeyDown(object sender, KeyEventArgs e)
@@ -1795,12 +1858,34 @@ namespace Dreamonesys.CallCenter.Main
                 _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID, this.ClassSchoolCDStudy);
             }
         }
-        
-                
-       
+
+        private void comboBoxCampusTypeByPass_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            // 미결사용자 등록 캠퍼스 콤보박스 데이터 생성
+            string campusType = comboBoxCampusTypeByPass.SelectedValue.ToString();
+            _common.GetComboList(comboBoxCampusByPass, "캠퍼스", true, new string[] { campusType });
+        }
+        private void textBoxStudentNmByPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //미결사용 학생 검색
+                SelectDataGridView(dataGridViewByPass, "select_bypass");
+            }
+        }
+
+        private void buttonSelectByPass_Click(object sender, EventArgs e)
+        {
+            //미결사용자 검색
+            SelectDataGridView(dataGridViewByPass, "select_bypass");
+        }
         
 
         #endregion Event
+
+        
+
+       
 
         
 
