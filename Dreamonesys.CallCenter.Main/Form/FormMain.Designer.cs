@@ -28,37 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBoxLoginPW = new System.Windows.Forms.TextBox();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -79,14 +79,6 @@
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridViewClassStudent = new System.Windows.Forms.DataGridView();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column69 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column70 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column112 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column104 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column72 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBoxEduStudentNM = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -280,17 +272,26 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.tabPageByPass = new System.Windows.Forms.TabPage();
             this.splitContainer10 = new System.Windows.Forms.SplitContainer();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.comboBoxCampusTypeByPass = new System.Windows.Forms.ComboBox();
-            this.comboBoxCampusByPass = new System.Windows.Forms.ComboBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.textBoxStudentNmByPass = new System.Windows.Forms.TextBox();
-            this.buttonSelectByPass = new System.Windows.Forms.Button();
             this.dataGridViewByPass = new System.Windows.Forms.DataGridView();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.buttonSelectByPass = new System.Windows.Forms.Button();
+            this.textBoxStudentNmByPass = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.comboBoxCampusByPass = new System.Windows.Forms.ComboBox();
+            this.comboBoxCampusTypeByPass = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column69 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column70 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column112 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column104 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column121 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column72 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column120 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column105 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column106 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -378,9 +379,9 @@
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
             this.splitContainer10.SuspendLayout();
-            this.groupBox12.SuspendLayout();
             this.groupBox13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewByPass)).BeginInit();
+            this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxLoginPW
@@ -464,14 +465,14 @@
             this.dataGridViewClassEmployee.AllowUserToAddRows = false;
             this.dataGridViewClassEmployee.AllowUserToDeleteRows = false;
             this.dataGridViewClassEmployee.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewClassEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClassEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewClassEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column16,
             this.Column17,
@@ -483,14 +484,14 @@
             this.Column26,
             this.Column15,
             this.Column14});
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewClassEmployee.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewClassEmployee.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewClassEmployee.Location = new System.Drawing.Point(3, 45);
             this.dataGridViewClassEmployee.Margin = new System.Windows.Forms.Padding(1);
             this.dataGridViewClassEmployee.MultiSelect = false;
@@ -506,8 +507,8 @@
             // Column16
             // 
             this.Column16.DataPropertyName = "clnm";
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Column16.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Column16.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column16.HeaderText = "반명";
             this.Column16.Name = "Column16";
             this.Column16.Width = 70;
@@ -590,31 +591,32 @@
             this.dataGridViewClassStudent.AllowUserToAddRows = false;
             this.dataGridViewClassStudent.AllowUserToDeleteRows = false;
             this.dataGridViewClassStudent.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewClassStudent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClassStudent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewClassStudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column22,
             this.Column69,
             this.Column70,
             this.Column112,
             this.Column104,
+            this.Column121,
             this.Column72,
             this.Column21,
             this.Column28});
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewClassStudent.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewClassStudent.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewClassStudent.Location = new System.Drawing.Point(524, 45);
             this.dataGridViewClassStudent.Margin = new System.Windows.Forms.Padding(1);
             this.dataGridViewClassStudent.MultiSelect = false;
@@ -625,64 +627,6 @@
             this.dataGridViewClassStudent.TabIndex = 1;
             this.dataGridViewClassStudent.DoubleClick += new System.EventHandler(this.dataGridViewClassStudent_DoubleClick);
             this.dataGridViewClassStudent.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewClassStudent_MouseClick);
-            // 
-            // Column22
-            // 
-            this.Column22.DataPropertyName = "usernm";
-            this.Column22.HeaderText = "학생명";
-            this.Column22.Name = "Column22";
-            this.Column22.Width = 70;
-            // 
-            // Column69
-            // 
-            this.Column69.DataPropertyName = "login_id";
-            this.Column69.HeaderText = "LOGIN_ID";
-            this.Column69.Name = "Column69";
-            this.Column69.Width = 90;
-            // 
-            // Column70
-            // 
-            this.Column70.DataPropertyName = "login_pwd";
-            this.Column70.HeaderText = "LOGIN_PW";
-            this.Column70.Name = "Column70";
-            this.Column70.Width = 90;
-            // 
-            // Column112
-            // 
-            this.Column112.DataPropertyName = "start_date";
-            this.Column112.HeaderText = "입반일";
-            this.Column112.Name = "Column112";
-            this.Column112.Width = 70;
-            // 
-            // Column104
-            // 
-            this.Column104.DataPropertyName = "clnm";
-            this.Column104.HeaderText = "반명";
-            this.Column104.Name = "Column104";
-            // 
-            // Column72
-            // 
-            this.Column72.DataPropertyName = "cpnm";
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Column72.DefaultCellStyle = dataGridViewCellStyle35;
-            this.Column72.HeaderText = "캠퍼스";
-            this.Column72.Name = "Column72";
-            this.Column72.Width = 80;
-            // 
-            // Column21
-            // 
-            this.Column21.DataPropertyName = "userid";
-            this.Column21.HeaderText = "USERID";
-            this.Column21.Name = "Column21";
-            this.Column21.Width = 60;
-            // 
-            // Column28
-            // 
-            this.Column28.DataPropertyName = "cpno";
-            this.Column28.HeaderText = "CPNO";
-            this.Column28.Name = "Column28";
-            this.Column28.Visible = false;
-            this.Column28.Width = 50;
             // 
             // groupBox4
             // 
@@ -719,14 +663,14 @@
             this.dataGridViewEduStudent.AllowUserToAddRows = false;
             this.dataGridViewEduStudent.AllowUserToDeleteRows = false;
             this.dataGridViewEduStudent.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle37.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewEduStudent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEduStudent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewEduStudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column91,
             this.Column78,
@@ -742,27 +686,27 @@
             this.Column96,
             this.Column99,
             this.Column103});
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewEduStudent.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewEduStudent.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewEduStudent.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridViewEduStudent.Location = new System.Drawing.Point(3, 45);
             this.dataGridViewEduStudent.Margin = new System.Windows.Forms.Padding(1);
             this.dataGridViewEduStudent.MultiSelect = false;
             this.dataGridViewEduStudent.Name = "dataGridViewEduStudent";
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle41.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle41.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle41.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewEduStudent.RowHeadersDefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEduStudent.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewEduStudent.RowTemplate.Height = 23;
             this.dataGridViewEduStudent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewEduStudent.Size = new System.Drawing.Size(233, 292);
@@ -786,8 +730,8 @@
             // Column77
             // 
             this.Column77.DataPropertyName = "cpnm";
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Column77.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Column77.DefaultCellStyle = dataGridViewCellStyle8;
             this.Column77.HeaderText = "캠퍼스";
             this.Column77.Name = "Column77";
             this.Column77.Width = 80;
@@ -795,8 +739,8 @@
             // Column98
             // 
             this.Column98.DataPropertyName = "class_name";
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Column98.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Column98.DefaultCellStyle = dataGridViewCellStyle9;
             this.Column98.HeaderText = "반명";
             this.Column98.Name = "Column98";
             this.Column98.Width = 80;
@@ -1431,14 +1375,14 @@
             this.dataGridViewCampus.AllowUserToAddRows = false;
             this.dataGridViewCampus.AllowUserToDeleteRows = false;
             this.dataGridViewCampus.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCampus.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCampus.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewCampus.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column27,
             this.Column1,
@@ -1448,14 +1392,14 @@
             this.Column5,
             this.Column6,
             this.Column102});
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle45.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCampus.DefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCampus.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewCampus.Location = new System.Drawing.Point(3, 43);
             this.dataGridViewCampus.Margin = new System.Windows.Forms.Padding(1);
             this.dataGridViewCampus.MultiSelect = false;
@@ -1470,17 +1414,17 @@
             // Column27
             // 
             this.Column27.DataPropertyName = "cp_group_nm";
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Column27.DefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Column27.DefaultCellStyle = dataGridViewCellStyle13;
             this.Column27.HeaderText = "캠퍼스그룹";
             this.Column27.Name = "Column27";
             // 
             // Column1
             // 
             this.Column1.DataPropertyName = "CPNM";
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle44.BackColor = System.Drawing.Color.White;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle14;
             this.Column1.HeaderText = "캠퍼스명";
             this.Column1.Name = "Column1";
             // 
@@ -1581,14 +1525,14 @@
             this.dataGridViewEmployee.AllowUserToDeleteRows = false;
             this.dataGridViewEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridViewEmployee.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle46.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle46.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column7,
             this.Column8,
@@ -1601,14 +1545,14 @@
             this.Column23,
             this.Column24,
             this.Column63});
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle47.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewEmployee.DefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewEmployee.DefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridViewEmployee.Location = new System.Drawing.Point(3, 43);
             this.dataGridViewEmployee.Margin = new System.Windows.Forms.Padding(1);
             this.dataGridViewEmployee.MultiSelect = false;
@@ -1897,27 +1841,27 @@
             this.dataGridViewCampusPoint.AllowUserToAddRows = false;
             this.dataGridViewCampusPoint.AllowUserToDeleteRows = false;
             this.dataGridViewCampusPoint.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle48.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCampusPoint.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCampusPoint.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewCampusPoint.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column29,
             this.Column30,
             this.Column31,
             this.Column34});
-            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle49.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCampusPoint.DefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCampusPoint.DefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewCampusPoint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewCampusPoint.Location = new System.Drawing.Point(3, 17);
             this.dataGridViewCampusPoint.Name = "dataGridViewCampusPoint";
@@ -2030,14 +1974,14 @@
             this.dataGridViewClassPoint.AllowUserToAddRows = false;
             this.dataGridViewClassPoint.AllowUserToDeleteRows = false;
             this.dataGridViewClassPoint.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle50.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle50.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle50.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewClassPoint.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClassPoint.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewClassPoint.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column45,
             this.Column32,
@@ -2047,14 +1991,14 @@
             this.Column89,
             this.Column79,
             this.Column41});
-            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle51.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle51.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle51.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewClassPoint.DefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewClassPoint.DefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridViewClassPoint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewClassPoint.Location = new System.Drawing.Point(3, 42);
             this.dataGridViewClassPoint.Name = "dataGridViewClassPoint";
@@ -2187,14 +2131,14 @@
             this.dataGridViewStudentPoint.AllowUserToAddRows = false;
             this.dataGridViewStudentPoint.AllowUserToDeleteRows = false;
             this.dataGridViewStudentPoint.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle52.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle52.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle52.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewStudentPoint.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewStudentPoint.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridViewStudentPoint.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column35,
             this.Column36,
@@ -2205,14 +2149,14 @@
             this.Column40,
             this.Column80,
             this.Column81});
-            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle53.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle53.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle53.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewStudentPoint.DefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewStudentPoint.DefaultCellStyle = dataGridViewCellStyle23;
             this.dataGridViewStudentPoint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewStudentPoint.Location = new System.Drawing.Point(3, 17);
             this.dataGridViewStudentPoint.Name = "dataGridViewStudentPoint";
@@ -2355,14 +2299,14 @@
             this.dataGridViewPointManager.AllowUserToAddRows = false;
             this.dataGridViewPointManager.AllowUserToDeleteRows = false;
             this.dataGridViewPointManager.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle54.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle54.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPointManager.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPointManager.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridViewPointManager.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column88,
             this.Column54,
@@ -2374,14 +2318,14 @@
             this.Column58,
             this.Column61,
             this.Column62});
-            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle55.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle55.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle55.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle55.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPointManager.DefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPointManager.DefaultCellStyle = dataGridViewCellStyle25;
             this.dataGridViewPointManager.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewPointManager.Location = new System.Drawing.Point(3, 42);
             this.dataGridViewPointManager.Name = "dataGridViewPointManager";
@@ -2552,14 +2496,14 @@
             this.dataGridViewStudentPointSave.AllowUserToAddRows = false;
             this.dataGridViewStudentPointSave.AllowUserToDeleteRows = false;
             this.dataGridViewStudentPointSave.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle56.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle56.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle56.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle56.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewStudentPointSave.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewStudentPointSave.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.dataGridViewStudentPointSave.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column85,
             this.Column46,
@@ -2571,14 +2515,14 @@
             this.Column50,
             this.Column87,
             this.Column86});
-            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle57.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle57.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle57.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle57.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle57.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle57.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewStudentPointSave.DefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewStudentPointSave.DefaultCellStyle = dataGridViewCellStyle27;
             this.dataGridViewStudentPointSave.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewStudentPointSave.Location = new System.Drawing.Point(3, 42);
             this.dataGridViewStudentPointSave.Name = "dataGridViewStudentPointSave";
@@ -2732,6 +2676,70 @@
             this.splitContainer10.SplitterDistance = 607;
             this.splitContainer10.TabIndex = 0;
             // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.dataGridViewByPass);
+            this.groupBox13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox13.Location = new System.Drawing.Point(0, 65);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(1249, 542);
+            this.groupBox13.TabIndex = 1;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "미결 사용자";
+            // 
+            // dataGridViewByPass
+            // 
+            this.dataGridViewByPass.AllowUserToAddRows = false;
+            this.dataGridViewByPass.AllowUserToDeleteRows = false;
+            this.dataGridViewByPass.BackgroundColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewByPass.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            this.dataGridViewByPass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewByPass.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column120,
+            this.Column105,
+            this.Column106,
+            this.Column107,
+            this.Column108,
+            this.Column109,
+            this.Column110,
+            this.Column113,
+            this.Column114,
+            this.Column115,
+            this.Column116,
+            this.Column117,
+            this.Column118,
+            this.Column119});
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewByPass.DefaultCellStyle = dataGridViewCellStyle29;
+            this.dataGridViewByPass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewByPass.Location = new System.Drawing.Point(3, 17);
+            this.dataGridViewByPass.Name = "dataGridViewByPass";
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewByPass.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            this.dataGridViewByPass.RowTemplate.Height = 23;
+            this.dataGridViewByPass.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewByPass.Size = new System.Drawing.Size(1243, 522);
+            this.dataGridViewByPass.TabIndex = 0;
+            // 
             // groupBox12
             // 
             this.groupBox12.Controls.Add(this.buttonSelectByPass);
@@ -2749,16 +2757,67 @@
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "검색조건";
             // 
-            // groupBox13
+            // buttonSelectByPass
             // 
-            this.groupBox13.Controls.Add(this.dataGridViewByPass);
-            this.groupBox13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox13.Location = new System.Drawing.Point(0, 65);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(1249, 542);
-            this.groupBox13.TabIndex = 1;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "미결 사용자";
+            this.buttonSelectByPass.Location = new System.Drawing.Point(500, 26);
+            this.buttonSelectByPass.Name = "buttonSelectByPass";
+            this.buttonSelectByPass.Size = new System.Drawing.Size(50, 23);
+            this.buttonSelectByPass.TabIndex = 6;
+            this.buttonSelectByPass.Text = "검색";
+            this.buttonSelectByPass.UseVisualStyleBackColor = true;
+            this.buttonSelectByPass.Click += new System.EventHandler(this.buttonSelectByPass_Click);
+            // 
+            // textBoxStudentNmByPass
+            // 
+            this.textBoxStudentNmByPass.Location = new System.Drawing.Point(380, 27);
+            this.textBoxStudentNmByPass.Name = "textBoxStudentNmByPass";
+            this.textBoxStudentNmByPass.Size = new System.Drawing.Size(100, 21);
+            this.textBoxStudentNmByPass.TabIndex = 5;
+            this.textBoxStudentNmByPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStudentNmByPass_KeyDown);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(325, 32);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(49, 12);
+            this.label27.TabIndex = 4;
+            this.label27.Text = "학생명 :";
+            // 
+            // comboBoxCampusByPass
+            // 
+            this.comboBoxCampusByPass.FormattingEnabled = true;
+            this.comboBoxCampusByPass.Location = new System.Drawing.Point(178, 29);
+            this.comboBoxCampusByPass.Name = "comboBoxCampusByPass";
+            this.comboBoxCampusByPass.Size = new System.Drawing.Size(115, 20);
+            this.comboBoxCampusByPass.TabIndex = 3;
+            // 
+            // comboBoxCampusTypeByPass
+            // 
+            this.comboBoxCampusTypeByPass.FormattingEnabled = true;
+            this.comboBoxCampusTypeByPass.Location = new System.Drawing.Point(55, 27);
+            this.comboBoxCampusTypeByPass.Name = "comboBoxCampusTypeByPass";
+            this.comboBoxCampusTypeByPass.Size = new System.Drawing.Size(52, 20);
+            this.comboBoxCampusTypeByPass.TabIndex = 2;
+            this.comboBoxCampusTypeByPass.SelectionChangeCommitted += new System.EventHandler(this.comboBoxCampusTypeByPass_SelectionChangeCommitted);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(123, 33);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(49, 12);
+            this.label26.TabIndex = 1;
+            this.label26.Text = "캠퍼스 :";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(18, 30);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(41, 12);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "구분 : ";
             // 
             // groupBox14
             // 
@@ -2770,144 +2829,98 @@
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "미결 사용자 등록";
             // 
-            // label24
+            // Column22
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(18, 30);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(41, 12);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "구분 : ";
+            this.Column22.DataPropertyName = "usernm";
+            this.Column22.HeaderText = "학생명";
+            this.Column22.Name = "Column22";
+            this.Column22.Width = 70;
             // 
-            // label26
+            // Column69
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(123, 33);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(49, 12);
-            this.label26.TabIndex = 1;
-            this.label26.Text = "캠퍼스 :";
+            this.Column69.DataPropertyName = "login_id";
+            this.Column69.HeaderText = "LOGIN_ID";
+            this.Column69.Name = "Column69";
+            this.Column69.Width = 90;
             // 
-            // comboBoxCampusTypeByPass
+            // Column70
             // 
-            this.comboBoxCampusTypeByPass.FormattingEnabled = true;
-            this.comboBoxCampusTypeByPass.Location = new System.Drawing.Point(55, 27);
-            this.comboBoxCampusTypeByPass.Name = "comboBoxCampusTypeByPass";
-            this.comboBoxCampusTypeByPass.Size = new System.Drawing.Size(52, 20);
-            this.comboBoxCampusTypeByPass.TabIndex = 2;
-            this.comboBoxCampusTypeByPass.SelectionChangeCommitted += new System.EventHandler(this.comboBoxCampusTypeByPass_SelectionChangeCommitted);
+            this.Column70.DataPropertyName = "login_pwd";
+            this.Column70.HeaderText = "LOGIN_PW";
+            this.Column70.Name = "Column70";
+            this.Column70.Width = 90;
             // 
-            // comboBoxCampusByPass
+            // Column112
             // 
-            this.comboBoxCampusByPass.FormattingEnabled = true;
-            this.comboBoxCampusByPass.Location = new System.Drawing.Point(178, 29);
-            this.comboBoxCampusByPass.Name = "comboBoxCampusByPass";
-            this.comboBoxCampusByPass.Size = new System.Drawing.Size(115, 20);
-            this.comboBoxCampusByPass.TabIndex = 3;
+            this.Column112.DataPropertyName = "start_date";
+            this.Column112.HeaderText = "입반일";
+            this.Column112.Name = "Column112";
+            this.Column112.Width = 70;
             // 
-            // label27
+            // Column104
             // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(325, 32);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(49, 12);
-            this.label27.TabIndex = 4;
-            this.label27.Text = "학생명 :";
+            this.Column104.DataPropertyName = "clnm";
+            this.Column104.HeaderText = "반명";
+            this.Column104.Name = "Column104";
             // 
-            // textBoxStudentNmByPass
+            // Column121
             // 
-            this.textBoxStudentNmByPass.Location = new System.Drawing.Point(380, 27);
-            this.textBoxStudentNmByPass.Name = "textBoxStudentNmByPass";
-            this.textBoxStudentNmByPass.Size = new System.Drawing.Size(100, 21);
-            this.textBoxStudentNmByPass.TabIndex = 5;
-            this.textBoxStudentNmByPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStudentNmByPass_KeyDown);
+            this.Column121.DataPropertyName = "study";
+            this.Column121.HeaderText = "차시";
+            this.Column121.Name = "Column121";
+            this.Column121.Width = 50;
             // 
-            // buttonSelectByPass
+            // Column72
             // 
-            this.buttonSelectByPass.Location = new System.Drawing.Point(500, 26);
-            this.buttonSelectByPass.Name = "buttonSelectByPass";
-            this.buttonSelectByPass.Size = new System.Drawing.Size(50, 23);
-            this.buttonSelectByPass.TabIndex = 6;
-            this.buttonSelectByPass.Text = "검색";
-            this.buttonSelectByPass.UseVisualStyleBackColor = true;
-            this.buttonSelectByPass.Click += new System.EventHandler(this.buttonSelectByPass_Click);
+            this.Column72.DataPropertyName = "cpnm";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Column72.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column72.HeaderText = "캠퍼스";
+            this.Column72.Name = "Column72";
+            this.Column72.Width = 80;
             // 
-            // dataGridViewByPass
+            // Column21
             // 
-            this.dataGridViewByPass.AllowUserToAddRows = false;
-            this.dataGridViewByPass.AllowUserToDeleteRows = false;
-            this.dataGridViewByPass.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle58.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle58.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle58.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle58.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle58.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewByPass.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle58;
-            this.dataGridViewByPass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewByPass.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column120,
-            this.Column105,
-            this.Column106,
-            this.Column107,
-            this.Column108,
-            this.Column109,
-            this.Column110,
-            this.Column113,
-            this.Column114,
-            this.Column115,
-            this.Column116,
-            this.Column117,
-            this.Column118,
-            this.Column119});
-            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle59.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle59.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle59.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle59.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle59.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle59.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewByPass.DefaultCellStyle = dataGridViewCellStyle59;
-            this.dataGridViewByPass.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewByPass.Location = new System.Drawing.Point(3, 17);
-            this.dataGridViewByPass.Name = "dataGridViewByPass";
-            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle60.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle60.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle60.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle60.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle60.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewByPass.RowHeadersDefaultCellStyle = dataGridViewCellStyle60;
-            this.dataGridViewByPass.RowTemplate.Height = 23;
-            this.dataGridViewByPass.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewByPass.Size = new System.Drawing.Size(1243, 522);
-            this.dataGridViewByPass.TabIndex = 0;
+            this.Column21.DataPropertyName = "userid";
+            this.Column21.HeaderText = "USERID";
+            this.Column21.Name = "Column21";
+            this.Column21.Width = 60;
+            // 
+            // Column28
+            // 
+            this.Column28.DataPropertyName = "cpno";
+            this.Column28.HeaderText = "CPNO";
+            this.Column28.Name = "Column28";
+            this.Column28.Visible = false;
+            this.Column28.Width = 50;
             // 
             // Column120
             // 
             this.Column120.DataPropertyName = "business_cd";
             this.Column120.HeaderText = "구분";
             this.Column120.Name = "Column120";
+            this.Column120.Width = 40;
             // 
             // Column105
             // 
             this.Column105.DataPropertyName = "request_seq";
             this.Column105.HeaderText = "SEQ";
             this.Column105.Name = "Column105";
+            this.Column105.Width = 60;
             // 
             // Column106
             // 
             this.Column106.DataPropertyName = "cpno";
             this.Column106.HeaderText = "CPNO";
             this.Column106.Name = "Column106";
+            this.Column106.Width = 60;
             // 
             // Column107
             // 
             this.Column107.DataPropertyName = "cpid";
             this.Column107.HeaderText = "CPID";
             this.Column107.Name = "Column107";
+            this.Column107.Width = 60;
             // 
             // Column108
             // 
@@ -2920,24 +2933,28 @@
             this.Column109.DataPropertyName = "empno";
             this.Column109.HeaderText = "EMP_ID";
             this.Column109.Name = "Column109";
+            this.Column109.Width = 70;
             // 
             // Column110
             // 
             this.Column110.DataPropertyName = "empnm";
             this.Column110.HeaderText = "신청자명";
             this.Column110.Name = "Column110";
+            this.Column110.Width = 80;
             // 
             // Column113
             // 
             this.Column113.DataPropertyName = "userid";
             this.Column113.HeaderText = "USERID";
             this.Column113.Name = "Column113";
+            this.Column113.Width = 70;
             // 
             // Column114
             // 
             this.Column114.DataPropertyName = "usernm";
             this.Column114.HeaderText = "대상자명";
             this.Column114.Name = "Column114";
+            this.Column114.Width = 80;
             // 
             // Column115
             // 
@@ -2962,12 +2979,14 @@
             this.Column118.DataPropertyName = "counsel_nm";
             this.Column118.HeaderText = "등록자";
             this.Column118.Name = "Column118";
+            this.Column118.Width = 70;
             // 
             // Column119
             // 
             this.Column119.DataPropertyName = "reason";
             this.Column119.HeaderText = "신청사유";
             this.Column119.Name = "Column119";
+            this.Column119.Width = 140;
             // 
             // FormMain
             // 
@@ -3065,10 +3084,10 @@
             this.splitContainer10.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).EndInit();
             this.splitContainer10.ResumeLayout(false);
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewByPass)).EndInit();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3287,14 +3306,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column96;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column99;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column103;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column69;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column70;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column112;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column104;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column72;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column28;
         private System.Windows.Forms.SplitContainer splitContainer10;
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.GroupBox groupBox12;
@@ -3307,6 +3318,15 @@
         private System.Windows.Forms.TextBox textBoxStudentNmByPass;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.DataGridView dataGridViewByPass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column69;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column70;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column112;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column104;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column121;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column72;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column28;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column120;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column105;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column106;

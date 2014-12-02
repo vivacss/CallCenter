@@ -435,6 +435,8 @@ namespace Dreamonesys.CallCenter.Main
                             , C.login_id
                             , C.login_pwd
                             , A.start_date
+                            , (SELECT COUNT(userid) FROM tls_member_study WHERE userid = C.userid
+							      AND CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN sdate AND edate) AS STUDY
                             , (SELECT cpnm from tls_campus WHERE cpno = A.cpno) AS CPNM                        
 	                     FROM tls_class_user AS A 
                     LEFT JOIN tls_class AS B 
@@ -457,6 +459,8 @@ namespace Dreamonesys.CallCenter.Main
                             , C.login_id
                             , C.login_pwd
                             , A.start_date
+                            , (SELECT COUNT(userid) FROM tls_member_study WHERE userid = C.userid
+							      AND CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN sdate AND edate) AS STUDY
                             , (SELECT cpnm from tls_campus WHERE cpno = A.cpno) AS CPNM                                                 
 	                     FROM tls_class_user AS A 
                     LEFT JOIN tls_class AS B 
