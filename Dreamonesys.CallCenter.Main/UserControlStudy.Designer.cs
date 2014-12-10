@@ -90,7 +90,7 @@
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button12 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonClassScheduleExcel = new System.Windows.Forms.Button();
             this.buttonClassScheduleDateUpdate = new System.Windows.Forms.Button();
             this.buttonClassScheduleDelete = new System.Windows.Forms.Button();
             this.dataGridViewClassSchedule = new System.Windows.Forms.DataGridView();
@@ -724,7 +724,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button12);
-            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.buttonClassScheduleExcel);
             this.groupBox2.Controls.Add(this.buttonClassScheduleDateUpdate);
             this.groupBox2.Controls.Add(this.buttonClassScheduleDelete);
             this.groupBox2.Controls.Add(this.dataGridViewClassSchedule);
@@ -746,14 +746,15 @@
             this.button12.Text = "성적삭제";
             this.button12.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonClassScheduleExcel
             // 
-            this.button3.Location = new System.Drawing.Point(985, 17);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(73, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "엑셀출력";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonClassScheduleExcel.Location = new System.Drawing.Point(985, 17);
+            this.buttonClassScheduleExcel.Name = "buttonClassScheduleExcel";
+            this.buttonClassScheduleExcel.Size = new System.Drawing.Size(73, 23);
+            this.buttonClassScheduleExcel.TabIndex = 7;
+            this.buttonClassScheduleExcel.Text = "엑셀출력";
+            this.buttonClassScheduleExcel.UseVisualStyleBackColor = true;
+            this.buttonClassScheduleExcel.Click += new System.EventHandler(this.buttonClassScheduleExcel_Click);
             // 
             // buttonClassScheduleDateUpdate
             // 
@@ -1871,7 +1872,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerClassStudy;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonClassScheduleExcel;
         private System.Windows.Forms.Button buttonClassScheduleDateUpdate;
         private System.Windows.Forms.Button buttonClassScheduleDelete;
         private System.Windows.Forms.DataGridView dataGridViewClassSchedule;

@@ -293,6 +293,7 @@ namespace Dreamonesys.CallCenter.Main
 				                 END) 
                                , B.cp_group_nm DESC, A.cpnm ";
                     textBoxCampus.Text = "";
+                    textBoxClassNM.Text = "";
                     break;
 
                 case "select_employee":
@@ -309,6 +310,7 @@ namespace Dreamonesys.CallCenter.Main
                             , (SELECT name from tls_web_code WHERE cdmain = 'auth' and cdsub = A.auth_cd) AS AUTH_CD
                             , A.userid
                             , B.cpno
+                            , (SELECT REPLACE(cpnm, '캠퍼스', '') FROM tls_campus WHERE cpno = B.cpno) AS CPNM
                          FROM tls_member AS A
                     LEFT JOIN " + GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "db_link") + @".DBO.V_u2m_employee AS UE
                            ON A.member_id = UE.emp_id
@@ -318,7 +320,8 @@ namespace Dreamonesys.CallCenter.Main
                           AND A.auth_cd <> 'S'
                           AND (UE.retire_date = '' OR UE.retire_date IS NULL)                   
                         ORDER BY A.use_yn desc, A.tutor_yn desc, auth_cd, A.usernm
-                    ";                    
+                    ";
+                    textBoxClassNM.Text = "";
                     break;
 
                 case "select_employee_all":
@@ -335,8 +338,9 @@ namespace Dreamonesys.CallCenter.Main
                             , (SELECT name from tls_web_code WHERE cdmain = 'auth' and cdsub = A.auth_cd) AS AUTH_CD
                             , A.userid
                             , B.cpno
+                            , (SELECT REPLACE(cpnm, '캠퍼스', '') FROM tls_campus WHERE cpno = B.cpno) AS CPNM
                          FROM tls_member AS A                   
-                    LEFT JOIN tls_cam_member as B
+                   INNER JOIN tls_cam_member as B
                            ON A.userid = B.userid
                         WHERE A.auth_cd <> 'S'
                           AND (B.edate = '' OR B.edate IS NULL) ";
@@ -356,9 +360,10 @@ namespace Dreamonesys.CallCenter.Main
                          OR A.userid LIKE '" + textBoxUserNm.Text + "') ";
                     }
                     pSqlCommand.CommandText += @"
-                        ORDER BY B.cpno, A.use_yn DESC, A.tutor_yn DESC, A.usernm
+                        ORDER BY cpnm, A.use_yn DESC, A.tutor_yn DESC, A.usernm
                     ";
                     textBoxUserNm.Text = "";
+                    textBoxClassNM.Text = "";
                     break;
                 case "select_class_employee":
                     // 수업교사 반 목록 조회
@@ -383,7 +388,7 @@ namespace Dreamonesys.CallCenter.Main
 	                       ON B.class_tid = C.userid				    
 					LEFT JOIN tls_web_code AS D
 					       ON B.grade_cd = D.cdsub
-	                    WHERE A.cpno = " + GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpno") + @" 
+	                    WHERE A.cpno = " + GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "cpno") + @" 
                          AND A.userid = " + GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "userid") + @"
                          AND (B.edate = '' OR B.edate IS NULL OR B.edate >= CONVERT(VARCHAR(8), GETDATE(), 112))
                          AND B.use_yn = 'Y'											   
@@ -1509,7 +1514,8 @@ namespace Dreamonesys.CallCenter.Main
             if (dataGridViewClassEmployee.Rows.Count > 0 && dataGridViewClassEmployee.CurrentCell != null)
             {
                 //반 학생 목록을 조회한다.
-                SelectDataGridView(dataGridViewClassStudent, "select_class_student");                
+                SelectDataGridView(dataGridViewClassStudent, "select_class_student");
+                textBoxClassNM.Text = this._common.GetCellValue(dataGridViewClassEmployee, dataGridViewClassEmployee.CurrentCell.RowIndex, "clnm");
             }
         }
 

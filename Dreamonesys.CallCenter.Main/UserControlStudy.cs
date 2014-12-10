@@ -21,6 +21,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dreamonesys.CallCenter.Main.Class;
 
+//엑셀 출력
+using System.Reflection;
+using Excel = Microsoft.Office.Interop.Excel;
+
+
 namespace Dreamonesys.CallCenter.Main
 {
     public partial class UserControlStudy : UserControl
@@ -29,6 +34,7 @@ namespace Dreamonesys.CallCenter.Main
 
         private Common _common;
         private AppMain _appMain;
+        private SaveFileDialog saveFileDialog = new SaveFileDialog();
 
         #endregion
 
@@ -1789,43 +1795,107 @@ namespace Dreamonesys.CallCenter.Main
         }
         #endregion Event
 
-       
+        private void buttonClassScheduleExcel_Click(object sender, EventArgs e)
+        {
+            //과정1 차시리스트 엑셀출력
+            //DataGridView ArrDataGridView = new DataGridView();
+            //ArrDataGridView = dataGridViewClassSchedule;
+            ExportExcel_ForOneDataGrid(true, dataGridViewClassSchedule);
 
-        
-
-        
-        
-
-       
-
-
-
-        
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
+            
+ 
+        private void ExportExcel_ForOneDataGrid(bool captions, DataGridView myDataGridView)
+        {
+            this.saveFileDialog.FileName = "TempName";
+            this.saveFileDialog.DefaultExt = "xls";
+            this.saveFileDialog.Filter = "Excel files (*.xls)|*.xls";
+            this.saveFileDialog.InitialDirectory = "c:\\temp\\";
+ 
+            DialogResult result = saveFileDialog.ShowDialog();
+ 
+            if (result == DialogResult.OK)
+            {
+                int num = 0;
+                object missingType = Type.Missing;
+                Excel.Application objApp;
+                Excel._Workbook objBook;
+                Excel.Workbooks objBooks;
+                Excel.Sheets objSheets;
+                Excel._Worksheet objSheet;
+                Excel.Range range;
+ 
+                string[] headers = new string[myDataGridView.ColumnCount];
+                string[] columns = new string[myDataGridView.ColumnCount];
+ 
+                for (int c = 0; c < myDataGridView.ColumnCount; c++)
+                {
+                    headers[c] = myDataGridView.Rows[0].Cells[c].OwningColumn.HeaderText.ToString();
+ 
+                    if (c <= 25)
+                    {
+                        num = c + 65;
+                        columns[c] = Convert.ToString((char)num);
+                    }
+                    else
+                    {
+                        columns[c] = Convert.ToString((char)(Convert.ToInt32(c / 26) - 1 + 65)) + Convert.ToString((char)(c % 26 + 65));
+                    }
+                }
+ 
+                try
+                {
+ 
+                    objApp = new Excel.Application();
+                    objBooks = objApp.Workbooks;
+                    objBook = objBooks.Add(Missing.Value);
+                    objSheets = objBook.Worksheets;
+                    objSheet = (Excel._Worksheet)objSheets.get_Item(1);
+ 
+                    if (captions)
+                    {
+                        for (int c = 0; c < myDataGridView.ColumnCount; c++)
+                        {
+                            range = objSheet.get_Range(columns[c] + "1", Missing.Value);
+                            range.set_Value(Missing.Value, headers[c]);
+                        }
+                    }
+ 
+                    for (int i = 0; i < myDataGridView.RowCount - 1; i++)
+                    {
+                        for (int j = 0; j < myDataGridView.ColumnCount; j++)
+                        {
+                            range = objSheet.get_Range(columns[j] + Convert.ToString(i + 2),
+                                Missing.Value);
+                            range.set_Value(Missing.Value,
+                                myDataGridView.Rows[i].Cells[j].Value.ToString());
+ 
+                        }
+                    }
+                    objApp.Visible = false;
+                    objApp.UserControl = false;
+                    objBook.SaveAs(@saveFileDialog.FileName,
+                        Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal,
+                        missingType, missingType, missingType, missingType,
+                        Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
+                        missingType, missingType, missingType, missingType, missingType);
+ 
+                    objBook.Close(false, missingType, missingType);
+ 
+                    Cursor.Current = Cursors.Default;
+ 
+                    MessageBox.Show("Save Success!!!");
+                }
+                catch (Exception theException)
+                {
+                    String errorMessage;
+                    errorMessage = "Error: ";
+                    errorMessage = String.Concat(errorMessage, theException.Message);
+                    errorMessage = String.Concat(errorMessage, " Line: ");
+                    errorMessage = String.Concat(errorMessage, theException.Source);
+                    MessageBox.Show(errorMessage, "Error");
+                }
+            }
+        }        
     }
 }
