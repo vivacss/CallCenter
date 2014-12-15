@@ -86,7 +86,9 @@ namespace Dreamonesys.CallCenter.Main
             Common.ComboBoxList[] comboBoxList = 
             {
                 new Common.ComboBoxList(comboBoxCampusType, "캠퍼스구분", true),
-                new Common.ComboBoxList(comboBoxCampus, "캠퍼스", true)                
+                new Common.ComboBoxList(comboBoxCampus, "캠퍼스", true),
+                new Common.ComboBoxList(comboBoxCampusTypeMyTest, "캠퍼스구분", true),
+                new Common.ComboBoxList(comboBoxCampusMyTest, "캠퍼스", true)
             };
             this._common.GetComboList(comboBoxList);
         }
@@ -240,7 +242,7 @@ namespace Dreamonesys.CallCenter.Main
                     }                   
 
                     pSqlCommand.CommandText += @"
-                      ORDER BY A.USE_YN DESC, C.CPNM, A.USERNM ";
+                      ORDER BY A.use_yn, C.CPNM, A.USERNM";
                     break;
                 
                 case "select_edu_student_class":
@@ -376,6 +378,60 @@ namespace Dreamonesys.CallCenter.Main
                     this.dateTimePickerStudentStudyState.Value = DateTime.Now;
 
                     break;
+                case "select_mytest":
+                    //학생 단말기 전체 학습정보를 조회한다.
+                    pSqlCommand.CommandText = @"                      	
+                        SELECT C.cpnm
+                             , D.clnm
+                             , B.usernm
+                             , A.cpno
+                             , A.clno
+                             , A.userid
+                             , A.testsetcode
+                             , A.test_cd
+                             , A.title
+                             , A.quiz_cd
+                             , A.quiz_cnt
+                             , A.end_yn
+                             , A.rid
+                             , A.rdatetime
+                             , A.uid
+                             , A.udatetime  
+                          FROM tls_mytest_user AS A
+                     LEFT JOIN tls_member AS B
+                               ON A.userid = B.userid
+                     LEFT JOIN tls_campus AS C
+                               ON A.cpno = C.cpno
+                     LEFT JOIN tls_class AS D
+                               ON A.clno = D.clno
+                         WHERE 1=1    ";
+
+                    if (!string.IsNullOrEmpty(businessCD))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND C.business_cd = '" + businessCD + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(cpno))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND C.cpno = '" + cpno + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxUserNmMyTest.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND (B.usernm LIKE '%" + textBoxUserNmMyTest.Text + "%' ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxUserNmMyTest.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         OR B.login_id = '" + textBoxUserNmMyTest.Text + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxUserNmMyTest.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         OR B.userid LIKE '" + textBoxUserNmMyTest.Text + "') ";
+                    }   
+                    break;
                 default:
                     break;
             }
@@ -441,7 +497,7 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
         /// <summary>
-        /// 캠퍼스 구분 콤보박스 선택 변경시 발생하는 이벤트
+        /// 학생검색 캠퍼스 구분 콤보박스 선택 변경시 발생하는 이벤트
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -536,20 +592,39 @@ namespace Dreamonesys.CallCenter.Main
         }
         #endregion Event
 
-       
+        private void comboBoxCampusTypeMyTest_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //오답, 셀프, 추가학습 캠퍼스 콤보박스 데이터 생성
+            string campusType = comboBoxCampusTypeMyTest.SelectedValue.ToString();
 
-        
+            _common.GetComboList(comboBoxCampusMyTest, "캠퍼스", true, new string[] { campusType });
+        }
 
-        
+        private void textBoxUserNmMyTest_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //U2M 오답, 셀프, 추가학습 학생을 검색한다.                
+                SelectDataGridView(dataGridViewMyTestUser, "select_mytest");               
+            }
+        }
 
-        
 
-       
 
-        
 
-       
 
-      
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

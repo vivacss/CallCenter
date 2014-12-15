@@ -376,7 +376,10 @@ namespace Dreamonesys.CallCenter.Main
 	  		                , D.name
 	                        , C.usernm                            							  
                             , A.cpno							
-							, B.school_cd
+							, CASE B.school_cd WHEN 91 THEN '초등'
+                                               WHEN 92 THEN '중등'
+                                               WHEN 93 THEN '고등'                                               
+                              END AS SCHOOL_CD
 							, (SELECT COUNT(clno) FROM tls_class_study WHERE clno = B.clno
 							      AND CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN sdate AND edate) AS STUDY
 						    , (SELECT COUNT(clno) FROM tls_class_user WHERE clno = B.clno AND auth_cd = 'S'
@@ -405,7 +408,10 @@ namespace Dreamonesys.CallCenter.Main
 	                        , A.point
 	                        , A.mpoint
                             , C.name
-	  		                , A.school_cd
+	  		                , CASE A.school_cd WHEN 91 THEN '초등'
+                                               WHEN 92 THEN '중등'
+                                               WHEN 93 THEN '고등'                                               
+                              END AS SCHOOL_CD
 	                        , B.usernm
                             , A.cpno
                             , (SELECT COUNT(clno) FROM tls_class_study WHERE clno = A.clno
