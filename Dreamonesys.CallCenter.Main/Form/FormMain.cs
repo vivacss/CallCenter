@@ -461,7 +461,7 @@ namespace Dreamonesys.CallCenter.Main
                     ";
                     break;
                 case "select_class_student_all":
-                    //전체 학생 검색
+                    //캠퍼스 특정 학생 검색
                     pSqlCommand.CommandText = @"
                        SELECT A.userid
 	                        , C.usernm
@@ -479,7 +479,7 @@ namespace Dreamonesys.CallCenter.Main
                     LEFT JOIN tls_member AS C
                            ON A.userid = C.userid
                         WHERE A.auth_cd = 'S'
-                          AND A.cpno = " + GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpno") + @"
+                          AND A.cpno = " + GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "cpno") + @"
                           AND (A.end_date = '' OR A.end_date IS NULL OR A.end_date >= CONVERT(VARCHAR(8), GETDATE(), 112) ) ";                        
                     if (!string.IsNullOrEmpty(textBoxStudentNM.Text))
                     {

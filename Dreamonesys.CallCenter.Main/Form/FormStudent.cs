@@ -242,7 +242,7 @@ namespace Dreamonesys.CallCenter.Main
                     }                   
 
                     pSqlCommand.CommandText += @"
-                      ORDER BY A.use_yn, C.CPNM, A.USERNM";
+                      ORDER BY A.use_yn DESC, C.CPNM, A.USERNM";
                     break;
                 
                 case "select_edu_student_class":
