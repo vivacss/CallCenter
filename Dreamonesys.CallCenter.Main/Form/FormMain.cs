@@ -394,6 +394,7 @@ namespace Dreamonesys.CallCenter.Main
 	                    WHERE A.cpno = " + GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "cpno") + @" 
                          AND A.userid = " + GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "userid") + @"
                          AND (B.edate = '' OR B.edate IS NULL OR B.edate >= CONVERT(VARCHAR(8), GETDATE(), 112))
+                         AND (A.end_date = '' OR A.end_date IS NULL OR CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN A.start_date and A.end_date)
                          AND B.use_yn = 'Y'											   
 	                   ORDER BY B.school_cd, B.clnm
                     ";
@@ -1608,7 +1609,7 @@ namespace Dreamonesys.CallCenter.Main
         private void dataGridViewClassStudent_DoubleClick(object sender, EventArgs e)
         {
             //학생 차시 조회 폼 이동
-            if (dataGridViewClassEmployee.Rows.Count > 0 && dataGridViewClassEmployee.CurrentCell != null)
+            if (dataGridViewClassStudent.Rows.Count > 0 && dataGridViewClassStudent.CurrentCell != null)
             {
                 FormClassStudentSchedule classStudentSchedule = new FormClassStudentSchedule();
                 classStudentSchedule.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClassStudent, dataGridViewClassStudent.CurrentCell.RowIndex, "cpno");
