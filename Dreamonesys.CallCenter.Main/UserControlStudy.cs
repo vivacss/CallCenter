@@ -949,11 +949,11 @@ namespace Dreamonesys.CallCenter.Main
 		                       AND sdno = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "sdno") + @"'
 						       AND  STUFF(STUFF(sdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "sdate") + @"'
 						       AND  STUFF(STUFF(edate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "edate") + @"'
-                        ";
-
-                        Console.WriteLine(sqlCommand.CommandText);
+                        ";                        
                     }
                 }
+
+                Console.WriteLine(sqlCommand.CommandText);
 
                 if (isFound == true)
                 {
@@ -1028,10 +1028,10 @@ namespace Dreamonesys.CallCenter.Main
 						       AND  STUFF(STUFF(cdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "cdate") + @"'
 						       AND CSNO = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "csno") + @"'
                         ";
-                        
-                        Console.WriteLine(sqlCommand.CommandText);
                     }
                 }
+
+                Console.WriteLine(sqlCommand.CommandText);
 
                 if (isFound == true)
                 {
@@ -1105,10 +1105,10 @@ namespace Dreamonesys.CallCenter.Main
 						       AND STUFF(STUFF(sdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "sdate") + @"'
 						       AND STUFF(STUFF(edate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassStudy, rowCount, "edate") + @"'
                         ";
-
-                        Console.WriteLine(sqlCommand.CommandText);
                     }
                 }
+
+                Console.WriteLine(sqlCommand.CommandText);
 
                 if (isFound == true)
                 {
@@ -1181,10 +1181,10 @@ namespace Dreamonesys.CallCenter.Main
 						       AND STUFF(STUFF(cdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "cdate") + @"'
 						       AND CSNO = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "csno") + @"'
                         ";
-
-                        Console.WriteLine(sqlCommand.CommandText);
                     }
                 }
+
+                Console.WriteLine(sqlCommand.CommandText);
 
                 if (isFound == true)
                 {
@@ -1259,10 +1259,10 @@ namespace Dreamonesys.CallCenter.Main
 						       AND STUFF(STUFF(sdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "sdate") + @"'
 						       AND STUFF(STUFF(edate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "edate") + @"'
                         ";
-
-                        Console.WriteLine(sqlCommand.CommandText);
                     }
                 }
+
+                Console.WriteLine(sqlCommand.CommandText);
 
                 if (isFound == true)
                 {
@@ -1336,11 +1336,11 @@ namespace Dreamonesys.CallCenter.Main
 		                       AND sdno = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "sdno") + @"'
 						       AND STUFF(STUFF(cdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "cdate") + @"'
 						       AND csno = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "csno") + @"'
-                        ";
-
-                        Console.WriteLine(sqlCommand.CommandText);
+                        ";                                                 
                     }
                 }
+
+                Console.WriteLine(sqlCommand.CommandText);
 
                 if (isFound == true)
                 {
@@ -1414,10 +1414,10 @@ namespace Dreamonesys.CallCenter.Main
 						       AND STUFF(STUFF(sdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "sdate") + @"'
 						       AND STUFF(STUFF(edate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewStudentStudy, rowCount, "edate") + @"'
                         ";
-
-                        Console.WriteLine(sqlCommand.CommandText);
                     }
                 }
+
+                Console.WriteLine(sqlCommand.CommandText);
 
                 if (isFound == true)
                 {
@@ -1490,10 +1490,10 @@ namespace Dreamonesys.CallCenter.Main
 						       AND STUFF(STUFF(cdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "cdate") + @"'
 						       AND CSNO = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "csno") + @"'
                         ";
-
-                        Console.WriteLine(sqlCommand.CommandText);
                     }
                 }
+
+                Console.WriteLine(sqlCommand.CommandText);
 
                 if (isFound == true)
                 {
@@ -1883,99 +1883,82 @@ namespace Dreamonesys.CallCenter.Main
         }
         #endregion Event
 
-        
 
-        private void buttonClassScheduleExcel_Click(object sender, EventArgs e)
+        private void buttonClassStudyExcel_Click(object sender, EventArgs e)
         {
-            //과정1 차시리스트 엑셀출력
-            //DataGridView ArrDataGridView = new DataGridView();
-            //ArrDataGridView = dataGridViewClassSchedule;
-            ExportExcel_ForOneDataGrid(true, dataGridViewClassSchedule);
-
-        }
-            
- 
-        private void ExportExcel_ForOneDataGrid(bool captions, DataGridView myDataGridView)
-        {
-            this.saveFileDialog.FileName = "TempName";
+            //과정1 차시목록 엑셀 출력
+            this.saveFileDialog.FileName = "저장할파일이름";
             this.saveFileDialog.DefaultExt = "xls";
             this.saveFileDialog.Filter = "Excel files (*.xls)|*.xls";
-            this.saveFileDialog.InitialDirectory = "c:\\temp\\";
- 
+            this.saveFileDialog.InitialDirectory = "c:\\";
+
             DialogResult result = saveFileDialog.ShowDialog();
- 
+
             if (result == DialogResult.OK)
             {
                 int num = 0;
                 object missingType = Type.Missing;
+
                 Excel.Application objApp;
                 Excel._Workbook objBook;
                 Excel.Workbooks objBooks;
                 Excel.Sheets objSheets;
                 Excel._Worksheet objSheet;
                 Excel.Range range;
- 
-                string[] headers = new string[myDataGridView.ColumnCount];
-                string[] columns = new string[myDataGridView.ColumnCount];
- 
-                for (int c = 0; c < myDataGridView.ColumnCount; c++)
+
+                string[] headers = new string[dataGridViewClassStudy.ColumnCount];
+                string[] columns = new string[dataGridViewClassStudy.ColumnCount];
+
+                //그리드 값 헤드
+                for (int c = 0; c < dataGridViewClassStudy.ColumnCount; c++)
                 {
-                    headers[c] = myDataGridView.Rows[0].Cells[c].OwningColumn.HeaderText.ToString();
- 
-                    if (c <= 25)
-                    {
-                        num = c + 65;
-                        columns[c] = Convert.ToString((char)num);
-                    }
-                    else
-                    {
-                        columns[c] = Convert.ToString((char)(Convert.ToInt32(c / 26) - 1 + 65)) + Convert.ToString((char)(c % 26 + 65));
-                    }
+                    headers[c] = dataGridViewClassStudy.Rows[1].Cells[c].OwningColumn.HeaderText.ToString();
+                    num = c + 65;
+                    columns[c] = Convert.ToString((char)num);
                 }
- 
+
                 try
                 {
- 
                     objApp = new Excel.Application();
                     objBooks = objApp.Workbooks;
                     objBook = objBooks.Add(Missing.Value);
                     objSheets = objBook.Worksheets;
                     objSheet = (Excel._Worksheet)objSheets.get_Item(1);
- 
-                    if (captions)
+
+                    for (int c = 0; c < dataGridViewClassStudy.ColumnCount; c++)
                     {
-                        for (int c = 0; c < myDataGridView.ColumnCount; c++)
-                        {
-                            range = objSheet.get_Range(columns[c] + "1", Missing.Value);
-                            range.set_Value(Missing.Value, headers[c]);
-                        }
+                        range = objSheet.get_Range(columns[c] + "1", Missing.Value);
+                        range.set_Value(Missing.Value, headers[c]);
                     }
- 
-                    for (int i = 0; i < myDataGridView.RowCount - 1; i++)
+
+                    //그리드 값 로우(행)
+                    for (int i = 0; i < dataGridViewClassStudy.RowCount; i++)
                     {
-                        for (int j = 0; j < myDataGridView.ColumnCount; j++)
+                        //그리드 값 열
+                        for (int j = 1; j < dataGridViewClassStudy.ColumnCount; j++)
                         {
                             range = objSheet.get_Range(columns[j] + Convert.ToString(i + 2),
-                                Missing.Value);
+                                                                    Missing.Value);
                             range.set_Value(Missing.Value,
-                                myDataGridView.Rows[i].Cells[j].Value.ToString());
- 
+                                                   dataGridViewClassStudy.Rows[i].Cells[j].Value.ToString());
                         }
                     }
+
                     objApp.Visible = false;
                     objApp.UserControl = false;
+
                     objBook.SaveAs(@saveFileDialog.FileName,
-                        Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal,
-                        missingType, missingType, missingType, missingType,
-                        Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
-                        missingType, missingType, missingType, missingType, missingType);
- 
+                              Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal,
+                              missingType, missingType, missingType, missingType,
+                              Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
+                              missingType, missingType, missingType, missingType, missingType);
                     objBook.Close(false, missingType, missingType);
- 
-                    Cursor.Current = Cursors.Default;
- 
-                    MessageBox.Show("Save Success!!!");
+
+                    //Cursor.Current = Cursors.Default;
+
+                    MessageBox.Show("저장 완료!!!");
                 }
+
                 catch (Exception theException)
                 {
                     String errorMessage;
@@ -1983,10 +1966,279 @@ namespace Dreamonesys.CallCenter.Main
                     errorMessage = String.Concat(errorMessage, theException.Message);
                     errorMessage = String.Concat(errorMessage, " Line: ");
                     errorMessage = String.Concat(errorMessage, theException.Source);
+
                     MessageBox.Show(errorMessage, "Error");
                 }
             }
         }
+
+        private void buttonClassScheduleExcel_Click(object sender, EventArgs e)
+        {
+            
+            //과정1 차시리스트 엑셀출력
+            
+            this.saveFileDialog.FileName = "저장할파일이름";
+            this.saveFileDialog.DefaultExt = "xls";
+            this.saveFileDialog.Filter = "Excel files (*.xls)|*.xls";
+            this.saveFileDialog.InitialDirectory = "c:\\";
+
+            DialogResult result = saveFileDialog.ShowDialog();
+                        
+            if (result == DialogResult.OK)
+            {
+                int num = 0;
+                object missingType = Type.Missing;
+
+                Excel.Application objApp;
+                Excel._Workbook objBook;
+                Excel.Workbooks objBooks;
+                Excel.Sheets objSheets;
+                Excel._Worksheet objSheet;
+                Excel.Range range;
+
+                string[] headers = new string[dataGridViewClassSchedule.ColumnCount];
+                string[] columns = new string[dataGridViewClassSchedule.ColumnCount];
+
+                //그리드 값 헤드
+                for (int c = 0; c < dataGridViewClassSchedule.ColumnCount; c++)
+                {
+                    headers[c] = dataGridViewClassSchedule.Rows[1].Cells[c].OwningColumn.HeaderText.ToString();
+                    num = c + 65;
+                    columns[c] = Convert.ToString((char)num);
+                }
+
+                try
+                {
+                    objApp = new Excel.Application();
+                    objBooks = objApp.Workbooks;
+                    objBook = objBooks.Add(Missing.Value);
+                    objSheets = objBook.Worksheets;
+                    objSheet = (Excel._Worksheet)objSheets.get_Item(1);
+
+                    for (int c = 0; c < dataGridViewClassSchedule.ColumnCount; c++)
+                    {
+                        range = objSheet.get_Range(columns[c] + "1", Missing.Value);
+                        range.set_Value(Missing.Value, headers[c]);
+                    }
+
+                    //그리드 값 로우(행)
+                    for (int i = 0; i < dataGridViewClassSchedule.RowCount ; i++)
+                    {
+                        //그리드 값 열
+                        for (int j = 1; j < dataGridViewClassSchedule.ColumnCount; j++)
+                        {                            
+                            range = objSheet.get_Range(columns[j] + Convert.ToString(i + 2),
+                                                                    Missing.Value);
+                            range.set_Value(Missing.Value,
+                                                   dataGridViewClassSchedule.Rows[i].Cells[j].Value.ToString());
+                        }
+                    }
+
+                    objApp.Visible = false;
+                    objApp.UserControl = false;
+
+                    objBook.SaveAs(@saveFileDialog.FileName,
+                              Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal,
+                              missingType, missingType, missingType, missingType,
+                              Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
+                              missingType, missingType, missingType, missingType, missingType);
+                    objBook.Close(false, missingType, missingType);
+
+                    //Cursor.Current = Cursors.Default;
+
+                    MessageBox.Show("저장 완료!!!");
+                }
+
+                catch (Exception theException)
+                {
+                    String errorMessage;
+                    errorMessage = "Error: ";
+                    errorMessage = String.Concat(errorMessage, theException.Message);
+                    errorMessage = String.Concat(errorMessage, " Line: ");
+                    errorMessage = String.Concat(errorMessage, theException.Source);
+
+                    MessageBox.Show(errorMessage, "Error");
+                }
+            }
+        }
+
+        
+        private void buttonStudentStudyExcel_Click(object sender, EventArgs e)
+        {
+            //과정2 차시목록 엑셀 출력
+            this.saveFileDialog.FileName = "저장할파일이름";
+            this.saveFileDialog.DefaultExt = "xls";
+            this.saveFileDialog.Filter = "Excel files (*.xls)|*.xls";
+            this.saveFileDialog.InitialDirectory = "c:\\";
+
+            DialogResult result = saveFileDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                int num = 0;
+                object missingType = Type.Missing;
+
+                Excel.Application objApp;
+                Excel._Workbook objBook;
+                Excel.Workbooks objBooks;
+                Excel.Sheets objSheets;
+                Excel._Worksheet objSheet;
+                Excel.Range range;
+
+                string[] headers = new string[dataGridViewStudentStudy.ColumnCount];
+                string[] columns = new string[dataGridViewStudentStudy.ColumnCount];
+
+                //그리드 값 헤드
+                for (int c = 0; c < dataGridViewStudentStudy.ColumnCount; c++)
+                {
+                    headers[c] = dataGridViewStudentStudy.Rows[1].Cells[c].OwningColumn.HeaderText.ToString();
+                    num = c + 65;
+                    columns[c] = Convert.ToString((char)num);
+                }
+
+                try
+                {
+                    objApp = new Excel.Application();
+                    objBooks = objApp.Workbooks;
+                    objBook = objBooks.Add(Missing.Value);
+                    objSheets = objBook.Worksheets;
+                    objSheet = (Excel._Worksheet)objSheets.get_Item(1);
+
+                    for (int c = 0; c < dataGridViewStudentStudy.ColumnCount; c++)
+                    {
+                        range = objSheet.get_Range(columns[c] + "1", Missing.Value);
+                        range.set_Value(Missing.Value, headers[c]);
+                    }
+
+                    //그리드 값 로우(행)
+                    for (int i = 0; i < dataGridViewStudentStudy.RowCount; i++)
+                    {
+                        //그리드 값 열
+                        for (int j = 1; j < dataGridViewStudentStudy.ColumnCount; j++)
+                        {
+                            range = objSheet.get_Range(columns[j] + Convert.ToString(i + 2),
+                                                                    Missing.Value);
+                            range.set_Value(Missing.Value,
+                                                   dataGridViewStudentStudy.Rows[i].Cells[j].Value.ToString());
+                        }
+                    }
+
+                    objApp.Visible = false;
+                    objApp.UserControl = false;
+
+                    objBook.SaveAs(@saveFileDialog.FileName,
+                              Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal,
+                              missingType, missingType, missingType, missingType,
+                              Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
+                              missingType, missingType, missingType, missingType, missingType);
+                    objBook.Close(false, missingType, missingType);
+
+                    //Cursor.Current = Cursors.Default;
+
+                    MessageBox.Show("저장 완료!!!");
+                }
+
+                catch (Exception theException)
+                {
+                    String errorMessage;
+                    errorMessage = "Error: ";
+                    errorMessage = String.Concat(errorMessage, theException.Message);
+                    errorMessage = String.Concat(errorMessage, " Line: ");
+                    errorMessage = String.Concat(errorMessage, theException.Source);
+
+                    MessageBox.Show(errorMessage, "Error");
+                }
+            }
+        }
+
+        private void buttonStudentScheduleExcel_Click(object sender, EventArgs e)
+        {
+            //과정2 차리 리스트 엑셀 출력
+            this.saveFileDialog.FileName = "저장할파일이름";
+            this.saveFileDialog.DefaultExt = "xls";
+            this.saveFileDialog.Filter = "Excel files (*.xls)|*.xls";
+            this.saveFileDialog.InitialDirectory = "c:\\";
+
+            DialogResult result = saveFileDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                int num = 0;
+                object missingType = Type.Missing;
+
+                Excel.Application objApp;
+                Excel._Workbook objBook;
+                Excel.Workbooks objBooks;
+                Excel.Sheets objSheets;
+                Excel._Worksheet objSheet;
+                Excel.Range range;
+
+                string[] headers = new string[dataGridViewStudentSchedule.ColumnCount];
+                string[] columns = new string[dataGridViewStudentSchedule.ColumnCount];
+
+                //그리드 값 헤드
+                for (int c = 0; c < dataGridViewStudentSchedule.ColumnCount; c++)
+                {
+                    headers[c] = dataGridViewStudentSchedule.Rows[1].Cells[c].OwningColumn.HeaderText.ToString();
+                    num = c + 65;
+                    columns[c] = Convert.ToString((char)num);
+                }
+
+                try
+                {
+                    objApp = new Excel.Application();
+                    objBooks = objApp.Workbooks;
+                    objBook = objBooks.Add(Missing.Value);
+                    objSheets = objBook.Worksheets;
+                    objSheet = (Excel._Worksheet)objSheets.get_Item(1);
+
+                    for (int c = 0; c < dataGridViewStudentSchedule.ColumnCount; c++)
+                    {
+                        range = objSheet.get_Range(columns[c] + "1", Missing.Value);
+                        range.set_Value(Missing.Value, headers[c]);
+                    }
+
+                    //그리드 값 로우(행)
+                    for (int i = 0; i < dataGridViewStudentSchedule.RowCount; i++)
+                    {
+                        //그리드 값 열
+                        for (int j = 1; j < dataGridViewStudentSchedule.ColumnCount; j++)
+                        {
+                            range = objSheet.get_Range(columns[j] + Convert.ToString(i + 2),
+                                                                    Missing.Value);
+                            range.set_Value(Missing.Value,
+                                                   dataGridViewStudentSchedule.Rows[i].Cells[j].Value.ToString());
+                        }
+                    }
+
+                    objApp.Visible = false;
+                    objApp.UserControl = false;
+
+                    objBook.SaveAs(@saveFileDialog.FileName,
+                              Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal,
+                              missingType, missingType, missingType, missingType,
+                              Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
+                              missingType, missingType, missingType, missingType, missingType);
+                    objBook.Close(false, missingType, missingType);
+
+                    //Cursor.Current = Cursors.Default;
+
+                    MessageBox.Show("저장 완료!!!");
+                }
+
+                catch (Exception theException)
+                {
+                    String errorMessage;
+                    errorMessage = "Error: ";
+                    errorMessage = String.Concat(errorMessage, theException.Message);
+                    errorMessage = String.Concat(errorMessage, " Line: ");
+                    errorMessage = String.Concat(errorMessage, theException.Source);
+
+                    MessageBox.Show(errorMessage, "Error");
+                }
+            }
+        }
+        
 
                 
     }

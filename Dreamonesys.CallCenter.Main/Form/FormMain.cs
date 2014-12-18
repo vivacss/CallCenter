@@ -1116,10 +1116,11 @@ namespace Dreamonesys.CallCenter.Main
 			                          GROUP BY cpno, clno
 			                         ) AS A
 		                      LEFT JOIN tls_class AS B
-		                        ON A.cpno = B.cpno AND A.clno = B.clno ";
-                        Console.WriteLine(sqlCommand.CommandText);
+		                        ON A.cpno = B.cpno AND A.clno = B.clno  ";
                     }
                 }
+
+                Console.WriteLine(sqlCommand.CommandText);
 
                 if (isFound == true)
                 {
@@ -1187,10 +1188,11 @@ namespace Dreamonesys.CallCenter.Main
                               FROM tls_point_user 
                              WHERE userid = '" + this._common.GetCellValue(dataGridViewStudentPointSave, rowCount, "userid") + @"'
                                AND pcode = '" + this._common.GetCellValue(dataGridViewStudentPointSave, rowCount, "pcode") + @"'
-                               AND pno = '" + this._common.GetCellValue(dataGridViewStudentPointSave, rowCount, "pno") + @"' ";                            
-                        Console.WriteLine(sqlCommand.CommandText);
+                               AND pno = '" + this._common.GetCellValue(dataGridViewStudentPointSave, rowCount, "pno") + @"' ";                                                    
                     }
                 }
+
+                Console.WriteLine(sqlCommand.CommandText);
 
                 if (isFound == true)
                 {
@@ -1899,71 +1901,6 @@ namespace Dreamonesys.CallCenter.Main
         
 
         #endregion Event
-
-        
-
-       
-
-        
-
-        
-
-       
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
