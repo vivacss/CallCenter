@@ -294,6 +294,7 @@ namespace Dreamonesys.CallCenter.Main
                                , B.cp_group_nm DESC, A.cpnm ";
                     textBoxCampus.Text = "";
                     textBoxClassNM.Text = "";
+                    toolStripTextBoxCampusInfo.Text = "";
                     break;
 
                 case "select_employee":
@@ -322,6 +323,7 @@ namespace Dreamonesys.CallCenter.Main
                         ORDER BY A.use_yn desc, A.tutor_yn desc, auth_cd, A.usernm
                     ";
                     textBoxClassNM.Text = "";
+                    toolStripTextBoxCampusInfo.Text = "";
                     break;
 
                 case "select_employee_all":
@@ -364,6 +366,7 @@ namespace Dreamonesys.CallCenter.Main
                     ";
                     textBoxUserNm.Text = "";
                     textBoxClassNM.Text = "";
+                    toolStripTextBoxCampusInfo.Text = "";
                     break;
                 case "select_class_employee":
                     // 수업교사 반 목록 조회
@@ -1440,7 +1443,7 @@ namespace Dreamonesys.CallCenter.Main
             //특정 캠퍼스 조회
             if (e.KeyCode == Keys.Enter)
             {
-                SelectDataGridView(dataGridViewCampus, "select_campus");
+                SelectDataGridView(dataGridViewCampus, "select_campus");                
             }
         }
         /// <summary>
@@ -1455,6 +1458,7 @@ namespace Dreamonesys.CallCenter.Main
         {
             // 교사정보를 조회한다.
             SelectDataGridView(dataGridViewEmployee, "select_employee");
+            toolStripTextBoxCampusInfo.Text = GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpnm");
         }
 
         /// <summary>
@@ -1901,6 +1905,79 @@ namespace Dreamonesys.CallCenter.Main
         
 
         #endregion Event
+
+        /// <summary>
+        ///  드림플러스 캠퍼스 정보를 유투엠에 연동한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButtonImportCampusInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
+        /// <summary>
+        ///  드림플러스 강사 비번 정보를 유투엠에 연동한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButtonEmployeeLoginPW_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewEmployee.Rows.Count > 0 && dataGridViewEmployee.CurrentCell != null)
+            {
+                if (this._common.MessageBox(MessageBoxIcon.Question, "비번 동기화를 실행하시겠습니까?") == System.Windows.Forms.DialogResult.No) return;
+
+                this.Cursor = Cursors.WaitCursor;
+
+                Common.ParametersForImport paramsForImport = new Common.ParametersForImport();
+                paramsForImport.UserId = GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "userid"); ;
+
+                this._common.SyncDreamPlusPasswordToU2M(ref paramsForImport);
+
+                if (paramsForImport.SuccessYn == "N")
+                    this._common.MessageBox(MessageBoxIcon.Error, paramsForImport.ErrorMessage);
+                else
+                    this._common.MessageBox(MessageBoxIcon.Information, "비번 동기화가 완료되었습니다.");
+
+                this.Cursor = Cursors.Default;
+
+            }
+        }
+
+
+        /// <summary>
+        ///  드림플러스 학생 비번 정보를 유투엠에 연동한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButtonStudentLoginPW_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewClassStudent.Rows.Count > 0 && dataGridViewClassStudent.CurrentCell != null)
+            {
+                if (this._common.MessageBox(MessageBoxIcon.Question, "비번 동기화를 실행하시겠습니까?") == System.Windows.Forms.DialogResult.No) return;
+
+                this.Cursor = Cursors.WaitCursor;
+
+                Common.ParametersForImport paramsForImport = new Common.ParametersForImport();
+                paramsForImport.UserId = GetCellValue(dataGridViewClassStudent, dataGridViewClassStudent.CurrentCell.RowIndex, "userid"); ;
+
+                this._common.SyncDreamPlusPasswordToU2M(ref paramsForImport);
+
+                if (paramsForImport.SuccessYn == "N")
+                    this._common.MessageBox(MessageBoxIcon.Error, paramsForImport.ErrorMessage);
+                else
+                    this._common.MessageBox(MessageBoxIcon.Information, "비번 동기화가 완료되었습니다.");
+
+                this.Cursor = Cursors.Default;
+
+            }
+        }
+
+        
 
 
 

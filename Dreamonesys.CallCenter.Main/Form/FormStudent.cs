@@ -539,6 +539,8 @@ namespace Dreamonesys.CallCenter.Main
                 textBoxLoginPW.Text = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "login_pwd");                
             }                        
         }
+
+        
         
         private void dataGridViewStudent_DoubleClick(object sender, EventArgs e)
         {
@@ -607,6 +609,77 @@ namespace Dreamonesys.CallCenter.Main
                 //U2M 오답, 셀프, 추가학습 학생을 검색한다.                
                 SelectDataGridView(dataGridViewMyTestUser, "select_mytest");               
             }
+        }
+
+
+        /// <summary>
+        ///  드림플러스 정보를 유투엠에 연동한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButtonImportStudentInfo_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
+            {
+                if (this._common.MessageBox(MessageBoxIcon.Question, "배치를 실행하시겠습니까?") == System.Windows.Forms.DialogResult.No) return;
+
+                this.Cursor = Cursors.WaitCursor;
+
+                Common.ParametersForImport paramsForImport = new Common.ParametersForImport();
+                paramsForImport.AcadGroupId = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cp_group_id"); ;
+                paramsForImport.AcadId = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cpid"); ;
+                paramsForImport.ClassId = "";
+                paramsForImport.StudentId = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "member_id"); ;
+                paramsForImport.StartDate = "";
+                paramsForImport.EndDate = "";
+
+                this._common.ImportDreamPlusStudentInfoToU2M(ref paramsForImport);
+
+                if (paramsForImport.SuccessYn == "N")
+                    this._common.MessageBox(MessageBoxIcon.Error, paramsForImport.ErrorMessage);
+                else
+                    this._common.MessageBox(MessageBoxIcon.Information, "배치가 완료되었습니다.");
+
+                this.Cursor = Cursors.Default;
+
+            }
+
+            SelectDataGridView(dataGridViewStudent, "select_u2m_student");
+            textBoxUserid.Text = "";
+            textBoxLoginID.Text = "";
+            textBoxLoginPW.Text = "";
+        }
+
+        /// <summary>
+        ///  드림플러스 학생 비번 정보를 유투엠에 연동한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButtonStudentLoginPW_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
+            {
+                if (this._common.MessageBox(MessageBoxIcon.Question, "비번 동기화를 실행하시겠습니까?") == System.Windows.Forms.DialogResult.No) return;
+
+                this.Cursor = Cursors.WaitCursor;
+
+                Common.ParametersForImport paramsForImport = new Common.ParametersForImport();
+                paramsForImport.UserId = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "userid"); ;
+
+                this._common.SyncDreamPlusPasswordToU2M(ref paramsForImport);
+
+                if (paramsForImport.SuccessYn == "N")
+                    this._common.MessageBox(MessageBoxIcon.Error, paramsForImport.ErrorMessage);
+                else
+                    this._common.MessageBox(MessageBoxIcon.Information, "비번 동기화가 완료되었습니다.");
+
+                this.Cursor = Cursors.Default;
+
+            }
+            SelectDataGridView(dataGridViewStudent, "select_u2m_student");
+            textBoxUserid.Text = "";
+            textBoxLoginID.Text = "";
+            textBoxLoginPW.Text = "";
         }
 
 

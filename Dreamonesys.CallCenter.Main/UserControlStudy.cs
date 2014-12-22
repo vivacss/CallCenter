@@ -479,12 +479,13 @@ namespace Dreamonesys.CallCenter.Main
 	                       ON MS.cpno = TC.cpno and MS.clno = TC.clno
 	                LEFT JOIN tls_study AS TS
 	                       ON MS.sdno = TS.sdno
-		                WHERE MS.yyyy = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "yyyy") + @"'
-	                      AND MS.term_cd = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "term_cd") + @"'
-		                  AND MS.cpno = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "cpno") + @"'
-		                  AND MS.clno = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "clno") + @"'
+                    LEFT JOIN tls_class_user AS TU
+					       ON MS.userid = TU.userid
+		                WHERE MS.cpno = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "cpno") + @"'
+		                  AND TU.clno = '" + this._common.GetCellValue(dataGridViewClassStudy, dataGridViewClassStudy.CurrentCell.RowIndex, "clno") + @"'
 		                  AND CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN MS.sdate AND MS.edate
-                          AND TM.ues_yn = 'Y'	            
+                          AND (TU.end_date = '' OR TU.end_date IS NULL OR CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN TU.start_date AND TU.end_date)
+                          AND TM.use_yn = 'Y'	            
                         ORDER BY TC.clnm, usernm, MS.sdate
                     ";
                     toolStripTextBoxClassNM2.Text = "";
