@@ -243,6 +243,10 @@ namespace Dreamonesys.CallCenter.Main
 
                     pSqlCommand.CommandText += @"
                       ORDER BY A.use_yn DESC, C.CPNM, A.USERNM";
+
+                    textBoxUserid.Text = "";
+                    textBoxLoginID.Text = "";
+                    textBoxLoginPW.Text = "";
                     break;
                 
                 case "select_edu_student_class":
@@ -613,7 +617,7 @@ namespace Dreamonesys.CallCenter.Main
 
 
         /// <summary>
-        ///  드림플러스 정보를 유투엠에 연동한다.
+        ///  드림플러스 학생 정보를 유투엠에 연동한다.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -644,10 +648,7 @@ namespace Dreamonesys.CallCenter.Main
 
             }
 
-            SelectDataGridView(dataGridViewStudent, "select_u2m_student");
-            textBoxUserid.Text = "";
-            textBoxLoginID.Text = "";
-            textBoxLoginPW.Text = "";
+            SelectDataGridView(dataGridViewStudent, "select_u2m_student");           
         }
 
         /// <summary>
@@ -676,10 +677,7 @@ namespace Dreamonesys.CallCenter.Main
                 this.Cursor = Cursors.Default;
 
             }
-            SelectDataGridView(dataGridViewStudent, "select_u2m_student");
-            textBoxUserid.Text = "";
-            textBoxLoginID.Text = "";
-            textBoxLoginPW.Text = "";
+            SelectDataGridView(dataGridViewStudent, "select_u2m_student");           
         }
 
 

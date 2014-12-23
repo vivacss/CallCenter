@@ -114,6 +114,7 @@
             this.toolStripButtonStudentLoginPW = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonEmployeeLoginPW = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonImportCampusInfo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripTextBoxCampusInfo = new System.Windows.Forms.ToolStripButton();
             this.tabPageStudy_Admin = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPageSelectStudy = new System.Windows.Forms.TabPage();
@@ -308,7 +309,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.toolStripTextBoxCampusInfo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonImportStudentInfo = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
@@ -897,7 +898,8 @@
             this.toolStripButtonStudentLoginPW,
             this.toolStripButtonEmployeeLoginPW,
             this.toolStripButtonImportCampusInfo,
-            this.toolStripTextBoxCampusInfo});
+            this.toolStripTextBoxCampusInfo,
+            this.toolStripButtonImportStudentInfo});
             this.toolStrip1.Location = new System.Drawing.Point(3, 3);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1249, 32);
@@ -958,6 +960,16 @@
             this.toolStripButtonImportCampusInfo.Size = new System.Drawing.Size(100, 29);
             this.toolStripButtonImportCampusInfo.Text = "캠퍼스 배치";
             this.toolStripButtonImportCampusInfo.Click += new System.EventHandler(this.toolStripButtonImportCampusInfo_Click);
+            // 
+            // toolStripTextBoxCampusInfo
+            // 
+            this.toolStripTextBoxCampusInfo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripTextBoxCampusInfo.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.toolStripTextBoxCampusInfo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripTextBoxCampusInfo.Image = ((System.Drawing.Image)(resources.GetObject("toolStripTextBoxCampusInfo.Image")));
+            this.toolStripTextBoxCampusInfo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripTextBoxCampusInfo.Name = "toolStripTextBoxCampusInfo";
+            this.toolStripTextBoxCampusInfo.Size = new System.Drawing.Size(23, 29);
             // 
             // tabPageStudy_Admin
             // 
@@ -3007,15 +3019,14 @@
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "미결 사용자 등록";
             // 
-            // toolStripTextBoxCampusInfo
+            // toolStripButtonImportStudentInfo
             // 
-            this.toolStripTextBoxCampusInfo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripTextBoxCampusInfo.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.toolStripTextBoxCampusInfo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripTextBoxCampusInfo.Image = ((System.Drawing.Image)(resources.GetObject("toolStripTextBoxCampusInfo.Image")));
-            this.toolStripTextBoxCampusInfo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripTextBoxCampusInfo.Name = "toolStripTextBoxCampusInfo";
-            this.toolStripTextBoxCampusInfo.Size = new System.Drawing.Size(23, 29);
+            this.toolStripButtonImportStudentInfo.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonImportStudentInfo.Image")));
+            this.toolStripButtonImportStudentInfo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonImportStudentInfo.Name = "toolStripButtonImportStudentInfo";
+            this.toolStripButtonImportStudentInfo.Size = new System.Drawing.Size(118, 29);
+            this.toolStripButtonImportStudentInfo.Text = "학생 U2M 등록";
+            this.toolStripButtonImportStudentInfo.Click += new System.EventHandler(this.toolStripButtonImportStudentInfo_Click);
             // 
             // FormMain
             // 
@@ -3372,6 +3383,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.ToolStripButton toolStripTextBoxCampusInfo;
+        private System.Windows.Forms.ToolStripButton toolStripButtonImportStudentInfo;
 
     }
 }

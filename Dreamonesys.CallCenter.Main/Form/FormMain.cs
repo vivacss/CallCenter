@@ -127,9 +127,11 @@ namespace Dreamonesys.CallCenter.Main
                 case "dataGridViewEmployee":
                     dataGridViewClassEmployee.Rows.Clear();
                     dataGridViewClassStudent.Rows.Clear();
+                    dataGridViewEduStudent.Rows.Clear();
                     break;
                 case "dataGridViewClassEmployee":
                     dataGridViewClassStudent.Rows.Clear();
+                    dataGridViewEduStudent.Rows.Clear();
                     break;
                 case "dataGridViewCampusPoint":
                     dataGridViewClassPoint.Rows.Clear();
@@ -401,6 +403,7 @@ namespace Dreamonesys.CallCenter.Main
                          AND B.use_yn = 'Y'											   
 	                   ORDER BY B.school_cd, B.clnm
                     ";
+                    toolStripTextBoxCampusInfo.Text = "";
                     break;
 
                 case "select_class_employee_all":
@@ -438,6 +441,7 @@ namespace Dreamonesys.CallCenter.Main
                     pSqlCommand.CommandText += @"						 
 	                    ORDER BY A.school_cd, A.clnm
                     ";
+                    toolStripTextBoxCampusInfo.Text = "";
                     break;
 
                 case "select_class_student":
@@ -1507,7 +1511,7 @@ namespace Dreamonesys.CallCenter.Main
             if (e.KeyCode == Keys.Enter)
             {
                 //직원을 검색한다.                
-                SelectDataGridView(dataGridViewEmployee, "select_employee_all");
+                SelectDataGridView(dataGridViewEmployee, "select_employee_all");                
                 textBoxUserID.Text = "";
                 textBoxMemberID.Text = "";
                 textBoxLoginPW.Text = "";
@@ -1907,18 +1911,46 @@ namespace Dreamonesys.CallCenter.Main
         #endregion Event
 
         /// <summary>
-        ///  드림플러스 캠퍼스 정보를 유투엠에 연동한다.
+        ///  드림플러스 특정 캠퍼스 정보를 유투엠에 연동한다.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void toolStripButtonImportCampusInfo_Click(object sender, EventArgs e)
         {
-
+            
         }
 
+        /// <summary>
+        ///  드림플러스 학생 정보를 유투엠에 연동한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButtonImportStudentInfo_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewEduStudent.Rows.Count > 0 && dataGridViewEduStudent.CurrentCell != null)
+            {
+                if (this._common.MessageBox(MessageBoxIcon.Question, "배치를 실행하시겠습니까?") == System.Windows.Forms.DialogResult.No) return;
 
+                this.Cursor = Cursors.WaitCursor;
 
+                Common.ParametersForImport paramsForImport = new Common.ParametersForImport();
+                paramsForImport.AcadGroupId = GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cp_group_id"); ;
+                paramsForImport.AcadId = GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpid"); ;
+                paramsForImport.ClassId = "";
+                paramsForImport.StudentId = GetCellValue(dataGridViewEduStudent, dataGridViewEduStudent.CurrentCell.RowIndex, "student_id"); ;
+                paramsForImport.StartDate = "";
+                paramsForImport.EndDate = "";
 
+                this._common.ImportDreamPlusStudentInfoToU2M(ref paramsForImport);
+
+                if (paramsForImport.SuccessYn == "N")
+                    this._common.MessageBox(MessageBoxIcon.Error, paramsForImport.ErrorMessage);
+                else
+                    this._common.MessageBox(MessageBoxIcon.Information, "배치가 완료되었습니다.");
+
+                this.Cursor = Cursors.Default;
+            }
+        }
 
         /// <summary>
         ///  드림플러스 강사 비번 정보를 유투엠에 연동한다.
@@ -1976,6 +2008,9 @@ namespace Dreamonesys.CallCenter.Main
 
             }
         }
+
+
+        
 
         
 

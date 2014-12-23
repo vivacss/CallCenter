@@ -569,11 +569,11 @@ namespace Dreamonesys.CallCenter.Main
                         pSqlCommand.CommandText += @"
                             AND A.cdate LIKE '" + toolStripTextBoxClassDataTime.Text + "%' ";
                     }
-                    if (!string.IsNullOrEmpty(toolStripTextBoxClassDataTimeUpdate.Text))
-                    {
-                        pSqlCommand.CommandText += @"
-                            AND A.cdate = '" + toolStripTextBoxClassDataTimeUpdate.Text + "' ";
-                    }
+//                    if (!string.IsNullOrEmpty(toolStripTextBoxClassDataTimeUpdate.Text))
+//                    {
+//                        pSqlCommand.CommandText += @"
+//                            AND A.cdate = '" + toolStripTextBoxClassDataTimeUpdate.Text + "' ";
+//                    }
                     pSqlCommand.CommandText += @"
 	                     ORDER BY A.cdate, G.sort
                     ";
@@ -864,11 +864,11 @@ namespace Dreamonesys.CallCenter.Main
                         pSqlCommand.CommandText += @"
                             AND A.cdate LIKE '" + toolStripTextBoxStudentDataTime.Text + "%' ";
                     }
-                    if (!string.IsNullOrEmpty(toolStripTextBoxStudentDataTimeUpdate.Text))
-                    {
-                        pSqlCommand.CommandText += @"
-                            AND A.cdate = '" + toolStripTextBoxStudentDataTimeUpdate.Text + "' ";
-                    }
+//                    if (!string.IsNullOrEmpty(toolStripTextBoxStudentDataTimeUpdate.Text))
+//                    {
+//                        pSqlCommand.CommandText += @"
+//                            AND A.cdate = '" + toolStripTextBoxStudentDataTimeUpdate.Text + "' ";
+//                    }
                     pSqlCommand.CommandText += @"
 	                     ORDER BY cdate, G.sort
                     ";
@@ -1180,12 +1180,12 @@ namespace Dreamonesys.CallCenter.Main
 		                       AND clno = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "clno") + @"'
 		                       AND sdno = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "sdno") + @"'
 						       AND STUFF(STUFF(cdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "cdate") + @"'
-						       AND CSNO = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "csno") + @"'
+						       AND CSNO = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "csno") + @"' 
                         ";
-                    }
+                    }                    
                 }
-
                 Console.WriteLine(sqlCommand.CommandText);
+                
 
                 if (isFound == true)
                 {
@@ -1489,12 +1489,12 @@ namespace Dreamonesys.CallCenter.Main
 		                       AND userid = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "userid") + @"'
 		                       AND sdno = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "sdno") + @"'
 						       AND STUFF(STUFF(cdate, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "cdate") + @"'
-						       AND CSNO = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "csno") + @"'
-                        ";
-                    }
+						       AND CSNO = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "csno") + @"' 
+                        ";                        
+                    }                    
                 }
-
-                Console.WriteLine(sqlCommand.CommandText);
+                Console.WriteLine(sqlCommand.CommandText);            
+                
 
                 if (isFound == true)
                 {
@@ -1700,6 +1700,7 @@ namespace Dreamonesys.CallCenter.Main
             if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
             {
                 toolStripTextBoxClassBookNM.Text = "";
+                toolStripTextBoxClassBookNM2.Text = "";
                 SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
             }
         }
@@ -1753,6 +1754,7 @@ namespace Dreamonesys.CallCenter.Main
         {
             //과정1 차시 수업일정 수정
             UpdateClassStudy();
+            this.dateTimePickerClassStudy2.Value = DateTime.Now;
             SelectDataGridView(dataGridViewClassStudy, "select_class_study_all");
             //toolStripTextBoxClassNM.Text = "";
         }
@@ -1767,7 +1769,7 @@ namespace Dreamonesys.CallCenter.Main
         {
             //과정1 차시리스트 수업일정 수정
             UpdateClassSchedule();
-            toolStripTextBoxClassBookNM.Text = "";
+            toolStripTextBoxClassBookNM2.Text = "";
             SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
             //toolStripTextBoxClassDataTimeUpdate.Text = "";
         }  
@@ -1812,6 +1814,7 @@ namespace Dreamonesys.CallCenter.Main
             {
                 //과정2 차시 리스트 조회
                 toolStripTextBoxStudentBookNM.Text = "";
+                toolStripTextBoxStudentBookNM2.Text = "";
                 SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
             }
         }
@@ -1864,6 +1867,7 @@ namespace Dreamonesys.CallCenter.Main
         {
             //과정2 차시 수업일정 수정            
             UpdateStudentStudy();
+            this.dateTimePickerStudentStudy2.Value = DateTime.Now;
             SelectDataGridView(dataGridViewStudentStudy, "select_student_study_all");
         }
 
@@ -1872,6 +1876,7 @@ namespace Dreamonesys.CallCenter.Main
             //과정2 차시리스트 삭제
             DeleteStudentSchedule();
             toolStripTextBoxStudentBookNM.Text = "";
+            toolStripTextBoxStudentBookNM2.Text = "";
             SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
         }
 
@@ -1880,6 +1885,7 @@ namespace Dreamonesys.CallCenter.Main
             //과정2 차시리스트 수업일정 수정
             UpdateStudentSchedule();
             toolStripTextBoxStudentBookNM.Text = "";
+            toolStripTextBoxStudentBookNM2.Text = "";
             SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
         }
         #endregion Event
