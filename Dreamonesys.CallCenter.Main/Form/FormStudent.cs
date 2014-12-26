@@ -242,7 +242,7 @@ namespace Dreamonesys.CallCenter.Main
                     }                   
 
                     pSqlCommand.CommandText += @"
-                      ORDER BY A.use_yn DESC, C.CPNM, A.USERNM";
+                      ORDER BY A.use_yn DESC, C.cpnm, A.usernm";
 
                     textBoxUserid.Text = "";
                     textBoxLoginID.Text = "";
@@ -382,8 +382,9 @@ namespace Dreamonesys.CallCenter.Main
                     this.dateTimePickerStudentStudyState.Value = DateTime.Now;
 
                     break;
-                case "select_mytest":
-                    //학생 단말기 전체 학습정보를 조회한다.
+
+                case "select_mytest_user":
+                    //오답, 셀프, 추가학습 배정정보를 조회한다.
                     pSqlCommand.CommandText = @"                      	
                         SELECT C.cpnm
                              , D.clnm
@@ -433,9 +434,101 @@ namespace Dreamonesys.CallCenter.Main
                     if (!string.IsNullOrEmpty(textBoxUserNmMyTest.Text))
                     {
                         pSqlCommand.CommandText += @"
-                         OR B.userid LIKE '" + textBoxUserNmMyTest.Text + "') ";
-                    }   
+                         OR B.userid like '" + textBoxUserNmMyTest.Text + "') ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxMyTestTitle.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND A.title LIKE '%" + textBoxMyTestTitle.Text + "%' ";
+                    }
+                    pSqlCommand.CommandText += @"
+                       ORDER BY A.rdatetime DESC ";
+
+                    textBoxMyTestTitle.Text = "";
                     break;
+
+                case "select_mytest_repeat":
+                    //오답,셀프,추가학습 학습 정보를 조회한다.
+                    pSqlCommand.CommandText = @"                      	
+                        SELECT CASE study_type WHEN 'X' THEN '오답'
+						                       WHEN 'S' THEN '셀프학습'
+						                       WHEN 'A' THEN '추가학습'
+		                        END AS STUDY_TYPE
+                             , myno
+                             , cdate
+                             , cpno
+                             , userid
+                             , school_cd
+                             , grade_cd
+                             , session_cd
+                             , repeatno
+                             , title
+                             , testsetcode
+                             , xtestsetcode
+                             , quiz_cnt
+                             , end_yn
+                             , sdate
+                             , edate
+                             , rdatetime
+                             , udatetime
+                          FROM tls_mytest_repeat
+                         WHERE cpno = " + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "cpno") + @"                        
+                           AND userid = " + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "userid") + @"
+                           AND testsetcode = '" + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "testsetcode") + @"'
+                         ORDER BY repeatno ";
+                    break;
+
+                case "select_mytest_testset":
+                    //오답,셀프,추가학습 시험지 정보를 조회한다.
+                    pSqlCommand.CommandText = @"                      	
+                        SELECT CASE study_type WHEN 'X' THEN '오답'
+						                       WHEN 'S' THEN '셀프학습'
+						                       WHEN 'A' THEN '추가학습'
+		                        END AS STUDY_TYPE
+                             , testsetcode
+                             , test_cd
+                             , cpno
+                             , userid
+                             , school_cd
+                             , grade_cd
+                             , session_cd
+                             , title
+                             , quiz_cd
+                             , quiz_cnt
+                             , hard1cnt
+                             , hard2cnt
+                             , hard3cnt
+                             , hard4cnt
+                             , hard5cnt
+                             , repeatno_cnt
+                             , end_yn
+                             , rid
+                             , rdatetime
+                          FROM tls_mytest_testset
+                         WHERE cpno = " + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "cpno") + @"                        
+                           AND userid = " + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "userid") + @"
+                           AND testsetcode = '" + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "testsetcode") + @"'
+                          ";
+                    break;
+
+                case "select_mytest_testset_rel":
+                    //오답,셀프,추가학습 문항정보를 조회한다.
+                    pSqlCommand.CommandText = @"                      	
+                        SELECT CASE study_type WHEN 'X' THEN '오답'
+						                       WHEN 'S' THEN '셀프학습'
+						                       WHEN 'A' THEN '추가학습'
+		                        END AS STUDY_TYPE
+                             , testsetcode
+                             , quizcode
+                             , orderno
+                             , quizno
+                             , assignpoints
+                             , rdatetime
+                          FROM tls_mytest_testset_rel
+                         WHERE testsetcode = '" + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "testsetcode") + @"'
+                         ORDER BY orderno ";
+                    break;
+
                 default:
                     break;
             }
@@ -500,6 +593,73 @@ namespace Dreamonesys.CallCenter.Main
                 }
             }
         }
+
+        /// <summary>
+        ///  드림플러스 학생 정보를 유투엠에 연동한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButtonImportStudentInfo_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
+            {
+                if (this._common.MessageBox(MessageBoxIcon.Question, "배치를 실행하시겠습니까?") == System.Windows.Forms.DialogResult.No) return;
+
+                this.Cursor = Cursors.WaitCursor;
+
+                Common.ParametersForImport paramsForImport = new Common.ParametersForImport();
+                paramsForImport.AcadGroupId = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cp_group_id"); ;
+                paramsForImport.AcadId = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cpid"); ;
+                paramsForImport.ClassId = "";
+                paramsForImport.StudentId = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "member_id"); ;
+                paramsForImport.StartDate = "";
+                paramsForImport.EndDate = "";
+
+                this._common.ImportDreamPlusStudentInfoToU2M(ref paramsForImport);
+
+                if (paramsForImport.SuccessYn == "N")
+                    this._common.MessageBox(MessageBoxIcon.Error, paramsForImport.ErrorMessage);
+                else
+                    this._common.MessageBox(MessageBoxIcon.Information, "배치가 완료되었습니다.");
+
+                this.Cursor = Cursors.Default;
+
+                SelectDataGridView(dataGridViewStudent, "select_u2m_student");
+            }
+
+            
+        }
+
+        /// <summary>
+        ///  드림플러스 학생 비번 정보를 유투엠에 연동한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButtonStudentLoginPW_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
+            {
+                if (this._common.MessageBox(MessageBoxIcon.Question, "비번 동기화를 실행하시겠습니까?") == System.Windows.Forms.DialogResult.No) return;
+
+                this.Cursor = Cursors.WaitCursor;
+
+                Common.ParametersForImport paramsForImport = new Common.ParametersForImport();
+                paramsForImport.UserId = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "userid"); ;
+
+                this._common.SyncDreamPlusPasswordToU2M(ref paramsForImport);
+
+                if (paramsForImport.SuccessYn == "N")
+                    this._common.MessageBox(MessageBoxIcon.Error, paramsForImport.ErrorMessage);
+                else
+                    this._common.MessageBox(MessageBoxIcon.Information, "비번 동기화가 완료되었습니다.");
+
+                this.Cursor = Cursors.Default;
+
+                SelectDataGridView(dataGridViewStudent, "select_u2m_student");
+            }
+            
+        }
+
         /// <summary>
         /// 학생검색 캠퍼스 구분 콤보박스 선택 변경시 발생하는 이벤트
         /// </summary>
@@ -596,7 +756,7 @@ namespace Dreamonesys.CallCenter.Main
             //단말기 학습정보 클릭 시 dateTimePicker를 해당 날짜로 바꾼다.
             this.dateTimePickerStudentStudyState.Value = DateTime.Parse(this._common.GetCellValue(dataGridViewStudentStudyState, dataGridViewStudentStudyState.CurrentCell.RowIndex, "sddate"));
         }
-        #endregion Event
+        
 
         private void comboBoxCampusTypeMyTest_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -610,82 +770,48 @@ namespace Dreamonesys.CallCenter.Main
         {
             if (e.KeyCode == Keys.Enter)
             {
-                //U2M 오답, 셀프, 추가학습 학생을 검색한다.                
-                SelectDataGridView(dataGridViewMyTestUser, "select_mytest");               
+                //학생의 오답, 셀프, 추가학습 배정정보를 검색한다.                
+                SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");               
             }
         }
 
-
-        /// <summary>
-        ///  드림플러스 학생 정보를 유투엠에 연동한다.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void toolStripButtonImportStudentInfo_Click(object sender, EventArgs e)
+        private void textBoxMyTestTitle_KeyDown(object sender, KeyEventArgs e)
         {
-            if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
+            if (e.KeyCode == Keys.Enter)
             {
-                if (this._common.MessageBox(MessageBoxIcon.Question, "배치를 실행하시겠습니까?") == System.Windows.Forms.DialogResult.No) return;
-
-                this.Cursor = Cursors.WaitCursor;
-
-                Common.ParametersForImport paramsForImport = new Common.ParametersForImport();
-                paramsForImport.AcadGroupId = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cp_group_id"); ;
-                paramsForImport.AcadId = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cpid"); ;
-                paramsForImport.ClassId = "";
-                paramsForImport.StudentId = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "member_id"); ;
-                paramsForImport.StartDate = "";
-                paramsForImport.EndDate = "";
-
-                this._common.ImportDreamPlusStudentInfoToU2M(ref paramsForImport);
-
-                if (paramsForImport.SuccessYn == "N")
-                    this._common.MessageBox(MessageBoxIcon.Error, paramsForImport.ErrorMessage);
-                else
-                    this._common.MessageBox(MessageBoxIcon.Information, "배치가 완료되었습니다.");
-
-                this.Cursor = Cursors.Default;
-
+                //학생의 오답, 셀프, 추가학습 배정정보의 title을 검색한다.                
+                SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");
             }
-
-            SelectDataGridView(dataGridViewStudent, "select_u2m_student");           
         }
 
-        /// <summary>
-        ///  드림플러스 학생 비번 정보를 유투엠에 연동한다.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void toolStripButtonStudentLoginPW_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
+        private void dataGridViewMyTestUser_Click(object sender, EventArgs e)
+        {            
+            if (dataGridViewMyTestUser.Rows.Count > 0 && dataGridViewMyTestUser.CurrentCell != null)
             {
-                if (this._common.MessageBox(MessageBoxIcon.Question, "비번 동기화를 실행하시겠습니까?") == System.Windows.Forms.DialogResult.No) return;
+                //학생의 오답, 셀프, 추가학습 학습정보를 검색한다.
+                SelectDataGridView(dataGridViewMyTestRepeat, "select_mytest_repeat");
+                //학생의 오답,셀프,추가학습 시험지 정보를 조회한다.
+                SelectDataGridView(dataGridViewMyTestSet, "select_mytest_testset");
+                //학생의 오답,셀프,추가학습 문항정보를 조회한다.
+                SelectDataGridView(dataGridViewMyTestSetRel, "select_mytest_testset_rel");
 
-                this.Cursor = Cursors.WaitCursor;
-
-                Common.ParametersForImport paramsForImport = new Common.ParametersForImport();
-                paramsForImport.UserId = GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "userid"); ;
-
-                this._common.SyncDreamPlusPasswordToU2M(ref paramsForImport);
-
-                if (paramsForImport.SuccessYn == "N")
-                    this._common.MessageBox(MessageBoxIcon.Error, paramsForImport.ErrorMessage);
-                else
-                    this._common.MessageBox(MessageBoxIcon.Information, "비번 동기화가 완료되었습니다.");
-
-                this.Cursor = Cursors.Default;
-
-            }
-            SelectDataGridView(dataGridViewStudent, "select_u2m_student");           
+                toolStripTextBoxTestSetCode.Text = GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "testsetcode"); 
+            }                           
         }
 
 
+        
 
 
 
 
 
+
+        #endregion Event
+
+        
+
+        
 
 
 

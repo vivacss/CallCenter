@@ -60,6 +60,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBoxLoginPW = new System.Windows.Forms.TextBox();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -115,6 +121,7 @@
             this.toolStripButtonEmployeeLoginPW = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonImportCampusInfo = new System.Windows.Forms.ToolStripButton();
             this.toolStripTextBoxCampusInfo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonImportStudentInfo = new System.Windows.Forms.ToolStripButton();
             this.tabPageStudy_Admin = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPageSelectStudy = new System.Windows.Forms.TabPage();
@@ -309,7 +316,40 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.toolStripButtonImportStudentInfo = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip6 = new System.Windows.Forms.ToolStrip();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewByPassEmp = new System.Windows.Forms.DataGridView();
+            this.dataGridViewByPassUser = new System.Windows.Forms.DataGridView();
+            this.textBoxByPassEmpNM = new System.Windows.Forms.TextBox();
+            this.textBoxByPassUserNM = new System.Windows.Forms.TextBox();
+            this.buttonByPassReset = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
+            this.dateTimePickerByPassUseFrom = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerByPassUseTo = new System.Windows.Forms.DateTimePicker();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.textBoxByPassReason = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.textBoxByPassEmpNM2 = new System.Windows.Forms.TextBox();
+            this.textBoxByPassUserNM2 = new System.Windows.Forms.TextBox();
+            this.textBoxByPassEmpID = new System.Windows.Forms.TextBox();
+            this.textBoxByPassUserID = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.Column129 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column123 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column125 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column124 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column130 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column126 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column127 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column128 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
@@ -386,6 +426,12 @@
             this.groupBox13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewByPass)).BeginInit();
             this.groupBox12.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            this.groupBox17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewByPassEmp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewByPassUser)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxLoginPW
@@ -970,6 +1016,15 @@
             this.toolStripTextBoxCampusInfo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripTextBoxCampusInfo.Name = "toolStripTextBoxCampusInfo";
             this.toolStripTextBoxCampusInfo.Size = new System.Drawing.Size(23, 29);
+            // 
+            // toolStripButtonImportStudentInfo
+            // 
+            this.toolStripButtonImportStudentInfo.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonImportStudentInfo.Image")));
+            this.toolStripButtonImportStudentInfo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonImportStudentInfo.Name = "toolStripButtonImportStudentInfo";
+            this.toolStripButtonImportStudentInfo.Size = new System.Drawing.Size(118, 29);
+            this.toolStripButtonImportStudentInfo.Text = "학생 U2M 등록";
+            this.toolStripButtonImportStudentInfo.Click += new System.EventHandler(this.toolStripButtonImportStudentInfo_Click);
             // 
             // tabPageStudy_Admin
             // 
@@ -2769,7 +2824,7 @@
             // 
             this.splitContainer10.Panel2.Controls.Add(this.groupBox14);
             this.splitContainer10.Size = new System.Drawing.Size(1249, 800);
-            this.splitContainer10.SplitterDistance = 607;
+            this.splitContainer10.SplitterDistance = 522;
             this.splitContainer10.TabIndex = 0;
             // 
             // groupBox13
@@ -2778,7 +2833,7 @@
             this.groupBox13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox13.Location = new System.Drawing.Point(0, 65);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(1249, 542);
+            this.groupBox13.Size = new System.Drawing.Size(1249, 457);
             this.groupBox13.TabIndex = 1;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "미결 사용자";
@@ -2833,8 +2888,9 @@
             this.dataGridViewByPass.RowHeadersDefaultCellStyle = dataGridViewCellStyle31;
             this.dataGridViewByPass.RowTemplate.Height = 23;
             this.dataGridViewByPass.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewByPass.Size = new System.Drawing.Size(1243, 522);
+            this.dataGridViewByPass.Size = new System.Drawing.Size(1243, 437);
             this.dataGridViewByPass.TabIndex = 0;
+            this.dataGridViewByPass.DoubleClick += new System.EventHandler(this.dataGridViewByPass_DoubleClick);
             // 
             // Column120
             // 
@@ -3011,22 +3067,382 @@
             // 
             // groupBox14
             // 
+            this.groupBox14.Controls.Add(this.button4);
+            this.groupBox14.Controls.Add(this.button3);
+            this.groupBox14.Controls.Add(this.button2);
+            this.groupBox14.Controls.Add(this.buttonByPassReset);
+            this.groupBox14.Controls.Add(this.groupBox17);
+            this.groupBox14.Controls.Add(this.groupBox16);
+            this.groupBox14.Controls.Add(this.groupBox15);
+            this.groupBox14.Controls.Add(this.toolStrip6);
             this.groupBox14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox14.Location = new System.Drawing.Point(0, 0);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(1249, 189);
+            this.groupBox14.Size = new System.Drawing.Size(1249, 274);
             this.groupBox14.TabIndex = 0;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "미결 사용자 등록";
             // 
-            // toolStripButtonImportStudentInfo
+            // toolStrip6
             // 
-            this.toolStripButtonImportStudentInfo.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonImportStudentInfo.Image")));
-            this.toolStripButtonImportStudentInfo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonImportStudentInfo.Name = "toolStripButtonImportStudentInfo";
-            this.toolStripButtonImportStudentInfo.Size = new System.Drawing.Size(118, 29);
-            this.toolStripButtonImportStudentInfo.Text = "학생 U2M 등록";
-            this.toolStripButtonImportStudentInfo.Click += new System.EventHandler(this.toolStripButtonImportStudentInfo_Click);
+            this.toolStrip6.Location = new System.Drawing.Point(3, 17);
+            this.toolStrip6.Name = "toolStrip6";
+            this.toolStrip6.Size = new System.Drawing.Size(1243, 25);
+            this.toolStrip6.TabIndex = 2;
+            this.toolStrip6.Text = "toolStrip6";
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.textBoxByPassEmpNM);
+            this.groupBox15.Controls.Add(this.dataGridViewByPassEmp);
+            this.groupBox15.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox15.Location = new System.Drawing.Point(3, 42);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(300, 229);
+            this.groupBox15.TabIndex = 3;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "신청자명";
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.textBoxByPassUserNM);
+            this.groupBox16.Controls.Add(this.dataGridViewByPassUser);
+            this.groupBox16.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox16.Location = new System.Drawing.Point(303, 42);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(300, 229);
+            this.groupBox16.TabIndex = 4;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "대상자명";
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.label34);
+            this.groupBox17.Controls.Add(this.label33);
+            this.groupBox17.Controls.Add(this.textBoxByPassUserID);
+            this.groupBox17.Controls.Add(this.textBoxByPassEmpID);
+            this.groupBox17.Controls.Add(this.textBoxByPassUserNM2);
+            this.groupBox17.Controls.Add(this.textBoxByPassEmpNM2);
+            this.groupBox17.Controls.Add(this.label32);
+            this.groupBox17.Controls.Add(this.label31);
+            this.groupBox17.Controls.Add(this.textBoxByPassReason);
+            this.groupBox17.Controls.Add(this.label30);
+            this.groupBox17.Controls.Add(this.label29);
+            this.groupBox17.Controls.Add(this.dateTimePickerByPassUseTo);
+            this.groupBox17.Controls.Add(this.dateTimePickerByPassUseFrom);
+            this.groupBox17.Controls.Add(this.label28);
+            this.groupBox17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox17.Location = new System.Drawing.Point(603, 42);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(643, 229);
+            this.groupBox17.TabIndex = 5;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "신청 기간 및 사유";
+            // 
+            // dataGridViewByPassEmp
+            // 
+            this.dataGridViewByPassEmp.AllowUserToAddRows = false;
+            this.dataGridViewByPassEmp.AllowUserToDeleteRows = false;
+            this.dataGridViewByPassEmp.BackgroundColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewByPassEmp.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
+            this.dataGridViewByPassEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewByPassEmp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column129,
+            this.Column123,
+            this.Column125,
+            this.Column124});
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewByPassEmp.DefaultCellStyle = dataGridViewCellStyle36;
+            this.dataGridViewByPassEmp.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridViewByPassEmp.Location = new System.Drawing.Point(3, 51);
+            this.dataGridViewByPassEmp.Name = "dataGridViewByPassEmp";
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle37.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewByPassEmp.RowHeadersDefaultCellStyle = dataGridViewCellStyle37;
+            this.dataGridViewByPassEmp.RowTemplate.Height = 23;
+            this.dataGridViewByPassEmp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewByPassEmp.Size = new System.Drawing.Size(294, 175);
+            this.dataGridViewByPassEmp.TabIndex = 0;
+            this.dataGridViewByPassEmp.DoubleClick += new System.EventHandler(this.dataGridViewByPassEmp_DoubleClick);
+            // 
+            // dataGridViewByPassUser
+            // 
+            this.dataGridViewByPassUser.AllowUserToAddRows = false;
+            this.dataGridViewByPassUser.AllowUserToDeleteRows = false;
+            this.dataGridViewByPassUser.BackgroundColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewByPassUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            this.dataGridViewByPassUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewByPassUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column130,
+            this.Column126,
+            this.Column127,
+            this.Column128});
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewByPassUser.DefaultCellStyle = dataGridViewCellStyle33;
+            this.dataGridViewByPassUser.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridViewByPassUser.Location = new System.Drawing.Point(3, 51);
+            this.dataGridViewByPassUser.Name = "dataGridViewByPassUser";
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewByPassUser.RowHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            this.dataGridViewByPassUser.RowTemplate.Height = 23;
+            this.dataGridViewByPassUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewByPassUser.Size = new System.Drawing.Size(294, 175);
+            this.dataGridViewByPassUser.TabIndex = 1;
+            this.dataGridViewByPassUser.DoubleClick += new System.EventHandler(this.dataGridViewByPassUser_DoubleClick);
+            // 
+            // textBoxByPassEmpNM
+            // 
+            this.textBoxByPassEmpNM.Location = new System.Drawing.Point(129, 20);
+            this.textBoxByPassEmpNM.Name = "textBoxByPassEmpNM";
+            this.textBoxByPassEmpNM.Size = new System.Drawing.Size(100, 21);
+            this.textBoxByPassEmpNM.TabIndex = 1;
+            this.textBoxByPassEmpNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxByPassEmpNM_KeyDown);
+            // 
+            // textBoxByPassUserNM
+            // 
+            this.textBoxByPassUserNM.Location = new System.Drawing.Point(130, 20);
+            this.textBoxByPassUserNM.Name = "textBoxByPassUserNM";
+            this.textBoxByPassUserNM.Size = new System.Drawing.Size(100, 21);
+            this.textBoxByPassUserNM.TabIndex = 2;
+            this.textBoxByPassUserNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxByPassUserNM_KeyDown);
+            // 
+            // buttonByPassReset
+            // 
+            this.buttonByPassReset.Location = new System.Drawing.Point(899, 13);
+            this.buttonByPassReset.Name = "buttonByPassReset";
+            this.buttonByPassReset.Size = new System.Drawing.Size(75, 23);
+            this.buttonByPassReset.TabIndex = 6;
+            this.buttonByPassReset.Text = "신규";
+            this.buttonByPassReset.UseVisualStyleBackColor = true;
+            this.buttonByPassReset.Click += new System.EventHandler(this.buttonByPassReset_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(978, 13);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "미결 등록";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(1134, 13);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "삭제";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(7, 106);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(69, 12);
+            this.label28.TabIndex = 0;
+            this.label28.Text = "신청 기간 : ";
+            // 
+            // dateTimePickerByPassUseFrom
+            // 
+            this.dateTimePickerByPassUseFrom.Location = new System.Drawing.Point(77, 102);
+            this.dateTimePickerByPassUseFrom.Name = "dateTimePickerByPassUseFrom";
+            this.dateTimePickerByPassUseFrom.Size = new System.Drawing.Size(172, 21);
+            this.dateTimePickerByPassUseFrom.TabIndex = 1;
+            // 
+            // dateTimePickerByPassUseTo
+            // 
+            this.dateTimePickerByPassUseTo.Location = new System.Drawing.Point(275, 102);
+            this.dateTimePickerByPassUseTo.Name = "dateTimePickerByPassUseTo";
+            this.dateTimePickerByPassUseTo.Size = new System.Drawing.Size(172, 21);
+            this.dateTimePickerByPassUseTo.TabIndex = 2;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(255, 108);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(14, 12);
+            this.label29.TabIndex = 3;
+            this.label29.Text = "~";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(7, 149);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(57, 12);
+            this.label30.TabIndex = 4;
+            this.label30.Text = "신청 사유";
+            // 
+            // textBoxByPassReason
+            // 
+            this.textBoxByPassReason.Location = new System.Drawing.Point(9, 168);
+            this.textBoxByPassReason.Name = "textBoxByPassReason";
+            this.textBoxByPassReason.Size = new System.Drawing.Size(628, 21);
+            this.textBoxByPassReason.TabIndex = 5;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(8, 29);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(65, 12);
+            this.label31.TabIndex = 6;
+            this.label31.Text = "신청자명 : ";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(8, 65);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(65, 12);
+            this.label32.TabIndex = 7;
+            this.label32.Text = "대상자명 : ";
+            // 
+            // textBoxByPassEmpNM2
+            // 
+            this.textBoxByPassEmpNM2.Location = new System.Drawing.Point(80, 26);
+            this.textBoxByPassEmpNM2.Name = "textBoxByPassEmpNM2";
+            this.textBoxByPassEmpNM2.Size = new System.Drawing.Size(100, 21);
+            this.textBoxByPassEmpNM2.TabIndex = 8;
+            // 
+            // textBoxByPassUserNM2
+            // 
+            this.textBoxByPassUserNM2.Location = new System.Drawing.Point(80, 60);
+            this.textBoxByPassUserNM2.Name = "textBoxByPassUserNM2";
+            this.textBoxByPassUserNM2.Size = new System.Drawing.Size(100, 21);
+            this.textBoxByPassUserNM2.TabIndex = 9;
+            // 
+            // textBoxByPassEmpID
+            // 
+            this.textBoxByPassEmpID.Location = new System.Drawing.Point(248, 26);
+            this.textBoxByPassEmpID.Name = "textBoxByPassEmpID";
+            this.textBoxByPassEmpID.Size = new System.Drawing.Size(72, 21);
+            this.textBoxByPassEmpID.TabIndex = 10;
+            // 
+            // textBoxByPassUserID
+            // 
+            this.textBoxByPassUserID.Location = new System.Drawing.Point(248, 60);
+            this.textBoxByPassUserID.Name = "textBoxByPassUserID";
+            this.textBoxByPassUserID.Size = new System.Drawing.Size(72, 21);
+            this.textBoxByPassUserID.TabIndex = 11;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(187, 29);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(60, 12);
+            this.label33.TabIndex = 12;
+            this.label33.Text = "Emp_ID : ";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(188, 63);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(54, 12);
+            this.label34.TabIndex = 13;
+            this.label34.Text = "UserID : ";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(1057, 13);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 9;
+            this.button4.Text = "수정";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // Column129
+            // 
+            this.Column129.DataPropertyName = "cpnm";
+            this.Column129.HeaderText = "캠퍼스";
+            this.Column129.Name = "Column129";
+            // 
+            // Column123
+            // 
+            this.Column123.DataPropertyName = "usernm";
+            this.Column123.HeaderText = "교사명";
+            this.Column123.Name = "Column123";
+            this.Column123.Width = 70;
+            // 
+            // Column125
+            // 
+            this.Column125.DataPropertyName = "login_id";
+            this.Column125.HeaderText = "Login_ID";
+            this.Column125.Name = "Column125";
+            // 
+            // Column124
+            // 
+            this.Column124.DataPropertyName = "userid";
+            this.Column124.HeaderText = "Emp_ID";
+            this.Column124.Name = "Column124";
+            this.Column124.Width = 70;
+            // 
+            // Column130
+            // 
+            this.Column130.DataPropertyName = "cpnm";
+            this.Column130.HeaderText = "캠퍼스";
+            this.Column130.Name = "Column130";
+            // 
+            // Column126
+            // 
+            this.Column126.DataPropertyName = "usernm";
+            this.Column126.HeaderText = "학생명";
+            this.Column126.Name = "Column126";
+            this.Column126.Width = 70;
+            // 
+            // Column127
+            // 
+            this.Column127.DataPropertyName = "login_id";
+            this.Column127.HeaderText = "Login_ID";
+            this.Column127.Name = "Column127";
+            // 
+            // Column128
+            // 
+            this.Column128.DataPropertyName = "userid";
+            this.Column128.HeaderText = "USERID";
+            this.Column128.Name = "Column128";
+            this.Column128.Width = 70;
             // 
             // FormMain
             // 
@@ -3128,6 +3544,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewByPass)).EndInit();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewByPassEmp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewByPassUser)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3384,6 +3810,40 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.ToolStripButton toolStripTextBoxCampusInfo;
         private System.Windows.Forms.ToolStripButton toolStripButtonImportStudentInfo;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonByPassReset;
+        private System.Windows.Forms.GroupBox groupBox17;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox textBoxByPassUserID;
+        private System.Windows.Forms.TextBox textBoxByPassEmpID;
+        private System.Windows.Forms.TextBox textBoxByPassUserNM2;
+        private System.Windows.Forms.TextBox textBoxByPassEmpNM2;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox textBoxByPassReason;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.DateTimePicker dateTimePickerByPassUseTo;
+        private System.Windows.Forms.DateTimePicker dateTimePickerByPassUseFrom;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.TextBox textBoxByPassUserNM;
+        private System.Windows.Forms.DataGridView dataGridViewByPassUser;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.TextBox textBoxByPassEmpNM;
+        private System.Windows.Forms.ToolStrip toolStrip6;
+        private System.Windows.Forms.DataGridView dataGridViewByPassEmp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column130;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column126;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column127;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column128;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column129;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column123;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column125;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column124;
 
     }
 }
