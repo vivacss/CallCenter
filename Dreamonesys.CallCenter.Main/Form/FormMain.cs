@@ -459,6 +459,7 @@ namespace Dreamonesys.CallCenter.Main
                             , C.login_id
                             , C.login_pwd
                             , A.start_date
+                            , A.end_date
                             , (SELECT COUNT(userid) FROM tls_member_study WHERE userid = C.userid
 							      AND CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN sdate AND edate) AS STUDY
                             , (SELECT cpnm from tls_campus WHERE cpno = A.cpno) AS CPNM                        
@@ -483,6 +484,7 @@ namespace Dreamonesys.CallCenter.Main
                             , C.login_id
                             , C.login_pwd
                             , A.start_date
+                            , A.end_date
                             , (SELECT COUNT(userid) FROM tls_member_study WHERE userid = C.userid
 							      AND CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN sdate AND edate) AS STUDY
                             , (SELECT cpnm from tls_campus WHERE cpno = A.cpno) AS CPNM                                                 
@@ -1382,6 +1384,49 @@ namespace Dreamonesys.CallCenter.Main
                 this.Cursor = Cursors.Default;
             }
         }
+
+        /// <summary>
+        /// 미결사용자 정보를 수정한다
+        /// </summary>
+        /// <history>
+        
+        /// </history>
+        private void UpdateByPass()
+        {
+            if (dataGridViewByPass.Rows.Count > 0 && dataGridViewByPass.CurrentCell != null)
+            {                
+                DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 수정 하시겠습니까?");
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+
+                SqlCommand sqlCommand = new SqlCommand();
+                SqlResult sqlResult = new SqlResult();
+
+                sqlCommand.CommandText += @"
+                            UPDATE tls_bypass SET use_from = REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerByPassUseFrom.Value + @"', 112), '-', '')
+                                                , use_to = REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerByPassUseTo.Value + @"', 112), '-', '')
+                                                , reason = '" + textBoxByPassReason.Text + @"'
+                             WHERE cpno = '" + this._common.GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "cpno") + @"'                               
+                               AND request_seq = '" + GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "request_seq") + @"'
+                               AND empnm = '" + GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "empnm") + @"'
+                               AND empno = '" + GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "empno") + @"'
+                               AND usernm = '" + GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "usernm") + @"'
+                               AND userid = '" + GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "userid") + @"'
+                               AND  STUFF(STUFF(use_from, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "use_from") + @"'
+                               AND  STUFF(STUFF(use_to, 5, 0, '-'), 8, 0, '-') = '" + this._common.GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "use_to") + @"'
+                ";
+                //Console.WriteLine(sqlCommand.CommandText);
+
+                // 처리할 자료가 있을 경우 쿼리실행
+                this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                this._common.MessageBox(MessageBoxIcon.Information, "자료를 수정 하였습니다.");
+
+            }
+        }
+
         #endregion Method
 
         #region Event
@@ -1719,9 +1764,9 @@ namespace Dreamonesys.CallCenter.Main
         {            
             if (e.KeyCode == Keys.Enter)
             {
-                if (dataGridViewCampus.Rows.Count > 0 && dataGridViewCampus.CurrentCell != null)
+                if (dataGridViewEmployee.Rows.Count > 0 && dataGridViewEmployee.CurrentCell != null)
                 {
-                    //메인화면 캠퍼스별 학생을 검색한다.
+                    //메인화면 캠퍼스별 특정 학생을 검색한다.
                     SelectDataGridView(dataGridViewClassStudent, "select_class_student_all");
                 }
                 
@@ -1938,8 +1983,8 @@ namespace Dreamonesys.CallCenter.Main
         }
 
         private void buttonInsertStudentPoint_Click(object sender, EventArgs e)
-        {
-            //학생 콩알 적립
+        {            
+            ////학생 콩알 적립
             SelectDataGridView(dataGridViewStudentPointSave, "insert_student_point");
             SelectDataGridView(dataGridViewStudentPointSave, "select_student_point_save");
         }
@@ -2125,7 +2170,7 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
-        private void dataGridViewByPass_DoubleClick(object sender, EventArgs e)
+        private void dataGridViewByPass_Click(object sender, EventArgs e)
         {
             if (dataGridViewByPass.Rows.Count > 0 && dataGridViewByPass.CurrentCell != null)
             {
@@ -2151,6 +2196,14 @@ namespace Dreamonesys.CallCenter.Main
             this.dateTimePickerByPassUseTo.Value = DateTime.Now;
             textBoxByPassReason.Text = "";
         }
+
+        private void buttonByPassUpdate_Click(object sender, EventArgs e)
+        {
+            //미결사용자 정보를 수정한다.
+            UpdateByPass();
+        }
+
+        
 
 
     }
