@@ -2250,7 +2250,7 @@ namespace Dreamonesys.CallCenter.Main
                 textBoxByPassUserNM.Text = "";
             }
         }
-        #endregion Event
+        
 
         private void dataGridViewByPassEmp_DoubleClick(object sender, EventArgs e)
         {
@@ -2326,6 +2326,6 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
-
+        #endregion Event
     }
 }

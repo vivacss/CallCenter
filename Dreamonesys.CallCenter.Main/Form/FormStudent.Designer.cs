@@ -128,6 +128,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.textBoxMyTestTitle = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.textBoxUserNmMyTest = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -143,36 +145,6 @@
             this.splitContainer8 = new System.Windows.Forms.SplitContainer();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.dataGridViewMyTestRepeat = new System.Windows.Forms.DataGridView();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewMyTestSetRel = new System.Windows.Forms.DataGridView();
-            this.Column50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column52 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column53 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column54 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column55 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column56 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStrip5 = new System.Windows.Forms.ToolStrip();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBoxMyTestTitle = new System.Windows.Forms.TextBox();
-            this.Column57 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column58 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column59 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -191,7 +163,22 @@
             this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewMyTestSetRel = new System.Windows.Forms.DataGridView();
+            this.Column50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column52 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column53 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column54 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column55 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column56 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip5 = new System.Windows.Forms.ToolStrip();
+            this.toolStripTextBoxTestSetCode = new System.Windows.Forms.ToolStripTextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.buttonMyTestDelete = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column60 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -211,7 +198,23 @@
             this.dataGridViewTextBoxColumn49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripTextBoxTestSetCode = new System.Windows.Forms.ToolStripTextBox();
+            this.Column57 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column58 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column59 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonMyTestTestSetCode = new System.Windows.Forms.Button();
             this.tabPageSelect_Student.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -1142,6 +1145,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.buttonMyTestTestSetCode);
+            this.tabPage3.Controls.Add(this.buttonMyTestDelete);
             this.tabPage3.Controls.Add(this.textBoxMyTestTitle);
             this.tabPage3.Controls.Add(this.label7);
             this.tabPage3.Controls.Add(this.textBoxUserNmMyTest);
@@ -1159,6 +1164,24 @@
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "추가학습";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // textBoxMyTestTitle
+            // 
+            this.textBoxMyTestTitle.Location = new System.Drawing.Point(505, 8);
+            this.textBoxMyTestTitle.Name = "textBoxMyTestTitle";
+            this.textBoxMyTestTitle.Size = new System.Drawing.Size(129, 21);
+            this.textBoxMyTestTitle.TabIndex = 10;
+            this.textBoxMyTestTitle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMyTestTitle_KeyDown);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.label7.Location = new System.Drawing.Point(450, 12);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 12);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "TITLE : ";
             // 
             // textBoxUserNmMyTest
             // 
@@ -1292,6 +1315,7 @@
             this.dataGridViewMyTestUser.Size = new System.Drawing.Size(577, 322);
             this.dataGridViewMyTestUser.TabIndex = 0;
             this.dataGridViewMyTestUser.Click += new System.EventHandler(this.dataGridViewMyTestUser_Click);
+            this.dataGridViewMyTestUser.DoubleClick += new System.EventHandler(this.dataGridViewMyTestUser_DoubleClick);
             // 
             // groupBox12
             // 
@@ -1312,6 +1336,7 @@
             this.dataGridViewMyTestSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMyTestSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn32,
+            this.Column60,
             this.dataGridViewTextBoxColumn40,
             this.dataGridViewTextBoxColumn33,
             this.dataGridViewTextBoxColumn34,
@@ -1400,228 +1425,6 @@
             this.dataGridViewMyTestRepeat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewMyTestRepeat.Size = new System.Drawing.Size(573, 321);
             this.dataGridViewMyTestRepeat.TabIndex = 1;
-            // 
-            // groupBox13
-            // 
-            this.groupBox13.Controls.Add(this.dataGridViewMyTestSetRel);
-            this.groupBox13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox13.Location = new System.Drawing.Point(0, 0);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(579, 321);
-            this.groupBox13.TabIndex = 2;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "오답, 셀프, 추가학습 문항 정보";
-            // 
-            // dataGridViewMyTestSetRel
-            // 
-            this.dataGridViewMyTestSetRel.AllowUserToAddRows = false;
-            this.dataGridViewMyTestSetRel.AllowUserToDeleteRows = false;
-            this.dataGridViewMyTestSetRel.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridViewMyTestSetRel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMyTestSetRel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column50,
-            this.Column51,
-            this.Column52,
-            this.Column53,
-            this.Column54,
-            this.Column55,
-            this.Column56});
-            this.dataGridViewMyTestSetRel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewMyTestSetRel.Location = new System.Drawing.Point(3, 17);
-            this.dataGridViewMyTestSetRel.Name = "dataGridViewMyTestSetRel";
-            this.dataGridViewMyTestSetRel.RowTemplate.Height = 23;
-            this.dataGridViewMyTestSetRel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewMyTestSetRel.Size = new System.Drawing.Size(573, 301);
-            this.dataGridViewMyTestSetRel.TabIndex = 1;
-            // 
-            // Column50
-            // 
-            this.Column50.DataPropertyName = "study_type";
-            this.Column50.HeaderText = "STUDY_TYPE";
-            this.Column50.Name = "Column50";
-            // 
-            // Column51
-            // 
-            this.Column51.DataPropertyName = "testsetcode";
-            this.Column51.HeaderText = "TESTSETCODE";
-            this.Column51.Name = "Column51";
-            // 
-            // Column52
-            // 
-            this.Column52.DataPropertyName = "quizcode";
-            this.Column52.HeaderText = "QUIZCODE";
-            this.Column52.Name = "Column52";
-            // 
-            // Column53
-            // 
-            this.Column53.DataPropertyName = "orderno";
-            this.Column53.HeaderText = "ORDERNO";
-            this.Column53.Name = "Column53";
-            // 
-            // Column54
-            // 
-            this.Column54.DataPropertyName = "quizno";
-            this.Column54.HeaderText = "QUIZNO";
-            this.Column54.Name = "Column54";
-            // 
-            // Column55
-            // 
-            this.Column55.DataPropertyName = "assignpoints";
-            this.Column55.HeaderText = "ASSIGNPOINTS";
-            this.Column55.Name = "Column55";
-            // 
-            // Column56
-            // 
-            this.Column56.DataPropertyName = "rdatetime";
-            this.Column56.HeaderText = "RDATETIME";
-            this.Column56.Name = "Column56";
-            // 
-            // toolStrip5
-            // 
-            this.toolStrip5.AutoSize = false;
-            this.toolStrip5.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.toolStrip5.ImageScalingSize = new System.Drawing.Size(25, 25);
-            this.toolStrip5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripTextBoxTestSetCode});
-            this.toolStrip5.Location = new System.Drawing.Point(3, 3);
-            this.toolStrip5.Name = "toolStrip5";
-            this.toolStrip5.Size = new System.Drawing.Size(1166, 32);
-            this.toolStrip5.TabIndex = 1;
-            this.toolStrip5.Text = "toolStrip5";
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1172, 704);
-            this.tabPage4.TabIndex = 1;
-            this.tabPage4.Text = "맞춤학습";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1172, 704);
-            this.tabPage5.TabIndex = 2;
-            this.tabPage5.Text = "정규학습";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.label7.Location = new System.Drawing.Point(450, 12);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 12);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "TITLE : ";
-            // 
-            // textBoxMyTestTitle
-            // 
-            this.textBoxMyTestTitle.Location = new System.Drawing.Point(505, 8);
-            this.textBoxMyTestTitle.Name = "textBoxMyTestTitle";
-            this.textBoxMyTestTitle.Size = new System.Drawing.Size(129, 21);
-            this.textBoxMyTestTitle.TabIndex = 10;
-            this.textBoxMyTestTitle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMyTestTitle_KeyDown);
-            // 
-            // Column57
-            // 
-            this.Column57.DataPropertyName = "cpnm";
-            this.Column57.HeaderText = "캠퍼스";
-            this.Column57.Name = "Column57";
-            // 
-            // Column58
-            // 
-            this.Column58.DataPropertyName = "clnm";
-            this.Column58.HeaderText = "반명";
-            this.Column58.Name = "Column58";
-            // 
-            // Column59
-            // 
-            this.Column59.DataPropertyName = "usernm";
-            this.Column59.HeaderText = "학생명";
-            this.Column59.Name = "Column59";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "title";
-            this.dataGridViewTextBoxColumn6.HeaderText = "TITLE";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "cpno";
-            this.dataGridViewTextBoxColumn1.HeaderText = "CPNO";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "clno";
-            this.dataGridViewTextBoxColumn2.HeaderText = "CLNO";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "userid";
-            this.dataGridViewTextBoxColumn3.HeaderText = "USERID";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "testsetcode";
-            this.dataGridViewTextBoxColumn4.HeaderText = "TESTSETCODE";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "test_cd";
-            this.dataGridViewTextBoxColumn5.HeaderText = "TEST_CD";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "quiz_cd";
-            this.dataGridViewTextBoxColumn7.HeaderText = "QUIZ_CD";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "quiz_cnt";
-            this.dataGridViewTextBoxColumn8.HeaderText = "QUIZ_CNT";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "end_yn";
-            this.dataGridViewTextBoxColumn9.HeaderText = "END_YN";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "rid";
-            this.dataGridViewTextBoxColumn10.HeaderText = "RID";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "rdatetime";
-            this.dataGridViewTextBoxColumn11.HeaderText = "RDATETIME";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "uid";
-            this.dataGridViewTextBoxColumn12.HeaderText = "UID";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "udatetime";
-            this.dataGridViewTextBoxColumn13.HeaderText = "UDATETIME";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             // 
             // dataGridViewTextBoxColumn14
             // 
@@ -1731,17 +1534,149 @@
             this.dataGridViewTextBoxColumn31.HeaderText = "UDATETIME";
             this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
             // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.dataGridViewMyTestSetRel);
+            this.groupBox13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox13.Location = new System.Drawing.Point(0, 0);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(579, 321);
+            this.groupBox13.TabIndex = 2;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "오답, 셀프, 추가학습 문항 정보";
+            // 
+            // dataGridViewMyTestSetRel
+            // 
+            this.dataGridViewMyTestSetRel.AllowUserToAddRows = false;
+            this.dataGridViewMyTestSetRel.AllowUserToDeleteRows = false;
+            this.dataGridViewMyTestSetRel.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridViewMyTestSetRel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMyTestSetRel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column50,
+            this.Column51,
+            this.Column52,
+            this.Column53,
+            this.Column54,
+            this.Column55,
+            this.Column56});
+            this.dataGridViewMyTestSetRel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewMyTestSetRel.Location = new System.Drawing.Point(3, 17);
+            this.dataGridViewMyTestSetRel.Name = "dataGridViewMyTestSetRel";
+            this.dataGridViewMyTestSetRel.RowTemplate.Height = 23;
+            this.dataGridViewMyTestSetRel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewMyTestSetRel.Size = new System.Drawing.Size(573, 301);
+            this.dataGridViewMyTestSetRel.TabIndex = 1;
+            // 
+            // Column50
+            // 
+            this.Column50.DataPropertyName = "study_type";
+            this.Column50.HeaderText = "STUDY_TYPE";
+            this.Column50.Name = "Column50";
+            // 
+            // Column51
+            // 
+            this.Column51.DataPropertyName = "testsetcode";
+            this.Column51.HeaderText = "TESTSETCODE";
+            this.Column51.Name = "Column51";
+            // 
+            // Column52
+            // 
+            this.Column52.DataPropertyName = "quizcode";
+            this.Column52.HeaderText = "QUIZCODE";
+            this.Column52.Name = "Column52";
+            // 
+            // Column53
+            // 
+            this.Column53.DataPropertyName = "orderno";
+            this.Column53.HeaderText = "ORDERNO";
+            this.Column53.Name = "Column53";
+            // 
+            // Column54
+            // 
+            this.Column54.DataPropertyName = "quizno";
+            this.Column54.HeaderText = "QUIZNO";
+            this.Column54.Name = "Column54";
+            // 
+            // Column55
+            // 
+            this.Column55.DataPropertyName = "assignpoints";
+            this.Column55.HeaderText = "ASSIGNPOINTS";
+            this.Column55.Name = "Column55";
+            // 
+            // Column56
+            // 
+            this.Column56.DataPropertyName = "rdatetime";
+            this.Column56.HeaderText = "RDATETIME";
+            this.Column56.Name = "Column56";
+            // 
+            // toolStrip5
+            // 
+            this.toolStrip5.AutoSize = false;
+            this.toolStrip5.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.toolStrip5.ImageScalingSize = new System.Drawing.Size(25, 25);
+            this.toolStrip5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBoxTestSetCode});
+            this.toolStrip5.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip5.Name = "toolStrip5";
+            this.toolStrip5.Size = new System.Drawing.Size(1166, 32);
+            this.toolStrip5.TabIndex = 1;
+            this.toolStrip5.Text = "toolStrip5";
+            // 
+            // toolStripTextBoxTestSetCode
+            // 
+            this.toolStripTextBoxTestSetCode.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripTextBoxTestSetCode.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.toolStripTextBoxTestSetCode.Name = "toolStripTextBoxTestSetCode";
+            this.toolStripTextBoxTestSetCode.Size = new System.Drawing.Size(250, 32);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1172, 704);
+            this.tabPage4.TabIndex = 1;
+            this.tabPage4.Text = "맞춤학습";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(1172, 704);
+            this.tabPage5.TabIndex = 2;
+            this.tabPage5.Text = "정규학습";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // buttonMyTestDelete
+            // 
+            this.buttonMyTestDelete.Location = new System.Drawing.Point(650, 7);
+            this.buttonMyTestDelete.Name = "buttonMyTestDelete";
+            this.buttonMyTestDelete.Size = new System.Drawing.Size(50, 23);
+            this.buttonMyTestDelete.TabIndex = 11;
+            this.buttonMyTestDelete.Text = "삭제";
+            this.buttonMyTestDelete.UseVisualStyleBackColor = true;
+            // 
             // dataGridViewTextBoxColumn32
             // 
             this.dataGridViewTextBoxColumn32.DataPropertyName = "study_type";
             this.dataGridViewTextBoxColumn32.HeaderText = "STUDY_TYPE";
             this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
             // 
+            // Column60
+            // 
+            this.Column60.DataPropertyName = "usernm";
+            this.Column60.HeaderText = "USERNM";
+            this.Column60.Name = "Column60";
+            this.Column60.Width = 70;
+            // 
             // dataGridViewTextBoxColumn40
             // 
             this.dataGridViewTextBoxColumn40.DataPropertyName = "title";
             this.dataGridViewTextBoxColumn40.HeaderText = "TITLE";
             this.dataGridViewTextBoxColumn40.Name = "dataGridViewTextBoxColumn40";
+            this.dataGridViewTextBoxColumn40.Width = 150;
             // 
             // dataGridViewTextBoxColumn33
             // 
@@ -1851,12 +1786,112 @@
             this.dataGridViewTextBoxColumn51.HeaderText = "RDATETIME";
             this.dataGridViewTextBoxColumn51.Name = "dataGridViewTextBoxColumn51";
             // 
-            // toolStripTextBoxTestSetCode
+            // Column57
             // 
-            this.toolStripTextBoxTestSetCode.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripTextBoxTestSetCode.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.toolStripTextBoxTestSetCode.Name = "toolStripTextBoxTestSetCode";
-            this.toolStripTextBoxTestSetCode.Size = new System.Drawing.Size(250, 32);
+            this.Column57.DataPropertyName = "cpnm";
+            this.Column57.HeaderText = "캠퍼스";
+            this.Column57.Name = "Column57";
+            // 
+            // Column58
+            // 
+            this.Column58.DataPropertyName = "clnm";
+            this.Column58.HeaderText = "반명";
+            this.Column58.Name = "Column58";
+            // 
+            // Column59
+            // 
+            this.Column59.DataPropertyName = "usernm";
+            this.Column59.HeaderText = "학생명";
+            this.Column59.Name = "Column59";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "title";
+            this.dataGridViewTextBoxColumn6.HeaderText = "TITLE";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "cpno";
+            this.dataGridViewTextBoxColumn1.HeaderText = "CPNO";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "clno";
+            this.dataGridViewTextBoxColumn2.HeaderText = "CLNO";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "userid";
+            this.dataGridViewTextBoxColumn3.HeaderText = "USERID";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "testsetcode";
+            this.dataGridViewTextBoxColumn4.HeaderText = "TESTSETCODE";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "test_cd";
+            this.dataGridViewTextBoxColumn5.HeaderText = "TEST_CD";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "quiz_cd";
+            this.dataGridViewTextBoxColumn7.HeaderText = "QUIZ_CD";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "quiz_cnt";
+            this.dataGridViewTextBoxColumn8.HeaderText = "QUIZ_CNT";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "end_yn";
+            this.dataGridViewTextBoxColumn9.HeaderText = "END_YN";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "rid";
+            this.dataGridViewTextBoxColumn10.HeaderText = "RID";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "rdatetime";
+            this.dataGridViewTextBoxColumn11.HeaderText = "RDATETIME";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "uid";
+            this.dataGridViewTextBoxColumn12.HeaderText = "UID";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "udatetime";
+            this.dataGridViewTextBoxColumn13.HeaderText = "UDATETIME";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            // 
+            // buttonMyTestTestSetCode
+            // 
+            this.buttonMyTestTestSetCode.Location = new System.Drawing.Point(861, 7);
+            this.buttonMyTestTestSetCode.Name = "buttonMyTestTestSetCode";
+            this.buttonMyTestTestSetCode.Size = new System.Drawing.Size(50, 23);
+            this.buttonMyTestTestSetCode.TabIndex = 12;
+            this.buttonMyTestTestSetCode.Text = "조회";
+            this.buttonMyTestTestSetCode.UseVisualStyleBackColor = true;
+            this.buttonMyTestTestSetCode.Click += new System.EventHandler(this.buttonMyTestTestSetCode_Click);
             // 
             // FormStudent
             // 
@@ -2053,42 +2088,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonStudentLoginPW;
         private System.Windows.Forms.TextBox textBoxMyTestTitle;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column57;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column58;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column59;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn40;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn39;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn41;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn42;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn43;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn44;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn45;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn46;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn47;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn48;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn49;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn50;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn51;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
@@ -2108,6 +2107,45 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxTestSetCode;
+        private System.Windows.Forms.Button buttonMyTestDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column57;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column58;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column59;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column60;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn40;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn39;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn41;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn42;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn43;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn44;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn45;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn46;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn47;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn48;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn49;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn50;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn51;
+        private System.Windows.Forms.Button buttonMyTestTestSetCode;
 
     }
 }

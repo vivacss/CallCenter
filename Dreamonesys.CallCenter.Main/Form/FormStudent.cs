@@ -85,8 +85,10 @@ namespace Dreamonesys.CallCenter.Main
             // 콤보박스 멀티
             Common.ComboBoxList[] comboBoxList = 
             {
+                //학생검색 콤보박스
                 new Common.ComboBoxList(comboBoxCampusType, "캠퍼스구분", true),
                 new Common.ComboBoxList(comboBoxCampus, "캠퍼스", true),
+                //오답,셀프, 추가학습 콤보박스
                 new Common.ComboBoxList(comboBoxCampusTypeMyTest, "캠퍼스구분", true),
                 new Common.ComboBoxList(comboBoxCampusMyTest, "캠퍼스", true)
             };
@@ -111,6 +113,12 @@ namespace Dreamonesys.CallCenter.Main
                     dataGridViewEduStudentClass.Rows.Clear();
                     dataGridViewU2mStudentClass.Rows.Clear();
                     dataGridViewCamMember.Rows.Clear();                    
+                    break;
+                case "dataGridViewMyTestUser":
+                    dataGridViewMyTestRepeat.Rows.Clear();
+                    dataGridViewMyTestSet.Rows.Clear();
+                    dataGridViewMyTestSetRel.Rows.Clear();
+                    
                     break;
                 
                 default:
@@ -177,6 +185,9 @@ namespace Dreamonesys.CallCenter.Main
             pSqlCommand = new SqlCommand();
             string businessCD = comboBoxCampusType.SelectedValue.ToString();
             string cpno = comboBoxCampus.SelectedValue.ToString();
+            string businessCDMyTest = comboBoxCampusTypeMyTest.SelectedValue.ToString();
+            string cpnoMyTest = comboBoxCampusMyTest.SelectedValue.ToString();
+            
 
             switch (pQueryKind)
             {
@@ -411,15 +422,15 @@ namespace Dreamonesys.CallCenter.Main
                                ON A.clno = D.clno
                          WHERE 1=1    ";
 
-                    if (!string.IsNullOrEmpty(businessCD))
+                    if (!string.IsNullOrEmpty(businessCDMyTest))
                     {
                         pSqlCommand.CommandText += @"
-                         AND C.business_cd = '" + businessCD + "' ";
+                         AND C.business_cd = '" + businessCDMyTest + "' ";
                     }
-                    if (!string.IsNullOrEmpty(cpno))
+                    if (!string.IsNullOrEmpty(cpnoMyTest))
                     {
                         pSqlCommand.CommandText += @"
-                         AND C.cpno = '" + cpno + "' ";
+                         AND C.cpno = '" + cpnoMyTest + "' ";
                     }
                     if (!string.IsNullOrEmpty(textBoxUserNmMyTest.Text))
                     {
@@ -441,11 +452,18 @@ namespace Dreamonesys.CallCenter.Main
                         pSqlCommand.CommandText += @"
                          AND A.title LIKE '%" + textBoxMyTestTitle.Text + "%' ";
                     }
+                    if (!string.IsNullOrEmpty(toolStripTextBoxTestSetCode.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND A.testsetcode = '" + toolStripTextBoxTestSetCode.Text + "' ";
+                    }
+                    
                     pSqlCommand.CommandText += @"
                        ORDER BY A.rdatetime DESC ";
 
-                    textBoxMyTestTitle.Text = "";
+                    textBoxMyTestTitle.Text = "";                    
                     break;
+
 
                 case "select_mytest_repeat":
                     //오답,셀프,추가학습 학습 정보를 조회한다.
@@ -481,33 +499,66 @@ namespace Dreamonesys.CallCenter.Main
                 case "select_mytest_testset":
                     //오답,셀프,추가학습 시험지 정보를 조회한다.
                     pSqlCommand.CommandText = @"                      	
-                        SELECT CASE study_type WHEN 'X' THEN '오답'
+                        SELECT CASE A.study_type WHEN 'X' THEN '오답'
 						                       WHEN 'S' THEN '셀프학습'
 						                       WHEN 'A' THEN '추가학습'
 		                        END AS STUDY_TYPE
-                             , testsetcode
-                             , test_cd
-                             , cpno
-                             , userid
-                             , school_cd
-                             , grade_cd
-                             , session_cd
-                             , title
-                             , quiz_cd
-                             , quiz_cnt
-                             , hard1cnt
-                             , hard2cnt
-                             , hard3cnt
-                             , hard4cnt
-                             , hard5cnt
-                             , repeatno_cnt
-                             , end_yn
-                             , rid
-                             , rdatetime
-                          FROM tls_mytest_testset
-                         WHERE cpno = " + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "cpno") + @"                        
-                           AND userid = " + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "userid") + @"
-                           AND testsetcode = '" + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "testsetcode") + @"'
+                             , A.testsetcode
+                             , A.test_cd
+                             , A.cpno
+                             , (select usernm from tls_member where userid = A.userid) AS USERNM
+                             , A.userid
+                             , A.school_cd
+                             , A.grade_cd
+                             , A.session_cd
+                             , A.title
+                             , A.quiz_cd
+                             , A.quiz_cnt
+                             , A.hard1cnt
+                             , A.hard2cnt
+                             , A.hard3cnt
+                             , A.hard4cnt
+                             , A.hard5cnt
+                             , A.repeatno_cnt
+                             , A.end_yn
+                             , A.rid
+                             , A.rdatetime
+                          FROM tls_mytest_testset AS A
+                         WHERE A.cpno = " + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "cpno") + @"                        
+                           AND A.userid = " + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "userid") + @"
+                           AND A.testsetcode = '" + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "testsetcode") + @"'
+                          ";
+                    break;
+
+                case "select_mytest_testsetcode":
+                    //오답,셀프,추가학습 시험지 정보를 testsetcode로 조회한다.
+                    pSqlCommand.CommandText = @"                      	
+                        SELECT CASE A.study_type WHEN 'X' THEN '오답'
+						                       WHEN 'S' THEN '셀프학습'
+						                       WHEN 'A' THEN '추가학습'
+		                        END AS STUDY_TYPE
+                             , A.testsetcode
+                             , A.test_cd
+                             , A.cpno
+                             , (select usernm from tls_member where userid = A.userid) AS USERNM
+                             , A.userid
+                             , A.school_cd
+                             , A.grade_cd
+                             , A.session_cd
+                             , A.title
+                             , A.quiz_cd
+                             , A.quiz_cnt
+                             , A.hard1cnt
+                             , A.hard2cnt
+                             , A.hard3cnt
+                             , A.hard4cnt
+                             , A.hard5cnt
+                             , A.repeatno_cnt
+                             , A.end_yn
+                             , A.rid
+                             , A.rdatetime
+                          FROM tls_mytest_testset AS A
+                         WHERE A.testsetcode = '" + toolStripTextBoxTestSetCode.Text + @"'
                           ";
                     break;
 
@@ -770,7 +821,8 @@ namespace Dreamonesys.CallCenter.Main
         {
             if (e.KeyCode == Keys.Enter)
             {
-                //학생의 오답, 셀프, 추가학습 배정정보를 검색한다.                
+                toolStripTextBoxTestSetCode.Text = "";
+                //학생의 오답, 셀프, 추가학습 배정정보를 검색한다.                 
                 SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");               
             }
         }
@@ -779,23 +831,43 @@ namespace Dreamonesys.CallCenter.Main
         {
             if (e.KeyCode == Keys.Enter)
             {
+                toolStripTextBoxTestSetCode.Text = "";
                 //학생의 오답, 셀프, 추가학습 배정정보의 title을 검색한다.                
                 SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");
             }
+        }
+
+        private void dataGridViewMyTestUser_DoubleClick(object sender, EventArgs e)
+        {
+            //오답, 셀프, 추가학습 배정정보의 testsetcode를 텍스트박스에 입력한다.
+            toolStripTextBoxTestSetCode.Text = GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "testsetcode");
+        }
+
+        private void buttonMyTestTestSetCode_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(toolStripTextBoxTestSetCode.Text))
+            {
+                //오답, 셀프, 추가학습 배정정보를 testsetcode로 조회한다.
+                textBoxUserNmMyTest.Text = "";
+                SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");
+                SelectDataGridView(dataGridViewMyTestSet, "select_mytest_testsetcode");
+                SelectDataGridView(dataGridViewMyTestSetRel, "select_mytest_testset_rel"); 
+            }
+                
+            
         }
 
         private void dataGridViewMyTestUser_Click(object sender, EventArgs e)
         {            
             if (dataGridViewMyTestUser.Rows.Count > 0 && dataGridViewMyTestUser.CurrentCell != null)
             {
+                toolStripTextBoxTestSetCode.Text = "";
                 //학생의 오답, 셀프, 추가학습 학습정보를 검색한다.
                 SelectDataGridView(dataGridViewMyTestRepeat, "select_mytest_repeat");
                 //학생의 오답,셀프,추가학습 시험지 정보를 조회한다.
                 SelectDataGridView(dataGridViewMyTestSet, "select_mytest_testset");
                 //학생의 오답,셀프,추가학습 문항정보를 조회한다.
-                SelectDataGridView(dataGridViewMyTestSetRel, "select_mytest_testset_rel");
-
-                toolStripTextBoxTestSetCode.Text = GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "testsetcode"); 
+                SelectDataGridView(dataGridViewMyTestSetRel, "select_mytest_testset_rel");                
             }                           
         }
 
@@ -808,6 +880,10 @@ namespace Dreamonesys.CallCenter.Main
 
 
         #endregion Event
+
+        
+
+        
 
         
 
