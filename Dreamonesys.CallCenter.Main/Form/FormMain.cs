@@ -390,6 +390,7 @@ namespace Dreamonesys.CallCenter.Main
                                                WHEN 92 THEN '중등'
                                                WHEN 93 THEN '고등'                                               
                               END AS SCHOOL_CD
+                            , (SELECT name FROM tls_web_code WHERE cdsub = B.grade_cd AND use_yn = 'Y') AS GRADE_CD                              
 							, (SELECT COUNT(clno) FROM tls_class_study WHERE clno = B.clno
 							      AND CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN sdate AND edate) AS STUDY
 						    , (SELECT COUNT(clno) FROM tls_class_user WHERE clno = B.clno AND auth_cd = 'S'
@@ -419,22 +420,20 @@ namespace Dreamonesys.CallCenter.Main
 	                        , A.clnm
 	                        , A.point
 	                        , A.mpoint
-                            , C.name
+                            , B.usernm
+                            , A.cpno
 	  		                , CASE A.school_cd WHEN 91 THEN '초등'
                                                WHEN 92 THEN '중등'
                                                WHEN 93 THEN '고등'                                               
                               END AS SCHOOL_CD
-	                        , B.usernm
-                            , A.cpno
+                            , (SELECT name FROM tls_web_code WHERE cdsub = A.grade_cd AND use_yn = 'Y') AS GRADE_CD                              	                        
                             , (SELECT COUNT(clno) FROM tls_class_study WHERE clno = A.clno
 							      AND CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN sdate AND edate) AS STUDY
 						    , (SELECT COUNT(clno) FROM tls_class_user WHERE clno = A.clno AND auth_cd = 'S'
 							      AND (end_date = '' OR end_date IS NULL OR CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN start_date AND end_date)) AS USER_CNT
 	                     FROM tls_class AS A
 					LEFT JOIN tls_member AS B
-					       ON A.CLASS_TID = B.userid
-                    LEFT JOIN tls_web_code AS C
-					       ON A.grade_cd = C.cdsub
+					       ON A.CLASS_TID = B.userid                    
 						WHERE A.cpno = " + GetCellValue(dataGridViewEmployee, dataGridViewEmployee.CurrentCell.RowIndex, "cpno") + @"
 						  AND (A.edate = '' OR A.edate IS NULL OR A.edate >= CONVERT(VARCHAR(8), GETDATE(), 112))
                     ";

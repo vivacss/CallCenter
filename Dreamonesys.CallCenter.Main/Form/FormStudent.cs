@@ -412,7 +412,9 @@ namespace Dreamonesys.CallCenter.Main
                              , A.rid
                              , A.rdatetime
                              , A.uid
-                             , A.udatetime  
+                             , A.udatetime
+                             , B.login_id 
+                             , B.login_pwd
                           FROM tls_mytest_user AS A
                      LEFT JOIN tls_member AS B
                                ON A.userid = B.userid
@@ -468,8 +470,8 @@ namespace Dreamonesys.CallCenter.Main
                 case "select_mytest_repeat":
                     //오답,셀프,추가학습 학습 정보를 조회한다.
                     pSqlCommand.CommandText = @"                      	
-                        SELECT CASE study_type WHEN 'X' THEN '오답'
-						                       WHEN 'S' THEN '셀프학습'
+                        SELECT CASE study_type WHEN 'X' THEN '오답클리닉'
+						                       WHEN 'S' THEN '셀프테스트'
 						                       WHEN 'A' THEN '추가학습'
 		                        END AS STUDY_TYPE
                              , myno
@@ -499,8 +501,8 @@ namespace Dreamonesys.CallCenter.Main
                 case "select_mytest_testset":
                     //오답,셀프,추가학습 시험지 정보를 조회한다.
                     pSqlCommand.CommandText = @"                      	
-                        SELECT CASE A.study_type WHEN 'X' THEN '오답'
-						                       WHEN 'S' THEN '셀프학습'
+                        SELECT CASE A.study_type WHEN 'X' THEN '오답클리닉'
+						                       WHEN 'S' THEN '셀프테스트'
 						                       WHEN 'A' THEN '추가학습'
 		                        END AS STUDY_TYPE
                              , A.testsetcode
@@ -533,9 +535,9 @@ namespace Dreamonesys.CallCenter.Main
                 case "select_mytest_testsetcode":
                     //오답,셀프,추가학습 시험지 정보를 testsetcode로 조회한다.
                     pSqlCommand.CommandText = @"                      	
-                        SELECT CASE A.study_type WHEN 'X' THEN '오답'
-						                       WHEN 'S' THEN '셀프학습'
-						                       WHEN 'A' THEN '추가학습'
+                        SELECT CASE A.study_type WHEN 'X' THEN '오답클리닉'
+						                         WHEN 'S' THEN '셀프테스트'
+						                         WHEN 'A' THEN '추가학습'
 		                        END AS STUDY_TYPE
                              , A.testsetcode
                              , A.test_cd
@@ -565,9 +567,9 @@ namespace Dreamonesys.CallCenter.Main
                 case "select_mytest_testset_rel":
                     //오답,셀프,추가학습 문항정보를 조회한다.
                     pSqlCommand.CommandText = @"                      	
-                        SELECT CASE study_type WHEN 'X' THEN '오답'
-						                       WHEN 'S' THEN '셀프학습'
-						                       WHEN 'A' THEN '추가학습'
+                        SELECT CASE A.study_type WHEN 'X' THEN '오답클리닉'
+						                         WHEN 'S' THEN '셀프테스트'
+						                         WHEN 'A' THEN '추가학습'
 		                        END AS STUDY_TYPE
                              , testsetcode
                              , quizcode
@@ -628,12 +630,12 @@ namespace Dreamonesys.CallCenter.Main
         /// </history>
         private void FormStudent_Load(object sender, EventArgs e)
         {
-            InitCombo();           
+            InitCombo();            
         }
 
         private void dataGridViewStudent_MouseClick(object sender, MouseEventArgs e)
         {
-            //학생 u2m학습창 및 마이페이지 로그인
+            //학생검색 탭 u2m학습창 및 마이페이지 로그인
             if (e.Button == MouseButtons.Right)
             {
                 int currentMouseOverRow = ((DataGridView)sender).HitTest(e.X, e.Y).RowIndex;
@@ -644,6 +646,34 @@ namespace Dreamonesys.CallCenter.Main
                 }
             }
         }
+
+        private void dataGridViewMyTestUser_MouseClick(object sender, MouseEventArgs e)
+        {
+            //학생 오답, 셀프, 추가학습 탭 u2m학습창 및 마이페이지 로그인
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentMouseOverRow = ((DataGridView)sender).HitTest(e.X, e.Y).RowIndex;
+                if (currentMouseOverRow >= 0)
+                {
+                    ((DataGridView)sender).CurrentCell = ((DataGridView)sender)[0, currentMouseOverRow];
+                    this._common.RunLogin(((DataGridView)sender), new Point(e.X, e.Y));
+                }
+            }
+            if (e.Button == MouseButtons.Left)
+            {
+                if (dataGridViewMyTestUser.Rows.Count > 0 && dataGridViewMyTestUser.CurrentCell != null)
+                {
+                    toolStripTextBoxTestSetCode.Text = "";
+                    //학생의 오답, 셀프, 추가학습 학습정보를 검색한다.
+                    SelectDataGridView(dataGridViewMyTestRepeat, "select_mytest_repeat");
+                    //학생의 오답,셀프,추가학습 시험지 정보를 조회한다.
+                    SelectDataGridView(dataGridViewMyTestSet, "select_mytest_testset");
+                    //학생의 오답,셀프,추가학습 문항정보를 조회한다.
+                    SelectDataGridView(dataGridViewMyTestSetRel, "select_mytest_testset_rel");
+                }   
+            }
+        }
+
 
         /// <summary>
         ///  드림플러스 학생 정보를 유투엠에 연동한다.
@@ -819,56 +849,55 @@ namespace Dreamonesys.CallCenter.Main
 
         private void textBoxUserNmMyTest_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            string cpnoMyTest = comboBoxCampusMyTest.SelectedValue.ToString();
+
+            if (!string.IsNullOrEmpty(cpnoMyTest))
             {
-                toolStripTextBoxTestSetCode.Text = "";
-                //학생의 오답, 셀프, 추가학습 배정정보를 검색한다.                 
-                SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");               
+                if (e.KeyCode == Keys.Enter)
+                {
+                    toolStripTextBoxTestSetCode.Text = "";
+                    //학생의 오답, 셀프, 추가학습 배정정보를 검색한다.                 
+                    SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");
+                }
             }
+
+            
         }
 
         private void textBoxMyTestTitle_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                toolStripTextBoxTestSetCode.Text = "";
-                //학생의 오답, 셀프, 추가학습 배정정보의 title을 검색한다.                
-                SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");
-            }
-        }
+            string cpnoMyTest = comboBoxCampusMyTest.SelectedValue.ToString();
 
-        private void dataGridViewMyTestUser_DoubleClick(object sender, EventArgs e)
-        {
-            //오답, 셀프, 추가학습 배정정보의 testsetcode를 텍스트박스에 입력한다.
-            toolStripTextBoxTestSetCode.Text = GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "testsetcode");
+            if (!string.IsNullOrEmpty(cpnoMyTest))
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    toolStripTextBoxTestSetCode.Text = "";
+                    //학생의 오답, 셀프, 추가학습 배정정보의 title을 검색한다.                
+                    SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");
+                }
+            }            
         }
 
         private void buttonMyTestTestSetCode_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(toolStripTextBoxTestSetCode.Text))
-            {
-                //오답, 셀프, 추가학습 배정정보를 testsetcode로 조회한다.
-                textBoxUserNmMyTest.Text = "";
-                SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");
-                SelectDataGridView(dataGridViewMyTestSet, "select_mytest_testsetcode");
-                SelectDataGridView(dataGridViewMyTestSetRel, "select_mytest_testset_rel"); 
-            }
-                
-            
-        }
-
-        private void dataGridViewMyTestUser_Click(object sender, EventArgs e)
-        {            
             if (dataGridViewMyTestUser.Rows.Count > 0 && dataGridViewMyTestUser.CurrentCell != null)
             {
-                toolStripTextBoxTestSetCode.Text = "";
-                //학생의 오답, 셀프, 추가학습 학습정보를 검색한다.
-                SelectDataGridView(dataGridViewMyTestRepeat, "select_mytest_repeat");
-                //학생의 오답,셀프,추가학습 시험지 정보를 조회한다.
-                SelectDataGridView(dataGridViewMyTestSet, "select_mytest_testset");
-                //학생의 오답,셀프,추가학습 문항정보를 조회한다.
-                SelectDataGridView(dataGridViewMyTestSetRel, "select_mytest_testset_rel");                
-            }                           
+                //오답, 셀프, 추가학습 배정정보의 testsetcode를 텍스트박스에 입력한다.
+                toolStripTextBoxTestSetCode.Text = GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "testsetcode");
+                if (!string.IsNullOrEmpty(toolStripTextBoxTestSetCode.Text))
+                {
+                    //오답, 셀프, 추가학습 배정정보를 testsetcode로 조회한다.                
+                    textBoxUserNmMyTest.Text = "";
+                    SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");
+                    SelectDataGridView(dataGridViewMyTestSet, "select_mytest_testsetcode");
+                    SelectDataGridView(dataGridViewMyTestSetRel, "select_mytest_testset_rel");
+                }
+            }
+            
+            
+
+
         }
 
 
@@ -880,6 +909,8 @@ namespace Dreamonesys.CallCenter.Main
 
 
         #endregion Event
+
+        
 
         
 

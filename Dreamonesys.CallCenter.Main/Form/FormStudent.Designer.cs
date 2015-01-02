@@ -128,6 +128,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttonMyTestTestSetCode = new System.Windows.Forms.Button();
+            this.buttonMyTestDelete = new System.Windows.Forms.Button();
             this.textBoxMyTestTitle = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxUserNmMyTest = new System.Windows.Forms.TextBox();
@@ -142,6 +144,27 @@
             this.dataGridViewMyTestUser = new System.Windows.Forms.DataGridView();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.dataGridViewMyTestSet = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column60 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn44 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn45 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn46 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn47 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer8 = new System.Windows.Forms.SplitContainer();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.dataGridViewMyTestRepeat = new System.Windows.Forms.DataGridView();
@@ -176,28 +199,6 @@
             this.toolStripTextBoxTestSetCode = new System.Windows.Forms.ToolStripTextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.buttonMyTestDelete = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column60 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn44 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn45 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn46 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn47 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column57 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column58 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column59 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -214,7 +215,9 @@
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonMyTestTestSetCode = new System.Windows.Forms.Button();
+            this.Column61 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column62 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPageSelect_Student.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -1114,6 +1117,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPageSelect_Student);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1164,6 +1168,25 @@
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "추가학습";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // buttonMyTestTestSetCode
+            // 
+            this.buttonMyTestTestSetCode.Location = new System.Drawing.Point(861, 7);
+            this.buttonMyTestTestSetCode.Name = "buttonMyTestTestSetCode";
+            this.buttonMyTestTestSetCode.Size = new System.Drawing.Size(50, 23);
+            this.buttonMyTestTestSetCode.TabIndex = 12;
+            this.buttonMyTestTestSetCode.Text = "조회";
+            this.buttonMyTestTestSetCode.UseVisualStyleBackColor = true;
+            this.buttonMyTestTestSetCode.Click += new System.EventHandler(this.buttonMyTestTestSetCode_Click);
+            // 
+            // buttonMyTestDelete
+            // 
+            this.buttonMyTestDelete.Location = new System.Drawing.Point(650, 7);
+            this.buttonMyTestDelete.Name = "buttonMyTestDelete";
+            this.buttonMyTestDelete.Size = new System.Drawing.Size(50, 23);
+            this.buttonMyTestDelete.TabIndex = 11;
+            this.buttonMyTestDelete.Text = "삭제";
+            this.buttonMyTestDelete.UseVisualStyleBackColor = true;
             // 
             // textBoxMyTestTitle
             // 
@@ -1306,7 +1329,9 @@
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn11,
             this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13});
+            this.dataGridViewTextBoxColumn13,
+            this.Column61,
+            this.Column62});
             this.dataGridViewMyTestUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewMyTestUser.Location = new System.Drawing.Point(3, 17);
             this.dataGridViewMyTestUser.Name = "dataGridViewMyTestUser";
@@ -1314,8 +1339,7 @@
             this.dataGridViewMyTestUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewMyTestUser.Size = new System.Drawing.Size(577, 322);
             this.dataGridViewMyTestUser.TabIndex = 0;
-            this.dataGridViewMyTestUser.Click += new System.EventHandler(this.dataGridViewMyTestUser_Click);
-            this.dataGridViewMyTestUser.DoubleClick += new System.EventHandler(this.dataGridViewMyTestUser_DoubleClick);
+            this.dataGridViewMyTestUser.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewMyTestUser_MouseClick);
             // 
             // groupBox12
             // 
@@ -1363,6 +1387,134 @@
             this.dataGridViewMyTestSet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewMyTestSet.Size = new System.Drawing.Size(577, 300);
             this.dataGridViewMyTestSet.TabIndex = 1;
+            // 
+            // dataGridViewTextBoxColumn32
+            // 
+            this.dataGridViewTextBoxColumn32.DataPropertyName = "study_type";
+            this.dataGridViewTextBoxColumn32.HeaderText = "STUDY_TYPE";
+            this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
+            // 
+            // Column60
+            // 
+            this.Column60.DataPropertyName = "usernm";
+            this.Column60.HeaderText = "USERNM";
+            this.Column60.Name = "Column60";
+            this.Column60.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn40
+            // 
+            this.dataGridViewTextBoxColumn40.DataPropertyName = "title";
+            this.dataGridViewTextBoxColumn40.HeaderText = "TITLE";
+            this.dataGridViewTextBoxColumn40.Name = "dataGridViewTextBoxColumn40";
+            this.dataGridViewTextBoxColumn40.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn33
+            // 
+            this.dataGridViewTextBoxColumn33.DataPropertyName = "testsetcode";
+            this.dataGridViewTextBoxColumn33.HeaderText = "TESTSETCODE";
+            this.dataGridViewTextBoxColumn33.Name = "dataGridViewTextBoxColumn33";
+            // 
+            // dataGridViewTextBoxColumn34
+            // 
+            this.dataGridViewTextBoxColumn34.DataPropertyName = "test_cd";
+            this.dataGridViewTextBoxColumn34.HeaderText = "TEST_CD";
+            this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
+            // 
+            // dataGridViewTextBoxColumn35
+            // 
+            this.dataGridViewTextBoxColumn35.DataPropertyName = "cpno";
+            this.dataGridViewTextBoxColumn35.HeaderText = "CPNO";
+            this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
+            // 
+            // dataGridViewTextBoxColumn36
+            // 
+            this.dataGridViewTextBoxColumn36.DataPropertyName = "userid";
+            this.dataGridViewTextBoxColumn36.HeaderText = "USERID";
+            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
+            // 
+            // dataGridViewTextBoxColumn37
+            // 
+            this.dataGridViewTextBoxColumn37.DataPropertyName = "school_cd";
+            this.dataGridViewTextBoxColumn37.HeaderText = "SCHOOL_CD";
+            this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
+            // 
+            // dataGridViewTextBoxColumn38
+            // 
+            this.dataGridViewTextBoxColumn38.DataPropertyName = "grade_cd";
+            this.dataGridViewTextBoxColumn38.HeaderText = "GRADE_CD";
+            this.dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
+            // 
+            // dataGridViewTextBoxColumn39
+            // 
+            this.dataGridViewTextBoxColumn39.DataPropertyName = "session_cd";
+            this.dataGridViewTextBoxColumn39.HeaderText = "SESSION_CD";
+            this.dataGridViewTextBoxColumn39.Name = "dataGridViewTextBoxColumn39";
+            // 
+            // dataGridViewTextBoxColumn41
+            // 
+            this.dataGridViewTextBoxColumn41.DataPropertyName = "quiz_cd";
+            this.dataGridViewTextBoxColumn41.HeaderText = "QUIZ_CD";
+            this.dataGridViewTextBoxColumn41.Name = "dataGridViewTextBoxColumn41";
+            // 
+            // dataGridViewTextBoxColumn42
+            // 
+            this.dataGridViewTextBoxColumn42.DataPropertyName = "quiz_cnt";
+            this.dataGridViewTextBoxColumn42.HeaderText = "QUIZ_CNT";
+            this.dataGridViewTextBoxColumn42.Name = "dataGridViewTextBoxColumn42";
+            // 
+            // dataGridViewTextBoxColumn43
+            // 
+            this.dataGridViewTextBoxColumn43.DataPropertyName = "hard1cnt";
+            this.dataGridViewTextBoxColumn43.HeaderText = "HARD1CNT";
+            this.dataGridViewTextBoxColumn43.Name = "dataGridViewTextBoxColumn43";
+            // 
+            // dataGridViewTextBoxColumn44
+            // 
+            this.dataGridViewTextBoxColumn44.DataPropertyName = "hard2cnt";
+            this.dataGridViewTextBoxColumn44.HeaderText = "HARD2CNT";
+            this.dataGridViewTextBoxColumn44.Name = "dataGridViewTextBoxColumn44";
+            // 
+            // dataGridViewTextBoxColumn45
+            // 
+            this.dataGridViewTextBoxColumn45.DataPropertyName = "hard3cnt";
+            this.dataGridViewTextBoxColumn45.HeaderText = "HARD3CNT";
+            this.dataGridViewTextBoxColumn45.Name = "dataGridViewTextBoxColumn45";
+            // 
+            // dataGridViewTextBoxColumn46
+            // 
+            this.dataGridViewTextBoxColumn46.DataPropertyName = "hard4cnt";
+            this.dataGridViewTextBoxColumn46.HeaderText = "HARD4CNT";
+            this.dataGridViewTextBoxColumn46.Name = "dataGridViewTextBoxColumn46";
+            // 
+            // dataGridViewTextBoxColumn47
+            // 
+            this.dataGridViewTextBoxColumn47.DataPropertyName = "hard5cnt";
+            this.dataGridViewTextBoxColumn47.HeaderText = "HARD5CNT";
+            this.dataGridViewTextBoxColumn47.Name = "dataGridViewTextBoxColumn47";
+            // 
+            // dataGridViewTextBoxColumn48
+            // 
+            this.dataGridViewTextBoxColumn48.DataPropertyName = "repeatno_cnt";
+            this.dataGridViewTextBoxColumn48.HeaderText = "REPEATNO_CNT";
+            this.dataGridViewTextBoxColumn48.Name = "dataGridViewTextBoxColumn48";
+            // 
+            // dataGridViewTextBoxColumn49
+            // 
+            this.dataGridViewTextBoxColumn49.DataPropertyName = "end_yn";
+            this.dataGridViewTextBoxColumn49.HeaderText = "END_YN";
+            this.dataGridViewTextBoxColumn49.Name = "dataGridViewTextBoxColumn49";
+            // 
+            // dataGridViewTextBoxColumn50
+            // 
+            this.dataGridViewTextBoxColumn50.DataPropertyName = "rid";
+            this.dataGridViewTextBoxColumn50.HeaderText = "RID";
+            this.dataGridViewTextBoxColumn50.Name = "dataGridViewTextBoxColumn50";
+            // 
+            // dataGridViewTextBoxColumn51
+            // 
+            this.dataGridViewTextBoxColumn51.DataPropertyName = "rdatetime";
+            this.dataGridViewTextBoxColumn51.HeaderText = "RDATETIME";
+            this.dataGridViewTextBoxColumn51.Name = "dataGridViewTextBoxColumn51";
             // 
             // splitContainer8
             // 
@@ -1649,143 +1801,6 @@
             this.tabPage5.Text = "정규학습";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // buttonMyTestDelete
-            // 
-            this.buttonMyTestDelete.Location = new System.Drawing.Point(650, 7);
-            this.buttonMyTestDelete.Name = "buttonMyTestDelete";
-            this.buttonMyTestDelete.Size = new System.Drawing.Size(50, 23);
-            this.buttonMyTestDelete.TabIndex = 11;
-            this.buttonMyTestDelete.Text = "삭제";
-            this.buttonMyTestDelete.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewTextBoxColumn32
-            // 
-            this.dataGridViewTextBoxColumn32.DataPropertyName = "study_type";
-            this.dataGridViewTextBoxColumn32.HeaderText = "STUDY_TYPE";
-            this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
-            // 
-            // Column60
-            // 
-            this.Column60.DataPropertyName = "usernm";
-            this.Column60.HeaderText = "USERNM";
-            this.Column60.Name = "Column60";
-            this.Column60.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn40
-            // 
-            this.dataGridViewTextBoxColumn40.DataPropertyName = "title";
-            this.dataGridViewTextBoxColumn40.HeaderText = "TITLE";
-            this.dataGridViewTextBoxColumn40.Name = "dataGridViewTextBoxColumn40";
-            this.dataGridViewTextBoxColumn40.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn33
-            // 
-            this.dataGridViewTextBoxColumn33.DataPropertyName = "testsetcode";
-            this.dataGridViewTextBoxColumn33.HeaderText = "TESTSETCODE";
-            this.dataGridViewTextBoxColumn33.Name = "dataGridViewTextBoxColumn33";
-            // 
-            // dataGridViewTextBoxColumn34
-            // 
-            this.dataGridViewTextBoxColumn34.DataPropertyName = "test_cd";
-            this.dataGridViewTextBoxColumn34.HeaderText = "TEST_CD";
-            this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
-            // 
-            // dataGridViewTextBoxColumn35
-            // 
-            this.dataGridViewTextBoxColumn35.DataPropertyName = "cpno";
-            this.dataGridViewTextBoxColumn35.HeaderText = "CPNO";
-            this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
-            // 
-            // dataGridViewTextBoxColumn36
-            // 
-            this.dataGridViewTextBoxColumn36.DataPropertyName = "userid";
-            this.dataGridViewTextBoxColumn36.HeaderText = "USERID";
-            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
-            // 
-            // dataGridViewTextBoxColumn37
-            // 
-            this.dataGridViewTextBoxColumn37.DataPropertyName = "school_cd";
-            this.dataGridViewTextBoxColumn37.HeaderText = "SCHOOL_CD";
-            this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
-            // 
-            // dataGridViewTextBoxColumn38
-            // 
-            this.dataGridViewTextBoxColumn38.DataPropertyName = "grade_cd";
-            this.dataGridViewTextBoxColumn38.HeaderText = "GRADE_CD";
-            this.dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
-            // 
-            // dataGridViewTextBoxColumn39
-            // 
-            this.dataGridViewTextBoxColumn39.DataPropertyName = "session_cd";
-            this.dataGridViewTextBoxColumn39.HeaderText = "SESSION_CD";
-            this.dataGridViewTextBoxColumn39.Name = "dataGridViewTextBoxColumn39";
-            // 
-            // dataGridViewTextBoxColumn41
-            // 
-            this.dataGridViewTextBoxColumn41.DataPropertyName = "quiz_cd";
-            this.dataGridViewTextBoxColumn41.HeaderText = "QUIZ_CD";
-            this.dataGridViewTextBoxColumn41.Name = "dataGridViewTextBoxColumn41";
-            // 
-            // dataGridViewTextBoxColumn42
-            // 
-            this.dataGridViewTextBoxColumn42.DataPropertyName = "quiz_cnt";
-            this.dataGridViewTextBoxColumn42.HeaderText = "QUIZ_CNT";
-            this.dataGridViewTextBoxColumn42.Name = "dataGridViewTextBoxColumn42";
-            // 
-            // dataGridViewTextBoxColumn43
-            // 
-            this.dataGridViewTextBoxColumn43.DataPropertyName = "hard1cnt";
-            this.dataGridViewTextBoxColumn43.HeaderText = "HARD1CNT";
-            this.dataGridViewTextBoxColumn43.Name = "dataGridViewTextBoxColumn43";
-            // 
-            // dataGridViewTextBoxColumn44
-            // 
-            this.dataGridViewTextBoxColumn44.DataPropertyName = "hard2cnt";
-            this.dataGridViewTextBoxColumn44.HeaderText = "HARD2CNT";
-            this.dataGridViewTextBoxColumn44.Name = "dataGridViewTextBoxColumn44";
-            // 
-            // dataGridViewTextBoxColumn45
-            // 
-            this.dataGridViewTextBoxColumn45.DataPropertyName = "hard3cnt";
-            this.dataGridViewTextBoxColumn45.HeaderText = "HARD3CNT";
-            this.dataGridViewTextBoxColumn45.Name = "dataGridViewTextBoxColumn45";
-            // 
-            // dataGridViewTextBoxColumn46
-            // 
-            this.dataGridViewTextBoxColumn46.DataPropertyName = "hard4cnt";
-            this.dataGridViewTextBoxColumn46.HeaderText = "HARD4CNT";
-            this.dataGridViewTextBoxColumn46.Name = "dataGridViewTextBoxColumn46";
-            // 
-            // dataGridViewTextBoxColumn47
-            // 
-            this.dataGridViewTextBoxColumn47.DataPropertyName = "hard5cnt";
-            this.dataGridViewTextBoxColumn47.HeaderText = "HARD5CNT";
-            this.dataGridViewTextBoxColumn47.Name = "dataGridViewTextBoxColumn47";
-            // 
-            // dataGridViewTextBoxColumn48
-            // 
-            this.dataGridViewTextBoxColumn48.DataPropertyName = "repeatno_cnt";
-            this.dataGridViewTextBoxColumn48.HeaderText = "REPEATNO_CNT";
-            this.dataGridViewTextBoxColumn48.Name = "dataGridViewTextBoxColumn48";
-            // 
-            // dataGridViewTextBoxColumn49
-            // 
-            this.dataGridViewTextBoxColumn49.DataPropertyName = "end_yn";
-            this.dataGridViewTextBoxColumn49.HeaderText = "END_YN";
-            this.dataGridViewTextBoxColumn49.Name = "dataGridViewTextBoxColumn49";
-            // 
-            // dataGridViewTextBoxColumn50
-            // 
-            this.dataGridViewTextBoxColumn50.DataPropertyName = "rid";
-            this.dataGridViewTextBoxColumn50.HeaderText = "RID";
-            this.dataGridViewTextBoxColumn50.Name = "dataGridViewTextBoxColumn50";
-            // 
-            // dataGridViewTextBoxColumn51
-            // 
-            this.dataGridViewTextBoxColumn51.DataPropertyName = "rdatetime";
-            this.dataGridViewTextBoxColumn51.HeaderText = "RDATETIME";
-            this.dataGridViewTextBoxColumn51.Name = "dataGridViewTextBoxColumn51";
-            // 
             // Column57
             // 
             this.Column57.DataPropertyName = "cpnm";
@@ -1883,15 +1898,29 @@
             this.dataGridViewTextBoxColumn13.HeaderText = "UDATETIME";
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             // 
-            // buttonMyTestTestSetCode
+            // Column61
             // 
-            this.buttonMyTestTestSetCode.Location = new System.Drawing.Point(861, 7);
-            this.buttonMyTestTestSetCode.Name = "buttonMyTestTestSetCode";
-            this.buttonMyTestTestSetCode.Size = new System.Drawing.Size(50, 23);
-            this.buttonMyTestTestSetCode.TabIndex = 12;
-            this.buttonMyTestTestSetCode.Text = "조회";
-            this.buttonMyTestTestSetCode.UseVisualStyleBackColor = true;
-            this.buttonMyTestTestSetCode.Click += new System.EventHandler(this.buttonMyTestTestSetCode_Click);
+            this.Column61.DataPropertyName = "login_id";
+            this.Column61.HeaderText = "Login_ID";
+            this.Column61.Name = "Column61";
+            this.Column61.Visible = false;
+            // 
+            // Column62
+            // 
+            this.Column62.DataPropertyName = "login_pwd";
+            this.Column62.HeaderText = "Login_PW";
+            this.Column62.Name = "Column62";
+            this.Column62.Visible = false;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1186, 736);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // FormStudent
             // 
@@ -2108,22 +2137,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxTestSetCode;
         private System.Windows.Forms.Button buttonMyTestDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column57;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column58;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column59;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column60;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn40;
@@ -2146,6 +2159,25 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn50;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn51;
         private System.Windows.Forms.Button buttonMyTestTestSetCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column57;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column58;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column59;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column61;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column62;
+        private System.Windows.Forms.TabPage tabPage1;
 
     }
 }
