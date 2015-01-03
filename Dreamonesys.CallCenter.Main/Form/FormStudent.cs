@@ -90,7 +90,10 @@ namespace Dreamonesys.CallCenter.Main
                 new Common.ComboBoxList(comboBoxCampus, "캠퍼스", true),
                 //오답,셀프, 추가학습 콤보박스
                 new Common.ComboBoxList(comboBoxCampusTypeMyTest, "캠퍼스구분", true),
-                new Common.ComboBoxList(comboBoxCampusMyTest, "캠퍼스", true)
+                new Common.ComboBoxList(comboBoxCampusMyTest, "캠퍼스", true),
+                //학생중복
+                new Common.ComboBoxList(comboBoxCampusTypeOverlap, "캠퍼스구분", true),
+                new Common.ComboBoxList(comboBoxCampusOverlap, "캠퍼스", true)
             };
             this._common.GetComboList(comboBoxList);
         }
@@ -150,10 +153,14 @@ namespace Dreamonesys.CallCenter.Main
                         // 컬럼 루프
                         for (int colCount = 0; colCount <= pDataGridView.Columns.Count - 1; colCount++)
                         {
-                             pDataGridView[colCount, pDataGridView.Rows.Count - 1].Value =
+                            if (pDataGridView.Columns[colCount].DataPropertyName != "check_yn")
+                            {
+                                pDataGridView[colCount, pDataGridView.Rows.Count - 1].Value =
                                  row[pDataGridView.Columns[colCount].DataPropertyName].ToString();
-                           // pDataGridView[pDataGridView.Columns[colCount].DataPropertyName, pDataGridView.Rows.Count - 1].Value = 
-                           //row[pDataGridView.Columns[colCount].DataPropertyName].ToString();
+                                //pDataGridView[pDataGridView.Columns[colCount].DataPropertyName, pDataGridView.Rows.Count - 1].Value = 
+                                //row[pDataGridView.Columns[colCount].DataPropertyName].ToString();
+                            }
+                             
                         }
 
                     }
@@ -187,6 +194,9 @@ namespace Dreamonesys.CallCenter.Main
             string cpno = comboBoxCampus.SelectedValue.ToString();
             string businessCDMyTest = comboBoxCampusTypeMyTest.SelectedValue.ToString();
             string cpnoMyTest = comboBoxCampusMyTest.SelectedValue.ToString();
+            string businessCDOverlap = comboBoxCampusTypeOverlap.SelectedValue.ToString();
+            string cpnoOverlap = comboBoxCampusOverlap.SelectedValue.ToString();
+
             
 
             switch (pQueryKind)
@@ -582,6 +592,45 @@ namespace Dreamonesys.CallCenter.Main
                          ORDER BY orderno ";
                     break;
 
+                case "select_student_overlap":
+                    //캠퍼스별 반중복학생을 조회한다.
+                    pSqlCommand.CommandText = @"                      	
+                        SELECT C.cpnm
+                             , B.usernm
+                             , B.login_id
+                             , B.login_pwd
+                             , A.userid
+                             , b.member_id
+                             , COUNT(*) AS CLNO_CNT
+                             , C.cp_group_id
+                             , C.cpid
+                             , C.cpno
+                          FROM tls_class_user AS A
+                          LEFT JOIN tls_member AS B
+                            ON A.userid = B.userid
+                          LEFT JOIN tls_campus AS C
+                            ON A.cpno = C.cpno
+                          WHERE A.auth_cd = 'S'       
+                               AND (A.end_date  IS NULL OR A.end_date = '' OR CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN A.start_date and A.end_date)
+                             ";
+
+                    if (!string.IsNullOrEmpty(businessCDOverlap))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND C.business_cd = '" + businessCDOverlap + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(cpnoOverlap))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND C.cpno = '" + cpnoOverlap + "' ";
+                    }                    
+                    pSqlCommand.CommandText += @"
+                       GROUP BY C.cpnm, B.usernm, B.login_id, B.login_pwd, A.userid, b.member_id, C.cp_group_id, C.cpid, C.cpno
+                      HAVING COUNT(*) > 1
+                       ORDER BY c.cpnm, B.usernm ";
+                    
+                    break;
+
                 default:
                     break;
             }
@@ -607,7 +656,11 @@ namespace Dreamonesys.CallCenter.Main
             {
                 if (item.DataPropertyName.ToLower() == pDataPropertyName)
                 {
-                    CellValue = pDataGridView[item.Index, pRowIndex].Value.ToString();
+                    if (pDataGridView[item.Index, pRowIndex].Value != null)
+                    {
+                        CellValue = pDataGridView[item.Index, pRowIndex].Value.ToString();
+                    }
+                    
                     break;
                 }
             }
@@ -615,6 +668,8 @@ namespace Dreamonesys.CallCenter.Main
             return CellValue;
         }
 
+       
+                 
         #endregion Method
 
         #region Event
@@ -739,7 +794,7 @@ namespace Dreamonesys.CallCenter.Main
                 SelectDataGridView(dataGridViewStudent, "select_u2m_student");
             }
             
-        }
+        }        
 
         /// <summary>
         /// 학생검색 캠퍼스 구분 콤보박스 선택 변경시 발생하는 이벤트
@@ -895,20 +950,107 @@ namespace Dreamonesys.CallCenter.Main
                 }
             }
             
-            
+        }
 
+        private void comboBoxCampusTypeOverlap_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //반 중복학생 캠퍼스 콤보박스 데이터 생성
+            string campusType = comboBoxCampusTypeOverlap.SelectedValue.ToString();
+
+            _common.GetComboList(comboBoxCampusOverlap, "캠퍼스", true, new string[] { campusType });
+        }
+
+        private void buttonStudentOverlap_Click(object sender, EventArgs e)
+        {
+            //반 학생 중복 검색 
+            SelectDataGridView(dataGridViewStudentOverlap, "select_student_overlap");
 
         }
 
+        private void dataGridViewStudentOverlap_KeyDown(object sender, KeyEventArgs e)
+        {
+            //반 중복학생 선택 Ctrl + 1, 2, 3 체크박스 선택
+            if (e.Control && (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3))
+                _common.GridCheck((DataGridView)sender, e);
+        }
 
-        
+        private void buttonStudentOverlapImport_Click(object sender, EventArgs e)
+        {
+            //캠퍼스별 반 중복학생을 제거한다.
+            if (dataGridViewStudentOverlap.Rows.Count > 0 && dataGridViewStudentOverlap.CurrentCell != null)
+            {
+                Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
+                DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "배치 진행 하시겠습니까?");
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
 
+                SqlCommand sqlCommand = new SqlCommand();
+                SqlResult sqlResult = new SqlResult();
 
+                this.Cursor = Cursors.WaitCursor;
+                for (int rowCount = 0; rowCount <= dataGridViewStudentOverlap.Rows.Count - 1; rowCount++)
+                {
+                    if (GetCellValue(dataGridViewStudentOverlap, rowCount, "check_yn") == "1")
+                    {
+                        isFound = true;
+                        //if (this._common.MessageBox(MessageBoxIcon.Question, "배치를 실행하시겠습니까?") == System.Windows.Forms.DialogResult.No) return;
 
+                        this.Cursor = Cursors.WaitCursor;
 
+                        Common.ParametersForImport paramsForImport = new Common.ParametersForImport();
+                        paramsForImport.AcadGroupId = GetCellValue(dataGridViewStudentOverlap, rowCount, "cp_group_id"); ;
+                        paramsForImport.AcadId = GetCellValue(dataGridViewStudentOverlap, rowCount, "cpid"); ;
+                        paramsForImport.ClassId = "";
+                        paramsForImport.StudentId = GetCellValue(dataGridViewStudentOverlap, rowCount, "member_id"); ;
+                        paramsForImport.StartDate = "";
+                        paramsForImport.EndDate = "";
 
+                        this._common.ImportDreamPlusStudentInfoToU2M(ref paramsForImport);
+
+                        if (paramsForImport.SuccessYn == "N")
+                            this._common.MessageBox(MessageBoxIcon.Error, paramsForImport.ErrorMessage);
+                        //else
+                        //    this._common.MessageBox(MessageBoxIcon.Information, "배치가 완료되었습니다.");
+
+                        this.Cursor = Cursors.Default;
+                    }
+                }
+                if (isFound == true)
+                {
+                    this._common.MessageBox(MessageBoxIcon.Information, "배치가 완료되었습니다.");
+                }
+                //{
+                //    // 처리할 자료가 있을 경우 쿼리실행
+                //    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                //    if (sqlResult.Success == true)
+                //    {
+                //        // 작업 성공시
+                //        if (sqlResult.AffectedRecords > 0)
+                //            this._common.MessageBox(MessageBoxIcon.Information, "배치가 완료 되었습니다.." + Environment.NewLine +
+                //                string.Format("(배치된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));
+                //        else
+                //            this._common.MessageBox(MessageBoxIcon.Information, "배치된 자료가 없습니다.");
+                //    }
+                //    else
+                //        // 작업 실패시
+                //        MessageBox.Show(sqlResult.ErrorMsg);
+                //}
+                //else
+                //    // 처리할 자료가 없을 경우
+                //    this._common.MessageBox(MessageBoxIcon.Information, "배치할 자료가 없습니다.");
+
+            }
+
+        }
 
         #endregion Event
+
+       
+
+        
 
         
 
