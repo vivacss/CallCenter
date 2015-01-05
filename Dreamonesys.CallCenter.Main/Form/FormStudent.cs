@@ -289,7 +289,7 @@ namespace Dreamonesys.CallCenter.Main
 	    	              ON USC.class_id = TC.class_id
     	               WHERE USC.student_id = '" + GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "member_id") + @"'
 		                 AND TC.cpno = " + GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cpno") + @"
-		               ORDER BY USC.end_date ASC
+		               ORDER BY USC.end_date ASC, USC.start_date DESC
                     ";
                     break;
 
@@ -316,7 +316,7 @@ namespace Dreamonesys.CallCenter.Main
                	          ON TC.class_tid = TM.userid
                        WHERE TCU.userid = " + GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "userid") + @"
                          AND (TCU.end_date = '' OR TCU.end_date IS NULL OR TCU.start_date <= TCU.end_date)
-               	       ORDER BY TCU.end_date ASC
+               	       ORDER BY TCU.end_date ASC, TCU.start_date DESC
                     ";
                     break;          
        
@@ -577,7 +577,7 @@ namespace Dreamonesys.CallCenter.Main
                 case "select_mytest_testset_rel":
                     //오답,셀프,추가학습 문항정보를 조회한다.
                     pSqlCommand.CommandText = @"                      	
-                        SELECT CASE A.study_type WHEN 'X' THEN '오답클리닉'
+                        SELECT CASE study_type WHEN 'X' THEN '오답클리닉'
 						                         WHEN 'S' THEN '셀프테스트'
 						                         WHEN 'A' THEN '추가학습'
 		                        END AS STUDY_TYPE
@@ -605,13 +605,16 @@ namespace Dreamonesys.CallCenter.Main
                              , C.cp_group_id
                              , C.cpid
                              , C.cpno
+                             , D.db_link
                           FROM tls_class_user AS A
-                          LEFT JOIN tls_member AS B
+                     LEFT JOIN tls_member AS B
                             ON A.userid = B.userid
-                          LEFT JOIN tls_campus AS C
+                     LEFT JOIN tls_campus AS C
                             ON A.cpno = C.cpno
+                     LEFT JOIN tls_campus_group AS D
+                            ON C.cp_group_id = D.cp_group_id
                           WHERE A.auth_cd = 'S'       
-                               AND (A.end_date  IS NULL OR A.end_date = '' OR CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN A.start_date and A.end_date)
+                               AND (A.end_date IS NULL OR A.end_date = '' OR CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN A.start_date and A.end_date)
                              ";
 
                     if (!string.IsNullOrEmpty(businessCDOverlap))
@@ -623,13 +626,58 @@ namespace Dreamonesys.CallCenter.Main
                     {
                         pSqlCommand.CommandText += @"
                          AND C.cpno = '" + cpnoOverlap + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxCampusOverlap.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND C.cpnm LIKE '%" + textBoxCampusOverlap.Text + "%' ";
                     }                    
                     pSqlCommand.CommandText += @"
-                       GROUP BY C.cpnm, B.usernm, B.login_id, B.login_pwd, A.userid, b.member_id, C.cp_group_id, C.cpid, C.cpno
+                       GROUP BY C.cpnm, B.usernm, B.login_id, B.login_pwd, A.userid, b.member_id, C.cp_group_id, D.db_link, C.cpid, C.cpno
                       HAVING COUNT(*) > 1
                        ORDER BY c.cpnm, B.usernm ";
                     
                     break;
+
+
+                case "select_edu_student_class_overlap":
+                    //반 학생중복 탭 드림+ 학생 반 목록 조회
+                    pSqlCommand.CommandText = @"
+                       SELECT DISTINCT 
+			                  USC.class_id
+			                , TC.clno
+  			                , TC.clnm
+			                , USC.start_date
+			                , USC.end_date			                
+			                , (SELECT name FROM tls_web_code WHERE cdmain = 'grade' AND cdsub = TC.grade_cd) AS GRADE_NM			                
+		                FROM " + GetCellValue(dataGridViewStudentOverlap, dataGridViewStudentOverlap.CurrentCell.RowIndex, "db_link") + @".DBO.V_u2m_student_class AS USC WITH(nolock)
+                   LEFT JOIN tls_class as TC 
+	    	              ON USC.class_id = TC.class_id
+    	               WHERE USC.student_id = '" + GetCellValue(dataGridViewStudentOverlap, dataGridViewStudentOverlap.CurrentCell.RowIndex, "member_id") + @"'
+		                 AND TC.cpno = " + GetCellValue(dataGridViewStudentOverlap, dataGridViewStudentOverlap.CurrentCell.RowIndex, "cpno") + @"
+		               ORDER BY USC.end_date ASC, USC.start_date DESC
+                    ";
+                    break;
+
+                case "select_u2m_student_class_overlap":
+                    //반 학생중복 탭 U2M 학생 반 목록 조회
+                    pSqlCommand.CommandText = @"
+                       SELECT TC.class_id
+               	            , TCU.clno
+                            , TC.clnm
+                            , TCU.start_date
+                            , TCU.end_date                                                        
+                            , (SELECT name FROM tls_web_code WHERE cdmain = 'grade' AND cdsub = TC.grade_cd) AS GRADE_NM               	            
+               	        FROM tls_class_user AS TCU
+                   LEFT JOIN tls_class AS TC
+              	          ON TCU.clno = TC.clno
+                   LEFT JOIN tls_member AS TM
+               	          ON TC.class_tid = TM.userid
+                       WHERE TCU.userid = " + GetCellValue(dataGridViewStudentOverlap, dataGridViewStudentOverlap.CurrentCell.RowIndex, "userid") + @"
+                         AND (TCU.end_date = '' OR TCU.end_date IS NULL OR TCU.start_date <= TCU.end_date)
+               	       ORDER BY TCU.end_date ASC, TCU.start_date DESC
+                    ";
+                    break;     
 
                 default:
                     break;
@@ -668,6 +716,77 @@ namespace Dreamonesys.CallCenter.Main
             return CellValue;
         }
 
+        /// <summary>
+        /// 학생의 오답, 셀프, 추가학습 배정정보를 삭제한다
+        /// </summary>
+        /// <history>        
+        /// </history>
+        private void DeleteMyTestUser()
+        {
+            if (dataGridViewMyTestUser.Rows.Count > 0 && dataGridViewMyTestUser.CurrentCell != null)
+            {
+                DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 삭제 하시겠습니까?");
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+
+                SqlCommand sqlCommand = new SqlCommand();
+                SqlResult sqlResult = new SqlResult();
+
+                sqlCommand.CommandText += @"
+                            DELETE 
+                              FROM tls_mytest_user
+                             WHERE cpno = '" + this._common.GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "cpno") + @"' 
+                               AND clno = '" + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "clno") + @"'                              
+                               AND userid = '" + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "userid") + @"'
+                               AND testsetcode = '" + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "testsetcode") + @"'
+                              
+                ";
+                Console.WriteLine(sqlCommand.CommandText);
+
+                // 처리할 자료가 있을 경우 쿼리실행
+                this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                this._common.MessageBox(MessageBoxIcon.Information, "자료를 삭제 하였습니다.");
+
+            }
+        }
+        /// <summary>
+        /// 학생의 오답, 셀프, 추가학습 배정정보를 삭제한다
+        /// </summary>
+        /// <history>        
+        /// </history>
+        private void DeleteMyTestSet()
+        {
+            if (dataGridViewMyTestSet.Rows.Count > 0 && dataGridViewMyTestSet.CurrentCell != null)
+            {
+                DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 삭제 하시겠습니까?");
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+
+                SqlCommand sqlCommand = new SqlCommand();
+                SqlResult sqlResult = new SqlResult();
+
+                sqlCommand.CommandText += @"
+                            DELETE 
+                              FROM tls_mytest_testset
+                             WHERE cpno = '" + this._common.GetCellValue(dataGridViewMyTestSet, dataGridViewMyTestSet.CurrentCell.RowIndex, "cpno") + @"'                               
+                               AND userid = '" + GetCellValue(dataGridViewMyTestSet, dataGridViewMyTestSet.CurrentCell.RowIndex, "userid") + @"'
+                               AND testsetcode = '" + GetCellValue(dataGridViewMyTestSet, dataGridViewMyTestSet.CurrentCell.RowIndex, "testsetcode") + @"'
+                              
+                ";
+                Console.WriteLine(sqlCommand.CommandText);
+
+                // 처리할 자료가 있을 경우 쿼리실행
+                this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                this._common.MessageBox(MessageBoxIcon.Information, "자료를 삭제 하였습니다.");
+
+            }
+        }
        
                  
         #endregion Method
@@ -951,6 +1070,34 @@ namespace Dreamonesys.CallCenter.Main
             }
             
         }
+        private void buttonDeleteMyTest_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewMyTestUser.Rows.Count > 0 && dataGridViewMyTestUser.CurrentCell != null)
+            {
+                //학생의 오답, 셀프, 추가학습 배정정보를 삭제한다.
+                DeleteMyTestUser();
+            }
+            
+        }
+        private void buttonDeleteMyTestRepeat_Click(object sender, EventArgs e)
+        {
+            //학생의 오답, 셀프, 추가학습 학습정보(학습이력)를 삭제한다.
+        }
+        private void buttonDeleteMyTestSetRel_Click(object sender, EventArgs e)
+        {
+            //오답, 셀프, 추가학습 문항정보를 삭제한다.
+        }
+
+        private void buttonDeleteMyTestSet_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewMyTestSet.Rows.Count > 0 && dataGridViewMyTestSet.CurrentCell != null)
+            {
+                //오답, 셀프, 추가학습 시험지정보를 삭제한다.
+                DeleteMyTestSet();
+            }
+            
+        }
+
 
         private void comboBoxCampusTypeOverlap_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -967,11 +1114,30 @@ namespace Dreamonesys.CallCenter.Main
 
         }
 
+        private void textBoxCampusOverlap_KeyDown(object sender, KeyEventArgs e)
+        {
+            //캠퍼스별 반 중복 학생을 조회한다.
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectDataGridView(dataGridViewStudentOverlap, "select_student_overlap");
+            }
+        }
+
         private void dataGridViewStudentOverlap_KeyDown(object sender, KeyEventArgs e)
         {
             //반 중복학생 선택 Ctrl + 1, 2, 3 체크박스 선택
             if (e.Control && (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3))
                 _common.GridCheck((DataGridView)sender, e);
+        }
+
+        private void dataGridViewStudentOverlap_Click(object sender, EventArgs e)
+        {
+            //반 학생중복 드림+ 및 u2m 반 정보를 조회한다.
+            if (dataGridViewStudentOverlap.Rows.Count > 0 && dataGridViewStudentOverlap.CurrentCell != null)
+            {
+                SelectDataGridView(dataGridViewEduStudentOverlap, "select_edu_student_class_overlap");
+                SelectDataGridView(dataGridViewU2mStudentOverlap, "select_u2m_student_class_overlap");
+            }
         }
 
         private void buttonStudentOverlapImport_Click(object sender, EventArgs e)
@@ -1048,19 +1214,29 @@ namespace Dreamonesys.CallCenter.Main
 
         #endregion Event
 
-       
-
         
 
         
 
         
 
-        
 
-        
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
