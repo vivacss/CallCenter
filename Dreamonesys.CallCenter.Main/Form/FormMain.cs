@@ -301,7 +301,8 @@ namespace Dreamonesys.CallCenter.Main
                                , B.cp_group_nm DESC, A.cpnm ";
                     textBoxCampus.Text = "";
                     textBoxClassNM.Text = "";
-                    toolStripTextBoxCampusInfo.Text = "";
+                    this.dateTimePickerImportCampusSdate.Value = DateTime.Now;
+                    this.dateTimePickerImportCampusEdate.Value = DateTime.Now;
                     break;
 
                 case "select_employee":
@@ -882,6 +883,7 @@ namespace Dreamonesys.CallCenter.Main
 							, (SELECT COUNT(userid) FROM tls_class_user 
 								WHERE cpno = A.cpno AND clno = a.clno AND auth_cd = 's'
 								  AND (end_date = '' OR end_date IS NULL OR CONVERT(CHAR,GETDATE(),112) BETWEEN start_date AND end_date)) AS USER_CNT
+                            , C.cpnm
                             , A.cpno  
 							, A.clno
                             , A.school_cd                           						
@@ -921,9 +923,14 @@ namespace Dreamonesys.CallCenter.Main
                     {
                         pSqlCommand.CommandText += @"
                          AND A.clnm like '%" + textBoxClassStudy.Text + "%' ";
-                    }                    
+                    }
+                    if (!string.IsNullOrEmpty(textBoxCampusStudy.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND C.cpnm like '%" + textBoxCampusStudy.Text + "%' ";
+                    }
                     pSqlCommand.CommandText += @"
-                    GROUP BY A.cpno, A.school_cd, A.clnm,  A.clno
+                    GROUP BY A.cpno, C.cpnm, A.school_cd, A.clnm,  A.clno
 					ORDER BY A.cpno, A.school_cd, A.clnm
                          ";
                     textBoxClassStudy.Text = "";
@@ -1387,6 +1394,51 @@ namespace Dreamonesys.CallCenter.Main
         }
 
         /// <summary>
+        ///특정 캠퍼스그룹의 특정캠퍼스 배치 진행을 한다.
+        /// </summary>
+        /// <history>        
+        /// </history>
+        private void ImportCampus()
+        {
+            if (dataGridViewCampus.Rows.Count > 0 && dataGridViewCampus.CurrentCell != null)
+            {                
+                DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "캠퍼스 배치진행 하시겠습니까?");
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+
+                SqlCommand sqlCommand = new SqlCommand();
+                SqlResult sqlResult = new SqlResult();
+                
+                sqlCommand.CommandText += @"
+
+                        DECLARE 
+						@START_DATE		VARCHAR(8),
+						@END_DATE		VARCHAR(8)
+
+						SET @START_DATE = REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerImportCampusSdate.Value + @"', 112), '-', '')
+						SET @END_DATE = REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerImportCampusEdate.Value + @"', 112), '-', '')
+                           
+                           EXEC S_D_IMPORT_U2M_CALL_CENTER_ALL '" + this._common.GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cp_group_id") + @"'
+                                                             , '" + GetCellValue(dataGridViewCampus, dataGridViewCampus.CurrentCell.RowIndex, "cpid") + @"'
+                                                             , ''
+                                                             , 'DAY'
+                                                             , @START_DATE
+                                                             , @END_DATE
+                              
+                ";
+                Console.WriteLine(sqlCommand.CommandText);
+
+                // 처리할 자료가 있을 경우 쿼리실행
+                this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                this._common.MessageBox(MessageBoxIcon.Information, "캠퍼스 배치진행 완료 하였습니다.");
+
+            }
+        }
+
+        /// <summary>
         /// 미결사용자 정보를 등록한다
         /// </summary>
         /// <history>        
@@ -1643,7 +1695,9 @@ namespace Dreamonesys.CallCenter.Main
         /// <param name="e"></param>
         private void toolStripButtonImportCampusInfo_Click(object sender, EventArgs e)
         {
-
+            ImportCampus();
+            this.dateTimePickerImportCampusSdate.Value = DateTime.Now;
+            this.dateTimePickerImportCampusEdate.Value = DateTime.Now;
         }
 
         /// <summary>
@@ -1746,7 +1800,7 @@ namespace Dreamonesys.CallCenter.Main
         private void comboBoxCampusType_SelectionChangeCommitted(object sender, EventArgs e)
         {
             // 캠퍼스 콤보박스 데이터 생성
-            string campusType = comboBoxCampusType.SelectedValue.ToString();
+            string campusType = comboBoxCampusType.SelectedValue.ToString().Trim();
 
             _common.GetComboList(comboBoxCampus, "캠퍼스", true, new string[] { campusType });
             SelectDataGridView(dataGridViewCampus, "select_campus");
@@ -1988,7 +2042,7 @@ namespace Dreamonesys.CallCenter.Main
         private void comboBoxCampusTypePoint_SelectionChangeCommitted(object sender, EventArgs e)
         {
             // 캠퍼스 콤보박스 데이터 생성
-            string campusType = comboBoxCampusTypePoint.SelectedValue.ToString();
+            string campusType = comboBoxCampusTypePoint.SelectedValue.ToString().Trim();
 
             _common.GetComboList(comboBoxCampusPoint, "캠퍼스", true, new string[] { campusType });
             SelectDataGridView(dataGridViewCampusPoint, "select_campus_point");
@@ -2117,7 +2171,7 @@ namespace Dreamonesys.CallCenter.Main
         private void comboBoxCampusTypeStudy_SelectionChangeCommitted(object sender, EventArgs e)
         {
             //차시관리 캠퍼스 콤보박스 데이터 생성
-            string campusTypeStudy = comboBoxCampusTypeStudy.SelectedValue.ToString();
+            string campusTypeStudy = comboBoxCampusTypeStudy.SelectedValue.ToString().Trim();
 
             _common.GetComboList(comboBoxCampusStudy, "캠퍼스", true, new string[] { campusTypeStudy });            
         }
@@ -2155,7 +2209,7 @@ namespace Dreamonesys.CallCenter.Main
 
         private void textBoxClassStudy_KeyDown(object sender, KeyEventArgs e)
         {
-            //차시관리 특정 캠퍼스 조회
+            //차시관리 특정 반 조회
             if (e.KeyCode == Keys.Enter)
             {
                 SelectDataGridView(dataGridViewClass, "select_class");
@@ -2175,6 +2229,15 @@ namespace Dreamonesys.CallCenter.Main
             SelectDataGridView(dataGridViewClass, "select_class");            
         }
 
+        private void textBoxCampusStudy_KeyDown(object sender, KeyEventArgs e)
+        {
+            //차시관리 특정 캠퍼스의 반 목록를 조회한다
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectDataGridView(dataGridViewClass, "select_class");
+            }
+            
+        }
         private void dataGridViewClass_Click(object sender, EventArgs e)
         {
             
@@ -2212,7 +2275,7 @@ namespace Dreamonesys.CallCenter.Main
         private void comboBoxCampusTypeByPass_SelectionChangeCommitted(object sender, EventArgs e)
         {
             // 미결사용자 등록 캠퍼스 콤보박스 데이터 생성
-            string campusType = comboBoxCampusTypeByPass.SelectedValue.ToString();
+            string campusType = comboBoxCampusTypeByPass.SelectedValue.ToString().Trim();
             _common.GetComboList(comboBoxCampusByPass, "캠퍼스", true, new string[] { campusType });
         }
         private void textBoxStudentNmByPass_KeyDown(object sender, KeyEventArgs e)
@@ -2326,6 +2389,10 @@ namespace Dreamonesys.CallCenter.Main
         }
 
         #endregion Event
+
+
+
+
 
     }
 }

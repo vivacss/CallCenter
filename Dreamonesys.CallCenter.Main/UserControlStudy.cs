@@ -1742,6 +1742,7 @@ namespace Dreamonesys.CallCenter.Main
             //과정1 수업일 기준 차시 리스트 조회
             if (e.KeyCode == Keys.Enter)
             {
+                toolStripTextBoxClassBookNM2.Text = "";
                 SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");               
             }
         }
@@ -1851,6 +1852,7 @@ namespace Dreamonesys.CallCenter.Main
             //과정2 수업일 기준 차시 리스트 조회
             if (e.KeyCode == Keys.Enter)
             {
+                toolStripTextBoxStudentBookNM2.Text = "";
                 if (dataGridViewStudentSchedule.Rows.Count > 0 && dataGridViewStudentSchedule.CurrentCell != null)
                 {
                     SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");

@@ -935,7 +935,7 @@ namespace Dreamonesys.CallCenter.Main
         private void comboBoxCampusType_SelectedIndexChanged(object sender, EventArgs e)
         {
              //캠퍼스 콤보박스 데이터 생성
-            string campusType = comboBoxCampusType.SelectedValue.ToString();
+            string campusType = comboBoxCampusType.SelectedValue.ToString().Trim();
 
             _common.GetComboList(comboBoxCampus, "캠퍼스", true, new string[] { campusType });
             //SelectDataGridView(dataGridViewStudent, "select_Student");
@@ -1025,7 +1025,7 @@ namespace Dreamonesys.CallCenter.Main
         private void comboBoxCampusTypeMyTest_SelectionChangeCommitted(object sender, EventArgs e)
         {
             //오답, 셀프, 추가학습 캠퍼스 콤보박스 데이터 생성
-            string campusType = comboBoxCampusTypeMyTest.SelectedValue.ToString();
+            string campusType = comboBoxCampusTypeMyTest.SelectedValue.ToString().Trim();
 
             _common.GetComboList(comboBoxCampusMyTest, "캠퍼스", true, new string[] { campusType });
         }
@@ -1111,7 +1111,7 @@ namespace Dreamonesys.CallCenter.Main
         private void comboBoxCampusTypeOverlap_SelectedIndexChanged(object sender, EventArgs e)
         {
             //반 중복학생 캠퍼스 콤보박스 데이터 생성
-            string campusType = comboBoxCampusTypeOverlap.SelectedValue.ToString();
+            string campusType = comboBoxCampusTypeOverlap.SelectedValue.ToString().Trim();
 
             _common.GetComboList(comboBoxCampusOverlap, "캠퍼스", true, new string[] { campusType });
         }
