@@ -593,7 +593,9 @@ namespace Dreamonesys.CallCenter.Main
                     break;
 
                 case "select_student_overlap":
-                    //캠퍼스별 반중복학생을 조회한다.
+                    //캠퍼스별 수업반 둘 이상인 학생을 조회한다.(오늘일자 수업 반 기준)
+                    //130 u2m본사, 139 유투엠FC 테스트, 149 (테)러닝센터, 167 fc캠퍼스, 219 cp테스트 캠퍼스 제외
+                    //학년이 없는 반은 조회하지 않는다.
                     pSqlCommand.CommandText = @"                      	
                         SELECT C.cpnm
                              , B.usernm
@@ -613,8 +615,15 @@ namespace Dreamonesys.CallCenter.Main
                             ON A.cpno = C.cpno
                      LEFT JOIN tls_campus_group AS D
                             ON C.cp_group_id = D.cp_group_id
-                          WHERE A.auth_cd = 'S'       
-                               AND (A.end_date IS NULL OR A.end_date = '' OR CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN A.start_date and A.end_date)
+                     LEFT JOIN tls_class AS E
+                            ON A.clno = E.clno
+                     LEFT JOIN tls_web_code AS F
+							ON E.grade_cd = F.cdsub
+                         WHERE C.cpno NOT IN (130, 139, 149, 167, 219)
+                           AND A.auth_cd = 'S' 
+                           AND (A.end_date IS NULL OR A.end_date = '' OR CONVERT(VARCHAR(8), GETDATE(), 112) BETWEEN A.start_date and A.end_date)
+                           AND F.cdmain = 'grade'                               
+                                     
                              ";
 
                     if (!string.IsNullOrEmpty(businessCDOverlap))
