@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageClassSchedule = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -95,30 +95,12 @@
             this.buttonClassScheduleDateUpdate = new System.Windows.Forms.Button();
             this.buttonClassScheduleDelete = new System.Windows.Forms.Button();
             this.dataGridViewClassSchedule = new System.Windows.Forms.DataGridView();
-            this.Column48 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column52 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column53 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column54 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTextBoxClassBookNM = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTextBoxClassDataTime = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel13 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBoxClassDataTimeUpdate = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBoxClassBookNM2 = new System.Windows.Forms.ToolStripTextBox();
             this.tabPageStudentSchedule = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -183,6 +165,16 @@
             this.buttonStudentScheduleExcel = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.dataGridViewStudentSchedule = new System.Windows.Forms.DataGridView();
+            this.buttonStudentScheduleDateUpdate = new System.Windows.Forms.Button();
+            this.buttonStudentScheduleDelete = new System.Windows.Forms.Button();
+            this.toolStripTextBoxStudentDateUpdate = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel10 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxStudentBookNM = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel11 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxStudentDataTime = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel14 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxStudentBookNM2 = new System.Windows.Forms.ToolStripTextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.Column62 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -194,23 +186,37 @@
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column65 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column66 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column55 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column56 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column57 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column58 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column59 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column60 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonStudentScheduleDateUpdate = new System.Windows.Forms.Button();
-            this.buttonStudentScheduleDelete = new System.Windows.Forms.Button();
-            this.toolStripTextBoxStudentDateUpdate = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel10 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBoxStudentBookNM = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripLabel11 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBoxStudentDataTime = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripLabel14 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBoxStudentDataTimeUpdate = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripTextBoxStudentBookNM2 = new System.Windows.Forms.ToolStripTextBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.Column48 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column67 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column63 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column68 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column52 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column53 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column54 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimePickerClassDataTimeUpdate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerStudentDataTimeUpdate = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabPageClassSchedule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -332,14 +338,14 @@
             this.dataGridViewClassStudy.AllowUserToAddRows = false;
             this.dataGridViewClassStudy.AllowUserToDeleteRows = false;
             this.dataGridViewClassStudy.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewClassStudy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClassStudy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewClassStudy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column47,
             this.Column1,
@@ -371,14 +377,14 @@
             this.Column26,
             this.Column37,
             this.Column38});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewClassStudy.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewClassStudy.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewClassStudy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewClassStudy.Location = new System.Drawing.Point(3, 42);
             this.dataGridViewClassStudy.Name = "dataGridViewClassStudy";
@@ -738,6 +744,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.dateTimePickerClassDataTimeUpdate);
             this.groupBox2.Controls.Add(this.button12);
             this.groupBox2.Controls.Add(this.buttonClassScheduleExcel);
             this.groupBox2.Controls.Add(this.buttonClassScheduleDateUpdate);
@@ -796,14 +803,14 @@
             this.dataGridViewClassSchedule.AllowUserToAddRows = false;
             this.dataGridViewClassSchedule.AllowUserToDeleteRows = false;
             this.dataGridViewClassSchedule.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewClassSchedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClassSchedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewClassSchedule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column48,
             this.Column27,
@@ -816,20 +823,23 @@
             this.Column34,
             this.Column35,
             this.Column36,
+            this.Column67,
+            this.Column63,
+            this.Column68,
             this.Column49,
             this.Column50,
             this.Column51,
             this.Column52,
             this.Column53,
             this.Column54});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewClassSchedule.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewClassSchedule.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewClassSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewClassSchedule.Location = new System.Drawing.Point(3, 42);
             this.dataGridViewClassSchedule.Name = "dataGridViewClassSchedule";
@@ -841,121 +851,6 @@
             this.dataGridViewClassSchedule.DoubleClick += new System.EventHandler(this.dataGridViewClassSchedule_DoubleClick);
             this.dataGridViewClassSchedule.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewClassSchedule_KeyDown);
             // 
-            // Column48
-            // 
-            this.Column48.DataPropertyName = "check_yn";
-            this.Column48.FalseValue = "2";
-            this.Column48.HeaderText = "선택";
-            this.Column48.IndeterminateValue = "2";
-            this.Column48.Name = "Column48";
-            this.Column48.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column48.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column48.TrueValue = "1";
-            this.Column48.Width = 40;
-            // 
-            // Column27
-            // 
-            this.Column27.DataPropertyName = "cdate";
-            this.Column27.HeaderText = "수업일";
-            this.Column27.Name = "Column27";
-            this.Column27.Width = 80;
-            // 
-            // Column28
-            // 
-            this.Column28.DataPropertyName = "cweek_cd";
-            this.Column28.HeaderText = "요일";
-            this.Column28.Name = "Column28";
-            this.Column28.Width = 40;
-            // 
-            // Column29
-            // 
-            this.Column29.DataPropertyName = "time_cnt";
-            this.Column29.HeaderText = "차시";
-            this.Column29.Name = "Column29";
-            this.Column29.Width = 90;
-            // 
-            // Column30
-            // 
-            this.Column30.DataPropertyName = "bknm";
-            this.Column30.HeaderText = "교재명";
-            this.Column30.Name = "Column30";
-            this.Column30.Width = 150;
-            // 
-            // Column31
-            // 
-            this.Column31.DataPropertyName = "classa";
-            this.Column31.HeaderText = "단원";
-            this.Column31.Name = "Column31";
-            this.Column31.Width = 180;
-            // 
-            // Column32
-            // 
-            this.Column32.DataPropertyName = "view_unnm";
-            this.Column32.HeaderText = "교재구성명";
-            this.Column32.Name = "Column32";
-            this.Column32.Width = 120;
-            // 
-            // Column33
-            // 
-            this.Column33.DataPropertyName = "dfnm";
-            this.Column33.HeaderText = "레벨구성명";
-            this.Column33.Name = "Column33";
-            this.Column33.Width = 120;
-            // 
-            // Column34
-            // 
-            this.Column34.DataPropertyName = "room_code";
-            this.Column34.HeaderText = "용도";
-            this.Column34.Name = "Column34";
-            // 
-            // Column35
-            // 
-            this.Column35.DataPropertyName = "study_type_1";
-            this.Column35.HeaderText = "과정1학습";
-            this.Column35.Name = "Column35";
-            // 
-            // Column36
-            // 
-            this.Column36.DataPropertyName = "study_type_2";
-            this.Column36.HeaderText = "과정2학습";
-            this.Column36.Name = "Column36";
-            // 
-            // Column49
-            // 
-            this.Column49.DataPropertyName = "yyyy";
-            this.Column49.HeaderText = "년도";
-            this.Column49.Name = "Column49";
-            // 
-            // Column50
-            // 
-            this.Column50.DataPropertyName = "term_cd";
-            this.Column50.HeaderText = "분기";
-            this.Column50.Name = "Column50";
-            // 
-            // Column51
-            // 
-            this.Column51.DataPropertyName = "cpno";
-            this.Column51.HeaderText = "cpno";
-            this.Column51.Name = "Column51";
-            // 
-            // Column52
-            // 
-            this.Column52.DataPropertyName = "clno";
-            this.Column52.HeaderText = "clno";
-            this.Column52.Name = "Column52";
-            // 
-            // Column53
-            // 
-            this.Column53.DataPropertyName = "sdno";
-            this.Column53.HeaderText = "sdno";
-            this.Column53.Name = "Column53";
-            // 
-            // Column54
-            // 
-            this.Column54.DataPropertyName = "csno";
-            this.Column54.HeaderText = "csno";
-            this.Column54.Name = "Column54";
-            // 
             // toolStrip3
             // 
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -964,7 +859,6 @@
             this.toolStripLabel6,
             this.toolStripTextBoxClassDataTime,
             this.toolStripLabel13,
-            this.toolStripTextBoxClassDataTimeUpdate,
             this.toolStripTextBoxClassBookNM2});
             this.toolStrip3.Location = new System.Drawing.Point(3, 17);
             this.toolStrip3.Name = "toolStrip3";
@@ -1003,12 +897,6 @@
             this.toolStripLabel13.Name = "toolStripLabel13";
             this.toolStripLabel13.Size = new System.Drawing.Size(50, 22);
             this.toolStripLabel13.Text = "수정일 :";
-            // 
-            // toolStripTextBoxClassDataTimeUpdate
-            // 
-            this.toolStripTextBoxClassDataTimeUpdate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBoxClassDataTimeUpdate.Name = "toolStripTextBoxClassDataTimeUpdate";
-            this.toolStripTextBoxClassDataTimeUpdate.Size = new System.Drawing.Size(70, 25);
             // 
             // toolStripTextBoxClassBookNM2
             // 
@@ -1092,14 +980,14 @@
             this.dataGridViewStudentStudy.AllowUserToAddRows = false;
             this.dataGridViewStudentStudy.AllowUserToDeleteRows = false;
             this.dataGridViewStudentStudy.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewStudentStudy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewStudentStudy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewStudentStudy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column61,
             this.dataGridViewTextBoxColumn1,
@@ -1137,14 +1025,14 @@
             this.Column41,
             this.Column45,
             this.Column46});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewStudentStudy.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewStudentStudy.DefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewStudentStudy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewStudentStudy.Location = new System.Drawing.Point(3, 42);
             this.dataGridViewStudentStudy.Name = "dataGridViewStudentStudy";
@@ -1559,6 +1447,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.dateTimePickerStudentDataTimeUpdate);
             this.groupBox4.Controls.Add(this.buttonStudentScheduleExcel);
             this.groupBox4.Controls.Add(this.button5);
             this.groupBox4.Controls.Add(this.dataGridViewStudentSchedule);
@@ -1597,14 +1486,14 @@
             this.dataGridViewStudentSchedule.AllowUserToAddRows = false;
             this.dataGridViewStudentSchedule.AllowUserToDeleteRows = false;
             this.dataGridViewStudentSchedule.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewStudentSchedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewStudentSchedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewStudentSchedule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column62,
             this.dataGridViewTextBoxColumn29,
@@ -1617,20 +1506,23 @@
             this.dataGridViewTextBoxColumn36,
             this.dataGridViewTextBoxColumn37,
             this.dataGridViewTextBoxColumn38,
+            this.Column65,
+            this.Column64,
+            this.Column66,
             this.Column55,
             this.Column56,
             this.Column57,
             this.Column58,
             this.Column59,
             this.Column60});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewStudentSchedule.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewStudentSchedule.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewStudentSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewStudentSchedule.Location = new System.Drawing.Point(3, 42);
             this.dataGridViewStudentSchedule.Name = "dataGridViewStudentSchedule";
@@ -1641,6 +1533,92 @@
             this.dataGridViewStudentSchedule.Click += new System.EventHandler(this.dataGridViewStudentSchedule_Click);
             this.dataGridViewStudentSchedule.DoubleClick += new System.EventHandler(this.dataGridViewStudentSchedule_DoubleClick);
             this.dataGridViewStudentSchedule.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewStudentSchedule_KeyDown);
+            // 
+            // buttonStudentScheduleDateUpdate
+            // 
+            this.buttonStudentScheduleDateUpdate.Location = new System.Drawing.Point(822, 17);
+            this.buttonStudentScheduleDateUpdate.Name = "buttonStudentScheduleDateUpdate";
+            this.buttonStudentScheduleDateUpdate.Size = new System.Drawing.Size(84, 23);
+            this.buttonStudentScheduleDateUpdate.TabIndex = 26;
+            this.buttonStudentScheduleDateUpdate.Text = "수업일 수정";
+            this.buttonStudentScheduleDateUpdate.UseVisualStyleBackColor = true;
+            this.buttonStudentScheduleDateUpdate.Click += new System.EventHandler(this.buttonStudentScheduleDateUpdate_Click);
+            // 
+            // buttonStudentScheduleDelete
+            // 
+            this.buttonStudentScheduleDelete.Location = new System.Drawing.Point(749, 17);
+            this.buttonStudentScheduleDelete.Name = "buttonStudentScheduleDelete";
+            this.buttonStudentScheduleDelete.Size = new System.Drawing.Size(67, 23);
+            this.buttonStudentScheduleDelete.TabIndex = 27;
+            this.buttonStudentScheduleDelete.Text = "차시삭제";
+            this.buttonStudentScheduleDelete.UseVisualStyleBackColor = true;
+            this.buttonStudentScheduleDelete.Click += new System.EventHandler(this.buttonStudentScheduleDelete_Click);
+            // 
+            // toolStripTextBoxStudentDateUpdate
+            // 
+            this.toolStripTextBoxStudentDateUpdate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel10,
+            this.toolStripTextBoxStudentBookNM,
+            this.toolStripLabel11,
+            this.toolStripTextBoxStudentDataTime,
+            this.toolStripLabel14,
+            this.toolStripTextBoxStudentBookNM2});
+            this.toolStripTextBoxStudentDateUpdate.Location = new System.Drawing.Point(3, 17);
+            this.toolStripTextBoxStudentDateUpdate.Name = "toolStripTextBoxStudentDateUpdate";
+            this.toolStripTextBoxStudentDateUpdate.Size = new System.Drawing.Size(1149, 25);
+            this.toolStripTextBoxStudentDateUpdate.TabIndex = 2;
+            this.toolStripTextBoxStudentDateUpdate.Text = "toolStrip4";
+            // 
+            // toolStripLabel10
+            // 
+            this.toolStripLabel10.Name = "toolStripLabel10";
+            this.toolStripLabel10.Size = new System.Drawing.Size(74, 22);
+            this.toolStripLabel10.Text = "교재구성명 :";
+            // 
+            // toolStripTextBoxStudentBookNM
+            // 
+            this.toolStripTextBoxStudentBookNM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxStudentBookNM.Name = "toolStripTextBoxStudentBookNM";
+            this.toolStripTextBoxStudentBookNM.Size = new System.Drawing.Size(100, 25);
+            this.toolStripTextBoxStudentBookNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxStudentBookNM_KeyDown);
+            // 
+            // toolStripLabel11
+            // 
+            this.toolStripLabel11.Name = "toolStripLabel11";
+            this.toolStripLabel11.Size = new System.Drawing.Size(50, 22);
+            this.toolStripLabel11.Text = "수업일 :";
+            // 
+            // toolStripTextBoxStudentDataTime
+            // 
+            this.toolStripTextBoxStudentDataTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxStudentDataTime.Name = "toolStripTextBoxStudentDataTime";
+            this.toolStripTextBoxStudentDataTime.Size = new System.Drawing.Size(60, 25);
+            this.toolStripTextBoxStudentDataTime.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxStudentDataTime_KeyDown);
+            // 
+            // toolStripLabel14
+            // 
+            this.toolStripLabel14.Name = "toolStripLabel14";
+            this.toolStripLabel14.Size = new System.Drawing.Size(50, 22);
+            this.toolStripLabel14.Text = "수정일 :";
+            // 
+            // toolStripTextBoxStudentBookNM2
+            // 
+            this.toolStripTextBoxStudentBookNM2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxStudentBookNM2.Name = "toolStripTextBoxStudentBookNM2";
+            this.toolStripTextBoxStudentBookNM2.Size = new System.Drawing.Size(100, 25);
+            this.toolStripTextBoxStudentBookNM2.Visible = false;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.tabControl1);
+            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox6.Location = new System.Drawing.Point(0, 0);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(1175, 775);
+            this.groupBox6.TabIndex = 4;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "차시 목록";
             // 
             // Column62
             // 
@@ -1721,6 +1699,25 @@
             this.dataGridViewTextBoxColumn38.HeaderText = "과정2학습";
             this.dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
             // 
+            // Column65
+            // 
+            this.Column65.DataPropertyName = "concept_repeat";
+            this.Column65.HeaderText = "동+문";
+            this.Column65.Name = "Column65";
+            // 
+            // Column64
+            // 
+            this.Column64.DataPropertyName = "regular_repeat";
+            this.Column64.HeaderText = "학습이력";
+            this.Column64.Name = "Column64";
+            this.Column64.Width = 80;
+            // 
+            // Column66
+            // 
+            this.Column66.DataPropertyName = "grading";
+            this.Column66.HeaderText = "채점이력";
+            this.Column66.Name = "Column66";
+            // 
             // Column55
             // 
             this.Column55.DataPropertyName = "yyyy";
@@ -1757,98 +1754,159 @@
             this.Column60.HeaderText = "CSNO";
             this.Column60.Name = "Column60";
             // 
-            // buttonStudentScheduleDateUpdate
+            // Column48
             // 
-            this.buttonStudentScheduleDateUpdate.Location = new System.Drawing.Point(822, 17);
-            this.buttonStudentScheduleDateUpdate.Name = "buttonStudentScheduleDateUpdate";
-            this.buttonStudentScheduleDateUpdate.Size = new System.Drawing.Size(84, 23);
-            this.buttonStudentScheduleDateUpdate.TabIndex = 26;
-            this.buttonStudentScheduleDateUpdate.Text = "수업일 수정";
-            this.buttonStudentScheduleDateUpdate.UseVisualStyleBackColor = true;
-            this.buttonStudentScheduleDateUpdate.Click += new System.EventHandler(this.buttonStudentScheduleDateUpdate_Click);
+            this.Column48.DataPropertyName = "check_yn";
+            this.Column48.FalseValue = "2";
+            this.Column48.HeaderText = "선택";
+            this.Column48.IndeterminateValue = "2";
+            this.Column48.Name = "Column48";
+            this.Column48.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column48.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column48.TrueValue = "1";
+            this.Column48.Width = 40;
             // 
-            // buttonStudentScheduleDelete
+            // Column27
             // 
-            this.buttonStudentScheduleDelete.Location = new System.Drawing.Point(749, 17);
-            this.buttonStudentScheduleDelete.Name = "buttonStudentScheduleDelete";
-            this.buttonStudentScheduleDelete.Size = new System.Drawing.Size(67, 23);
-            this.buttonStudentScheduleDelete.TabIndex = 27;
-            this.buttonStudentScheduleDelete.Text = "차시삭제";
-            this.buttonStudentScheduleDelete.UseVisualStyleBackColor = true;
-            this.buttonStudentScheduleDelete.Click += new System.EventHandler(this.buttonStudentScheduleDelete_Click);
+            this.Column27.DataPropertyName = "cdate";
+            this.Column27.HeaderText = "수업일";
+            this.Column27.Name = "Column27";
+            this.Column27.Width = 80;
             // 
-            // toolStripTextBoxStudentDateUpdate
+            // Column28
             // 
-            this.toolStripTextBoxStudentDateUpdate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel10,
-            this.toolStripTextBoxStudentBookNM,
-            this.toolStripLabel11,
-            this.toolStripTextBoxStudentDataTime,
-            this.toolStripLabel14,
-            this.toolStripTextBoxStudentDataTimeUpdate,
-            this.toolStripTextBoxStudentBookNM2});
-            this.toolStripTextBoxStudentDateUpdate.Location = new System.Drawing.Point(3, 17);
-            this.toolStripTextBoxStudentDateUpdate.Name = "toolStripTextBoxStudentDateUpdate";
-            this.toolStripTextBoxStudentDateUpdate.Size = new System.Drawing.Size(1149, 25);
-            this.toolStripTextBoxStudentDateUpdate.TabIndex = 2;
-            this.toolStripTextBoxStudentDateUpdate.Text = "toolStrip4";
+            this.Column28.DataPropertyName = "cweek_cd";
+            this.Column28.HeaderText = "요일";
+            this.Column28.Name = "Column28";
+            this.Column28.Width = 40;
             // 
-            // toolStripLabel10
+            // Column29
             // 
-            this.toolStripLabel10.Name = "toolStripLabel10";
-            this.toolStripLabel10.Size = new System.Drawing.Size(74, 22);
-            this.toolStripLabel10.Text = "교재구성명 :";
+            this.Column29.DataPropertyName = "time_cnt";
+            this.Column29.HeaderText = "차시";
+            this.Column29.Name = "Column29";
+            this.Column29.Width = 90;
             // 
-            // toolStripTextBoxStudentBookNM
+            // Column30
             // 
-            this.toolStripTextBoxStudentBookNM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBoxStudentBookNM.Name = "toolStripTextBoxStudentBookNM";
-            this.toolStripTextBoxStudentBookNM.Size = new System.Drawing.Size(100, 25);
-            this.toolStripTextBoxStudentBookNM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxStudentBookNM_KeyDown);
+            this.Column30.DataPropertyName = "bknm";
+            this.Column30.HeaderText = "교재명";
+            this.Column30.Name = "Column30";
+            this.Column30.Width = 150;
             // 
-            // toolStripLabel11
+            // Column31
             // 
-            this.toolStripLabel11.Name = "toolStripLabel11";
-            this.toolStripLabel11.Size = new System.Drawing.Size(50, 22);
-            this.toolStripLabel11.Text = "수업일 :";
+            this.Column31.DataPropertyName = "classa";
+            this.Column31.HeaderText = "단원";
+            this.Column31.Name = "Column31";
+            this.Column31.Width = 180;
             // 
-            // toolStripTextBoxStudentDataTime
+            // Column32
             // 
-            this.toolStripTextBoxStudentDataTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBoxStudentDataTime.Name = "toolStripTextBoxStudentDataTime";
-            this.toolStripTextBoxStudentDataTime.Size = new System.Drawing.Size(60, 25);
-            this.toolStripTextBoxStudentDataTime.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxStudentDataTime_KeyDown);
+            this.Column32.DataPropertyName = "view_unnm";
+            this.Column32.HeaderText = "교재구성명";
+            this.Column32.Name = "Column32";
+            this.Column32.Width = 120;
             // 
-            // toolStripLabel14
+            // Column33
             // 
-            this.toolStripLabel14.Name = "toolStripLabel14";
-            this.toolStripLabel14.Size = new System.Drawing.Size(50, 22);
-            this.toolStripLabel14.Text = "수정일 :";
+            this.Column33.DataPropertyName = "dfnm";
+            this.Column33.HeaderText = "레벨구성명";
+            this.Column33.Name = "Column33";
+            this.Column33.Width = 120;
             // 
-            // toolStripTextBoxStudentDataTimeUpdate
+            // Column34
             // 
-            this.toolStripTextBoxStudentDataTimeUpdate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBoxStudentDataTimeUpdate.Name = "toolStripTextBoxStudentDataTimeUpdate";
-            this.toolStripTextBoxStudentDataTimeUpdate.Size = new System.Drawing.Size(60, 25);
+            this.Column34.DataPropertyName = "room_code";
+            this.Column34.HeaderText = "용도";
+            this.Column34.Name = "Column34";
             // 
-            // toolStripTextBoxStudentBookNM2
+            // Column35
             // 
-            this.toolStripTextBoxStudentBookNM2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBoxStudentBookNM2.Name = "toolStripTextBoxStudentBookNM2";
-            this.toolStripTextBoxStudentBookNM2.Size = new System.Drawing.Size(100, 25);
-            this.toolStripTextBoxStudentBookNM2.Visible = false;
+            this.Column35.DataPropertyName = "study_type_1";
+            this.Column35.HeaderText = "과정1학습";
+            this.Column35.Name = "Column35";
             // 
-            // groupBox6
+            // Column36
             // 
-            this.groupBox6.Controls.Add(this.tabControl1);
-            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox6.Location = new System.Drawing.Point(0, 0);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1175, 775);
-            this.groupBox6.TabIndex = 4;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "차시 목록";
+            this.Column36.DataPropertyName = "study_type_2";
+            this.Column36.HeaderText = "과정2학습";
+            this.Column36.Name = "Column36";
+            // 
+            // Column67
+            // 
+            this.Column67.DataPropertyName = "concept_repeat";
+            this.Column67.HeaderText = "동+문";
+            this.Column67.Name = "Column67";
+            this.Column67.Width = 60;
+            // 
+            // Column63
+            // 
+            this.Column63.DataPropertyName = "regular_repeat";
+            this.Column63.HeaderText = "학습이력";
+            this.Column63.Name = "Column63";
+            this.Column63.Width = 70;
+            // 
+            // Column68
+            // 
+            this.Column68.DataPropertyName = "grading";
+            this.Column68.HeaderText = "채점이력";
+            this.Column68.Name = "Column68";
+            this.Column68.Width = 70;
+            // 
+            // Column49
+            // 
+            this.Column49.DataPropertyName = "yyyy";
+            this.Column49.HeaderText = "년도";
+            this.Column49.Name = "Column49";
+            // 
+            // Column50
+            // 
+            this.Column50.DataPropertyName = "term_cd";
+            this.Column50.HeaderText = "분기";
+            this.Column50.Name = "Column50";
+            // 
+            // Column51
+            // 
+            this.Column51.DataPropertyName = "cpno";
+            this.Column51.HeaderText = "cpno";
+            this.Column51.Name = "Column51";
+            // 
+            // Column52
+            // 
+            this.Column52.DataPropertyName = "clno";
+            this.Column52.HeaderText = "clno";
+            this.Column52.Name = "Column52";
+            // 
+            // Column53
+            // 
+            this.Column53.DataPropertyName = "sdno";
+            this.Column53.HeaderText = "sdno";
+            this.Column53.Name = "Column53";
+            // 
+            // Column54
+            // 
+            this.Column54.DataPropertyName = "csno";
+            this.Column54.HeaderText = "csno";
+            this.Column54.Name = "Column54";
+            // 
+            // dateTimePickerClassDataTimeUpdate
+            // 
+            this.dateTimePickerClassDataTimeUpdate.CustomFormat = "yyy-MM-dd";
+            this.dateTimePickerClassDataTimeUpdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerClassDataTimeUpdate.Location = new System.Drawing.Point(352, 19);
+            this.dateTimePickerClassDataTimeUpdate.Name = "dateTimePickerClassDataTimeUpdate";
+            this.dateTimePickerClassDataTimeUpdate.Size = new System.Drawing.Size(97, 21);
+            this.dateTimePickerClassDataTimeUpdate.TabIndex = 13;
+            // 
+            // dateTimePickerStudentDataTimeUpdate
+            // 
+            this.dateTimePickerStudentDataTimeUpdate.CustomFormat = "yyy-MM-dd";
+            this.dateTimePickerStudentDataTimeUpdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerStudentDataTimeUpdate.Location = new System.Drawing.Point(352, 20);
+            this.dateTimePickerStudentDataTimeUpdate.Name = "dateTimePickerStudentDataTimeUpdate";
+            this.dateTimePickerStudentDataTimeUpdate.Size = new System.Drawing.Size(97, 21);
+            this.dateTimePickerStudentDataTimeUpdate.TabIndex = 29;
             // 
             // UserControlStudy
             // 
@@ -1992,9 +2050,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column37;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column38;
         private System.Windows.Forms.ToolStripLabel toolStripLabel13;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxClassDataTimeUpdate;
         private System.Windows.Forms.ToolStripLabel toolStripLabel14;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxStudentDataTimeUpdate;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column61;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -2031,23 +2087,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column41;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column45;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column46;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column62;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column55;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column56;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column57;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column58;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column59;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column60;
         private System.Windows.Forms.DateTimePicker dateTimePickerClassStudy2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePickerStudentStudy2;
@@ -2066,12 +2105,37 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column34;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column35;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column36;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column67;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column63;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column68;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column49;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column50;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column51;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column52;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column53;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column54;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column62;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column65;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column64;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column66;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column55;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column56;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column57;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column58;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column59;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column60;
+        private System.Windows.Forms.DateTimePicker dateTimePickerClassDataTimeUpdate;
+        private System.Windows.Forms.DateTimePicker dateTimePickerStudentDataTimeUpdate;
 
 
     }

@@ -268,6 +268,7 @@ namespace Dreamonesys.CallCenter.Main
                 		  , B.login_char
                 		  , B.db_link
                           , B.cp_group_id
+                          , A.phone
                 		FROM tls_campus AS A
                    LEFT JOIN tls_campus_group AS B
                 		  ON A.cp_group_id = B.cp_group_id

@@ -529,6 +529,15 @@ namespace Dreamonesys.CallCenter.Main
 							                       WHEN 'Q' THEN '문제풀이'
 							                       WHEN 'M' THEN '동영상'
 			                   END AS study_type_2
+                             , (SELECT COUNT(*) FROM tls_concept_repeat 
+                                 WHERE yyyy = A.yyyy AND term_cd = A.term_cd AND cpno = A.cpno AND clno = A.clno AND sdno = A.sdno
+								    AND csno = A.csno AND course_cd = 'C01') AS CONCEPT_REPEAT
+                             , (SELECT COUNT(*) FROM tls_regular_repeat 
+								 WHERE yyyy = A.yyyy AND term_cd = A.term_cd AND cpno = A.cpno AND clno = A.clno AND sdno = A.sdno
+								    AND csno = A.csno AND course_cd = 'C01') AS REGULAR_REPEAT
+                             , (SELECT COUNT(*) FROM tls_grading 
+                                 WHERE yyyy = A.yyyy AND term_cd = A.term_cd AND cpno = A.cpno AND clno = A.clno AND sdno = A.sdno
+								    AND csno = A.csno AND course_cd = 'C01') AS GRADING 
                              , A.yyyy
                              , A.term_cd                             
                              , A.cpno
@@ -569,18 +578,15 @@ namespace Dreamonesys.CallCenter.Main
                         pSqlCommand.CommandText += @"
                             AND A.cdate LIKE '" + toolStripTextBoxClassDataTime.Text + "%' ";
                     }
-//                    if (!string.IsNullOrEmpty(toolStripTextBoxClassDataTimeUpdate.Text))
-//                    {
-//                        pSqlCommand.CommandText += @"
-//                            AND A.cdate = '" + toolStripTextBoxClassDataTimeUpdate.Text + "' ";
-//                    }
+
                     pSqlCommand.CommandText += @"
 	                     ORDER BY A.cdate, G.sort
                     ";
                     toolStripTextBoxClassBookNM.Text = "";
                     toolStripTextBoxClassBookNM2.Text = "";
                     toolStripTextBoxClassDataTime.Text = "";
-                    toolStripTextBoxClassDataTimeUpdate.Text = "";
+                    this.dateTimePickerClassDataTimeUpdate.Value = DateTime.Now;
+                    
                     break;
                 case "select_student_study":
 
@@ -824,12 +830,21 @@ namespace Dreamonesys.CallCenter.Main
 							                       WHEN 'Q' THEN '문제풀이'
 							                       WHEN 'M' THEN '동영상'
 			                   END AS study_type_2
+                             ,  (SELECT COUNT(*) FROM tls_concept_repeat 
+                                 WHERE  yyyy = A.yyyy AND term_cd = A.term_cd AND cpno = A.cpno AND sdno = A.sdno AND userid = A.userid
+								   AND csno = A.csno AND course_cd = 'C02') AS CONCEPT_REPEAT
+                             , (SELECT COUNT(*) FROM tls_regular_repeat 
+								 WHERE yyyy = A.yyyy AND term_cd = A.term_cd AND cpno = A.cpno AND sdno = A.sdno AND userid = A.userid
+								   AND csno = A.csno AND course_cd = 'C02') AS REGULAR_REPEAT
+                             , (SELECT COUNT(*) FROM tls_grading 
+                                 WHERE yyyy = A.yyyy AND term_cd = A.term_cd AND cpno = A.cpno AND sdno = A.sdno AND userid = A.userid
+								   AND csno = A.csno AND course_cd = 'C02') AS GRADING   
                              , A.yyyy
                              , A.term_cd
                              , A.cpno
                              , A.userid
                              , A.sdno
-                             , A.csno                          		                         		
+                             , A.csno                                                  		                         		
 		                  FROM tls_member_schedule AS A
                     INNER JOIN tls_book AS B 
 	                        ON B.bkno = A.bkno
@@ -864,18 +879,14 @@ namespace Dreamonesys.CallCenter.Main
                         pSqlCommand.CommandText += @"
                             AND A.cdate LIKE '" + toolStripTextBoxStudentDataTime.Text + "%' ";
                     }
-//                    if (!string.IsNullOrEmpty(toolStripTextBoxStudentDataTimeUpdate.Text))
-//                    {
-//                        pSqlCommand.CommandText += @"
-//                            AND A.cdate = '" + toolStripTextBoxStudentDataTimeUpdate.Text + "' ";
-//                    }
+
                     pSqlCommand.CommandText += @"
 	                     ORDER BY cdate, G.sort
                     ";
                     toolStripTextBoxStudentBookNM.Text = "";
                     toolStripTextBoxStudentBookNM2.Text = ""; 
                     toolStripTextBoxStudentDataTime.Text = "";
-                    toolStripTextBoxStudentDataTimeUpdate.Text = "";
+                    this.dateTimePickerStudentDataTimeUpdate.Value = DateTime.Now;
                     break;
                 default:
                     break;
@@ -1173,7 +1184,7 @@ namespace Dreamonesys.CallCenter.Main
                         isFound = true;
                         //sqlCommand.CommandText += @"DELETE temp_copy_t WHERE num = " + (rowCount + 1).ToString() + @";";
                         sqlCommand.CommandText += @"
-                            UPDATE tls_class_schedule SET cdate = '" + toolStripTextBoxClassDataTimeUpdate.Text + @"'                                                     
+                            UPDATE tls_class_schedule SET cdate = REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerClassDataTimeUpdate.Value + @"', 112), '-', '')
                              WHERE yyyy = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "yyyy") + @"'
 	                           AND term_cd = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "term_cd") + @"'
 		                       AND cpno = '" + this._common.GetCellValue(dataGridViewClassSchedule, rowCount, "cpno") + @"'
@@ -1482,7 +1493,7 @@ namespace Dreamonesys.CallCenter.Main
                         isFound = true;
                         //sqlCommand.CommandText += @"DELETE temp_copy_t WHERE num = " + (rowCount + 1).ToString() + @";";
                         sqlCommand.CommandText += @"
-                            UPDATE tls_member_schedule SET cdate = '" + toolStripTextBoxStudentDataTimeUpdate.Text + @"'                                                     
+                            UPDATE tls_member_schedule SET cdate = REPLACE(CONVERT(VARCHAR(10), '" + dateTimePickerStudentDataTimeUpdate.Value + @"', 112), '-', '')
                              WHERE yyyy = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "yyyy") + @"'
 	                           AND term_cd = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "term_cd") + @"'
 		                       AND cpno = '" + this._common.GetCellValue(dataGridViewStudentSchedule, rowCount, "cpno") + @"'
@@ -1770,9 +1781,8 @@ namespace Dreamonesys.CallCenter.Main
         {
             //과정1 차시리스트 수업일정 수정
             UpdateClassSchedule();
-            toolStripTextBoxClassBookNM2.Text = "";
-            SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
-            //toolStripTextBoxClassDataTimeUpdate.Text = "";
+            toolStripTextBoxClassBookNM2.Text = "";            
+            SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");            
         }  
         private void toolStripTextBoxClassNM2_KeyDown(object sender, KeyEventArgs e)
         {
@@ -2247,8 +2257,6 @@ namespace Dreamonesys.CallCenter.Main
                 }
             }
         }
-        
-
-                
+                                
     }
 }
