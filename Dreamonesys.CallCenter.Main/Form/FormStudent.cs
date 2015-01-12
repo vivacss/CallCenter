@@ -857,6 +857,28 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
+        private void dataGridViewStudentOverlap_MouseClick(object sender, MouseEventArgs e)
+        {
+            //반 중복학생 탭 u2m학습창 및 마이페이지 로그인
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentMouseOverRow = ((DataGridView)sender).HitTest(e.X, e.Y).RowIndex;
+                if (currentMouseOverRow >= 0)
+                {
+                    ((DataGridView)sender).CurrentCell = ((DataGridView)sender)[0, currentMouseOverRow];
+                    this._common.RunLogin(((DataGridView)sender), new Point(e.X, e.Y));
+                }
+            }
+            if (e.Button == MouseButtons.Left)
+            {
+                //반 학생중복 드림+ 및 u2m 반 정보를 조회한다.
+                if (dataGridViewStudentOverlap.Rows.Count > 0 && dataGridViewStudentOverlap.CurrentCell != null)
+                {
+                    SelectDataGridView(dataGridViewEduStudentOverlap, "select_edu_student_class_overlap");
+                    SelectDataGridView(dataGridViewU2mStudentOverlap, "select_u2m_student_class_overlap");
+                }
+            }
+        }
 
         /// <summary>
         ///  드림플러스 학생 정보를 유투엠에 연동한다.
@@ -1137,17 +1159,7 @@ namespace Dreamonesys.CallCenter.Main
             //반 중복학생 선택 Ctrl + 1, 2, 3 체크박스 선택
             if (e.Control && (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3))
                 _common.GridCheck((DataGridView)sender, e);
-        }
-
-        private void dataGridViewStudentOverlap_Click(object sender, EventArgs e)
-        {
-            //반 학생중복 드림+ 및 u2m 반 정보를 조회한다.
-            if (dataGridViewStudentOverlap.Rows.Count > 0 && dataGridViewStudentOverlap.CurrentCell != null)
-            {
-                SelectDataGridView(dataGridViewEduStudentOverlap, "select_edu_student_class_overlap");
-                SelectDataGridView(dataGridViewU2mStudentOverlap, "select_u2m_student_class_overlap");
-            }
-        }
+        }       
 
         private void buttonStudentOverlapImport_Click(object sender, EventArgs e)
         {
@@ -1222,6 +1234,8 @@ namespace Dreamonesys.CallCenter.Main
         }
 
         #endregion Event
+
+        
 
         
 

@@ -2279,8 +2279,8 @@
             this.dataGridViewStudentOverlap.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewStudentOverlap.Size = new System.Drawing.Size(880, 678);
             this.dataGridViewStudentOverlap.TabIndex = 0;
-            this.dataGridViewStudentOverlap.Click += new System.EventHandler(this.dataGridViewStudentOverlap_Click);
             this.dataGridViewStudentOverlap.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewStudentOverlap_KeyDown);
+            this.dataGridViewStudentOverlap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewStudentOverlap_MouseClick);
             // 
             // Column69
             // 

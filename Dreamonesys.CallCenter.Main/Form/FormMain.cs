@@ -302,6 +302,7 @@ namespace Dreamonesys.CallCenter.Main
                                , B.cp_group_nm DESC, A.cpnm ";
                     textBoxCampus.Text = "";
                     textBoxClassNM.Text = "";
+                    toolStripTextBoxCampusInfo.Text = "";
                     this.dateTimePickerImportCampusSdate.Value = DateTime.Now;
                     this.dateTimePickerImportCampusEdate.Value = DateTime.Now;
                     break;
