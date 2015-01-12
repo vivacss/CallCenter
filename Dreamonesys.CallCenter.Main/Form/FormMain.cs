@@ -1028,6 +1028,8 @@ namespace Dreamonesys.CallCenter.Main
                                                   WHEN 'FA' THEN 'FC'
                                                   ELSE 'CP'
                                 END business_cd
+                             , (SELECT login_id FROM tls_member WHERE userid = A.userid) AS LOGIN_ID
+                             , (SELECT login_pwd FROM tls_member WHERE userid = A.userid) AS LOGIN_PWD   
                           FROM tls_bypass AS A
                      LEFT JOIN tls_campus AS B
                             ON A.cpno = B.cpno
@@ -1107,6 +1109,7 @@ namespace Dreamonesys.CallCenter.Main
                              , A.userid
                              , C.cpno
                              , C.cpid
+                             , A.login_pwd
                           FROM tls_member AS A
                      LEFT JOIN tls_cam_member as B
                             ON A.userid = B.userid
@@ -1645,6 +1648,49 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
+        private void dataGridViewByPass_MouseClick(object sender, MouseEventArgs e)
+        {
+            //미결사용 등록 u2m학습창 및 마이페이지 로그인
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentMouseOverRow = ((DataGridView)sender).HitTest(e.X, e.Y).RowIndex;
+                if (currentMouseOverRow >= 0)
+                {
+                    ((DataGridView)sender).CurrentCell = ((DataGridView)sender)[0, currentMouseOverRow];
+                    this._common.RunLogin(((DataGridView)sender), new Point(e.X, e.Y));
+                }
+            }
+            if (e.Button == MouseButtons.Left)
+            {
+                if (dataGridViewByPass.Rows.Count > 0 && dataGridViewByPass.CurrentCell != null)
+                {
+                    //미경등록자 정보를 대상자명 신청자명, Emp_ID, UserID 텍스트박스에 표시한다.
+                    textBoxByPassEmpNM2.Text = GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "empnm");
+                    textBoxByPassEmpID.Text = GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "empno");
+                    textBoxByPassUserNM2.Text = GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "usernm");
+                    textBoxByPassUserID.Text = GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "userid");
+                    this.dateTimePickerByPassUseFrom.Value = DateTime.Parse(this._common.GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "use_from"));
+                    this.dateTimePickerByPassUseTo.Value = DateTime.Parse(this._common.GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "use_to"));
+                    textBoxByPassReason.Text = GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "reason");
+                }
+            }
+        }
+
+        private void dataGridViewByPassUser_MouseClick(object sender, MouseEventArgs e)
+        {
+            //미결사용 대상자 u2m학습창 및 마이페이지 로그인
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentMouseOverRow = ((DataGridView)sender).HitTest(e.X, e.Y).RowIndex;
+                if (currentMouseOverRow >= 0)
+                {
+                    ((DataGridView)sender).CurrentCell = ((DataGridView)sender)[0, currentMouseOverRow];
+                    this._common.RunLogin(((DataGridView)sender), new Point(e.X, e.Y));
+                }
+            }
+
+        }
+
         private void dataGridViewStudentPoint_MouseClick(object sender, MouseEventArgs e)
         {
             //콩알관리 학생 u2m학습창 및 마이페이지 로그인
@@ -1696,9 +1742,13 @@ namespace Dreamonesys.CallCenter.Main
         /// <param name="e"></param>
         private void toolStripButtonImportCampusInfo_Click(object sender, EventArgs e)
         {
-            ImportCampus();
-            this.dateTimePickerImportCampusSdate.Value = DateTime.Now;
-            this.dateTimePickerImportCampusEdate.Value = DateTime.Now;
+            if (!string.IsNullOrEmpty(toolStripTextBoxCampusInfo.Text))
+            {
+                ImportCampus();
+                this.dateTimePickerImportCampusSdate.Value = DateTime.Now;
+                this.dateTimePickerImportCampusEdate.Value = DateTime.Now;
+            }
+            
         }
 
         /// <summary>
@@ -2182,7 +2232,7 @@ namespace Dreamonesys.CallCenter.Main
             //차시관리 캠퍼스 콤보박스 데이터 조회            
             SelectDataGridView(dataGridViewClass, "select_class");            
             this.StudyType = "N";            
-            this.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "cpno");            
+            //this.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "cpno");            
             _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID, this.ClassSchoolCDStudy);                        
         }
 
@@ -2335,20 +2385,7 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
-        private void dataGridViewByPass_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewByPass.Rows.Count > 0 && dataGridViewByPass.CurrentCell != null)
-            {
-                //미경등록자 정보를 대상자명 신청자명, Emp_ID, UserID 텍스트박스에 표시한다.
-                textBoxByPassEmpNM2.Text = GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "empnm");
-                textBoxByPassEmpID.Text = GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "empno");
-                textBoxByPassUserNM2.Text = GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "usernm");
-                textBoxByPassUserID.Text = GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "userid");
-                this.dateTimePickerByPassUseFrom.Value = DateTime.Parse(this._common.GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "use_from"));
-                this.dateTimePickerByPassUseTo.Value = DateTime.Parse(this._common.GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "use_to"));
-                textBoxByPassReason.Text = GetCellValue(dataGridViewByPass, dataGridViewByPass.CurrentCell.RowIndex, "reason");
-            }
-        }
+        
 
         private void buttonByPassReset_Click(object sender, EventArgs e)
         {
@@ -2390,6 +2427,10 @@ namespace Dreamonesys.CallCenter.Main
         }
 
         #endregion Event
+
+        
+
+        
 
 
 
