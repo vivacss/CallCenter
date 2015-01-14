@@ -603,6 +603,7 @@
             // 
             // toolStrip3
             // 
+            this.toolStrip3.BackColor = System.Drawing.SystemColors.Window;
             this.toolStrip3.Location = new System.Drawing.Point(3, 17);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.Size = new System.Drawing.Size(1174, 25);
@@ -1085,6 +1086,7 @@
             // 
             // toolStrip2
             // 
+            this.toolStrip2.BackColor = System.Drawing.SystemColors.Window;
             this.toolStrip2.Location = new System.Drawing.Point(3, 17);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(519, 25);
@@ -2180,6 +2182,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.AntiqueWhite;
             this.label10.Location = new System.Drawing.Point(318, 15);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(49, 12);
@@ -2209,6 +2212,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.AntiqueWhite;
             this.label9.Location = new System.Drawing.Point(135, 14);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(49, 12);
@@ -2218,6 +2222,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.AntiqueWhite;
             this.label8.Location = new System.Drawing.Point(23, 12);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 12);
@@ -2372,6 +2377,7 @@
             // toolStrip4
             // 
             this.toolStrip4.AutoSize = false;
+            this.toolStrip4.BackColor = System.Drawing.Color.AntiqueWhite;
             this.toolStrip4.Location = new System.Drawing.Point(3, 3);
             this.toolStrip4.Name = "toolStrip4";
             this.toolStrip4.Size = new System.Drawing.Size(1180, 32);
