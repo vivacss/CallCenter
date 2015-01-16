@@ -209,13 +209,6 @@
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.buttonDeleteMyTestSetRel = new System.Windows.Forms.Button();
             this.dataGridViewMyTestSetRel = new System.Windows.Forms.DataGridView();
-            this.Column50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column52 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column53 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column54 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column55 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column56 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip5 = new System.Windows.Forms.ToolStrip();
             this.toolStripTextBoxTestSetCode = new System.Windows.Forms.ToolStripTextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -260,6 +253,14 @@
             this.Column73 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column86 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
+            this.Column87 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column52 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column53 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column54 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column55 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column56 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageSelect_Student.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -1892,7 +1893,6 @@
             this.buttonDeleteMyTestSetRel.TabIndex = 12;
             this.buttonDeleteMyTestSetRel.Text = "문항정보 삭제";
             this.buttonDeleteMyTestSetRel.UseVisualStyleBackColor = true;
-            this.buttonDeleteMyTestSetRel.Visible = false;
             this.buttonDeleteMyTestSetRel.Click += new System.EventHandler(this.buttonDeleteMyTestSetRel_Click);
             // 
             // dataGridViewMyTestSetRel
@@ -1902,6 +1902,7 @@
             this.dataGridViewMyTestSetRel.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewMyTestSetRel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMyTestSetRel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column87,
             this.Column50,
             this.Column51,
             this.Column52,
@@ -1916,48 +1917,6 @@
             this.dataGridViewMyTestSetRel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewMyTestSetRel.Size = new System.Drawing.Size(573, 277);
             this.dataGridViewMyTestSetRel.TabIndex = 1;
-            // 
-            // Column50
-            // 
-            this.Column50.DataPropertyName = "study_type";
-            this.Column50.HeaderText = "STUDY_TYPE";
-            this.Column50.Name = "Column50";
-            // 
-            // Column51
-            // 
-            this.Column51.DataPropertyName = "testsetcode";
-            this.Column51.HeaderText = "TESTSETCODE";
-            this.Column51.Name = "Column51";
-            // 
-            // Column52
-            // 
-            this.Column52.DataPropertyName = "quizcode";
-            this.Column52.HeaderText = "QUIZCODE";
-            this.Column52.Name = "Column52";
-            // 
-            // Column53
-            // 
-            this.Column53.DataPropertyName = "orderno";
-            this.Column53.HeaderText = "ORDERNO";
-            this.Column53.Name = "Column53";
-            // 
-            // Column54
-            // 
-            this.Column54.DataPropertyName = "quizno";
-            this.Column54.HeaderText = "QUIZNO";
-            this.Column54.Name = "Column54";
-            // 
-            // Column55
-            // 
-            this.Column55.DataPropertyName = "assignpoints";
-            this.Column55.HeaderText = "ASSIGNPOINTS";
-            this.Column55.Name = "Column55";
-            // 
-            // Column56
-            // 
-            this.Column56.DataPropertyName = "rdatetime";
-            this.Column56.HeaderText = "RDATETIME";
-            this.Column56.Name = "Column56";
             // 
             // toolStrip5
             // 
@@ -2384,6 +2343,60 @@
             this.toolStrip4.TabIndex = 0;
             this.toolStrip4.Text = "toolStrip4";
             // 
+            // Column87
+            // 
+            this.Column87.DataPropertyName = "check_yn";
+            this.Column87.FalseValue = "2";
+            this.Column87.HeaderText = "선택";
+            this.Column87.IndeterminateValue = "2";
+            this.Column87.Name = "Column87";
+            this.Column87.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column87.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column87.TrueValue = "1";
+            this.Column87.Width = 40;
+            // 
+            // Column50
+            // 
+            this.Column50.DataPropertyName = "study_type";
+            this.Column50.HeaderText = "STUDY_TYPE";
+            this.Column50.Name = "Column50";
+            // 
+            // Column51
+            // 
+            this.Column51.DataPropertyName = "testsetcode";
+            this.Column51.HeaderText = "TESTSETCODE";
+            this.Column51.Name = "Column51";
+            // 
+            // Column52
+            // 
+            this.Column52.DataPropertyName = "quizcode";
+            this.Column52.HeaderText = "QUIZCODE";
+            this.Column52.Name = "Column52";
+            // 
+            // Column53
+            // 
+            this.Column53.DataPropertyName = "orderno";
+            this.Column53.HeaderText = "ORDERNO";
+            this.Column53.Name = "Column53";
+            // 
+            // Column54
+            // 
+            this.Column54.DataPropertyName = "quizno";
+            this.Column54.HeaderText = "QUIZNO";
+            this.Column54.Name = "Column54";
+            // 
+            // Column55
+            // 
+            this.Column55.DataPropertyName = "assignpoints";
+            this.Column55.HeaderText = "ASSIGNPOINTS";
+            this.Column55.Name = "Column55";
+            // 
+            // Column56
+            // 
+            this.Column56.DataPropertyName = "rdatetime";
+            this.Column56.HeaderText = "RDATETIME";
+            this.Column56.Name = "Column56";
+            // 
             // FormStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -2558,13 +2571,6 @@
         private System.Windows.Forms.DataGridView dataGridViewMyTestRepeat;
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.DataGridView dataGridViewMyTestSetRel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column50;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column51;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column52;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column53;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column54;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column55;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column56;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TextBox textBoxUserNmMyTest;
@@ -2690,6 +2696,14 @@
         private System.Windows.Forms.Button buttonDeleteMyTestSet;
         private System.Windows.Forms.Button buttonDeleteMyTestRepeat;
         private System.Windows.Forms.Button buttonDeleteMyTestSetRel;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column87;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column50;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column51;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column52;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column53;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column54;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column55;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column56;
 
     }
 }

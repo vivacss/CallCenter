@@ -762,7 +762,7 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
         /// <summary>
-        /// 학생의 오답, 셀프, 추가학습 배정정보를 삭제한다
+        /// 학생의 오답, 셀프, 추가학습 시험지정보를 삭제한다
         /// </summary>
         /// <history>        
         /// </history>
@@ -794,6 +794,77 @@ namespace Dreamonesys.CallCenter.Main
 
                 this._common.MessageBox(MessageBoxIcon.Information, "자료를 삭제 하였습니다.");
 
+            }
+        }
+
+        /// <summary>
+        /// 학생의 오답, 셀프, 추가학습 문항정보를 삭제한다
+        /// </summary>
+        /// <history>        
+        /// </history>
+        private void DeleteMyTestSetRel()
+        {
+            Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
+            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 삭제하시겠습니까?");
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            SqlCommand sqlCommand = new SqlCommand();
+            SqlResult sqlResult = new SqlResult();
+
+            this.Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                // 컬럼 루프
+                for (int rowCount = 0; rowCount <= dataGridViewMyTestSetRel.Rows.Count - 1; rowCount++)
+                {
+                    if (GetCellValue(dataGridViewMyTestSetRel, rowCount, "check_yn") == "1")
+                    {
+                        isFound = true;
+                        sqlCommand.CommandText += @"
+                            DELETE tls_mytest_testset_rel 
+                             WHERE TESTSETCODE = '" + this._common.GetCellValue(dataGridViewMyTestSetRel, rowCount, "testsetcode") + @"'		                       		                       
+                               AND QUIZCODE = '" + this._common.GetCellValue(dataGridViewMyTestSetRel, rowCount, "quizcode") + @"'		                       		                       
+                               AND ORDERNO = '" + this._common.GetCellValue(dataGridViewMyTestSetRel, rowCount, "orderno") + @"'		                       		                       
+                        ";
+                    }
+                }
+
+                Console.WriteLine(sqlCommand.CommandText);
+
+                if (isFound == true)
+                {
+                    // 처리할 자료가 있을 경우 쿼리실행
+                    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                    if (sqlResult.Success == true)
+                    {
+                        // 작업 성공시
+                        if (sqlResult.AffectedRecords > 0)
+                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 삭제하였습니다." + Environment.NewLine +
+                                string.Format("(삭제된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));
+                        else
+                            this._common.MessageBox(MessageBoxIcon.Information, "삭제된 자료가 없습니다.");
+                    }
+                    else
+                        // 작업 실패시
+                        MessageBox.Show(sqlResult.ErrorMsg);
+                }
+                else
+                    // 처리할 자료가 없을 경우
+                    this._common.MessageBox(MessageBoxIcon.Information, "저장할 자료가 없습니다.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCommand.Dispose();
+                this.Cursor = Cursors.Default;
             }
         }
        
@@ -1116,7 +1187,11 @@ namespace Dreamonesys.CallCenter.Main
         }
         private void buttonDeleteMyTestSetRel_Click(object sender, EventArgs e)
         {
-            //오답, 셀프, 추가학습 문항정보를 삭제한다.
+            if (dataGridViewMyTestSetRel.Rows.Count > 0 && dataGridViewMyTestSetRel.CurrentCell != null)
+            {
+                //오답, 셀프, 추가학습 문항정보를 삭제한다.
+                DeleteMyTestSetRel();
+            }            
         }
 
         private void buttonDeleteMyTestSet_Click(object sender, EventArgs e)
