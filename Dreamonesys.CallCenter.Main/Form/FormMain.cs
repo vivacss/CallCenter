@@ -542,7 +542,7 @@ namespace Dreamonesys.CallCenter.Main
                     {
                         pSqlCommand.CommandText += @"
                          OR US.LOGIN_ID = '" + textBoxEduStudentNM.Text + "') ";
-                    }
+                    }                    
                     pSqlCommand.CommandText += @"						 
 	                    ORDER BY A.userid, US.name, USC.start_date DESC
                     ";
@@ -577,10 +577,17 @@ namespace Dreamonesys.CallCenter.Main
                     {
                         pSqlCommand.CommandText += @"
                          AND A.cpno = '" + cpnoPoint + "' ";
-                    }                    
+                    }
+                    if (!string.IsNullOrEmpty(textBoxCampusPoint.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                        AND A.cpnm like '%" + textBoxCampusPoint.Text + "%' ";
+                    }
                     pSqlCommand.CommandText += @"
                        GROUP BY A.cpnm, A.cpno, A.business_cd
                        ORDER BY A.business_cd DESC,  A.cpnm ";
+
+                    textBoxCampusPoint.Text = "";
                     break;
 
                 case "select_class_point":
@@ -2096,7 +2103,7 @@ namespace Dreamonesys.CallCenter.Main
             // 캠퍼스 콤보박스 데이터 생성
             string campusType = comboBoxCampusTypePoint.SelectedValue.ToString().Trim();
 
-            _common.GetComboList(comboBoxCampusPoint, "캠퍼스", true, new string[] { campusType });
+            _common.GetComboList(comboBoxCampusPoint, "캠퍼스", true, new string[] { campusType });            
             SelectDataGridView(dataGridViewCampusPoint, "select_campus_point");
         }
 
@@ -2109,7 +2116,7 @@ namespace Dreamonesys.CallCenter.Main
         /// 박석제, 2014-09-24, 생성
         /// </history>
         private void comboBoxCampusPoint_SelectionChangeCommitted(object sender, EventArgs e)
-        {
+        {            
             SelectDataGridView(dataGridViewCampusPoint, "select_campus_point");
         }
 
@@ -2129,20 +2136,21 @@ namespace Dreamonesys.CallCenter.Main
             }
         }
 
-
-        /// <summary>
-        /// 캠퍼스(포인트) 목록 클릭시 발생하는 이벤트
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <history>
-        /// 박석제, 2014-09-24, 생성하였음.
-        /// </history>
+        private void textBoxCampusPoint_KeyDown(object sender, KeyEventArgs e)
+        {
+            //콩알관리 특정캠퍼스 목록을 조회한다.
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectDataGridView(dataGridViewCampusPoint, "select_campus_point");
+            }
+            
+        }
+        
         private void dataGridViewCampusPoint_Click(object sender, EventArgs e)
         {
             //반 콩알정보 조회한다
             if (dataGridViewCampusPoint.Rows.Count > 0 && dataGridViewCampusPoint.CurrentCell != null)
-            {
+            {             
                 SelectDataGridView(dataGridViewClassPoint, "select_class_point");
             }
         }
@@ -2428,6 +2436,8 @@ namespace Dreamonesys.CallCenter.Main
         }
 
         #endregion Event
+
+       
 
 
 

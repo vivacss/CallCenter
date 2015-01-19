@@ -91,6 +91,9 @@ namespace Dreamonesys.CallCenter.Main
                 //오답,셀프, 추가학습 콤보박스
                 new Common.ComboBoxList(comboBoxCampusTypeMyTest, "캠퍼스구분", true),
                 new Common.ComboBoxList(comboBoxCampusMyTest, "캠퍼스", true),
+                //맞춤, 만점, 중간학습 콤보박스                
+                new Common.ComboBoxList(comboBoxCampusTypeStudyTest, "캠퍼스구분", true),
+                new Common.ComboBoxList(comboBoxCampusStudyTest, "캠퍼스", true),
                 //학생중복
                 new Common.ComboBoxList(comboBoxCampusTypeOverlap, "캠퍼스구분", true),
                 new Common.ComboBoxList(comboBoxCampusOverlap, "캠퍼스", true)
@@ -190,10 +193,16 @@ namespace Dreamonesys.CallCenter.Main
         private SqlCommand CreateSql(ref SqlCommand pSqlCommand, string pQueryKind, string[] pParameter = null)
         {
             pSqlCommand = new SqlCommand();
+            //학생검색
             string businessCD = comboBoxCampusType.SelectedValue.ToString();
             string cpno = comboBoxCampus.SelectedValue.ToString();
+            //오답, 셀프 추가학습
             string businessCDMyTest = comboBoxCampusTypeMyTest.SelectedValue.ToString();
             string cpnoMyTest = comboBoxCampusMyTest.SelectedValue.ToString();
+            //맞춤, 만점, 중간학습
+            string businessCDStudyTest = comboBoxCampusTypeStudyTest.SelectedValue.ToString();
+            string cpnoStudyTest = comboBoxCampusStudyTest.SelectedValue.ToString();
+            //캠퍼스 학생 반 중복
             string businessCDOverlap = comboBoxCampusTypeOverlap.SelectedValue.ToString();
             string cpnoOverlap = comboBoxCampusOverlap.SelectedValue.ToString();
 
@@ -444,6 +453,11 @@ namespace Dreamonesys.CallCenter.Main
                         pSqlCommand.CommandText += @"
                          AND C.cpno = '" + cpnoMyTest + "' ";
                     }
+                    if (!string.IsNullOrEmpty(textBoxCampusMyTest.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND C.cpnm LIKE '%" + textBoxCampusMyTest.Text + "%' ";
+                    }
                     if (!string.IsNullOrEmpty(textBoxUserNmMyTest.Text))
                     {
                         pSqlCommand.CommandText += @"
@@ -590,6 +604,122 @@ namespace Dreamonesys.CallCenter.Main
                           FROM tls_mytest_testset_rel
                          WHERE testsetcode = '" + GetCellValue(dataGridViewMyTestUser, dataGridViewMyTestUser.CurrentCell.RowIndex, "testsetcode") + @"'
                          ORDER BY orderno ";
+                    break;
+
+                case "select_study_testset":
+                    //맞춤, 만점, 중간학습의 시험지정보를 조회한다.
+                    pSqlCommand.CommandText = @"    
+		                SELECT (SELECT name FROM tls_web_code 
+				                 WHERE cdsub = A.study_type AND cdmain = 'STUDY_TYPE') AS STUDY_TYPE
+			                 , B.usernm
+			                 , A.testsetcode
+		                     , A.yyyy
+			                 , A.term_cd
+			                 , C.clnm
+			                 , D.cpnm
+			                 , A.cpno
+		 	                 , A.clno
+			                 , A.userid
+			                 , A.grade_cd
+			                 , A.session_cd
+			                 , A.bkno
+			                 , A.course_cd
+			                 , A.sdno
+			                 , A.scno
+			                 , A.csno
+			                 , A.c_apply_date
+			                 , A.testkind3
+			                 , A.testkind4
+		 	                 , A.quiz_cnt
+			                 , A.sort
+			                 , A.end_yn
+			                 , A.rdatetime
+		                  FROM tls_study_testset AS A
+	                 LEFT JOIN tls_member AS B
+	                        ON A.userid = B.userid
+                     LEFT JOIN tls_class AS C
+			                ON A.clno = C.clno
+	                 LEFT JOIN tls_campus AS D
+	  	                    ON A.cpno = D.cpno	 
+		                 WHERE 1=1 ";                 
+
+                    if (!string.IsNullOrEmpty(businessCDStudyTest))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND D.business_cd = '" + businessCDStudyTest + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(cpnoStudyTest))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND D.cpno = '" + cpnoStudyTest + "' ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxCampusStudyTest.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND D.cpnm LIKE '%" + textBoxCampusStudyTest.Text + "%' ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxUserNmStudyTest.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND (B.usernm LIKE '%" + textBoxUserNmStudyTest.Text + "%' ";
+                    }
+                    if (!string.IsNullOrEmpty(textBoxUserNmStudyTest.Text))
+                    {
+                        pSqlCommand.CommandText += @"
+                         OR A.userid like '" + textBoxUserNmStudyTest.Text + "') ";
+                    }                    
+                    pSqlCommand.CommandText += @"
+                       ORDER BY A.rdatetime DESC ";
+                    
+                    break;
+
+                case "select_study_testset_rel":
+                    //맞춤, 만점, 중간학습의 시험지정보를 조회한다.
+                    pSqlCommand.CommandText = @"
+                        SELECT study_type
+			                 , testsetcode
+			                 , quizcode
+			                 , orderno
+			                 , quizno
+			                 , assignpoints
+			                 , rdatetime
+		                  FROM tls_study_testset_rel
+		                 WHERE testsetcode = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "testsetcode") + @"'                
+                      ORDER BY orderno ";
+
+                    break;
+
+                case "select_study_test_repeat":
+                    //맞춤, 만점, 중간학습의 학습정보를 조회한다.
+                    pSqlCommand.CommandText = @"
+                        SELECT study_type
+			                 , sreno
+			                 , yyyy
+			                 , term_cd
+			                 , cpno
+			                 , clno
+			                 , userid
+			                 , grade_cd
+			                 , session_cd
+			                 , bkno
+			                 , course_cd
+			                 , sdno
+			                 , scno
+			                 , csno
+			                 , repeatno
+			                 , testsetcode
+			                 , xtestsetcode
+			                 , quiz_cnt
+			                 , end_yn
+			                 , sdate
+			                 , edate
+			                 , rdatetime
+			                 , udatetime
+		                  FROM tls_study_repeat
+		                 WHERE userid = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "userid") + @"'                
+		                   AND testsetcode = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "testsetcode") + @"'                
+                      ORDER BY repeatno ";
+
                     break;
 
                 case "select_student_overlap":
@@ -1115,6 +1245,7 @@ namespace Dreamonesys.CallCenter.Main
         }
         
 
+
         private void comboBoxCampusTypeMyTest_SelectionChangeCommitted(object sender, EventArgs e)
         {
             //오답, 셀프, 추가학습 캠퍼스 콤보박스 데이터 생성
@@ -1123,11 +1254,26 @@ namespace Dreamonesys.CallCenter.Main
             _common.GetComboList(comboBoxCampusMyTest, "캠퍼스", true, new string[] { campusType });
         }
 
+        private void textBoxCampusMyTest_KeyDown(object sender, KeyEventArgs e)
+        {
+            string businessCDMyTest = comboBoxCampusTypeMyTest.SelectedValue.ToString();
+
+            if (!string.IsNullOrEmpty(businessCDMyTest))
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    toolStripTextBoxTestSetCode.Text = "";
+                    //캠퍼스 오답, 셀프, 추가학습 배정정보를 검색한다.                 
+                    SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");
+                }
+            }            
+        }
+
         private void textBoxUserNmMyTest_KeyDown(object sender, KeyEventArgs e)
         {
-            string cpnoMyTest = comboBoxCampusMyTest.SelectedValue.ToString();
+            string businessCDMyTest = comboBoxCampusTypeMyTest.SelectedValue.ToString();
 
-            if (!string.IsNullOrEmpty(cpnoMyTest))
+            if (!string.IsNullOrEmpty(businessCDMyTest))
             {
                 if (e.KeyCode == Keys.Enter)
                 {
@@ -1136,15 +1282,16 @@ namespace Dreamonesys.CallCenter.Main
                     SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");
                 }
             }
+            
 
             
         }
 
         private void textBoxMyTestTitle_KeyDown(object sender, KeyEventArgs e)
         {
-            string cpnoMyTest = comboBoxCampusMyTest.SelectedValue.ToString();
+            string businessCDMyTest = comboBoxCampusTypeMyTest.SelectedValue.ToString();
 
-            if (!string.IsNullOrEmpty(cpnoMyTest))
+            if (!string.IsNullOrEmpty(businessCDMyTest))
             {
                 if (e.KeyCode == Keys.Enter)
                 {
@@ -1153,6 +1300,7 @@ namespace Dreamonesys.CallCenter.Main
                     SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");
                 }
             }            
+            
         }
 
         private void buttonMyTestTestSetCode_Click(object sender, EventArgs e)
@@ -1309,6 +1457,54 @@ namespace Dreamonesys.CallCenter.Main
         }
 
         #endregion Event
+
+        private void comboBoxCampusTypeStudyTest_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //맞춤, 만점, 중간 콤보박스 데이터 생성
+            string campusType = comboBoxCampusTypeStudyTest.SelectedValue.ToString().Trim();
+
+            _common.GetComboList(comboBoxCampusStudyTest, "캠퍼스", true, new string[] { campusType });
+        }
+
+        private void textBoxCampusStudyTest_KeyDown(object sender, KeyEventArgs e)
+        {
+            //맞춤, 만점, 중간학습 캠퍼스 시험지 정보를 조회한다.
+            string businessCDStudyTest = comboBoxCampusTypeStudyTest.SelectedValue.ToString();
+
+            if (!string.IsNullOrEmpty(businessCDStudyTest))
+            {
+                if (e.KeyCode == Keys.Enter)
+                {                    
+                    SelectDataGridView(dataGridViewStudyTestSet, "select_study_testset");
+                }
+            }
+        }
+
+        private void textBoxUserNmStudyTest_KeyDown(object sender, KeyEventArgs e)
+        {
+            //맞춤, 만점, 중간학습 학생의 시험지 정보를 조회한다.
+            string businessCDStudyTest = comboBoxCampusTypeStudyTest.SelectedValue.ToString();
+
+            if (!string.IsNullOrEmpty(businessCDStudyTest))
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SelectDataGridView(dataGridViewStudyTestSet, "select_study_testset");
+                }
+            }  
+        }
+
+        private void dataGridViewStudyTestSet_Click(object sender, EventArgs e)
+        {
+            //맞춤, 만점, 중간학습 학생시험지의 문항 정보를 조회한다.
+            if (dataGridViewStudyTestSet.Rows.Count > 0 && dataGridViewStudyTestSet.CurrentCell != null)
+            {
+                SelectDataGridView(dataGridViewStudyTestSetRel, "select_study_testset_rel");
+                SelectDataGridView(dataGridViewStudyTestRepeat, "select_study_test_repeat");
+            }
+        }
+
+        
 
         
 
