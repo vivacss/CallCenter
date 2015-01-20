@@ -123,10 +123,19 @@ namespace Dreamonesys.CallCenter.Main
                 case "dataGridViewMyTestUser":
                     dataGridViewMyTestRepeat.Rows.Clear();
                     dataGridViewMyTestSet.Rows.Clear();
-                    dataGridViewMyTestSetRel.Rows.Clear();
-                    
+                    dataGridViewMyTestSetRel.Rows.Clear();                    
                     break;
-                
+                case "dataGridViewStudyTestSet":
+                    dataGridViewStudyTestSetRel.Rows.Clear();
+                    dataGridViewStudyTestRepeat.Rows.Clear();
+                    dataGridViewStudyTestRepeat1.Rows.Clear();
+                    dataGridViewStudyTestRepeat2.Rows.Clear();
+                    break;
+                case "dataGridViewStudyTestRepeat":
+                    dataGridViewStudyTestRepeat1.Rows.Clear();
+                    dataGridViewStudyTestRepeat2.Rows.Clear();
+                    break;
+
                 default:
                     break;
             }
@@ -610,7 +619,8 @@ namespace Dreamonesys.CallCenter.Main
                     //맞춤, 만점, 중간학습의 시험지정보를 조회한다.
                     pSqlCommand.CommandText = @"    
 		                SELECT (SELECT etc1 FROM tls_web_code 
-				                 WHERE cdsub = A.study_type AND cdmain = 'STUDY_TYPE') AS STUDY_TYPE
+				                 WHERE cdsub = A.study_type AND cdmain = 'STUDY_TYPE') AS STUDY_TYPE1
+                             , A.study_type
                              , H.name1 + '-' + F.view_unnm AS CHNM
 			                 , B.usernm
 			                 , A.testsetcode
@@ -685,10 +695,10 @@ namespace Dreamonesys.CallCenter.Main
                     break;
 
                 case "select_study_testset_rel":
-                    //맞춤, 만점, 중간학습의 시험지정보를 조회한다.
+                    //맞춤, 만점, 중간학습의 문항정보를 조회한다.
                     pSqlCommand.CommandText = @"
                         SELECT (SELECT etc1 FROM tls_web_code 
-				                 WHERE cdsub = A.study_type AND cdmain = 'STUDY_TYPE') AS STUDY_TYPE
+				                 WHERE cdsub = A.study_type AND cdmain = 'STUDY_TYPE') AS STUDY_TYPE                             
 			                 , A.testsetcode
 			                 , A.quizcode
 			                 , A.orderno
@@ -1059,7 +1069,7 @@ namespace Dreamonesys.CallCenter.Main
         }
 
         /// <summary>
-        /// 학생의 맞춤, 만점 중간학습 시험지정보를 삭제한다
+        /// 학생의 맞춤, 만점 중간학습 시험지정보, 문항정보를 삭제한다
         /// </summary>
         /// <history>        
         /// </history>
@@ -1076,6 +1086,7 @@ namespace Dreamonesys.CallCenter.Main
                 SqlCommand sqlCommand = new SqlCommand();
                 SqlResult sqlResult = new SqlResult();
 
+                //학생의 맞춤, 만점 중간 시험지 정보를 삭제한다.
                 sqlCommand.CommandText += @"
                             DELETE 
                               FROM tls_study_testset
@@ -1085,9 +1096,15 @@ namespace Dreamonesys.CallCenter.Main
                                AND clno = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "clno") + @"'
                                AND userid = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "userid") + @"'
                                AND course_cd = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "course_cd") + @"'
-                               AND testsetcode = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "testsetcode") + @"'
-                               AND end_yn = 'N'
-                              
+                               AND testsetcode = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "testsetcode") + @"'                               
+                ";
+                //학생의 맞춤, 만점 중간 문항 정보를 삭제한다.
+                sqlCommand.CommandText += @"
+                            DELETE 
+                              FROM tls_study_testset_rel 
+                             WHERE study_type = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "study_type") + @"'                               
+                               AND testsetcode = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "testsetcode") + @"'                               
+                               
                 ";
                 Console.WriteLine(sqlCommand.CommandText);
 
@@ -1543,6 +1560,7 @@ namespace Dreamonesys.CallCenter.Main
             {
                 //오답, 셀프, 추가학습 문항정보를 삭제한다.
                 DeleteMyTestSetRel();
+                SelectDataGridView(dataGridViewMyTestSetRel, "select_mytest_testset_rel");
             }            
         }
 
@@ -1627,6 +1645,7 @@ namespace Dreamonesys.CallCenter.Main
             {
                 //맞춤, 만점, 중간학습 학생의 문항 정보를 삭제한다.
                 DeleteStudyTestSetRel();
+                SelectDataGridView(dataGridViewStudyTestSetRel, "select_study_testset_rel");
             }
 
         }
