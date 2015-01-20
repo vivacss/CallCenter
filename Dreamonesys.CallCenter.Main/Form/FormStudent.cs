@@ -494,9 +494,9 @@ namespace Dreamonesys.CallCenter.Main
                 case "select_mytest_repeat":
                     //오답,셀프,추가학습 학습 정보를 조회한다.
                     pSqlCommand.CommandText = @"                      	
-                        SELECT CASE study_type WHEN 'X' THEN '오답클리닉'
-						                       WHEN 'S' THEN '셀프테스트'
-						                       WHEN 'A' THEN '추가학습'
+                        SELECT CASE study_type WHEN 'X' THEN '오답'
+						                       WHEN 'S' THEN '셀프'
+						                       WHEN 'A' THEN '추가'
 		                        END AS STUDY_TYPE
                              , myno
                              , cdate
@@ -525,9 +525,9 @@ namespace Dreamonesys.CallCenter.Main
                 case "select_mytest_testset":
                     //오답,셀프,추가학습 시험지 정보를 조회한다.
                     pSqlCommand.CommandText = @"                      	
-                        SELECT CASE A.study_type WHEN 'X' THEN '오답클리닉'
-						                       WHEN 'S' THEN '셀프테스트'
-						                       WHEN 'A' THEN '추가학습'
+                        SELECT CASE A.study_type WHEN 'X' THEN '오답'
+						                         WHEN 'S' THEN '셀프'
+						                         WHEN 'A' THEN '추가'
 		                        END AS STUDY_TYPE
                              , A.testsetcode
                              , A.test_cd
@@ -559,9 +559,9 @@ namespace Dreamonesys.CallCenter.Main
                 case "select_mytest_testsetcode":
                     //오답,셀프,추가학습 시험지 정보를 testsetcode로 조회한다.
                     pSqlCommand.CommandText = @"                      	
-                        SELECT CASE A.study_type WHEN 'X' THEN '오답클리닉'
-						                         WHEN 'S' THEN '셀프테스트'
-						                         WHEN 'A' THEN '추가학습'
+                        SELECT CASE A.study_type WHEN 'X' THEN '오답'
+						                         WHEN 'S' THEN '셀프'
+						                         WHEN 'A' THEN '추가'
 		                        END AS STUDY_TYPE
                              , A.testsetcode
                              , A.test_cd
@@ -591,9 +591,9 @@ namespace Dreamonesys.CallCenter.Main
                 case "select_mytest_testset_rel":
                     //오답,셀프,추가학습 문항정보를 조회한다.
                     pSqlCommand.CommandText = @"                      	
-                        SELECT CASE study_type WHEN 'X' THEN '오답클리닉'
-						                         WHEN 'S' THEN '셀프테스트'
-						                         WHEN 'A' THEN '추가학습'
+                        SELECT CASE study_type WHEN 'X' THEN '오답'
+						                         WHEN 'S' THEN '셀프'
+						                         WHEN 'A' THEN '추가'
 		                        END AS STUDY_TYPE
                              , testsetcode
                              , quizcode
@@ -609,8 +609,9 @@ namespace Dreamonesys.CallCenter.Main
                 case "select_study_testset":
                     //맞춤, 만점, 중간학습의 시험지정보를 조회한다.
                     pSqlCommand.CommandText = @"    
-		                SELECT (SELECT name FROM tls_web_code 
+		                SELECT (SELECT etc1 FROM tls_web_code 
 				                 WHERE cdsub = A.study_type AND cdmain = 'STUDY_TYPE') AS STUDY_TYPE
+                             , H.name1 + '-' + F.view_unnm AS CHNM
 			                 , B.usernm
 			                 , A.testsetcode
 		                     , A.yyyy
@@ -634,13 +635,23 @@ namespace Dreamonesys.CallCenter.Main
 			                 , A.sort
 			                 , A.end_yn
 			                 , A.rdatetime
+                             , B.login_id
+                             , B.login_pwd
 		                  FROM tls_study_testset AS A
 	                 LEFT JOIN tls_member AS B
 	                        ON A.userid = B.userid
                      LEFT JOIN tls_class AS C
 			                ON A.clno = C.clno
 	                 LEFT JOIN tls_campus AS D
-	  	                    ON A.cpno = D.cpno	 
+	  	                    ON A.cpno = D.cpno
+                    INNER JOIN tls_schedule AS E 
+						    ON E.sdno = A.sdno AND E.scno = A.scno				 
+				    INNER JOIN tls_unit AS F 
+					  	    ON F.bkno = E.bkno AND F.chno = E.chno AND F.unno = E.unno
+				    INNER JOIN tls_chapter AS G 
+						    ON G.bkno = F.bkno AND G.chno = F.chno 
+				    INNER JOIN tbl_quiz_class AS H 
+						    ON H.classa = G.classa 	 
 		                 WHERE 1=1 ";                 
 
                     if (!string.IsNullOrEmpty(businessCDStudyTest))
@@ -676,49 +687,97 @@ namespace Dreamonesys.CallCenter.Main
                 case "select_study_testset_rel":
                     //맞춤, 만점, 중간학습의 시험지정보를 조회한다.
                     pSqlCommand.CommandText = @"
-                        SELECT study_type
-			                 , testsetcode
-			                 , quizcode
-			                 , orderno
-			                 , quizno
-			                 , assignpoints
-			                 , rdatetime
-		                  FROM tls_study_testset_rel
-		                 WHERE testsetcode = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "testsetcode") + @"'                
-                      ORDER BY orderno ";
+                        SELECT (SELECT etc1 FROM tls_web_code 
+				                 WHERE cdsub = A.study_type AND cdmain = 'STUDY_TYPE') AS STUDY_TYPE
+			                 , A.testsetcode
+			                 , A.quizcode
+			                 , A.orderno
+			                 , A.quizno
+			                 , A.assignpoints
+			                 , A.rdatetime
+		                  FROM tls_study_testset_rel AS A
+		                 WHERE A.testsetcode = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "testsetcode") + @"'                
+                      ORDER BY A.orderno ";
 
                     break;
 
                 case "select_study_test_repeat":
                     //맞춤, 만점, 중간학습의 학습정보를 조회한다.
                     pSqlCommand.CommandText = @"
-                        SELECT study_type
-			                 , sreno
-			                 , yyyy
-			                 , term_cd
-			                 , cpno
-			                 , clno
-			                 , userid
-			                 , grade_cd
-			                 , session_cd
-			                 , bkno
-			                 , course_cd
-			                 , sdno
-			                 , scno
-			                 , csno
-			                 , repeatno
-			                 , testsetcode
-			                 , xtestsetcode
-			                 , quiz_cnt
-			                 , end_yn
-			                 , sdate
-			                 , edate
-			                 , rdatetime
-			                 , udatetime
-		                  FROM tls_study_repeat
-		                 WHERE userid = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "userid") + @"'                
-		                   AND testsetcode = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "testsetcode") + @"'                
-                      ORDER BY repeatno ";
+                        SELECT (SELECT etc1 FROM tls_web_code 
+				                 WHERE cdsub = A.study_type AND cdmain = 'STUDY_TYPE') AS STUDY_TYPE
+			                 , A.sreno
+			                 , A.yyyy
+			                 , A.term_cd
+			                 , A.cpno
+			                 , A.clno
+			                 , A.userid
+			                 , A.grade_cd
+			                 , A.session_cd
+			                 , A.bkno
+			                 , A.course_cd
+			                 , A.sdno
+			                 , A.scno
+			                 , A.csno
+			                 , A.repeatno
+			                 , A.testsetcode
+			                 , A.xtestsetcode
+			                 , A.quiz_cnt
+			                 , A.end_yn
+			                 , A.sdate
+			                 , A.edate
+			                 , A.rdatetime
+			                 , A.udatetime
+		                  FROM tls_study_repeat AS A
+		                 WHERE A.userid = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "userid") + @"'                
+		                   AND A.testsetcode = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "testsetcode") + @"'                
+                      ORDER BY A.repeatno ";
+
+                    break;
+
+                case "select_study_test_repeat_1":
+                    //맞춤, 만점, 중간학습의 1차 결과정보를 조회한다.
+                    pSqlCommand.CommandText = @"
+                        SELECT (SELECT etc1 FROM tls_web_code 
+				                 WHERE cdsub = A.study_type AND cdmain = 'STUDY_TYPE') AS STUDY_TYPE
+                             , A.sreno
+                             , A.quizcode
+                             , A.quizno
+                             , A.correct
+                             , A.assignpoints
+                             , A.input_value
+                             , A.quiz_result
+                             , A.classa
+                             , A.classa_nm
+                             , A.hard
+                             , A.rdatetime
+                             , A.udatetime
+		                  FROM tls_study_repeat_1 AS A
+		                 WHERE A.sreno = '" + GetCellValue(dataGridViewStudyTestRepeat, dataGridViewStudyTestRepeat.CurrentCell.RowIndex, "sreno") + @"'                		                   
+                      ORDER BY A.quizno ";
+
+                    break;
+
+                case "select_study_test_repeat_2":
+                    //맞춤, 만점, 중간학습의 2차 결과정보를 조회한다.
+                    pSqlCommand.CommandText = @"
+                        SELECT (SELECT etc1 FROM tls_web_code 
+				                 WHERE cdsub = A.study_type AND cdmain = 'STUDY_TYPE') AS STUDY_TYPE
+                             , A.sreno
+                             , A.quizcode
+                             , A.quizno
+                             , A.correct
+                             , A.assignpoints
+                             , A.input_value
+                             , A.quiz_result
+                             , A.classa
+                             , A.classa_nm
+                             , A.hard
+                             , A.rdatetime
+                             , A.udatetime
+		                  FROM tls_study_repeat_2 AS A
+		                 WHERE A.sreno = '" + GetCellValue(dataGridViewStudyTestRepeat, dataGridViewStudyTestRepeat.CurrentCell.RowIndex, "sreno") + @"'                		                   
+                      ORDER BY A.quizno ";
 
                     break;
 
@@ -955,7 +1014,8 @@ namespace Dreamonesys.CallCenter.Main
                     {
                         isFound = true;
                         sqlCommand.CommandText += @"
-                            DELETE tls_mytest_testset_rel 
+                            DELETE 
+                              FROM tls_mytest_testset_rel 
                              WHERE TESTSETCODE = '" + this._common.GetCellValue(dataGridViewMyTestSetRel, rowCount, "testsetcode") + @"'		                       		                       
                                AND QUIZCODE = '" + this._common.GetCellValue(dataGridViewMyTestSetRel, rowCount, "quizcode") + @"'		                       		                       
                                AND ORDERNO = '" + this._common.GetCellValue(dataGridViewMyTestSetRel, rowCount, "orderno") + @"'		                       		                       
@@ -997,8 +1057,120 @@ namespace Dreamonesys.CallCenter.Main
                 this.Cursor = Cursors.Default;
             }
         }
-       
-                 
+
+        /// <summary>
+        /// 학생의 맞춤, 만점 중간학습 시험지정보를 삭제한다
+        /// </summary>
+        /// <history>        
+        /// </history>
+        private void DeleteStudyTestSet()
+        {
+            if (dataGridViewStudyTestSet.Rows.Count > 0 && dataGridViewStudyTestSet.CurrentCell != null)
+            {
+                DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 삭제 하시겠습니까?");
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+
+                SqlCommand sqlCommand = new SqlCommand();
+                SqlResult sqlResult = new SqlResult();
+
+                sqlCommand.CommandText += @"
+                            DELETE 
+                              FROM tls_study_testset
+                             WHERE cpno = '" + this._common.GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "cpno") + @"'                               
+                               AND yyyy = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "yyyy") + @"'
+                               AND term_cd = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "term_cd") + @"'
+                               AND clno = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "clno") + @"'
+                               AND userid = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "userid") + @"'
+                               AND course_cd = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "course_cd") + @"'
+                               AND testsetcode = '" + GetCellValue(dataGridViewStudyTestSet, dataGridViewStudyTestSet.CurrentCell.RowIndex, "testsetcode") + @"'
+                               AND end_yn = 'N'
+                              
+                ";
+                Console.WriteLine(sqlCommand.CommandText);
+
+                // 처리할 자료가 있을 경우 쿼리실행
+                this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                this._common.MessageBox(MessageBoxIcon.Information, "자료를 삭제 하였습니다.");
+
+            }
+        }
+
+        /// <summary>
+        /// 학생의 맞춤, 만점, 중간학습 문항정보를 삭제한다
+        /// </summary>
+        /// <history>        
+        /// </history>
+        private void DeleteStudyTestSetRel()
+        {
+            Boolean isFound = false; // 처리할 자료가 있는지 체크할 변수
+            DialogResult result = this._common.MessageBox(MessageBoxIcon.Question, "정말 삭제하시겠습니까?");
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            SqlCommand sqlCommand = new SqlCommand();
+            SqlResult sqlResult = new SqlResult();
+
+            this.Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                // 컬럼 루프
+                for (int rowCount = 0; rowCount <= dataGridViewStudyTestSetRel.Rows.Count - 1; rowCount++)
+                {
+                    if (GetCellValue(dataGridViewStudyTestSetRel, rowCount, "check_yn") == "1")
+                    {
+                        isFound = true;
+                        sqlCommand.CommandText += @"
+                            DELETE 
+                              FROM TLS_STUDY_TESTSET_REL 
+                             WHERE TESTSETCODE = '" + this._common.GetCellValue(dataGridViewStudyTestSetRel, rowCount, "testsetcode") + @"'		                       		                       
+                               AND QUIZCODE = '" + this._common.GetCellValue(dataGridViewStudyTestSetRel, rowCount, "quizcode") + @"'		                       		                       
+                               AND ORDERNO = '" + this._common.GetCellValue(dataGridViewStudyTestSetRel, rowCount, "orderno") + @"'		                       		                       
+                        ";
+                    }
+                }
+
+                Console.WriteLine(sqlCommand.CommandText);
+
+                if (isFound == true)
+                {
+                    // 처리할 자료가 있을 경우 쿼리실행
+                    this._common.ExecuteNonQuery(sqlCommand, ref sqlResult);
+
+                    if (sqlResult.Success == true)
+                    {
+                        // 작업 성공시
+                        if (sqlResult.AffectedRecords > 0)
+                            this._common.MessageBox(MessageBoxIcon.Information, "자료를 삭제하였습니다." + Environment.NewLine +
+                                string.Format("(삭제된 자료건 수 총 : {0}건)", sqlResult.AffectedRecords));
+                        else
+                            this._common.MessageBox(MessageBoxIcon.Information, "삭제된 자료가 없습니다.");
+                    }
+                    else
+                        // 작업 실패시
+                        MessageBox.Show(sqlResult.ErrorMsg);
+                }
+                else
+                    // 처리할 자료가 없을 경우
+                    this._common.MessageBox(MessageBoxIcon.Information, "저장할 자료가 없습니다.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCommand.Dispose();
+                this.Cursor = Cursors.Default;
+            }
+        }
+
         #endregion Method
 
         #region Event
@@ -1055,6 +1227,30 @@ namespace Dreamonesys.CallCenter.Main
                     //학생의 오답,셀프,추가학습 문항정보를 조회한다.
                     SelectDataGridView(dataGridViewMyTestSetRel, "select_mytest_testset_rel");
                 }   
+            }
+        }
+
+        private void dataGridViewStudyTestSet_MouseClick(object sender, MouseEventArgs e)
+        {
+            //학생 맞춤, 만점, 중간학습 탭 u2m학습창 및 마이페이지 로그인
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentMouseOverRow = ((DataGridView)sender).HitTest(e.X, e.Y).RowIndex;
+                if (currentMouseOverRow >= 0)
+                {
+                    ((DataGridView)sender).CurrentCell = ((DataGridView)sender)[0, currentMouseOverRow];
+                    this._common.RunLogin(((DataGridView)sender), new Point(e.X, e.Y));
+                }
+            }
+            if (e.Button == MouseButtons.Left)
+            {
+                if (dataGridViewStudyTestSet.Rows.Count > 0 && dataGridViewStudyTestSet.CurrentCell != null)
+                {
+                    //맞춤, 만점, 중간학습 학생시험지의 문항정보를 조회한다.
+                    SelectDataGridView(dataGridViewStudyTestSetRel, "select_study_testset_rel");
+                    //맞춤, 만점, 중간학습 학생시험지의 학습정보를 조회한다.
+                    SelectDataGridView(dataGridViewStudyTestRepeat, "select_study_test_repeat");
+                }
             }
         }
 
@@ -1333,6 +1529,14 @@ namespace Dreamonesys.CallCenter.Main
         {
             //학생의 오답, 셀프, 추가학습 학습정보(학습이력)를 삭제한다.
         }
+
+        private void dataGridViewMyTestSetRel_KeyDown(object sender, KeyEventArgs e)
+        {
+            //오답, 셀프, 추가학습 문항정보 선택 Ctrl + 1, 2, 3 체크박스 선택
+            if (e.Control && (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3))
+                _common.GridCheck((DataGridView)sender, e);
+        }
+
         private void buttonDeleteMyTestSetRel_Click(object sender, EventArgs e)
         {
             if (dataGridViewMyTestSetRel.Rows.Count > 0 && dataGridViewMyTestSetRel.CurrentCell != null)
@@ -1350,6 +1554,81 @@ namespace Dreamonesys.CallCenter.Main
                 DeleteMyTestSet();
             }
             
+        }
+
+        private void comboBoxCampusTypeStudyTest_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //맞춤, 만점, 중간 콤보박스 데이터 생성
+            string campusType = comboBoxCampusTypeStudyTest.SelectedValue.ToString().Trim();
+
+            _common.GetComboList(comboBoxCampusStudyTest, "캠퍼스", true, new string[] { campusType });
+        }
+
+        private void textBoxCampusStudyTest_KeyDown(object sender, KeyEventArgs e)
+        {
+            //맞춤, 만점, 중간학습 캠퍼스 시험지 정보를 조회한다.
+            string businessCDStudyTest = comboBoxCampusTypeStudyTest.SelectedValue.ToString();
+
+            if (!string.IsNullOrEmpty(businessCDStudyTest))
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SelectDataGridView(dataGridViewStudyTestSet, "select_study_testset");
+                }
+            }
+        }
+
+        private void textBoxUserNmStudyTest_KeyDown(object sender, KeyEventArgs e)
+        {
+            //맞춤, 만점, 중간학습 학생의 시험지 정보를 조회한다.
+            string businessCDStudyTest = comboBoxCampusTypeStudyTest.SelectedValue.ToString();
+
+            if (!string.IsNullOrEmpty(businessCDStudyTest))
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SelectDataGridView(dataGridViewStudyTestSet, "select_study_testset");
+                }
+            }
+        }       
+
+        private void dataGridViewStudyTestRepeat_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewStudyTestRepeat.Rows.Count > 0 && dataGridViewStudyTestRepeat.CurrentCell != null)
+            {
+                //맞춤, 만점, 중간학습 학생시험지의 1차 결과 정보를 조회한다.
+                SelectDataGridView(dataGridViewStudyTestRepeat1, "select_study_test_repeat_1");
+                //맞춤, 만점, 중간학습 학생시험지의 2차 결과 정보를 조회한다.
+                SelectDataGridView(dataGridViewStudyTestRepeat2, "select_study_test_repeat_2");
+            }
+
+        }
+
+        private void buttonDeleteStudyTestSet_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewStudyTestSet.Rows.Count > 0 && dataGridViewStudyTestSet.CurrentCell != null)
+            {
+                //맞춤, 만점, 중간학습 학생의 시험지 정보를 삭제한다.
+                DeleteStudyTestSet();
+            }
+
+        }
+
+        private void dataGridViewStudyTestSetRel_KeyDown(object sender, KeyEventArgs e)
+        {
+            //맞춤, 만점, 중간학습 문항정보 선택 Ctrl + 1, 2, 3 체크박스 선택
+            if (e.Control && (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3))
+                _common.GridCheck((DataGridView)sender, e);
+        }
+
+        private void buttonDeleteStudyTestSetRel_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewStudyTestSetRel.Rows.Count > 0 && dataGridViewStudyTestSetRel.CurrentCell != null)
+            {
+                //맞춤, 만점, 중간학습 학생의 문항 정보를 삭제한다.
+                DeleteStudyTestSetRel();
+            }
+
         }
 
 
@@ -1458,52 +1737,6 @@ namespace Dreamonesys.CallCenter.Main
 
         #endregion Event
 
-        private void comboBoxCampusTypeStudyTest_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            //맞춤, 만점, 중간 콤보박스 데이터 생성
-            string campusType = comboBoxCampusTypeStudyTest.SelectedValue.ToString().Trim();
-
-            _common.GetComboList(comboBoxCampusStudyTest, "캠퍼스", true, new string[] { campusType });
-        }
-
-        private void textBoxCampusStudyTest_KeyDown(object sender, KeyEventArgs e)
-        {
-            //맞춤, 만점, 중간학습 캠퍼스 시험지 정보를 조회한다.
-            string businessCDStudyTest = comboBoxCampusTypeStudyTest.SelectedValue.ToString();
-
-            if (!string.IsNullOrEmpty(businessCDStudyTest))
-            {
-                if (e.KeyCode == Keys.Enter)
-                {                    
-                    SelectDataGridView(dataGridViewStudyTestSet, "select_study_testset");
-                }
-            }
-        }
-
-        private void textBoxUserNmStudyTest_KeyDown(object sender, KeyEventArgs e)
-        {
-            //맞춤, 만점, 중간학습 학생의 시험지 정보를 조회한다.
-            string businessCDStudyTest = comboBoxCampusTypeStudyTest.SelectedValue.ToString();
-
-            if (!string.IsNullOrEmpty(businessCDStudyTest))
-            {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    SelectDataGridView(dataGridViewStudyTestSet, "select_study_testset");
-                }
-            }  
-        }
-
-        private void dataGridViewStudyTestSet_Click(object sender, EventArgs e)
-        {
-            //맞춤, 만점, 중간학습 학생시험지의 문항 정보를 조회한다.
-            if (dataGridViewStudyTestSet.Rows.Count > 0 && dataGridViewStudyTestSet.CurrentCell != null)
-            {
-                SelectDataGridView(dataGridViewStudyTestSetRel, "select_study_testset_rel");
-                SelectDataGridView(dataGridViewStudyTestRepeat, "select_study_test_repeat");
-            }
-        }
-
         
 
         
@@ -1511,35 +1744,7 @@ namespace Dreamonesys.CallCenter.Main
         
 
         
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
     }
