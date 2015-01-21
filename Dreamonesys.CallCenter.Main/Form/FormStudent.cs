@@ -90,10 +90,11 @@ namespace Dreamonesys.CallCenter.Main
                 new Common.ComboBoxList(comboBoxCampus, "캠퍼스", true),
                 //오답,셀프, 추가학습 콤보박스
                 new Common.ComboBoxList(comboBoxCampusTypeMyTest, "캠퍼스구분", true),
-                new Common.ComboBoxList(comboBoxCampusMyTest, "캠퍼스", true),
+                new Common.ComboBoxList(comboBoxCampusMyTest, "캠퍼스", true),                 
                 //맞춤, 만점, 중간학습 콤보박스                
                 new Common.ComboBoxList(comboBoxCampusTypeStudyTest, "캠퍼스구분", true),
                 new Common.ComboBoxList(comboBoxCampusStudyTest, "캠퍼스", true),
+                new Common.ComboBoxList(comboBoxYyyyStudyTest, "년도", true) , 
                 //학생중복
                 new Common.ComboBoxList(comboBoxCampusTypeOverlap, "캠퍼스구분", true),
                 new Common.ComboBoxList(comboBoxCampusOverlap, "캠퍼스", true)
@@ -211,6 +212,8 @@ namespace Dreamonesys.CallCenter.Main
             //맞춤, 만점, 중간학습
             string businessCDStudyTest = comboBoxCampusTypeStudyTest.SelectedValue.ToString();
             string cpnoStudyTest = comboBoxCampusStudyTest.SelectedValue.ToString();
+            string yyyyStudyTest = comboBoxYyyyStudyTest.SelectedValue.ToString();
+            
             //캠퍼스 학생 반 중복
             string businessCDOverlap = comboBoxCampusTypeOverlap.SelectedValue.ToString();
             string cpnoOverlap = comboBoxCampusOverlap.SelectedValue.ToString();
@@ -616,7 +619,7 @@ namespace Dreamonesys.CallCenter.Main
                     break;
 
                 case "select_study_testset":
-                    //맞춤, 만점, 중간학습의 시험지정보를 조회한다.
+                    //맞춤, 만점, 중간학습의 시험지정보를 조회한다. 
                     pSqlCommand.CommandText = @"    
 		                SELECT (SELECT etc1 FROM tls_web_code 
 				                 WHERE cdsub = A.study_type AND cdmain = 'STUDY_TYPE') AS STUDY_TYPE1
@@ -674,6 +677,11 @@ namespace Dreamonesys.CallCenter.Main
                         pSqlCommand.CommandText += @"
                          AND D.cpno = '" + cpnoStudyTest + "' ";
                     }
+                    if (!string.IsNullOrEmpty(yyyyStudyTest))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND A.yyyy = '" + yyyyStudyTest + "' ";
+                    }
                     if (!string.IsNullOrEmpty(textBoxCampusStudyTest.Text))
                     {
                         pSqlCommand.CommandText += @"
@@ -691,7 +699,9 @@ namespace Dreamonesys.CallCenter.Main
                     }                    
                     pSqlCommand.CommandText += @"
                        ORDER BY A.rdatetime DESC ";
-                    
+
+                    //comboBoxYyyyStudyTest.SelectedIndex = 2;
+
                     break;
 
                 case "select_study_testset_rel":
@@ -1203,7 +1213,8 @@ namespace Dreamonesys.CallCenter.Main
         /// </history>
         private void FormStudent_Load(object sender, EventArgs e)
         {
-            InitCombo();            
+            InitCombo();
+            comboBoxYyyyStudyTest.SelectedIndex = 2;
         }
 
         private void dataGridViewStudent_MouseClick(object sender, MouseEventArgs e)
@@ -1469,13 +1480,16 @@ namespace Dreamonesys.CallCenter.Main
 
         private void textBoxCampusMyTest_KeyDown(object sender, KeyEventArgs e)
         {
-            string businessCDMyTest = comboBoxCampusTypeMyTest.SelectedValue.ToString();
-
-            if (!string.IsNullOrEmpty(businessCDMyTest))
+            //string businessCDMyTest = comboBoxCampusTypeMyTest.SelectedValue.ToString();
+            //if (!string.IsNullOrEmpty(businessCDMyTest))
+            //{                
+            //}
+            if (!string.IsNullOrEmpty(textBoxCampusMyTest.Text))
             {
                 if (e.KeyCode == Keys.Enter)
                 {
                     toolStripTextBoxTestSetCode.Text = "";
+                    comboBoxCampusMyTest.SelectedIndex = 0;
                     //캠퍼스 오답, 셀프, 추가학습 배정정보를 검색한다.                 
                     SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");
                 }
@@ -1484,9 +1498,11 @@ namespace Dreamonesys.CallCenter.Main
 
         private void textBoxUserNmMyTest_KeyDown(object sender, KeyEventArgs e)
         {
-            string businessCDMyTest = comboBoxCampusTypeMyTest.SelectedValue.ToString();
-
-            if (!string.IsNullOrEmpty(businessCDMyTest))
+            //string businessCDMyTest = comboBoxCampusTypeMyTest.SelectedValue.ToString();
+            //if (!string.IsNullOrEmpty(businessCDMyTest))
+            //{                
+            //}
+            if (!string.IsNullOrEmpty(textBoxUserNmMyTest.Text))
             {
                 if (e.KeyCode == Keys.Enter)
                 {
@@ -1502,9 +1518,11 @@ namespace Dreamonesys.CallCenter.Main
 
         private void textBoxMyTestTitle_KeyDown(object sender, KeyEventArgs e)
         {
-            string businessCDMyTest = comboBoxCampusTypeMyTest.SelectedValue.ToString();
-
-            if (!string.IsNullOrEmpty(businessCDMyTest))
+            //string businessCDMyTest = comboBoxCampusTypeMyTest.SelectedValue.ToString();
+            //if (!string.IsNullOrEmpty(businessCDMyTest))
+            //{                
+            //}
+            if (dataGridViewMyTestUser.Rows.Count > 0 && dataGridViewMyTestUser.CurrentCell != null)
             {
                 if (e.KeyCode == Keys.Enter)
                 {
@@ -1512,7 +1530,8 @@ namespace Dreamonesys.CallCenter.Main
                     //학생의 오답, 셀프, 추가학습 배정정보의 title을 검색한다.                
                     SelectDataGridView(dataGridViewMyTestUser, "select_mytest_user");
                 }
-            }            
+            }
+            
             
         }
 
@@ -1583,31 +1602,36 @@ namespace Dreamonesys.CallCenter.Main
         }
 
         private void textBoxCampusStudyTest_KeyDown(object sender, KeyEventArgs e)
-        {
-            //맞춤, 만점, 중간학습 캠퍼스 시험지 정보를 조회한다.
-            string businessCDStudyTest = comboBoxCampusTypeStudyTest.SelectedValue.ToString();
-
-            if (!string.IsNullOrEmpty(businessCDStudyTest))
+        {            
+            //string businessCDStudyTest = comboBoxCampusTypeStudyTest.SelectedValue.ToString();
+            //if (!string.IsNullOrEmpty(businessCDStudyTest))
+            //{                
+            //}
+            if (!string.IsNullOrEmpty(textBoxCampusStudyTest.Text))
             {
+                //맞춤, 만점, 중간학습 캠퍼스 시험지 정보를 조회한다.
                 if (e.KeyCode == Keys.Enter)
                 {
+                    comboBoxCampusStudyTest.SelectedIndex = 0;
                     SelectDataGridView(dataGridViewStudyTestSet, "select_study_testset");
                 }
             }
         }
 
         private void textBoxUserNmStudyTest_KeyDown(object sender, KeyEventArgs e)
-        {
-            //맞춤, 만점, 중간학습 학생의 시험지 정보를 조회한다.
-            string businessCDStudyTest = comboBoxCampusTypeStudyTest.SelectedValue.ToString();
-
-            if (!string.IsNullOrEmpty(businessCDStudyTest))
+        {            
+            //string businessCDStudyTest = comboBoxCampusTypeStudyTest.SelectedValue.ToString();
+            //if (!string.IsNullOrEmpty(businessCDStudyTest))
+            //{                
+            //}
+            if (!string.IsNullOrEmpty(textBoxUserNmStudyTest.Text))
             {
                 if (e.KeyCode == Keys.Enter)
                 {
+                    //맞춤, 만점, 중간학습 학생의 시험지 정보를 조회한다.
                     SelectDataGridView(dataGridViewStudyTestSet, "select_study_testset");
                 }
-            }
+            }            
         }       
 
         private void dataGridViewStudyTestRepeat_Click(object sender, EventArgs e)
@@ -1624,7 +1648,8 @@ namespace Dreamonesys.CallCenter.Main
 
         private void buttonDeleteStudyTestSet_Click(object sender, EventArgs e)
         {
-            if (dataGridViewStudyTestSet.Rows.Count > 0 && dataGridViewStudyTestSet.CurrentCell != null)
+            //맞춤, 만점, 중간학습 학습이력이 있을 시 시험지정보 삭제버튼 비활성
+            if (dataGridViewStudyTestRepeat.Rows.Count <= 0 && dataGridViewStudyTestRepeat.CurrentCell == null)
             {
                 //맞춤, 만점, 중간학습 학생의 시험지 정보를 삭제한다.
                 DeleteStudyTestSet();

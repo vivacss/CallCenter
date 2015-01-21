@@ -1822,7 +1822,7 @@ namespace Dreamonesys.CallCenter.Main
         private void dataGridViewStudentStudy_DoubleClick(object sender, EventArgs e)
         {
             if (dataGridViewStudentStudy.Rows.Count > 0 && dataGridViewStudentStudy.CurrentCell != null)
-            {
+            {                
                 //과정2 차시 리스트 조회
                 toolStripTextBoxStudentBookNM.Text = "";
                 toolStripTextBoxStudentBookNM2.Text = "";

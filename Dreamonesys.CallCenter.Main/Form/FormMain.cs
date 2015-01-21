@@ -2238,7 +2238,8 @@ namespace Dreamonesys.CallCenter.Main
 
         private void comboBoxCampusStudy_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            //차시관리 캠퍼스 콤보박스 데이터 조회            
+            //차시관리 캠퍼스 콤보박스 데이터 조회  
+            textBoxCampusStudy.Text = "";
             SelectDataGridView(dataGridViewClass, "select_class");            
             this.StudyType = "N";            
             //this.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewClass, dataGridViewClass.CurrentCell.RowIndex, "cpno");            
@@ -2294,6 +2295,7 @@ namespace Dreamonesys.CallCenter.Main
             //차시관리 특정 캠퍼스의 반 목록를 조회한다
             if (e.KeyCode == Keys.Enter)
             {
+                comboBoxCampusStudy.SelectedIndex = 0;
                 SelectDataGridView(dataGridViewClass, "select_class");
             }
             
