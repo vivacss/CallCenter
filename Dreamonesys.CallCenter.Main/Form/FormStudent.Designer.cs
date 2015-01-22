@@ -222,6 +222,8 @@
             this.toolStrip5 = new System.Windows.Forms.ToolStrip();
             this.toolStripTextBoxTestSetCode = new System.Windows.Forms.ToolStripTextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.comboBoxYyyyStudyTest = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.textBoxUserNmStudyTest = new System.Windows.Forms.TextBox();
             this.textBoxCampusStudyTest = new System.Windows.Forms.TextBox();
             this.comboBoxCampusStudyTest = new System.Windows.Forms.ComboBox();
@@ -372,8 +374,6 @@
             this.Column73 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column86 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
-            this.label16 = new System.Windows.Forms.Label();
-            this.comboBoxYyyyStudyTest = new System.Windows.Forms.ComboBox();
             this.tabPageSelect_Student.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -2196,6 +2196,24 @@
             this.tabPage4.Text = "맞춤학습";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // comboBoxYyyyStudyTest
+            // 
+            this.comboBoxYyyyStudyTest.FormattingEnabled = true;
+            this.comboBoxYyyyStudyTest.Location = new System.Drawing.Point(348, 9);
+            this.comboBoxYyyyStudyTest.Name = "comboBoxYyyyStudyTest";
+            this.comboBoxYyyyStudyTest.Size = new System.Drawing.Size(56, 20);
+            this.comboBoxYyyyStudyTest.TabIndex = 11;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.label16.Location = new System.Drawing.Point(305, 13);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(37, 12);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "년도 :";
+            // 
             // textBoxUserNmStudyTest
             // 
             this.textBoxUserNmStudyTest.Location = new System.Drawing.Point(632, 9);
@@ -3537,24 +3555,6 @@
             this.toolStrip4.Size = new System.Drawing.Size(1180, 32);
             this.toolStrip4.TabIndex = 0;
             this.toolStrip4.Text = "toolStrip4";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.label16.Location = new System.Drawing.Point(305, 13);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(37, 12);
-            this.label16.TabIndex = 10;
-            this.label16.Text = "년도 :";
-            // 
-            // comboBoxYyyyStudyTest
-            // 
-            this.comboBoxYyyyStudyTest.FormattingEnabled = true;
-            this.comboBoxYyyyStudyTest.Location = new System.Drawing.Point(348, 9);
-            this.comboBoxYyyyStudyTest.Name = "comboBoxYyyyStudyTest";
-            this.comboBoxYyyyStudyTest.Size = new System.Drawing.Size(56, 20);
-            this.comboBoxYyyyStudyTest.TabIndex = 11;
             // 
             // FormStudent
             // 

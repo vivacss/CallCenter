@@ -1715,6 +1715,26 @@ namespace Dreamonesys.CallCenter.Main
                 SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
             }
         }
+        private void buttonClassStudyDate_Click(object sender, EventArgs e)
+        {
+            //과정1 차시 리스트 학습이력 있을 시 색표시
+            if (dataGridViewClassStudy.Rows.Count > 0 && dataGridViewClassStudy.CurrentCell != null)
+            {
+                toolStripTextBoxClassBookNM.Text = "";
+                toolStripTextBoxClassBookNM2.Text = "";
+                SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");
+
+                for (int i = 0; i <= dataGridViewClassSchedule.Rows.Count - 1; i++)
+                {
+                    if (Convert.ToInt32(dataGridViewClassSchedule.Rows[i].Cells[7].Value) > 0 ||
+                       Convert.ToInt32(dataGridViewClassSchedule.Rows[i].Cells[8].Value) > 0 ||
+                       Convert.ToInt32(dataGridViewClassSchedule.Rows[i].Cells[9].Value) > 0)
+                    {
+                        dataGridViewClassSchedule.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+                    }
+                }
+            }
+        }
         private void buttonClassStudentStudy_Click(object sender, EventArgs e)
         {
             //학생차시 버튼 클릭 시 해당반 학생차시를 조회한다.
@@ -1757,6 +1777,8 @@ namespace Dreamonesys.CallCenter.Main
                 SelectDataGridView(dataGridViewClassSchedule, "select_class_schedule");               
             }
         }
+        
+       
         private void buttonClassStudyDelete_Click(object sender, EventArgs e)
         {
             //과정1 차시 삭제
@@ -1827,6 +1849,29 @@ namespace Dreamonesys.CallCenter.Main
                 toolStripTextBoxStudentBookNM.Text = "";
                 toolStripTextBoxStudentBookNM2.Text = "";
                 SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
+                   
+            }
+        }
+        private void buttonStudentStudyDate_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewStudentStudy.Rows.Count > 0 && dataGridViewStudentStudy.CurrentCell != null)
+            {
+                //과정2 차시 리스트 성적있을 시 색표시
+                toolStripTextBoxStudentBookNM.Text = "";
+                toolStripTextBoxStudentBookNM2.Text = "";
+                SelectDataGridView(dataGridViewStudentSchedule, "select_student_schedule");
+
+
+                for (int i = 0; i <= dataGridViewStudentSchedule.Rows.Count - 1; i++)
+                {
+                    if (Convert.ToInt32(dataGridViewStudentSchedule.Rows[i].Cells[7].Value) > 0 ||
+                       Convert.ToInt32(dataGridViewStudentSchedule.Rows[i].Cells[8].Value) > 0 ||
+                       Convert.ToInt32(dataGridViewStudentSchedule.Rows[i].Cells[9].Value) > 0)
+                    {
+                        dataGridViewStudentSchedule.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+                    }
+                }
+
             }
         }
         private void toolStripTextBoxStudentBookNM_KeyDown(object sender, KeyEventArgs e)
@@ -2257,6 +2302,10 @@ namespace Dreamonesys.CallCenter.Main
                 }
             }
         }
+
+        
+
+        
                                 
     }
 }
