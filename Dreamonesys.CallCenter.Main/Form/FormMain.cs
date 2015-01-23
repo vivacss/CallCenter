@@ -943,6 +943,7 @@ namespace Dreamonesys.CallCenter.Main
 					ORDER BY A.cpno, A.school_cd, A.clnm
                          ";
                     textBoxClassStudy.Text = "";
+                    
                     break;
 
                 case "select_student":
@@ -2297,6 +2298,14 @@ namespace Dreamonesys.CallCenter.Main
             {
                 comboBoxCampusStudy.SelectedIndex = 0;
                 SelectDataGridView(dataGridViewClass, "select_class");
+
+                for (int i = 0; i <= dataGridViewClass.Rows.Count - 1; i++)
+                {
+                    if (Convert.ToInt32(dataGridViewClass.Rows[i].Cells[1].Value) > 0)                   
+                    {
+                        dataGridViewClass.Rows[i].DefaultCellStyle.ForeColor = Color.Blue;
+                    }
+                }
             }
             
         }
@@ -2306,7 +2315,15 @@ namespace Dreamonesys.CallCenter.Main
             //차시관리 반 학생 조회
             if (dataGridViewClass.Rows.Count > 0 && dataGridViewClass.CurrentCell != null)
             {
-                SelectDataGridView(dataGridViewStudent, "select_student");                
+                SelectDataGridView(dataGridViewStudent, "select_student");
+
+                for (int i = 0; i <= dataGridViewStudent.Rows.Count - 1; i++)
+                {
+                    if (Convert.ToInt32(dataGridViewStudent.Rows[i].Cells[1].Value) > 0)
+                    {
+                        dataGridViewStudent.Rows[i].DefaultCellStyle.ForeColor = Color.Blue;
+                    }
+                }
             }
             
         }
@@ -2327,7 +2344,8 @@ namespace Dreamonesys.CallCenter.Main
             if (dataGridViewStudent.Rows.Count > 0 && dataGridViewStudent.CurrentCell != null)
             {
                 this.StudyType = "S";
-                this.ClassStudentCPNO = this._common.GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cpno");
+                this.ClassEmployeeCPNO = this._common.GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cpno");
+                //this.ClassStudentCPNO = this._common.GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "cpno");
                 //this.ClassEmployeeCLNO = this._common.GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "clno");
                 this.ClassStudentUID = this._common.GetCellValue(dataGridViewStudent, dataGridViewStudent.CurrentCell.RowIndex, "userid");
                 _userControlStudy.Select(this.StudyType, this.ClassEmployeeCPNO, this.ClassEmployeeCLNO, this.ClassStudentCPNO, this.ClassStudentUID, this.ClassEmployeeUID, this.ClassSchoolCDStudy);

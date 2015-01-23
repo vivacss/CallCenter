@@ -95,6 +95,7 @@ namespace Dreamonesys.CallCenter.Main
                 new Common.ComboBoxList(comboBoxCampusTypeStudyTest, "캠퍼스구분", true),
                 new Common.ComboBoxList(comboBoxCampusStudyTest, "캠퍼스", true),
                 new Common.ComboBoxList(comboBoxYyyyStudyTest, "년도", true) , 
+                new Common.ComboBoxList(comboBoxStudyTypeStudyTest, "맞춤학습", true) ,                 
                 //학생중복
                 new Common.ComboBoxList(comboBoxCampusTypeOverlap, "캠퍼스구분", true),
                 new Common.ComboBoxList(comboBoxCampusOverlap, "캠퍼스", true)
@@ -213,7 +214,7 @@ namespace Dreamonesys.CallCenter.Main
             string businessCDStudyTest = comboBoxCampusTypeStudyTest.SelectedValue.ToString();
             string cpnoStudyTest = comboBoxCampusStudyTest.SelectedValue.ToString();
             string yyyyStudyTest = comboBoxYyyyStudyTest.SelectedValue.ToString();
-            
+            string studyTypeStudyTest = comboBoxStudyTypeStudyTest.SelectedValue.ToString();
             //캠퍼스 학생 반 중복
             string businessCDOverlap = comboBoxCampusTypeOverlap.SelectedValue.ToString();
             string cpnoOverlap = comboBoxCampusOverlap.SelectedValue.ToString();
@@ -682,6 +683,11 @@ namespace Dreamonesys.CallCenter.Main
                         pSqlCommand.CommandText += @"
                          AND A.yyyy = '" + yyyyStudyTest + "' ";
                     }
+                    if (!string.IsNullOrEmpty(studyTypeStudyTest))
+                    {
+                        pSqlCommand.CommandText += @"
+                         AND A.study_type = '" + studyTypeStudyTest + "' ";
+                    }                    
                     if (!string.IsNullOrEmpty(textBoxCampusStudyTest.Text))
                     {
                         pSqlCommand.CommandText += @"
@@ -700,7 +706,7 @@ namespace Dreamonesys.CallCenter.Main
                     pSqlCommand.CommandText += @"
                        ORDER BY A.rdatetime DESC ";
 
-                    //comboBoxYyyyStudyTest.SelectedIndex = 2;
+                    //comboBoxYyyyStudyTest.SelectedIndex = 2;                    
 
                     break;
 
@@ -1215,6 +1221,7 @@ namespace Dreamonesys.CallCenter.Main
         {
             InitCombo();
             comboBoxYyyyStudyTest.SelectedIndex = 2;
+            comboBoxStudyTypeStudyTest.SelectedIndex = 1;
         }
 
         private void dataGridViewStudent_MouseClick(object sender, MouseEventArgs e)

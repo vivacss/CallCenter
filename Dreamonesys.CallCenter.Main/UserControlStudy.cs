@@ -1730,7 +1730,7 @@ namespace Dreamonesys.CallCenter.Main
                        Convert.ToInt32(dataGridViewClassSchedule.Rows[i].Cells[8].Value) > 0 ||
                        Convert.ToInt32(dataGridViewClassSchedule.Rows[i].Cells[9].Value) > 0)
                     {
-                        dataGridViewClassSchedule.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+                        dataGridViewClassSchedule.Rows[i].DefaultCellStyle.BackColor = Color.NavajoWhite;
                     }
                 }
             }
@@ -1868,7 +1868,7 @@ namespace Dreamonesys.CallCenter.Main
                        Convert.ToInt32(dataGridViewStudentSchedule.Rows[i].Cells[8].Value) > 0 ||
                        Convert.ToInt32(dataGridViewStudentSchedule.Rows[i].Cells[9].Value) > 0)
                     {
-                        dataGridViewStudentSchedule.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+                        dataGridViewStudentSchedule.Rows[i].DefaultCellStyle.BackColor = Color.NavajoWhite;
                     }
                 }
 
