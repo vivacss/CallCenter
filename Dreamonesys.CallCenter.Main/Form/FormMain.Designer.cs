@@ -66,6 +66,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBoxLoginPW = new System.Windows.Forms.TextBox();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -361,6 +364,28 @@
             this.Column125 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column124 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip6 = new System.Windows.Forms.ToolStrip();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.splitContainer11 = new System.Windows.Forms.SplitContainer();
+            this.buttonPodTempInsert = new System.Windows.Forms.Button();
+            this.buttonPodStudySelect = new System.Windows.Forms.Button();
+            this.dataGridViewPodClass = new System.Windows.Forms.DataGridView();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.comboBoxPodCampusType = new System.Windows.Forms.ComboBox();
+            this.comboBoxPodCampus = new System.Windows.Forms.ComboBox();
+            this.comboBoxPodSchoolCD = new System.Windows.Forms.ComboBox();
+            this.textBoxPodDate = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.Column140 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column141 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column142 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column143 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column144 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column145 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column146 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column147 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
@@ -442,6 +467,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewByPassUser)).BeginInit();
             this.groupBox15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewByPassEmp)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer11)).BeginInit();
+            this.splitContainer11.Panel1.SuspendLayout();
+            this.splitContainer11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPodClass)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxLoginPW
@@ -1457,6 +1487,7 @@
             this.tabControl1.Controls.Add(this.tabPageStudy_Admin);
             this.tabControl1.Controls.Add(this.tabPagePoint_Admin);
             this.tabControl1.Controls.Add(this.tabPageByPass);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -3528,6 +3559,238 @@
             this.toolStrip6.TabIndex = 2;
             this.toolStrip6.Text = "toolStrip6";
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.label40);
+            this.tabPage1.Controls.Add(this.textBoxPodDate);
+            this.tabPage1.Controls.Add(this.comboBoxPodSchoolCD);
+            this.tabPage1.Controls.Add(this.comboBoxPodCampus);
+            this.tabPage1.Controls.Add(this.comboBoxPodCampusType);
+            this.tabPage1.Controls.Add(this.label39);
+            this.tabPage1.Controls.Add(this.label38);
+            this.tabPage1.Controls.Add(this.label37);
+            this.tabPage1.Controls.Add(this.buttonPodStudySelect);
+            this.tabPage1.Controls.Add(this.buttonPodTempInsert);
+            this.tabPage1.Controls.Add(this.splitContainer11);
+            this.tabPage1.Controls.Add(this.toolStrip2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1255, 806);
+            this.tabPage1.TabIndex = 4;
+            this.tabPage1.Text = "타임캡슐";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.AutoSize = false;
+            this.toolStrip2.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(1249, 32);
+            this.toolStrip2.TabIndex = 0;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // splitContainer11
+            // 
+            this.splitContainer11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer11.Location = new System.Drawing.Point(3, 35);
+            this.splitContainer11.Name = "splitContainer11";
+            // 
+            // splitContainer11.Panel1
+            // 
+            this.splitContainer11.Panel1.Controls.Add(this.dataGridViewPodClass);
+            this.splitContainer11.Size = new System.Drawing.Size(1249, 768);
+            this.splitContainer11.SplitterDistance = 539;
+            this.splitContainer11.TabIndex = 1;
+            // 
+            // buttonPodTempInsert
+            // 
+            this.buttonPodTempInsert.Location = new System.Drawing.Point(546, 6);
+            this.buttonPodTempInsert.Name = "buttonPodTempInsert";
+            this.buttonPodTempInsert.Size = new System.Drawing.Size(82, 23);
+            this.buttonPodTempInsert.TabIndex = 2;
+            this.buttonPodTempInsert.Text = "반목록 등록";
+            this.buttonPodTempInsert.UseVisualStyleBackColor = true;
+            // 
+            // buttonPodStudySelect
+            // 
+            this.buttonPodStudySelect.Location = new System.Drawing.Point(1145, 6);
+            this.buttonPodStudySelect.Name = "buttonPodStudySelect";
+            this.buttonPodStudySelect.Size = new System.Drawing.Size(92, 23);
+            this.buttonPodStudySelect.TabIndex = 3;
+            this.buttonPodStudySelect.Text = "학습이력 조회";
+            this.buttonPodStudySelect.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewPodClass
+            // 
+            this.dataGridViewPodClass.AllowUserToAddRows = false;
+            this.dataGridViewPodClass.AllowUserToDeleteRows = false;
+            this.dataGridViewPodClass.BackgroundColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPodClass.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle38;
+            this.dataGridViewPodClass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewPodClass.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column140,
+            this.Column141,
+            this.Column142,
+            this.Column143,
+            this.Column144,
+            this.Column145,
+            this.Column146,
+            this.Column147});
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPodClass.DefaultCellStyle = dataGridViewCellStyle39;
+            this.dataGridViewPodClass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewPodClass.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewPodClass.Name = "dataGridViewPodClass";
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPodClass.RowHeadersDefaultCellStyle = dataGridViewCellStyle40;
+            this.dataGridViewPodClass.RowTemplate.Height = 23;
+            this.dataGridViewPodClass.Size = new System.Drawing.Size(539, 768);
+            this.dataGridViewPodClass.TabIndex = 0;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(15, 12);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(37, 12);
+            this.label37.TabIndex = 4;
+            this.label37.Text = "구분 :";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(118, 12);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(49, 12);
+            this.label38.TabIndex = 5;
+            this.label38.Text = "캠퍼스 :";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(287, 13);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(49, 12);
+            this.label39.TabIndex = 6;
+            this.label39.Text = "학교급 :";
+            // 
+            // comboBoxPodCampusType
+            // 
+            this.comboBoxPodCampusType.FormattingEnabled = true;
+            this.comboBoxPodCampusType.Location = new System.Drawing.Point(57, 8);
+            this.comboBoxPodCampusType.Name = "comboBoxPodCampusType";
+            this.comboBoxPodCampusType.Size = new System.Drawing.Size(52, 20);
+            this.comboBoxPodCampusType.TabIndex = 7;
+            this.comboBoxPodCampusType.SelectionChangeCommitted += new System.EventHandler(this.comboBoxPodCampusType_SelectionChangeCommitted);
+            // 
+            // comboBoxPodCampus
+            // 
+            this.comboBoxPodCampus.FormattingEnabled = true;
+            this.comboBoxPodCampus.Location = new System.Drawing.Point(171, 8);
+            this.comboBoxPodCampus.Name = "comboBoxPodCampus";
+            this.comboBoxPodCampus.Size = new System.Drawing.Size(110, 20);
+            this.comboBoxPodCampus.TabIndex = 8;
+            // 
+            // comboBoxPodSchoolCD
+            // 
+            this.comboBoxPodSchoolCD.FormattingEnabled = true;
+            this.comboBoxPodSchoolCD.Location = new System.Drawing.Point(339, 8);
+            this.comboBoxPodSchoolCD.Name = "comboBoxPodSchoolCD";
+            this.comboBoxPodSchoolCD.Size = new System.Drawing.Size(52, 20);
+            this.comboBoxPodSchoolCD.TabIndex = 9;
+            // 
+            // textBoxPodDate
+            // 
+            this.textBoxPodDate.Location = new System.Drawing.Point(448, 7);
+            this.textBoxPodDate.Name = "textBoxPodDate";
+            this.textBoxPodDate.Size = new System.Drawing.Size(82, 21);
+            this.textBoxPodDate.TabIndex = 10;
+            this.textBoxPodDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPodDate_KeyDown);
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(397, 13);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(49, 12);
+            this.label40.TabIndex = 11;
+            this.label40.Text = "기준일 :";
+            // 
+            // Column140
+            // 
+            this.Column140.DataPropertyName = "business_cdnm";
+            this.Column140.HeaderText = "구분";
+            this.Column140.Name = "Column140";
+            this.Column140.Width = 50;
+            // 
+            // Column141
+            // 
+            this.Column141.DataPropertyName = "cpnm";
+            this.Column141.HeaderText = "캠퍼스";
+            this.Column141.Name = "Column141";
+            // 
+            // Column142
+            // 
+            this.Column142.DataPropertyName = "school_cdnm";
+            this.Column142.HeaderText = "학교급";
+            this.Column142.Name = "Column142";
+            this.Column142.Width = 60;
+            // 
+            // Column143
+            // 
+            this.Column143.DataPropertyName = "grade_cdnm";
+            this.Column143.HeaderText = "학년";
+            this.Column143.Name = "Column143";
+            this.Column143.Width = 50;
+            // 
+            // Column144
+            // 
+            this.Column144.DataPropertyName = "clnm";
+            this.Column144.HeaderText = "반명";
+            this.Column144.Name = "Column144";
+            this.Column144.Width = 70;
+            // 
+            // Column145
+            // 
+            this.Column145.DataPropertyName = "cpno";
+            this.Column145.HeaderText = "CPNO";
+            this.Column145.Name = "Column145";
+            this.Column145.Width = 50;
+            // 
+            // Column146
+            // 
+            this.Column146.DataPropertyName = "grade_cd";
+            this.Column146.HeaderText = "GRADE_CD";
+            this.Column146.Name = "Column146";
+            this.Column146.Width = 50;
+            // 
+            // Column147
+            // 
+            this.Column147.DataPropertyName = "clno";
+            this.Column147.HeaderText = "CLNO";
+            this.Column147.Name = "Column147";
+            this.Column147.Width = 60;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -3635,6 +3898,12 @@
             this.groupBox15.ResumeLayout(false);
             this.groupBox15.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewByPassEmp)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.splitContainer11.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer11)).EndInit();
+            this.splitContainer11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPodClass)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3936,6 +4205,28 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column137;
         private System.Windows.Forms.TextBox textBoxCampusPoint;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.SplitContainer splitContainer11;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.Button buttonPodStudySelect;
+        private System.Windows.Forms.Button buttonPodTempInsert;
+        private System.Windows.Forms.DataGridView dataGridViewPodClass;
+        private System.Windows.Forms.ComboBox comboBoxPodSchoolCD;
+        private System.Windows.Forms.ComboBox comboBoxPodCampus;
+        private System.Windows.Forms.ComboBox comboBoxPodCampusType;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TextBox textBoxPodDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column140;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column141;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column142;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column143;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column144;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column145;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column146;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column147;
 
     }
 }

@@ -99,7 +99,12 @@ namespace Dreamonesys.CallCenter.Main
                 new Common.ComboBoxList(comboBoxUseYNStudy, "사용", true),
                 //미결사용자 등록 콤보박스
                 new Common.ComboBoxList(comboBoxCampusTypeByPass, "캠퍼스구분", true),
-                new Common.ComboBoxList(comboBoxCampusByPass, "캠퍼스", true)
+                new Common.ComboBoxList(comboBoxCampusByPass, "캠퍼스", true),
+                //타임캡슐 콤보박스
+                new Common.ComboBoxList(comboBoxPodCampusType, "캠퍼스구분", true),
+                new Common.ComboBoxList(comboBoxPodCampus, "캠퍼스", true) ,                  
+                new Common.ComboBoxList(comboBoxPodSchoolCD, "학교급", true)
+
                 
             };
             this._common.GetComboList(comboBoxList);
@@ -249,7 +254,13 @@ namespace Dreamonesys.CallCenter.Main
             //미결사용자 등록
             string businessCDByPass = comboBoxCampusTypeByPass.SelectedValue.ToString();
             string cpnoByPass = comboBoxCampusByPass.SelectedValue.ToString();
+            //타임캡슐
+            string businessCDPod = comboBoxPodCampusType.SelectedValue.ToString();
+            string cpnoPod = comboBoxPodCampus.SelectedValue.ToString();
+            string schoolCDPod = comboBoxPodSchoolCD.SelectedValue.ToString();
             
+                
+                
                 
 
             switch (pQueryKind)
@@ -1143,6 +1154,82 @@ namespace Dreamonesys.CallCenter.Main
                     }
                     pSqlCommand.CommandText += @"
                        ORDER BY C.cpnm, A.usernm ";
+                    break;
+
+                 case "select_pod_class":
+                    //미결사용자 대상자명(학생) 조회
+                    pSqlCommand.CommandText = @"   
+
+                        select * 
+                        FROM (
+                        SELECT CASE B.business_cd 
+	                                WHEN 'DD' THEN '직영'
+	                                WHEN 'FA' THEN 'FC'
+	                            END AS business_cdnm
+                               , A.cpnm, A.school_cdnm, A.grade_cdnm, A.clnm, A.cpno,  A.grade_cd, A.CLNO
+                          FROM (
+		                        SELECT A.cpnm, A.cpno, A.school_cd, dbo.F_U_CODE_NM('TBL', 'SCHOOL', A.school_cd) AS school_cdnm, A.clnm, A.grade_cd 
+			                           , dbo.F_U_CODE_NM('TLS', 'GRADE', A.grade_cd) AS grade_cdnm , A.CLNO      
+		                          FROM ( 
+				                        SELECT A.cpnm, A.cpno, B.school_cd, B.clno, B.clnm, B.grade_cd
+					                           , B.class_tid, C.tid 
+					                           , B.class_emp_id 
+					                           , (SELECT member_id FROM tls_member WHERE userid = C.tid) AS emp_id 
+				                          FROM tls_campus A WITH(NOLOCK) -- 캠퍼스
+					                           INNER JOIN tls_class B WITH(NOLOCK) -- 반
+					                           ON (A.cpno = B.cpno) 
+					                           INNER JOIN tls_class_study C WITH(NOLOCK) -- 반학습
+					                           ON (B.cpno = C.cpno AND B.clno = C.clno) 
+					                           LEFT OUTER JOIN tls_study D WITH(NOLOCK) -- 학습
+					                           ON (C.sdno = D.sdno) 
+					                           --on (c.bkno = d.bkno and c.sdno = d.sdno) 
+			                             -- 출력하지 않을 캠퍼스
+				                         WHERE --a.cpno IN (110)
+				                            A.use_yn = 'Y' 
+				                           AND B.use_yn = 'Y' 
+				                          -- AND D.use_yn = 'Y' -- 학습 사용 유무(학습이 열려있는 반만 조회한다)
+				                           AND EXISTS 				   
+					                           ( 
+						                        SELECT *
+						                          FROM tls_term -- 분기/학기기간
+						                         WHERE cpno = C.cpno ";
+
+                                            if (!string.IsNullOrEmpty(textBoxPodDate.Text))
+                                            {
+                                                pSqlCommand.CommandText += @"
+                                                  AND '" + textBoxPodDate.Text + "' "; 
+                                            }
+
+						                  pSqlCommand.CommandText += @"
+
+                                                   BETWEEN datefrom AND dateto
+						                           AND term_cd = C.term_cd 
+						                           AND yyyy = C.yyyy 
+						                        ) ";
+				                           
+                                            if (!string.IsNullOrEmpty(schoolCDPod))
+                                            {
+                                                pSqlCommand.CommandText += @"
+                                                 AND B.school_cd = '" + schoolCDPod + "' ";
+                                            }
+
+                     pSqlCommand.CommandText += @"
+				                           
+			                           ) A 
+		                         WHERE 1=1 
+		                         GROUP BY A.cpnm, A.cpno, A.school_cd, A.clnm, A.grade_cd, A.clno
+	                           ) A  
+	                           INNER JOIN tls_campus B ON (B.cpno = A.cpno) ";
+
+                     if (!string.IsNullOrEmpty(businessCDPod))
+                     {
+                         pSqlCommand.CommandText += @"
+                          AND B.business_cd = '" + businessCDPod + "' ";
+                     }
+
+                    pSqlCommand.CommandText += @"
+                                                                                           ) POD  ";
+                    
                     break;
 
                 default:
@@ -2456,6 +2543,23 @@ namespace Dreamonesys.CallCenter.Main
         }
 
         #endregion Event
+
+        private void comboBoxPodCampusType_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //타임캡슐 캠퍼스 콤보박스 데이터 생성            
+            string campusType = comboBoxPodCampusType.SelectedValue.ToString().Trim();
+
+            _common.GetComboList(comboBoxPodCampus, "캠퍼스", true, new string[] { campusType });
+        }
+
+        private void textBoxPodDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            //타임캡슐 반 목록 검색
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectDataGridView(dataGridViewPodClass, "select_pod_class");
+            }
+        }
 
        
 
