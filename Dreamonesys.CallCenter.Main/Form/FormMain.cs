@@ -1157,10 +1157,10 @@ namespace Dreamonesys.CallCenter.Main
                     break;
 
                  case "select_pod_class":
-                    //미결사용자 대상자명(학생) 조회
+                    //타임캡슐 반목록 조회
                     pSqlCommand.CommandText = @"   
 
-                        select * 
+                      SELECT *
                         FROM (
                         SELECT CASE B.business_cd 
 	                                WHEN 'DD' THEN '직영'
@@ -1228,8 +1228,122 @@ namespace Dreamonesys.CallCenter.Main
                      }
 
                     pSqlCommand.CommandText += @"
-                                                                                           ) POD  ";
+                                                                                           ) POD                    ";
                     
+                    break; 
+                 
+
+                 case "select_pod_class_study":
+                    //타임캡슐 반 목록 학습이력 조회
+                    pSqlCommand.CommandText = @"   
+
+                        DECLARE @DATEFROM			VARCHAR(8)
+                        DECLARE @DATEFRTO			VARCHAR(8)
+                        DECLARE @YYYY				CHAR(4)
+                        DECLARE @TERM_CD			VARCHAR(3)
+
+
+                        SET @DATEFROM			= 20150306
+                        SET @DATEFRTO			= 20150313
+                        SET @YYYY				= 2015
+                        SET @TERM_CD			= 'E02'
+
+               SELECT * INTO #pod_study_temp
+                        FROM (
+                        SELECT CASE B.business_cd 
+	                                WHEN 'DD' THEN '직영'
+	                                WHEN 'FA' THEN 'FC'
+	                            END AS business_cdnm
+                               , A.cpnm, A.school_cdnm, A.grade_cdnm, A.clnm, A.cpno,  A.grade_cd, A.CLNO
+                          FROM (
+		                        SELECT A.cpnm, A.cpno, A.school_cd, dbo.F_U_CODE_NM('TBL', 'SCHOOL', A.school_cd) AS school_cdnm, A.clnm, A.grade_cd 
+			                           , dbo.F_U_CODE_NM('TLS', 'GRADE', A.grade_cd) AS grade_cdnm , A.CLNO      
+		                          FROM ( 
+				                        SELECT A.cpnm, A.cpno, B.school_cd, B.clno, B.clnm, B.grade_cd
+					                           , B.class_tid, C.tid 
+					                           , B.class_emp_id 
+					                           , (SELECT member_id FROM tls_member WHERE userid = C.tid) AS emp_id 
+				                          FROM tls_campus A WITH(NOLOCK) -- 캠퍼스
+					                           INNER JOIN tls_class B WITH(NOLOCK) -- 반
+					                           ON (A.cpno = B.cpno) 
+					                           INNER JOIN tls_class_study C WITH(NOLOCK) -- 반학습
+					                           ON (B.cpno = C.cpno AND B.clno = C.clno) 
+					                           LEFT OUTER JOIN tls_study D WITH(NOLOCK) -- 학습
+					                           ON (C.sdno = D.sdno) 
+					                           --on (c.bkno = d.bkno and c.sdno = d.sdno) 
+			                             -- 출력하지 않을 캠퍼스
+				                         WHERE --a.cpno IN (110)
+				                            A.use_yn = 'Y' 
+				                           AND B.use_yn = 'Y' 
+				                          -- AND D.use_yn = 'Y' -- 학습 사용 유무(학습이 열려있는 반만 조회한다)
+				                           AND EXISTS 				   
+					                           ( 
+						                        SELECT *
+						                          FROM tls_term -- 분기/학기기간
+						                         WHERE cpno = C.cpno ";
+
+                                            if (!string.IsNullOrEmpty(textBoxPodDate.Text))
+                                            {
+                                                pSqlCommand.CommandText += @"
+                                                  AND '" + textBoxPodDate.Text + "' "; 
+                                            }
+
+						                  pSqlCommand.CommandText += @"
+
+                                                   BETWEEN datefrom AND dateto
+						                           AND term_cd = C.term_cd 
+						                           AND yyyy = C.yyyy 
+						                        ) ";
+				                           
+                                            if (!string.IsNullOrEmpty(schoolCDPod))
+                                            {
+                                                pSqlCommand.CommandText += @"
+                                                 AND B.school_cd = '" + schoolCDPod + "' ";
+                                            }
+
+                     pSqlCommand.CommandText += @"
+				                           
+			                           ) A 
+		                         WHERE 1=1 
+		                         GROUP BY A.cpnm, A.cpno, A.school_cd, A.clnm, A.grade_cd, A.clno
+	                           ) A  
+	                           INNER JOIN tls_campus B ON (B.cpno = A.cpno) ";
+
+                     if (!string.IsNullOrEmpty(businessCDPod))
+                     {
+                         pSqlCommand.CommandText += @"
+                          AND B.business_cd = '" + businessCDPod + "' ";
+                     }
+
+                    pSqlCommand.CommandText += @"
+                                                                                           ) POD                    ";
+                    pSqlCommand.CommandText += @"
+ 
+                         SELECT D.cpnm, C.clnm, B.sdnm, E.clno AS TEMP_CLNO
+	                         , (SELECT COUNT(clno) FROM tls_class_schedule WHERE clno = A.clno 
+		                           AND YYYY = A.yyyy AND term_cd = A.term_cd AND sdno = A.SDNO
+		                           AND cdate BETWEEN @DATEFROM AND @DATEFRTO) AS SCHEDULE_CNT
+                             , (SELECT COUNT(lreno) FROM tls_repeat_log WHERE yyyy = A.yyyy AND term_cd = A.term_cd AND course_cd = 'C01'
+		                           AND sdno = A.sdno
+	                               AND cpno = A.cpno AND clno = A.clno AND cdate BETWEEN @DATEFROM AND @DATEFRTO) AS STUDY_CNT
+	                        , A.yyyy, A.term_cd, A.cpno, A.clno, A.sdno, A.sdate, A.edate, A.week_day
+	                        , (SELECT usernm FROM tls_member WHERE userid = A.tid) AS TID			--A.*
+                           FROM tls_class_study AS A
+	                         LEFT JOIN tls_study AS B	 
+	                           ON a.sdno = b.SDNO   -- 과정1
+	                         LEFT JOIN tls_class AS C
+	                           ON a.clno = c.clno
+	                          LEFT JOIN tls_campus AS D
+	                           ON A.cpno = D.cpno
+	                          INNER JOIN  #pod_study_temp AS E
+	                           ON C.clno = E.clno	  	  
+                             WHERE A.yyyy = @YYYY AND A.term_cd = @TERM_CD -- and 20150130 between a.sdate and a.edate
+	                         AND B.sdnm NOT LIKE '%[월말]%'	 			 
+                        ORDER BY D.cpnm, C.clnm
+
+
+                          ";
+
                     break;
 
                 default:
@@ -2559,6 +2673,12 @@ namespace Dreamonesys.CallCenter.Main
             {
                 SelectDataGridView(dataGridViewPodClass, "select_pod_class");
             }
+        }
+
+        private void buttonPodStudySelect_Click(object sender, EventArgs e)
+        {
+            //타임캡슐 반 목록 학습이력 검색
+            SelectDataGridView(dataGridViewPodClassStudy, "select_pod_class_study");            
         }
 
        
