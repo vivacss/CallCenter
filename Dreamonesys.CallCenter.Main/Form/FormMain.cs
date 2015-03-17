@@ -1197,12 +1197,12 @@ namespace Dreamonesys.CallCenter.Main
                                             if (!string.IsNullOrEmpty(textBoxPodDate.Text))
                                             {
                                                 pSqlCommand.CommandText += @"
-                                                  AND '" + textBoxPodDate.Text + "' "; 
+                                                  AND '" + textBoxPodDate.Text + "' BETWEEN datefrom AND dateto "; 
                                             }
 
 						                  pSqlCommand.CommandText += @"
 
-                                                   BETWEEN datefrom AND dateto
+                                                   
 						                           AND term_cd = C.term_cd 
 						                           AND yyyy = C.yyyy 
 						                        ) ";
@@ -1225,6 +1225,12 @@ namespace Dreamonesys.CallCenter.Main
                      {
                          pSqlCommand.CommandText += @"
                           AND B.business_cd = '" + businessCDPod + "' ";
+                     }
+
+                     if (!string.IsNullOrEmpty(cpnoPod))
+                     {
+                         pSqlCommand.CommandText += @"
+                          AND B.cpno = '" + cpnoPod + "' ";
                      }
 
                     pSqlCommand.CommandText += @"
@@ -1299,7 +1305,7 @@ namespace Dreamonesys.CallCenter.Main
                                             {
                                                 pSqlCommand.CommandText += @"
                                                  AND B.school_cd = '" + schoolCDPod + "' ";
-                                            }
+                                            }                                           
 
                      pSqlCommand.CommandText += @"
 				                           
@@ -1313,6 +1319,12 @@ namespace Dreamonesys.CallCenter.Main
                      {
                          pSqlCommand.CommandText += @"
                           AND B.business_cd = '" + businessCDPod + "' ";
+                     }
+
+                     if (!string.IsNullOrEmpty(cpnoPod))
+                     {
+                         pSqlCommand.CommandText += @"
+                          AND B.cpno = '" + cpnoPod + "' ";
                      }
 
                     pSqlCommand.CommandText += @"
@@ -2666,20 +2678,19 @@ namespace Dreamonesys.CallCenter.Main
             _common.GetComboList(comboBoxPodCampus, "캠퍼스", true, new string[] { campusType });
         }
 
-        private void textBoxPodDate_KeyDown(object sender, KeyEventArgs e)
+        private void buttonPodClassSelect_Click(object sender, EventArgs e)
         {
             //타임캡슐 반 목록 검색
-            if (e.KeyCode == Keys.Enter)
-            {
-                SelectDataGridView(dataGridViewPodClass, "select_pod_class");
-            }
+            SelectDataGridView(dataGridViewPodClass, "select_pod_class");
         }
 
         private void buttonPodStudySelect_Click(object sender, EventArgs e)
         {
             //타임캡슐 반 목록 학습이력 검색
-            SelectDataGridView(dataGridViewPodClassStudy, "select_pod_class_study");            
+            SelectDataGridView(dataGridViewPodClassStudy, "select_pod_class_study");
         }
+
+        
 
        
 
